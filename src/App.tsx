@@ -1,25 +1,43 @@
-import undpLogo from './assets/undp-logo-blue.svg';
+/* eslint-disable prettier/prettier */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { csv } from 'd3-fetch';
+import { useEffect, useState } from 'react';
+import { Map } from './Choropleth/Map';
+import { MpiDataType } from './Types';
+import './styles.css';
 
 function App() {
+  const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
+  // eslint-disable-next-line no-console
+  console.log('mpiData', mpiData);
+
+  useEffect(() => {
+    csv('./data/Global-MPI_national.csv').then( data => {
+
+        // eslint-disable-next-line no-console
+        console.log('data', data);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const dataFetched = data.map((d:any) => ({
+          country: d.Country,
+          iso_a3: d['country code'],
+          region: d['World region'],
+          mpi: d['MPI (National)'],
+          year: +d.Year,
+        }));
+        // eslint-disable-next-line no-console
+        console.log('dataFetched', dataFetched);
+        setMpiData(dataFetched)
+      }
+    )
+  }, []);
   return (
-    <div className='undp-container flex-div flex-wrap flex-hor-align-center margin-top-13 margin-bottom-13'>
-      <div>
-        <img
-          src={undpLogo}
-          className='logo react'
-          alt='React logo'
-          width='72px'
-          style={{ margin: 'auto' }}
-        />
-      </div>
-      <h3
-        className='undp-typography'
-        style={{ textAlign: 'center', width: '100%' }}
-      >
-        This is template for building visualization and frontend project for
-        UNDP Data Futures Platform
-      </h3>
+    <div>
+      {mpiData ? (
+          <div><Map data ={mpiData} /></div>
+        ) : null
+      }
     </div>
+
   );
 }
 

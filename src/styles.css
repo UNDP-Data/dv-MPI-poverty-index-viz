@@ -1,0 +1,9 @@
+.tooltipEl{
+  display: block;
+  position: fixed;
+  z-index: 8;
+  background-color: var(--gray-200);
+  border: 1px solid var(--gray-300);
+  word-wrap: break-word;
+  max-width: 24rem;
+}
