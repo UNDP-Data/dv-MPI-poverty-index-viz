@@ -5,8 +5,16 @@ export interface MpiDataType {
   year: number;
   mpi: number;
 }
-export interface WorldFeatures {
+export interface MpiDataTypeUrbanRural {
   country: string;
+  iso_a3: string;
+  region: string;
+  mpiUrban: number;
+  yearUrban: number;
+  mpiRural: number;
+  yearRural: number;
+}
+export interface WorldFeatures {
   type: string;
   geometry: MapGeometry;
   properties: {
@@ -28,7 +36,7 @@ export interface HoverDataType {
   country: string;
   continent: string;
   value: number;
-  year: string;
+  year: number;
   xPosition: number;
   yPosition: number;
 }

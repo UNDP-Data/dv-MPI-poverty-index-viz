@@ -1,20 +1,22 @@
+import styled from 'styled-components';
 import { HoverDataType } from '../Types';
 
 interface Props {
   data: HoverDataType;
 }
 
-/* interface TooltipElProps {
+interface TooltipElProps {
   x: number;
   y: number;
   verticalAlignment: string;
   horizontalAlignment: string;
 }
 
- const TooltipEl = styled.div<TooltipElProps>`
+const TooltipEl = styled.div<TooltipElProps>`
   display: block;
   position: fixed;
   z-index: 8;
+  padding-bottom: 10px;
   background-color: var(--gray-200);
   border: 1px solid var(--gray-300);
   word-wrap: break-word;
@@ -30,14 +32,20 @@ interface Props {
     `translate(${props.horizontalAlignment === 'left' ? '-100%' : '0%'},${
       props.verticalAlignment === 'top' ? '-100%' : '0%'
     })`};
-`; */
+`;
 
 export function Tooltip(props: Props) {
   const { data } = props;
   return (
-    <div
-      className='tooltipEl'
-      style={{ top: data.xPosition, left: data.yPosition }}
+    <TooltipEl
+      x={data.xPosition}
+      y={data.yPosition}
+      verticalAlignment={
+        data.yPosition > window.innerHeight / 2 ? 'top' : 'bottom'
+      }
+      horizontalAlignment={
+        data.xPosition > window.innerWidth / 2 ? 'left' : 'right'
+      }
     >
       <div
         className='flex-div flex-wrap'
@@ -67,9 +75,9 @@ export function Tooltip(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        <div>{data.value}</div>
-        <div>{data.year}</div>
+        <div>{`MPI: ${data.value.toFixed(3)}`}</div>
+        <div>{`Year: ${data.year}`}</div>
       </div>
-    </div>
+    </TooltipEl>
   );
 }

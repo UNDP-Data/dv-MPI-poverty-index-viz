@@ -1,33 +1,4 @@
-"country code",Country,World region,Survey,Year,MPI (National),Headcount ratio: Population in multidimensional poverty (H),Intensity of deprivation among the poor (A),Vulnerable to poverty (who experience 20-33.32% intensity of deprivations) ,In severe poverty (severity 50% or higher) ,"Inequality
-among the poor
-(variance)Inequality
-among the poor
-(variance)Inequality
-among the poor
-(variance)Inequality
-among the poor
-(variance)Inequality
-among the poor
-(variance)Inequality
-among the poor
-(variance)Inequality
-among the poor
-(variance)","Headcount ratio: Population in multidimensional  destitution poverty
-(D)Headcount ratio: Population in multidimensional  destitution poverty
-(D)Headcount ratio: Population in multidimensional  destitution poverty
-(D)Headcount ratio: Population in multidimensional  destitution poverty
-(D)Headcount ratio: Population in multidimensional  destitution poverty
-(D)Headcount ratio: Population in multidimensional  destitution poverty
-(D)Headcount ratio: Population in multidimensional  destitution poverty
-(D)",Proportion of MPI poor who are destitute,"Total number of indicators included 
-(out of ten)Total number of indicators included 
-(out of ten)Total number of indicators included 
-(out of ten)Total number of indicators included 
-(out of ten)Total number of indicators included 
-(out of ten)Total number of indicators included 
-(out of ten)Total number of indicators included 
-(out of ten)",Indicator (s) missing,Health ,Education,Living Standards,Nutrition,Child mortality,Years of schooling,School attendance,"Cooking 
-fuel",Sanitation,Drinking water,Electricity,Housing,Assets
+"country code",Country,World region,Survey,Year,MPI (National),Headcount ratio: Population in multidimensional poverty (H),Intensity of deprivation among the poor (A),Vulnerable to poverty (who experience 20-33.32% intensity of deprivations) ,In severe poverty (severity 50% or higher) ,"Inequality among the poor (variance)","Headcount ratio: Population in multidimensional  destitution poverty (D),Proportion of MPI poor who are destitute,"Total number of indicators included (out of ten)",Indicator (s) missing,Health ,Education,Living Standards,Nutrition,Child mortality,Years of schooling,School attendance,"Cooking fuel",Sanitation,Drinking water,Electricity,Housing,Assets
 AFG,Afghanistan,South Asia,DHS,2016,0.2717212372,55.9102392608,48.5995482813,18.1376249278,24.8619504561,0.0202764254,26.0945728842,46.6722602844,9,Nutrition,10.0093826652,44.9887663126,45.0018495321,,10.009382297,19.2488777996,25.7398900278,10.0715908231,9.9599679921,6.1584385324,4.8405609721,11.1386777233,2.8326138323
 ALB,Albania,Europe and Central Asia,DHS,2018,0.0027478786,0.7035612961,39.0567043687,5.0403203363,0.0670620414,...*,0.0948082027,13.4754714966,10,,28.2599806786,55.0546169281,16.6854009032,28.1133889901,0.1465927475,31.2786589055,23.7759594769,5.7622489051,2.9052997666,4.2062785994,0,2.8153397142,0.9962328948
 DZA,Algeria,Arab States,MICS,2019,0.0054090931,1.3808349301,39.1726266817,3.6071680781,0.2028077733,0.006745385,0.3146480172,22.7867946625,10,,31.2143564224,49.3012666702,19.4843798876,24.2163223497,6.9980337799,29.6121137777,19.6891503006,1.3063280377,6.3291123804,4.2437562079,1.6988447817,4.544302801,1.3620355833
