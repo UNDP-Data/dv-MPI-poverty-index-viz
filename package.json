@@ -12,9 +12,13 @@
     "@turf/turf": "^6.5.0",
     "d3": "^7.8.5",
     "d3-queue": "^3.0.7",
+    "lodash": "^4.17.21",
+    "lodash.maxby": "^4.6.0",
+    "lodash.sortby": "^4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.0.0-rc.5"
+    "styled-components": "^6.0.0-rc.5",
+    "undp-viz-colors": "^1.0.5"
   },
   "devDependencies": {
     "@types/d3-array": "^3.0.5",
@@ -25,6 +29,8 @@
     "@types/d3-scale": "^4.0.3",
     "@types/d3-selection": "^3.0.5",
     "@types/d3-zoom": "^3.0.3",
+    "@types/lodash.maxby": "^4.6.7",
+    "@types/lodash.sortby": "^4.7.7",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@typescript-eslint/eslint-plugin": "^5.51.0",

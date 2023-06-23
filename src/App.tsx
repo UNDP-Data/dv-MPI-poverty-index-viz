@@ -10,7 +10,7 @@ import { DumbellChartViz } from './DumbellChartViz';
 
 function App() {
   const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
-  const [urbanRuralData, setUrbanRuralData] = useState<MpiDataType[] | undefined>(undefined);
+  const [urbanRuralData, setUrbanRuralData] = useState<MpiDataTypeUrbanRural[] | undefined>(undefined);
 
   useEffect(() => {
     Promise.all(
@@ -39,8 +39,9 @@ function App() {
             region: d['World region'],
             mpiUrban: d.MPI,
             yearUrban: +d.Year,
-            mpiRural: rData.MPI,
+            mpiRural: Number(rData.MPI),
             yearRural: +rData.year,
+            diff: Number(rData.MPI) - d.MPI,
           }          
         )
       });
@@ -52,7 +53,7 @@ function App() {
     })
   }, []);
   return (
-    <div>
+    <div className='undp-container'>
       <div>
         {mpiData ? (
             <div><Map data ={mpiData} /></div>

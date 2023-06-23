@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useRef, useState } from 'react';
+import UNDPColorModule from 'undp-viz-colors';
 import styled from 'styled-components';
 import { scaleThreshold } from 'd3-scale';
 import { select } from 'd3-selection';
@@ -9,7 +10,6 @@ import { min, max } from 'd3-array';
 import { zoom } from 'd3-zoom';
 import { rewind } from '@turf/turf';
 import world from '../Data/worldMap.json';
-import { REDCOLORSCALE } from '../Constants';
 import { Tooltip } from '../Components/Tooltip';
 import { MpiDataType, HoverDataType } from '../Types';
 
@@ -52,7 +52,7 @@ export function Map(props: Props) {
     .translate([svgWidth / 2, svgHeight / 2]);
   const colorScale = scaleThreshold<number, string>()
     .domain(valueArray)
-    .range(REDCOLORSCALE);
+    .range(UNDPColorModule.sequentialColors.negativeColorsx10);
   const worldFeatures = world.features || [];
   useEffect(() => {
     worldFeatures.forEach(d => {
@@ -142,18 +142,13 @@ export function Map(props: Props) {
             {valueArray.map((d, i) => (
               <g key={i}>
                 <rect
-                  x={(i * 320) / REDCOLORSCALE.length + 1}
+                  x={(i * 320) / 11}
                   y={1}
-                  width={320 / REDCOLORSCALE.length - 1}
+                  width={320 / 9}
                   height={8}
-                  fill={REDCOLORSCALE[i]}
+                  fill={UNDPColorModule.sequentialColors.negativeColorsx10[i]}
                 />
-                <text
-                  x={(i * 320) / REDCOLORSCALE.length}
-                  y={25}
-                  fontSize={12}
-                  fill='#212121'
-                >
+                <text x={(i * 320) / 10} y={25} fontSize={12} fill='#212121'>
                   {d}
                 </text>
               </g>

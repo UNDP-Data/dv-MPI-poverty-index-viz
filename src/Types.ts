@@ -12,7 +12,8 @@ export interface MpiDataTypeUrbanRural {
   mpiUrban: number;
   yearUrban: number;
   mpiRural: number;
-  yearRural: number;
+  yearRural?: number;
+  diff: number;
 }
 export interface WorldFeatures {
   type: string;

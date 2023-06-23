@@ -20,16 +20,16 @@ const Filters = styled.div`
 const FlexDiv = styled.div`
   display: flex;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.1rem;
   flex-wrap: wrap;
   color: var(--black-600);
 `;
 
 const IconEl = styled.div`
   height: 2.4rem;
-  margin-left: -1.8rem;
-  margin-top: -2px;
-  margin-right: 0.5rem;
+  margin-left: 0px;
+  margin-top: 10px;
+  margin-right: 0.1rem;
 `;
 
 const TitleText = styled.div`
@@ -47,14 +47,26 @@ const DumbellChartEl = styled.div`
 
 export function DumbellChartViz(props: Props) {
   const { data } = props;
+  const sortedBy = {
+    label: 'Rural - Urban',
+    key: 'diff',
+  };
   /* const [sortedBy, setSortedBy] = useState({
     label: 'Country Name',
     key: 'country',
   });
-  const sortingOptions = [
+  setSortedBy({
+    label: 'Country Name',
+    key: 'country',
+  }); */
+  /* const sortingOptions = [
     {
       label: 'Country Name',
       key: 'country',
+    },
+    {
+      label: 'MPI difference',
+      key: 'mpi-diff',
     },
     {
       label: 'Rural',
@@ -64,27 +76,20 @@ export function DumbellChartViz(props: Props) {
       label: 'Urban',
       key: 'urban',
     },
-    {
-      label: 'Year',
-      key: 'year',
-    },
   ]; */
   return (
     <El>
       <Filters>
         <FlexDiv>
-          <TitleText>Difference in MPI</TitleText>
-          <IconEl>
-            <CaretDown size={24} color='#018EFF' />
-          </IconEl>
           <TitleText>sorted by</TitleText>
+          <div>{sortedBy.label}</div>
           <IconEl>
             <CaretDown size={24} color='#018EFF' />
           </IconEl>
         </FlexDiv>
       </Filters>
       <DumbellChartEl>
-        <DumbellChart data={data} />
+        <DumbellChart data={data} sortedByKey={sortedBy.key} />
       </DumbellChartEl>
     </El>
   );
