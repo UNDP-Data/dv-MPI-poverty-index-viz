@@ -3,6 +3,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { csv } from 'd3-fetch';
 import { useEffect, useState } from 'react';
+import { Tabs } from 'antd';
 import { Map } from './Choropleth/Map';
 import { MpiDataType, MpiDataTypeUrbanRural } from './Types';
 import './styles.css';
@@ -27,6 +28,7 @@ function App() {
         iso_a3: d['country code'],
         region: d['World region'],
         mpi: d['MPI (National)'],
+        headcountRatio: d['Headcount ratio: Population in multidimensional poverty (H)'],
         year: +d.Year,
       }));
       const urbanRuralFetched: MpiDataTypeUrbanRural[] =[];
@@ -57,6 +59,22 @@ function App() {
   }, []);
   return (
     <div className='undp-container'>
+      <Tabs
+        defaultActiveKey='1'
+        className='undp-tabs'
+        items={[
+          {
+            label: 'Global MPI',
+            key: '1',
+            children: '',
+          },
+          {
+            label: 'Countries',
+            key: '2',
+            children: ''
+          },
+        ]}
+      />      
       <div style={{width:'1280px', margin: 'auto' }}>
         <div>
           <h2>Global Multidimensional Poverty Index (MPI)</h2>

@@ -5,10 +5,10 @@ import UNDPColorModule from 'undp-viz-colors';
 import styled from 'styled-components';
 import { scaleThreshold } from 'd3-scale';
 import { select } from 'd3-selection';
-import { geoEqualEarth, geoPath } from 'd3-geo';
-import { min, max } from 'd3-array';
+import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
-import { rewind } from '@turf/turf';
+// import { rewind } from '@turf/turf';
+import { Radio, RadioChangeEvent } from 'antd';
 import world from '../Data/worldMap.json';
 import { Tooltip } from '../Components/Tooltip';
 import { MpiDataType, HoverDataType } from '../Types';
@@ -42,24 +42,24 @@ export function Map(props: Props) {
     undefined,
   );
   const [zoomLevel, setZoomLevel] = useState(1);
-  /* const valueArray = [
-    0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55,
-  ]; */
+  const [radioValue, setRadioValue] = useState('mpi');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6];
+  const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   const projection = geoEqualEarth()
     .rotate([0, 0])
     .scale(230)
-    .rotate([-10, 0])
+    // .rotate([-10, 0])
     .translate([svgWidth / 2, svgHeight / 2]);
-  const colorScale = scaleThreshold<number, string>()
+  const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx08);
-  // const worldFeatures = world.features || [];
+  const colorScaleHeadcount = scaleThreshold<number, string>()
+    .domain(percentArray)
+    .range(UNDPColorModule.sequentialColors.negativeColorsx10);
+  const onChange = (e: RadioChangeEvent) => {
+    setRadioValue(e.target.value);
+  };
   useEffect(() => {
-    const minMpi = min(data, (d: { mpi: number }) => d.mpi);
-    const maxMpi = max(data, (d: { mpi: number }) => d.mpi);
-    // eslint-disable-next-line no-console
-    console.log('minMpi', minMpi, 'maxMpi', maxMpi);
     const mapGSelect = select(mapG.current);
     const mapSvgSelect = select(mapSvg.current);
     const zoomBehaviour = zoom()
@@ -83,6 +83,14 @@ export function Map(props: Props) {
         height: `${svgHeight}px`,
       }}
     >
+      <Radio.Group defaultValue='mpi' onChange={onChange}>
+        <Radio className='undp-radio' value='mpi'>
+          MPI
+        </Radio>
+        <Radio className='undp-radio' value='percent'>
+          Population in multidimensional poverty
+        </Radio>
+      </Radio.Group>
       <svg
         width='100%'
         height='100%'
@@ -94,40 +102,89 @@ export function Map(props: Props) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             world.features.map((d: any, i: number) => {
               // eslint-disable-next-line no-param-reassign
-              d.geometry = rewind(d.geometry, { reverse: true });
+              // d.geometry = rewind(d.geometry, { reverse: true });
               const value = data.filter(k => {
                 return k.iso_a3 === d.properties.ISO3;
               });
               const color =
-                value.length > 0 ? colorScale(Number(value[0].mpi)) : 'none';
-              const path = geoPath().projection(projection);
+                value.length > 0
+                  ? radioValue === 'mpi'
+                    ? colorScaleMPI(Number(value[0].mpi))
+                    : colorScaleHeadcount(Number(value[0].headcountRatio))
+                  : 'var(--gray-300)';
+              // const path = geoPath().projection(projection);
               // eslint-disable-next-line no-console
               // console.log('name', i, d.properties.NAME);
               if (d.properties.NAME === '') return null;
               return (
-                <g key={i}>
-                  <path
-                    d={path(d) || ''}
-                    className={d.properties.ISO3}
-                    stroke='var(--gray-500)'
-                    strokeWidth={1 / zoomLevel}
-                    fill={color}
-                    onMouseEnter={event => {
-                      if (value.length > 0) {
-                        setHoverData({
-                          country: value[0].country,
-                          continent: value[0].region,
-                          value: Number(value[0].mpi),
-                          year: Number(value[0].year),
-                          xPosition: event.clientX,
-                          yPosition: event.clientY,
+                <g
+                  key={i}
+                  onMouseEnter={event => {
+                    if (value.length > 0) {
+                      setHoverData({
+                        country: value[0].country,
+                        continent: value[0].region,
+                        value: Number(value[0].mpi),
+                        year: Number(value[0].year),
+                        headcountRatio: Number(value[0].headcountRatio),
+                        xPosition: event.clientX,
+                        yPosition: event.clientY,
+                      });
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    setHoverData(undefined);
+                  }}
+                >
+                  {d.geometry.type === 'MultiPolygon'
+                    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      d.geometry.coordinates.map((el: any, j: any) => {
+                        let masterPath = '';
+                        el.forEach((geo: number[][]) => {
+                          let path = ' M';
+                          geo.forEach((c: number[], k: number) => {
+                            const point = projection([c[0], c[1]]) as [
+                              number,
+                              number,
+                            ];
+                            if (k !== geo.length - 1)
+                              path = `${path}${point[0]} ${point[1]}L`;
+                            else path = `${path}${point[0]} ${point[1]}`;
+                          });
+                          masterPath += path;
                         });
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      setHoverData(undefined);
-                    }}
-                  />
+                        return (
+                          <path
+                            key={j}
+                            d={masterPath}
+                            stroke='#FFF'
+                            strokeWidth={1 / zoomLevel}
+                            fill={color}
+                          />
+                        );
+                      })
+                    : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      d.geometry.coordinates.map((el: any, j: number) => {
+                        let path = 'M';
+                        el.forEach((c: number[], k: number) => {
+                          const point = projection([c[0], c[1]]) as [
+                            number,
+                            number,
+                          ];
+                          if (k !== el.length - 1)
+                            path = `${path}${point[0]} ${point[1]}L`;
+                          else path = `${path}${point[0]} ${point[1]}`;
+                        });
+                        return (
+                          <path
+                            key={j}
+                            d={path}
+                            stroke='#FFF'
+                            strokeWidth={1 / zoomLevel}
+                            fill={color}
+                          />
+                        );
+                      })}
                 </g>
               );
             })
@@ -145,7 +202,7 @@ export function Map(props: Props) {
                   y={1}
                   width={320 / 8}
                   height={8}
-                  fill={colorScale(valueArray[i] - 0.05)}
+                  fill={colorScaleMPI(valueArray[i] - 0.05)}
                   stroke='#fff'
                 />
                 <text

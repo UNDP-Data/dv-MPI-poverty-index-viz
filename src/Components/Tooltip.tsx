@@ -76,6 +76,7 @@ export function Tooltip(props: Props) {
         }}
       >
         <div>{`MPI: ${data.value.toFixed(3)}`}</div>
+        <div>{`Population in poverty: ${data.headcountRatio.toFixed(2)}%`}</div>
         <div>{`Year: ${data.year}`}</div>
       </div>
     </TooltipEl>

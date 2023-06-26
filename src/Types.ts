@@ -4,6 +4,7 @@ export interface MpiDataType {
   region: string;
   year: number;
   mpi: number;
+  headcountRatio: number;
 }
 export interface MpiDataTypeUrbanRural {
   country: string;
@@ -37,6 +38,7 @@ export interface HoverDataType {
   country: string;
   continent: string;
   value: number;
+  headcountRatio: number;
   year: number;
   xPosition: number;
   yPosition: number;
