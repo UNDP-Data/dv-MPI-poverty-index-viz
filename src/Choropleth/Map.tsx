@@ -53,12 +53,8 @@ export function Map(props: Props) {
   const colorScale = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx10);
-  const worldFeatures = world.features || [];
+  // const worldFeatures = world.features || [];
   useEffect(() => {
-    worldFeatures.forEach(d => {
-      // eslint-disable-next-line no-param-reassign
-      d.geometry = rewind(d.geometry, { reverse: true });
-    });
     const minMpi = min(data, (d: { mpi: number }) => d.mpi);
     const maxMpi = max(data, (d: { mpi: number }) => d.mpi);
     // eslint-disable-next-line no-console
@@ -95,7 +91,9 @@ export function Map(props: Props) {
         <g ref={mapG}>
           {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            worldFeatures.map((d: any, i: number) => {
+            world.features.map((d: any, i: number) => {
+              // eslint-disable-next-line no-param-reassign
+              d.geometry = rewind(d.geometry, { reverse: true });
               const value = data.filter(k => {
                 return k.iso_a3 === d.properties.ISO3;
               });
