@@ -34,25 +34,26 @@ const LegendEl = styled.div`
 
 export function Map(props: Props) {
   const { data } = props;
-  const svgWidth = 1000;
-  const svgHeight = 470;
+  const svgWidth = 1280;
+  const svgHeight = 600;
   const mapSvg = useRef<SVGSVGElement>(null);
   const mapG = useRef<SVGGElement>(null);
   const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
     undefined,
   );
   const [zoomLevel, setZoomLevel] = useState(1);
-  const valueArray = [
+  /* const valueArray = [
     0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55,
-  ];
+  ]; */
+  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6];
   const projection = geoEqualEarth()
     .rotate([0, 0])
-    .scale(180)
+    .scale(230)
     .rotate([-10, 0])
     .translate([svgWidth / 2, svgHeight / 2]);
   const colorScale = scaleThreshold<number, string>()
     .domain(valueArray)
-    .range(UNDPColorModule.sequentialColors.negativeColorsx10);
+    .range(UNDPColorModule.sequentialColors.negativeColorsx08);
   // const worldFeatures = world.features || [];
   useEffect(() => {
     const minMpi = min(data, (d: { mpi: number }) => d.mpi);
@@ -76,7 +77,7 @@ export function Map(props: Props) {
   }, []);
   return (
     <div
-      className='mapContainer'
+      className='map-container'
       style={{
         width: `${svgWidth}px`,
         height: `${svgHeight}px`,
@@ -108,7 +109,7 @@ export function Map(props: Props) {
                   <path
                     d={path(d) || ''}
                     className={d.properties.ISO3}
-                    stroke='#f3f3f3'
+                    stroke='var(--gray-500)'
                     strokeWidth={1 / zoomLevel}
                     fill={color}
                     onMouseEnter={event => {
@@ -140,13 +141,20 @@ export function Map(props: Props) {
             {valueArray.map((d, i) => (
               <g key={i}>
                 <rect
-                  x={(i * 320) / 11}
+                  x={(i * 320) / 8}
                   y={1}
-                  width={320 / 9}
+                  width={320 / 8}
                   height={8}
-                  fill={UNDPColorModule.sequentialColors.negativeColorsx10[i]}
+                  fill={colorScale(valueArray[i] - 0.05)}
+                  stroke='#fff'
                 />
-                <text x={(i * 320) / 10} y={25} fontSize={12} fill='#212121'>
+                <text
+                  x={(320 * (i + 1)) / 8}
+                  y={25}
+                  fontSize={12}
+                  fill='#212121'
+                  textAnchor='middle'
+                >
                   {d}
                 </text>
               </g>

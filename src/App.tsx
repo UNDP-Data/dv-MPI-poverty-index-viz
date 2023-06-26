@@ -19,7 +19,7 @@ function App() {
         csv('./data/Global-MPI_rural.csv'),
         csv('./data/Global-MPI_urban.csv')
       ]
-    ).then(([data, urban, rural]) => {
+    ).then(([data, rural, urban]) => {
       // eslint-disable-next-line no-console
       console.log('data', data, 'urban', urban, 'rural', rural);
       const dataFetched = data.map((d:any) => ({
@@ -30,20 +30,23 @@ function App() {
         year: +d.Year,
       }));
       const urbanRuralFetched: MpiDataTypeUrbanRural[] =[];
-      urban.forEach((d:any) => {
-        const rData = rural.filter( k => k['country code'] === d['country code'] )[0]
-        urbanRuralFetched.push(
-          {
-            country: d.Country,
-            iso_a3: d['country code'],
-            region: d['World region'],
-            mpiUrban: d.MPI,
-            yearUrban: +d.Year,
-            mpiRural: Number(rData.MPI),
-            yearRural: +rData.year,
-            diff: Number(rData.MPI) - d.MPI,
-          }          
-        )
+      data.forEach((d:any) => {
+        const rData = rural.filter( k => k['country code'] === d['country code'] )[0];
+        const uData = urban.filter( k => k['country code'] === d['country code'] )[0];
+        if (rData && uData){
+          urbanRuralFetched.push(
+            {
+              country: d.Country,
+              iso_a3: d['country code'],
+              region: d['World region'],
+              mpiUrban: Number(uData.MPI),
+              yearUrban: uData.Year,
+              mpiRural: Number(rData.MPI),
+              yearRural: rData.Year,
+              diff: Number(rData.MPI) - Number(uData.MPI),
+            }          
+          )
+        }
       });
 
       // eslint-disable-next-line no-console
@@ -54,17 +57,21 @@ function App() {
   }, []);
   return (
     <div className='undp-container'>
-      <div>
-        {mpiData ? (
-            <div><Map data ={mpiData} /></div>
-          ) : null
-        }
-      </div>
-      <div>
-        {urbanRuralData ? (
-          <DumbellChartViz data = {urbanRuralData}  />
-        ) :null
-        }
+      <div style={{width:'1280px', margin: 'auto' }}>
+        <div>
+          <h2>Global Multidimensional Poverty Index (MPI)</h2>
+          {mpiData ? (
+              <div><Map data ={mpiData} /></div>
+            ) : null
+          }
+        </div>
+        <div className='margin-top-09'>
+          <h3>Difference in MPI between urban and rural areas</h3>
+          {urbanRuralData ? (
+            <DumbellChartViz data = {urbanRuralData}  />
+          ) :null
+          }
+        </div>
       </div>
     </div>
   );

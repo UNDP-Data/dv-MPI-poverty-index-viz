@@ -10,9 +10,9 @@ export interface MpiDataTypeUrbanRural {
   iso_a3: string;
   region: string;
   mpiUrban: number;
-  yearUrban: number;
+  yearUrban?: string;
   mpiRural: number;
-  yearRural?: number;
+  yearRural?: string;
   diff: number;
 }
 export interface WorldFeatures {

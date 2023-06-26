@@ -1,40 +1,13 @@
 // import { useState } from 'react';
 import styled from 'styled-components';
+import UNDPColorModule from 'undp-viz-colors';
 import { MpiDataTypeUrbanRural } from '../Types';
-import { CaretDown } from '../icons';
+// import { CaretDown } from '../icons';
 import { DumbellChart } from './DumbellChart';
 
 interface Props {
   data: MpiDataTypeUrbanRural[];
 }
-
-const El = styled.div`
-  margin: 6rem 0;
-`;
-
-const Filters = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const FlexDiv = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-  flex-wrap: wrap;
-  color: var(--black-600);
-`;
-
-const IconEl = styled.div`
-  height: 2.4rem;
-  margin-left: 0px;
-  margin-top: 10px;
-  margin-right: 0.1rem;
-`;
-
-const TitleText = styled.div`
-  margin-right: 1rem;
-`;
 
 const DumbellChartEl = styled.div`
   height: 60rem;
@@ -78,19 +51,41 @@ export function DumbellChartViz(props: Props) {
     },
   ]; */
   return (
-    <El>
-      <Filters>
-        <FlexDiv>
-          <TitleText>sorted by</TitleText>
-          <div>{sortedBy.label}</div>
-          <IconEl>
-            <CaretDown size={24} color='#018EFF' />
-          </IconEl>
-        </FlexDiv>
-      </Filters>
+    <div className='dumbell-container'>
+      <div className='dumbell-header'>
+        <div className='legend-container'>
+          <div className='legend-item'>
+            <div
+              className='legend-circle'
+              style={{
+                backgroundColor:
+                  UNDPColorModule.categoricalColors.locationColors.urban,
+              }}
+            />
+            <div>Urban</div>
+          </div>
+          <div className='legend-item'>
+            <div
+              className='legend-circle'
+              style={{
+                backgroundColor:
+                  UNDPColorModule.categoricalColors.locationColors.rural,
+              }}
+            />
+            <div>Rural</div>
+          </div>
+        </div>
+        <div className='flex-div'>
+          <div style={{ width: '220px' }}>Countries</div>
+          <div style={{ width: '600px' }}>Difference rural - urban </div>
+          <div>
+            <div>sorted by {sortedBy.label}</div>
+          </div>
+        </div>
+      </div>
       <DumbellChartEl>
         <DumbellChart data={data} sortedByKey={sortedBy.key} />
       </DumbellChartEl>
-    </El>
+    </div>
   );
 }
