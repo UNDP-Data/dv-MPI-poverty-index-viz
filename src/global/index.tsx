@@ -1,13 +1,13 @@
 import { Map } from '../Choropleth/Map';
 import { DumbellChartViz } from '../DumbellChartViz';
-import { MpiDataType, MpiDataTypeUrbanRural } from '../Types';
+import { MpiDataType, MpiDataTypeDiff } from '../Types';
 
 interface Props {
   mpiData: MpiDataType[];
-  urbanRuralData: MpiDataTypeUrbanRural[];
+  diffData: MpiDataTypeDiff[];
 }
 export function Global(props: Props) {
-  const { mpiData, urbanRuralData } = props;
+  const { mpiData, diffData } = props;
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
@@ -20,7 +20,7 @@ export function Global(props: Props) {
       </div>
       <div className='margin-top-09'>
         <h3>Differences in MPI</h3>
-        {urbanRuralData ? <DumbellChartViz data={urbanRuralData} /> : null}
+        {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
     </div>
   );

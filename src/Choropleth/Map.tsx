@@ -114,7 +114,11 @@ export function Map(props: Props) {
                       ? colorScaleMPI(Number(value[0].mpi))
                       : colorScaleHeadcount(Number(value[0].headcountRatio))
                     : 'var(--gray-300)';
-                if (d.properties.NAME === '') return null;
+                if (
+                  d.properties.NAME === '' ||
+                  d.properties.NAME === 'Antarctica'
+                )
+                  return null;
                 return (
                   <g
                     key={i}
@@ -126,6 +130,16 @@ export function Map(props: Props) {
                           value: Number(value[0].mpi),
                           year: Number(value[0].year),
                           headcountRatio: Number(value[0].headcountRatio),
+                          xPosition: event.clientX,
+                          yPosition: event.clientY,
+                        });
+                      } else {
+                        setHoverData({
+                          country: d.properties.NAME,
+                          continent: d.properties.REGION,
+                          value: 0,
+                          year: 0,
+                          headcountRatio: 0,
                           xPosition: event.clientX,
                           yPosition: event.clientY,
                         });

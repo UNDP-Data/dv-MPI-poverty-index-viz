@@ -5,10 +5,10 @@
 import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear } from 'd3-scale';
 import { descending, ascending } from 'd3-array';
-import { MpiDataTypeUrbanRural } from '../Types';
+import { MpiDataTypeDiff } from '../Types';
 
 interface Props {
-  data: MpiDataTypeUrbanRural[];
+  data: MpiDataTypeDiff[];
   sortedByKey: string;
   filterByLabel: string;
 }
@@ -20,16 +20,15 @@ export function DumbellChart(props: Props) {
   const rightPadding = 100;
   const rowHeight = 35;
   const marginTop = 10;
-  // const [regions, setRegions] = useState<string[]>();
   // eslint-disable-next-line no-console
   console.log('sortedByKey', sortedByKey);
 
   if (sortedByKey === 'diff') {
-    data.sort((x: MpiDataTypeUrbanRural, y: MpiDataTypeUrbanRural) =>
+    data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
       descending(x[sortedByKey], y[sortedByKey]),
     );
   } else if (sortedByKey === 'country') {
-    data.sort((x: MpiDataTypeUrbanRural, y: MpiDataTypeUrbanRural) =>
+    data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
       ascending(x[sortedByKey], y[sortedByKey]),
     );
   }

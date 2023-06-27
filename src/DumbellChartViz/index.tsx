@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { Select } from 'antd';
 import styled from 'styled-components';
 import UNDPColorModule from 'undp-viz-colors';
-import { MpiDataTypeUrbanRural } from '../Types';
-// import { CaretDown } from '../icons';
+import { MpiDataTypeDiff } from '../Types';
 import { DumbellChart } from './DumbellChart';
 
 interface Props {
-  data: MpiDataTypeUrbanRural[];
+  data: MpiDataTypeDiff[];
 }
 
 const DumbellChartEl = styled.div`
@@ -23,6 +22,19 @@ export function DumbellChartViz(props: Props) {
   const { data } = props;
   const [sortedBy, setSortedBy] = useState('diff');
   const [filterBy, setFilterBy] = useState('All');
+  const [diffOption, setDiffOption] = useState('ldiff');
+  // eslint-disable-next-line no-console
+
+  const diffOptions = [
+    {
+      label: 'male - female',
+      value: 'gdiff',
+    },
+    {
+      label: 'urban - rural',
+      value: 'ldiff',
+    },
+  ];
   const regionsOptions = [
     'All',
     'Arab States',
@@ -46,6 +58,18 @@ export function DumbellChartViz(props: Props) {
     <div className='dumbell-container'>
       <div className='dumbell-header'>
         <div className='flex-div'>
+          <div className='flex-div' style={{ alignItems: 'center' }}>
+            <div>display differences between</div>
+            <div>
+              <Select
+                options={diffOptions}
+                className='undp-select'
+                style={{ width: '200px' }}
+                onChange={el => setDiffOption(el)}
+                value={diffOption}
+              />
+            </div>
+          </div>
           <div className='flex-div' style={{ alignItems: 'center' }}>
             <div>sort by</div>
             <div>

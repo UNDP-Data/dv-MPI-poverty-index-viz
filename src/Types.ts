@@ -6,7 +6,7 @@ export interface MpiDataType {
   mpi: number;
   headcountRatio: number;
 }
-export interface MpiDataTypeUrbanRural {
+export interface MpiDataTypeDiff {
   country: string;
   iso_a3: string;
   region: string;
@@ -15,6 +15,11 @@ export interface MpiDataTypeUrbanRural {
   mpiRural: number;
   yearRural?: string;
   diff: number;
+  mpiFemale: number;
+  yearFemale?: string;
+  mpiMale: number;
+  yearMale?: string;
+  gdiff: number;
 }
 export interface WorldFeatures {
   type: string;
