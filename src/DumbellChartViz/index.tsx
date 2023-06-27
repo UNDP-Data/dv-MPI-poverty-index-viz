@@ -1,4 +1,5 @@
-// import { useState } from 'react';
+import { useState } from 'react';
+import { Select } from 'antd';
 import styled from 'styled-components';
 import UNDPColorModule from 'undp-viz-colors';
 import { MpiDataTypeUrbanRural } from '../Types';
@@ -20,71 +21,95 @@ const DumbellChartEl = styled.div`
 
 export function DumbellChartViz(props: Props) {
   const { data } = props;
-  const sortedBy = {
-    label: 'Rural - Urban',
-    key: 'diff',
-  };
-  /* const [sortedBy, setSortedBy] = useState({
-    label: 'Country Name',
-    key: 'country',
-  });
-  setSortedBy({
-    label: 'Country Name',
-    key: 'country',
-  }); */
-  /* const sortingOptions = [
-    {
-      label: 'Country Name',
-      key: 'country',
-    },
+  const [sortedBy, setSortedBy] = useState('diff');
+  const [filterBy, setFilterBy] = useState('All');
+  const regionsOptions = [
+    'All',
+    'Arab States',
+    'East Asia and the Pacific',
+    'Europe and Central Asia',
+    'Latin America and the Caribbean',
+    'South Asia',
+    'Sub-Saharan Africa',
+  ];
+  const sortingOptions = [
     {
       label: 'MPI difference',
-      key: 'mpi-diff',
+      value: 'diff',
     },
     {
-      label: 'Rural',
-      key: 'rural',
+      label: 'Country Name',
+      value: 'country',
     },
-    {
-      label: 'Urban',
-      key: 'urban',
-    },
-  ]; */
+  ];
   return (
     <div className='dumbell-container'>
       <div className='dumbell-header'>
-        <div className='legend-container'>
-          <div className='legend-item'>
-            <div
-              className='legend-circle'
-              style={{
-                backgroundColor:
-                  UNDPColorModule.categoricalColors.locationColors.urban,
-              }}
-            />
-            <div>Urban</div>
+        <div className='flex-div'>
+          <div className='flex-div' style={{ alignItems: 'center' }}>
+            <div>sort by</div>
+            <div>
+              <Select
+                options={sortingOptions}
+                className='undp-select'
+                style={{ width: '200px' }}
+                onChange={el => setSortedBy(el)}
+                value={sortedBy}
+              />
+            </div>
           </div>
-          <div className='legend-item'>
-            <div
-              className='legend-circle'
-              style={{
-                backgroundColor:
-                  UNDPColorModule.categoricalColors.locationColors.rural,
-              }}
-            />
-            <div>Rural</div>
+          <div className='flex-div' style={{ alignItems: 'center' }}>
+            <div>filter by</div>
+            <div>
+              <Select
+                options={regionsOptions.map(region => ({
+                  label: region,
+                  value: region,
+                }))}
+                className='undp-select'
+                style={{ width: '200px' }}
+                onChange={el => setFilterBy(el)}
+                value={filterBy}
+              />
+            </div>
           </div>
         </div>
-        <div className='flex-div'>
+        <div
+          className='flex-div margin-top-05'
+          style={{ alignItems: 'bottom' }}
+        >
           <div style={{ width: '220px' }}>Countries</div>
           <div style={{ width: '600px' }}>Difference rural - urban </div>
-          <div>
-            <div>sorted by {sortedBy.label}</div>
+          <div className='legend-container'>
+            <div className='legend-item'>
+              <div
+                className='legend-circle'
+                style={{
+                  backgroundColor:
+                    UNDPColorModule.categoricalColors.locationColors.urban,
+                }}
+              />
+              <div>Urban</div>
+            </div>
+            <div className='legend-item'>
+              <div
+                className='legend-circle'
+                style={{
+                  backgroundColor:
+                    UNDPColorModule.categoricalColors.locationColors.rural,
+                }}
+              />
+              <div>Rural</div>
+            </div>
           </div>
         </div>
       </div>
       <DumbellChartEl>
-        <DumbellChart data={data} sortedByKey={sortedBy.key} />
+        <DumbellChart
+          data={data}
+          sortedByKey={sortedBy}
+          filterByLabel={filterBy}
+        />
       </DumbellChartEl>
     </div>
   );

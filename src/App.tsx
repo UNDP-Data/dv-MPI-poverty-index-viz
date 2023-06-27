@@ -4,10 +4,9 @@
 import { csv } from 'd3-fetch';
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
-import { Map } from './Choropleth/Map';
 import { MpiDataType, MpiDataTypeUrbanRural } from './Types';
 import './styles.css';
-import { DumbellChartViz } from './DumbellChartViz';
+import { Global } from './global';
 
 function App() {
   const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
@@ -59,14 +58,15 @@ function App() {
   }, []);
   return (
     <div className='undp-container'>
-      <Tabs
+      {mpiData && urbanRuralData ? (
+        <Tabs
         defaultActiveKey='1'
         className='undp-tabs'
         items={[
           {
             label: 'Global MPI',
             key: '1',
-            children: '',
+            children: <Global mpiData ={mpiData} urbanRuralData={urbanRuralData} />
           },
           {
             label: 'Countries',
@@ -74,23 +74,8 @@ function App() {
             children: ''
           },
         ]}
-      />      
-      <div style={{width:'1280px', margin: 'auto' }}>
-        <div>
-          <h2>Global Multidimensional Poverty Index (MPI)</h2>
-          {mpiData ? (
-              <div><Map data ={mpiData} /></div>
-            ) : null
-          }
-        </div>
-        <div className='margin-top-09'>
-          <h3>Difference in MPI between urban and rural areas</h3>
-          {urbanRuralData ? (
-            <DumbellChartViz data = {urbanRuralData}  />
-          ) :null
-          }
-        </div>
-      </div>
+      />
+      ) : null }
     </div>
   );
 }

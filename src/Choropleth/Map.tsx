@@ -7,7 +7,6 @@ import { scaleThreshold } from 'd3-scale';
 import { select } from 'd3-selection';
 import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
-// import { rewind } from '@turf/turf';
 import { Radio, RadioChangeEvent } from 'antd';
 import world from '../Data/worldMap.json';
 import { Tooltip } from '../Components/Tooltip';
@@ -43,7 +42,7 @@ export function Map(props: Props) {
   );
   const [zoomLevel, setZoomLevel] = useState(1);
   const [radioValue, setRadioValue] = useState('mpi');
-  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6];
+  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90];
   const projection = geoEqualEarth()
     .rotate([0, 0])
@@ -76,14 +75,12 @@ export function Map(props: Props) {
     mapSvgSelect.call(zoomBehaviour as any);
   }, []);
   return (
-    <div
-      className='map-container'
-      style={{
-        width: `${svgWidth}px`,
-        height: `${svgHeight}px`,
-      }}
-    >
-      <Radio.Group defaultValue='mpi' onChange={onChange}>
+    <div>
+      <Radio.Group
+        defaultValue='mpi'
+        onChange={onChange}
+        className='margin-bottom-05'
+      >
         <Radio className='undp-radio' value='mpi'>
           MPI
         </Radio>
@@ -91,134 +88,155 @@ export function Map(props: Props) {
           Population in multidimensional poverty
         </Radio>
       </Radio.Group>
-      <svg
-        width='100%'
-        height='100%'
-        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-        ref={mapSvg}
+      <div
+        className='map-container'
+        style={{
+          width: `${svgWidth}px`,
+          height: `${svgHeight}px`,
+        }}
       >
-        <g ref={mapG}>
-          {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            world.features.map((d: any, i: number) => {
-              // eslint-disable-next-line no-param-reassign
-              // d.geometry = rewind(d.geometry, { reverse: true });
-              const value = data.filter(k => {
-                return k.iso_a3 === d.properties.ISO3;
-              });
-              const color =
-                value.length > 0
-                  ? radioValue === 'mpi'
-                    ? colorScaleMPI(Number(value[0].mpi))
-                    : colorScaleHeadcount(Number(value[0].headcountRatio))
-                  : 'var(--gray-300)';
-              // const path = geoPath().projection(projection);
-              // eslint-disable-next-line no-console
-              // console.log('name', i, d.properties.NAME);
-              if (d.properties.NAME === '') return null;
-              return (
-                <g
-                  key={i}
-                  onMouseEnter={event => {
-                    if (value.length > 0) {
-                      setHoverData({
-                        country: value[0].country,
-                        continent: value[0].region,
-                        value: Number(value[0].mpi),
-                        year: Number(value[0].year),
-                        headcountRatio: Number(value[0].headcountRatio),
-                        xPosition: event.clientX,
-                        yPosition: event.clientY,
-                      });
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    setHoverData(undefined);
-                  }}
-                >
-                  {d.geometry.type === 'MultiPolygon'
-                    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      d.geometry.coordinates.map((el: any, j: any) => {
-                        let masterPath = '';
-                        el.forEach((geo: number[][]) => {
-                          let path = ' M';
-                          geo.forEach((c: number[], k: number) => {
+        <svg
+          width='100%'
+          height='100%'
+          viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+          ref={mapSvg}
+        >
+          <g ref={mapG}>
+            {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              world.features.map((d: any, i: number) => {
+                const value = data.filter(k => {
+                  return k.iso_a3 === d.properties.ISO3;
+                });
+                const color =
+                  value.length > 0
+                    ? radioValue === 'mpi'
+                      ? colorScaleMPI(Number(value[0].mpi))
+                      : colorScaleHeadcount(Number(value[0].headcountRatio))
+                    : 'var(--gray-300)';
+                if (d.properties.NAME === '') return null;
+                return (
+                  <g
+                    key={i}
+                    onMouseEnter={event => {
+                      if (value.length > 0) {
+                        setHoverData({
+                          country: value[0].country,
+                          continent: value[0].region,
+                          value: Number(value[0].mpi),
+                          year: Number(value[0].year),
+                          headcountRatio: Number(value[0].headcountRatio),
+                          xPosition: event.clientX,
+                          yPosition: event.clientY,
+                        });
+                      }
+                    }}
+                    onMouseLeave={() => {
+                      setHoverData(undefined);
+                    }}
+                  >
+                    {d.geometry.type === 'MultiPolygon'
+                      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        d.geometry.coordinates.map((el: any, j: any) => {
+                          let masterPath = '';
+                          el.forEach((geo: number[][]) => {
+                            let path = ' M';
+                            geo.forEach((c: number[], k: number) => {
+                              const point = projection([c[0], c[1]]) as [
+                                number,
+                                number,
+                              ];
+                              if (k !== geo.length - 1)
+                                path = `${path}${point[0]} ${point[1]}L`;
+                              else path = `${path}${point[0]} ${point[1]}`;
+                            });
+                            masterPath += path;
+                          });
+                          return (
+                            <path
+                              key={j}
+                              d={masterPath}
+                              stroke='#FFF'
+                              strokeWidth={1 / zoomLevel}
+                              fill={color}
+                            />
+                          );
+                        })
+                      : // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        d.geometry.coordinates.map((el: any, j: number) => {
+                          let path = 'M';
+                          el.forEach((c: number[], k: number) => {
                             const point = projection([c[0], c[1]]) as [
                               number,
                               number,
                             ];
-                            if (k !== geo.length - 1)
+                            if (k !== el.length - 1)
                               path = `${path}${point[0]} ${point[1]}L`;
                             else path = `${path}${point[0]} ${point[1]}`;
                           });
-                          masterPath += path;
-                        });
-                        return (
-                          <path
-                            key={j}
-                            d={masterPath}
-                            stroke='#FFF'
-                            strokeWidth={1 / zoomLevel}
-                            fill={color}
-                          />
-                        );
-                      })
-                    : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      d.geometry.coordinates.map((el: any, j: number) => {
-                        let path = 'M';
-                        el.forEach((c: number[], k: number) => {
-                          const point = projection([c[0], c[1]]) as [
-                            number,
-                            number,
-                          ];
-                          if (k !== el.length - 1)
-                            path = `${path}${point[0]} ${point[1]}L`;
-                          else path = `${path}${point[0]} ${point[1]}`;
-                        });
-                        return (
-                          <path
-                            key={j}
-                            d={path}
-                            stroke='#FFF'
-                            strokeWidth={1 / zoomLevel}
-                            fill={color}
-                          />
-                        );
-                      })}
-                </g>
-              );
-            })
-          }
-        </g>
-      </svg>
-      <LegendEl>
-        <h6 className='undp-typography'>Legend</h6>
-        <svg width='100%' viewBox={`0 0 ${400} ${30}`}>
-          <g>
-            {valueArray.map((d, i) => (
-              <g key={i}>
-                <rect
-                  x={(i * 320) / 8}
-                  y={1}
-                  width={320 / 8}
-                  height={8}
-                  fill={colorScaleMPI(valueArray[i] - 0.05)}
-                  stroke='#fff'
-                />
-                <text
-                  x={(320 * (i + 1)) / 8}
-                  y={25}
-                  fontSize={12}
-                  fill='#212121'
-                  textAnchor='middle'
-                >
-                  {d}
-                </text>
-              </g>
-            ))}
+                          return (
+                            <path
+                              key={j}
+                              d={path}
+                              stroke='#FFF'
+                              strokeWidth={1 / zoomLevel}
+                              fill={color}
+                            />
+                          );
+                        })}
+                  </g>
+                );
+              })
+            }
           </g>
         </svg>
-      </LegendEl>
+        <LegendEl>
+          <h6 className='undp-typography'>Legend</h6>
+          <svg width='100%' viewBox='0 0 400 50'>
+            <text
+              x={300}
+              y={10}
+              fontSize='0.8rem'
+              fill='#212121'
+              textAnchor='end'
+            >
+              Higher poverty
+            </text>
+            <g transform='translate(10,20)'>
+              {valueArray.map((d, i) => (
+                <g key={i}>
+                  <rect
+                    x={(i * 320) / 8}
+                    y={1}
+                    width={320 / 8}
+                    height={8}
+                    fill={colorScaleMPI(valueArray[i] - 0.05)}
+                    stroke='#fff'
+                  />
+                  <text
+                    x={(320 * (i + 1)) / 8}
+                    y={25}
+                    fontSize={12}
+                    fill='#212121'
+                    textAnchor='middle'
+                  >
+                    {d}
+                  </text>
+                </g>
+              ))}
+              <text
+                y={25}
+                x={0}
+                fontSize={12}
+                fill='#212121'
+                textAnchor='middle'
+              >
+                0
+              </text>
+            </g>
+          </svg>
+        </LegendEl>
+      </div>
       {hoverData ? <Tooltip data={hoverData} /> : null}
     </div>
   );

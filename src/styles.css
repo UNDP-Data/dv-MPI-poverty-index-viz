@@ -1,5 +1,6 @@
 .map-container{
   position: relative;
+  border: 1px solid var(--gray-400);
 }
 /* dumbell styles */
 .dumbell-container{
@@ -10,7 +11,7 @@
   font-size: 1rem;
   flex-wrap: wrap;
   color: var(--black-600);
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   border-bottom: 1px solid var(--gray-400);
   background-color: #FFF;
 }
@@ -22,7 +23,7 @@
   display: flex;
   flex-wrap: wrap;
   height: 40px;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
   align-items: center;
 }
 .legend-item{
@@ -37,4 +38,14 @@
   height: 16px;
   border-radius: 9px;
   margin: 0;
+}
+/* tooltip styles */
+.tooltipLabel{
+  font-size:.9rem;
+  color: var(--gray-600);
+}
+.tooltipValue{
+  font-size:.9rem;
+  color: var(--black-600);
+  font-weight: 700;
 }

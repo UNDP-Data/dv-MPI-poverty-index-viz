@@ -75,9 +75,20 @@ export function Tooltip(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        <div>{`MPI: ${data.value.toFixed(3)}`}</div>
-        <div>{`Population in poverty: ${data.headcountRatio.toFixed(2)}%`}</div>
-        <div>{`Year: ${data.year}`}</div>
+        <div>
+          <span className='tooltipLabel'>MPI: </span>
+          <span className='tooltipValue'>{data.value.toFixed(3)}</span>
+        </div>
+        <div>
+          <span className='tooltipLabel'>Population in poverty: </span>
+          <span className='tooltipValue'>
+            {data.headcountRatio.toFixed(2)}%
+          </span>
+        </div>
+        <div>
+          <span className='tooltipLabel'>Year: </span>
+          <span className='tooltipValue'>{data.year}</span>
+        </div>
       </div>
     </TooltipEl>
   );

@@ -19,7 +19,7 @@ export function Global(props: Props) {
         ) : null}
       </div>
       <div className='margin-top-09'>
-        <h3>Difference in MPI between urban and rural areas</h3>
+        <h3>Differences in MPI</h3>
         {urbanRuralData ? <DumbellChartViz data={urbanRuralData} /> : null}
       </div>
     </div>
