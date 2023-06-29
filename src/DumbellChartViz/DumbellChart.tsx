@@ -1,8 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-extraneous-dependencies */
-// import orderBy from 'lodash.sortby';
-// import maxBy from 'lodash.maxby';
-// import { useState } from 'react';
 import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear } from 'd3-scale';
 import { descending, ascending } from 'd3-array';
@@ -14,7 +11,6 @@ interface Props {
   sortedByKey: string;
   filterByLabel: string;
 }
-
 export function DumbellChart(props: Props) {
   const { data, diffOption, sortedByKey, filterByLabel } = props;
   const graphWidth = 1280;
@@ -22,13 +18,10 @@ export function DumbellChart(props: Props) {
   const rightPadding = 100;
   const rowHeight = 35;
   const marginTop = 10;
-  // eslint-disable-next-line no-console
-  console.log('sortedByKey', sortedByKey);
-  console.log('diffOption', diffOption);
 
   if (sortedByKey === 'diff') {
     data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
-      descending(x[diffOption], y[diffOption]),
+      descending((x as any)[diffOption], (y as any)[diffOption]),
     );
   } else if (sortedByKey === 'country') {
     data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
@@ -36,7 +29,7 @@ export function DumbellChart(props: Props) {
     );
   } else {
     data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
-      descending(x[sortedByKey], y[sortedByKey]),
+      descending((x as any)[sortedByKey], (y as any)[sortedByKey]),
     );
   }
   let diff1: string;
@@ -60,7 +53,10 @@ export function DumbellChart(props: Props) {
     .nice();
 
   return (
-    <div className='dumbellChart'>
+    <div
+      className='dumbellChart'
+      style={{ height: `${window.innerHeight}px;` }}
+    >
       <svg
         viewBox={`0 0 ${graphWidth} ${
           data.filter(k =>
@@ -99,8 +95,8 @@ export function DumbellChart(props: Props) {
                   shapeRendering='crispEdge'
                 />
                 <line
-                  x1={xPos(d[diff2]) + leftPadding}
-                  x2={xPos(d[diff1]) + leftPadding}
+                  x1={xPos((d as any)[diff2]) + leftPadding}
+                  x2={xPos((d as any)[diff1]) + leftPadding}
                   y1={rowHeight / 2}
                   y2={rowHeight / 2}
                   stroke='#000'
@@ -108,42 +104,42 @@ export function DumbellChart(props: Props) {
                   shapeRendering='crispEdge'
                 />
                 <circle
-                  cx={xPos(d[diff2]) + leftPadding}
+                  cx={xPos((d as any)[diff2]) + leftPadding}
                   cy={rowHeight / 2}
                   r={7}
                   fill={color2}
                 />
                 <text
                   x={
-                    d[diffOption] < 0
-                      ? xPos(d[diff2]) + leftPadding - 15
-                      : xPos(d[diff2]) + leftPadding + 15
+                    (d as any)[diffOption] < 0
+                      ? xPos((d as any)[diff2]) + leftPadding - 15
+                      : xPos((d as any)[diff2]) + leftPadding + 15
                   }
                   y={0}
                   dy='22px'
                   fontSize='14px'
-                  textAnchor={d[diffOption] < 0 ? 'end' : 'start'}
+                  textAnchor={(d as any)[diffOption] < 0 ? 'end' : 'start'}
                 >
-                  {Number(d[diff2]).toFixed(3)}
+                  {Number((d as any)[diff2]).toFixed(3)}
                 </text>
                 <circle
-                  cx={xPos(d[diff1]) + leftPadding}
+                  cx={xPos((d as any)[diff1]) + leftPadding}
                   cy={rowHeight / 2}
                   r={7}
                   fill={color1}
                 />
                 <text
                   x={
-                    d[diffOption] >= 0
-                      ? xPos(d[diff1]) + leftPadding - 15
-                      : xPos(d[diff1]) + leftPadding + 15
+                    (d as any)[diffOption] >= 0
+                      ? xPos((d as any)[diff1]) + leftPadding - 15
+                      : xPos((d as any)[diff1]) + leftPadding + 15
                   }
                   y={0}
                   dy='22px'
                   fontSize='14px'
-                  textAnchor={d[diffOption] < 0 ? 'start' : 'end'}
+                  textAnchor={(d as any)[diffOption] < 0 ? 'start' : 'end'}
                 >
-                  {Number(d[diff1]).toFixed(3)}
+                  {Number((d as any)[diff1]).toFixed(3)}
                 </text>
               </g>
             ) : null,

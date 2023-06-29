@@ -17,8 +17,6 @@ const DumbellChartEl = styled.div`
   border-radius: 2px;
   overflow: auto;
 `;
-// eslint-disable-next-line no-console
-console.log('window.innerHeight()', window.innerHeight);
 export function DumbellChartViz(props: Props) {
   const { data } = props;
   const [sortedBy, setSortedBy] = useState('diff');
@@ -30,8 +28,6 @@ export function DumbellChartViz(props: Props) {
   const [color2, setColor2] = useState(
     UNDPColorModule.categoricalColors.locationColors.rural,
   );
-  // eslint-disable-next-line no-console
-  console.log('diff', diffOption);
 
   const diffOptions = [
     {
@@ -98,6 +94,7 @@ export function DumbellChartViz(props: Props) {
                 options={diffOptions}
                 className='undp-select'
                 style={{ width: '200px' }}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={el => setDiffOption(el)}
                 value={diffOption}
               />
