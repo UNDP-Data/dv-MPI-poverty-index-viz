@@ -53,10 +53,7 @@ export function DumbellChart(props: Props) {
     .nice();
 
   return (
-    <div
-      className='dumbellChart'
-      style={{ height: `${window.innerHeight}px;` }}
-    >
+    <div className='dumbellChart'>
       <svg
         viewBox={`0 0 ${graphWidth} ${
           data.filter(k =>
@@ -140,6 +137,9 @@ export function DumbellChart(props: Props) {
                   textAnchor={(d as any)[diffOption] < 0 ? 'start' : 'end'}
                 >
                   {Number((d as any)[diff1]).toFixed(3)}
+                </text>
+                <text x={graphWidth - 80} y={0} dy='22px' fontSize='14px'>
+                  {(d as any).year}
                 </text>
               </g>
             ) : null,

@@ -6,7 +6,7 @@ interface Props {
   mpiData: MpiDataType[];
   diffData: MpiDataTypeDiff[];
 }
-export function Global(props: Props) {
+export function GlobalMpi(props: Props) {
   const { mpiData, diffData } = props;
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>

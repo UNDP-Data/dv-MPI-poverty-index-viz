@@ -10,6 +10,7 @@ export interface MpiDataTypeDiff {
   country: string;
   iso_a3: string;
   region: string;
+  year?: string;
   mpiUrban: number;
   yearUrban?: string;
   mpiRural: number;

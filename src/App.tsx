@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import { MpiDataType, MpiDataTypeDiff } from './Types';
 import './styles.css';
-import { Global } from './Global';
+import { GlobalMpi } from './GlobalMpi';
 
 function App() {
   const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
@@ -49,6 +49,7 @@ function App() {
             country: d.Country,
             iso_a3: d['country code'],
             region: d['World region'],
+            year: d.Year,
             mpiUrban: Number(uData.MPI),
             yearUrban: uData.Year,
             mpiRural: Number(rData.MPI),
@@ -79,7 +80,7 @@ function App() {
             {
               label: 'Global MPI',
               key: '1',
-              children: <Global mpiData={mpiData} diffData={diffData} />,
+              children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
             },
             {
               label: 'Countries',
