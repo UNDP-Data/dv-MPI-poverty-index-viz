@@ -14,7 +14,7 @@ interface Props {
 export function DumbellChart(props: Props) {
   const { data, diffOption, sortedByKey, filterByLabel } = props;
   const graphWidth = 1280;
-  const leftPadding = 300;
+  const leftPadding = 330;
   const rightPadding = 100;
   const rowHeight = 35;
   const marginTop = 10;
@@ -77,7 +77,7 @@ export function DumbellChart(props: Props) {
                   x={0}
                   y={rowHeight / 2}
                   dy='3px'
-                  fontSize='0.9rem'
+                  fontSize='1rem'
                   color='var(--black-500)'
                 >
                   {d.country}

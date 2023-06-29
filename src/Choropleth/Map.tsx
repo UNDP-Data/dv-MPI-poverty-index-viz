@@ -34,7 +34,7 @@ const LegendEl = styled.div`
 export function Map(props: Props) {
   const { data } = props;
   const svgWidth = 1280;
-  const svgHeight = 600;
+  const svgHeight = 550;
   const mapSvg = useRef<SVGSVGElement>(null);
   const mapG = useRef<SVGGElement>(null);
   const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
@@ -205,19 +205,19 @@ export function Map(props: Props) {
           </g>
         </svg>
         <LegendEl>
-          <h6 className='undp-typography'>Legend</h6>
+          <h6 className='undp-typography margin-left-03'>Legend</h6>
           <svg width='100%' viewBox='0 0 400 50'>
-            <text
-              x={330}
-              y={10}
-              fontSize='0.8rem'
-              fill='#212121'
-              textAnchor='end'
-            >
-              Higher poverty
-            </text>
             {radioValue === 'mpi' ? (
               <g transform='translate(10,20)'>
+                <text
+                  x={320}
+                  y={-10}
+                  fontSize='0.8rem'
+                  fill='#212121'
+                  textAnchor='end'
+                >
+                  Higher MPI
+                </text>
                 {valueArray.map((d, i) => (
                   <g key={i}>
                     <rect
@@ -251,6 +251,15 @@ export function Map(props: Props) {
               </g>
             ) : (
               <g transform='translate(10,20)'>
+                <text
+                  x={320}
+                  y={-10}
+                  fontSize='0.8rem'
+                  fill='#212121'
+                  textAnchor='end'
+                >
+                  Higher Headcount (%)
+                </text>
                 {percentArray.map((d, i) => (
                   <g key={i}>
                     <rect

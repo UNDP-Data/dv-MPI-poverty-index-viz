@@ -31,12 +31,12 @@ export function DumbellChartViz(props: Props) {
 
   const diffOptions = [
     {
-      label: 'Female - Male',
-      value: 'gdiff',
-    },
-    {
       label: 'Rural - Urban',
       value: 'ldiff',
+    },
+    {
+      label: 'Female - Male Headed Households (HHS)',
+      value: 'gdiff',
     },
   ];
   const regionsOptions = [
@@ -66,11 +66,11 @@ export function DumbellChartViz(props: Props) {
       value: 'mpiRural',
     },
     {
-      label: 'Female MPI',
+      label: 'Female HHs MPI',
       value: 'mpiFemale',
     },
     {
-      label: 'Male MPI',
+      label: 'Male HHs MPI',
       value: 'mpiMale',
     },
   ];
@@ -88,12 +88,14 @@ export function DumbellChartViz(props: Props) {
       <div className='dumbell-header'>
         <div className='flex-div'>
           <div className='flex-div' style={{ alignItems: 'center' }}>
-            <div>Display differences between</div>
             <div>
+              <p className='label undp-typography'>
+                Display differences between
+              </p>
               <Select
                 options={diffOptions}
                 className='undp-select'
-                style={{ width: '200px' }}
+                style={{ width: '350px' }}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={el => setDiffOption(el)}
                 value={diffOption}
@@ -104,12 +106,12 @@ export function DumbellChartViz(props: Props) {
             className='flex-div margin-left-04'
             style={{ alignItems: 'center' }}
           >
-            <div>sorted by</div>
             <div>
+              <p className='label undp-typography'>sorted by</p>
               <Select
                 options={sortingOptions}
                 className='undp-select'
-                style={{ width: '200px' }}
+                style={{ width: '350px' }}
                 onChange={el => setSortedBy(el)}
                 value={sortedBy}
               />
@@ -119,15 +121,15 @@ export function DumbellChartViz(props: Props) {
             className='flex-div margin-left-04'
             style={{ alignItems: 'center' }}
           >
-            <div>filtered by</div>
             <div>
+              <p className='label undp-typography'>filtered by</p>
               <Select
                 options={regionsOptions.map(region => ({
                   label: region,
                   value: region,
                 }))}
                 className='undp-select'
-                style={{ width: '200px' }}
+                style={{ width: '350px' }}
                 onChange={el => setFilterBy(el)}
                 value={filterBy}
               />
@@ -135,15 +137,15 @@ export function DumbellChartViz(props: Props) {
           </div>
         </div>
         <div
-          className='flex-div margin-top-05'
+          className='flex-div margin-top-05 dumbell-titles'
           style={{ alignItems: 'center' }}
         >
-          <div style={{ width: '220px', fontWeight: '700' }}>Countries</div>
+          <div style={{ width: '260px', fontWeight: '700' }}>Countries</div>
           <div style={{ width: '600px', fontWeight: '700' }}>
             Difference{' '}
             {diffOptions.filter(d => d.value === diffOption)[0].label}{' '}
           </div>
-          <div className='legend-container'>
+          <div className='legend-container' style={{ width: '260px' }}>
             <div className='legend-item'>
               <div
                 className='legend-circle'
@@ -163,6 +165,7 @@ export function DumbellChartViz(props: Props) {
               <div>{diffOption === 'ldiff' ? 'Rural' : 'Female'}</div>
             </div>
           </div>
+          <div style={{ fontWeight: '700' }}>Year</div>
         </div>
       </div>
       <DumbellChartEl>
