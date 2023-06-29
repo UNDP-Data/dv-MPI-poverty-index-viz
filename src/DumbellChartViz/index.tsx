@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Select } from 'antd';
 import styled from 'styled-components';
 import UNDPColorModule from 'undp-viz-colors';
@@ -10,28 +10,36 @@ interface Props {
 }
 
 const DumbellChartEl = styled.div`
-  height: 60rem;
+  height: ${window.innerHeight - 200}px;
   background-color: var(--black-100);
   box-shadow: var(--shadow);
   padding: 1rem;
   border-radius: 2px;
   overflow: auto;
 `;
-
+// eslint-disable-next-line no-console
+console.log('window.innerHeight()', window.innerHeight);
 export function DumbellChartViz(props: Props) {
   const { data } = props;
   const [sortedBy, setSortedBy] = useState('diff');
   const [filterBy, setFilterBy] = useState('All');
   const [diffOption, setDiffOption] = useState('ldiff');
+  const [color1, setColor1] = useState(
+    UNDPColorModule.categoricalColors.locationColors.urban,
+  );
+  const [color2, setColor2] = useState(
+    UNDPColorModule.categoricalColors.locationColors.rural,
+  );
   // eslint-disable-next-line no-console
+  console.log('diff', diffOption);
 
   const diffOptions = [
     {
-      label: 'male - female',
+      label: 'Female - Male',
       value: 'gdiff',
     },
     {
-      label: 'urban - rural',
+      label: 'Rural - Urban',
       value: 'ldiff',
     },
   ];
@@ -53,13 +61,38 @@ export function DumbellChartViz(props: Props) {
       label: 'Country Name',
       value: 'country',
     },
+    {
+      label: 'Urban MPI',
+      value: 'mpiUrban',
+    },
+    {
+      label: 'Rural MPI',
+      value: 'mpiRural',
+    },
+    {
+      label: 'Female MPI',
+      value: 'mpiFemale',
+    },
+    {
+      label: 'Male MPI',
+      value: 'mpiMale',
+    },
   ];
+  useEffect(() => {
+    if (diffOption === 'ldiff') {
+      setColor1(UNDPColorModule.categoricalColors.locationColors.urban);
+      setColor2(UNDPColorModule.categoricalColors.locationColors.rural);
+    } else {
+      setColor1(UNDPColorModule.categoricalColors.genderColors.male);
+      setColor2(UNDPColorModule.categoricalColors.genderColors.female);
+    }
+  }, [diffOption]);
   return (
     <div className='dumbell-container'>
       <div className='dumbell-header'>
         <div className='flex-div'>
           <div className='flex-div' style={{ alignItems: 'center' }}>
-            <div>display differences between</div>
+            <div>Display differences between</div>
             <div>
               <Select
                 options={diffOptions}
@@ -70,8 +103,11 @@ export function DumbellChartViz(props: Props) {
               />
             </div>
           </div>
-          <div className='flex-div' style={{ alignItems: 'center' }}>
-            <div>sort by</div>
+          <div
+            className='flex-div margin-left-04'
+            style={{ alignItems: 'center' }}
+          >
+            <div>sorted by</div>
             <div>
               <Select
                 options={sortingOptions}
@@ -82,8 +118,11 @@ export function DumbellChartViz(props: Props) {
               />
             </div>
           </div>
-          <div className='flex-div' style={{ alignItems: 'center' }}>
-            <div>filter by</div>
+          <div
+            className='flex-div margin-left-04'
+            style={{ alignItems: 'center' }}
+          >
+            <div>filtered by</div>
             <div>
               <Select
                 options={regionsOptions.map(region => ({
@@ -100,30 +139,31 @@ export function DumbellChartViz(props: Props) {
         </div>
         <div
           className='flex-div margin-top-05'
-          style={{ alignItems: 'bottom' }}
+          style={{ alignItems: 'center' }}
         >
-          <div style={{ width: '220px' }}>Countries</div>
-          <div style={{ width: '600px' }}>Difference rural - urban </div>
+          <div style={{ width: '220px', fontWeight: '700' }}>Countries</div>
+          <div style={{ width: '600px', fontWeight: '700' }}>
+            Difference{' '}
+            {diffOptions.filter(d => d.value === diffOption)[0].label}{' '}
+          </div>
           <div className='legend-container'>
             <div className='legend-item'>
               <div
                 className='legend-circle'
                 style={{
-                  backgroundColor:
-                    UNDPColorModule.categoricalColors.locationColors.urban,
+                  backgroundColor: color1,
                 }}
               />
-              <div>Urban</div>
+              <div>{diffOption === 'ldiff' ? 'Urban' : 'Male'}</div>
             </div>
             <div className='legend-item'>
               <div
                 className='legend-circle'
                 style={{
-                  backgroundColor:
-                    UNDPColorModule.categoricalColors.locationColors.rural,
+                  backgroundColor: color2,
                 }}
               />
-              <div>Rural</div>
+              <div>{diffOption === 'ldiff' ? 'Rural' : 'Female'}</div>
             </div>
           </div>
         </div>
@@ -131,6 +171,7 @@ export function DumbellChartViz(props: Props) {
       <DumbellChartEl>
         <DumbellChart
           data={data}
+          diffOption={diffOption}
           sortedByKey={sortedBy}
           filterByLabel={filterBy}
         />

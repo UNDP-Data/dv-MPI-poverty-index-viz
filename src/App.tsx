@@ -48,12 +48,12 @@ function App() {
               yearUrban: uData.Year,
               mpiRural: Number(rData.MPI),
               yearRural: rData.Year,
-              diff: Number(rData.MPI) - Number(uData.MPI),
+              ldiff: Number(rData.MPI) - Number(uData.MPI),
               mpiFemale: Number(fData['Multidimensional Poverty Index']),
               yearFemale: fData.Year,
               mpiMale: Number(mData['Multidimensional Poverty Index']),
               yearMale: fData.Year,
-              gdiff: Number(mData['Multidimensional Poverty Index']) - Number(fData['Multidimensional Poverty Index']),
+              gdiff: Number(fData['Multidimensional Poverty Index']) - Number(mData['Multidimensional Poverty Index']),
             }          
           )
         }

@@ -43,7 +43,7 @@ export function Map(props: Props) {
   const [zoomLevel, setZoomLevel] = useState(1);
   const [radioValue, setRadioValue] = useState('mpi');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
-  const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+  const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   const projection = geoEqualEarth()
     .rotate([0, 0])
     .scale(230)
@@ -51,7 +51,7 @@ export function Map(props: Props) {
     .translate([svgWidth / 2, svgHeight / 2]);
   const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
-    .range(UNDPColorModule.sequentialColors.negativeColorsx08);
+    .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   const colorScaleHeadcount = scaleThreshold<number, string>()
     .domain(percentArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx10);
@@ -208,7 +208,7 @@ export function Map(props: Props) {
           <h6 className='undp-typography'>Legend</h6>
           <svg width='100%' viewBox='0 0 400 50'>
             <text
-              x={300}
+              x={330}
               y={10}
               fontSize='0.8rem'
               fill='#212121'
@@ -216,38 +216,73 @@ export function Map(props: Props) {
             >
               Higher poverty
             </text>
-            <g transform='translate(10,20)'>
-              {valueArray.map((d, i) => (
-                <g key={i}>
-                  <rect
-                    x={(i * 320) / 8}
-                    y={1}
-                    width={320 / 8}
-                    height={8}
-                    fill={colorScaleMPI(valueArray[i] - 0.05)}
-                    stroke='#fff'
-                  />
-                  <text
-                    x={(320 * (i + 1)) / 8}
-                    y={25}
-                    fontSize={12}
-                    fill='#212121'
-                    textAnchor='middle'
-                  >
-                    {d}
-                  </text>
-                </g>
-              ))}
-              <text
-                y={25}
-                x={0}
-                fontSize={12}
-                fill='#212121'
-                textAnchor='middle'
-              >
-                0
-              </text>
-            </g>
+            {radioValue === 'mpi' ? (
+              <g transform='translate(10,20)'>
+                {valueArray.map((d, i) => (
+                  <g key={i}>
+                    <rect
+                      x={(i * 320) / valueArray.length}
+                      y={1}
+                      width={320 / valueArray.length}
+                      height={8}
+                      fill={colorScaleMPI(valueArray[i] - 0.05)}
+                      stroke='#fff'
+                    />
+                    <text
+                      x={(320 * (i + 1)) / valueArray.length}
+                      y={25}
+                      fontSize={12}
+                      fill='#212121'
+                      textAnchor='middle'
+                    >
+                      {d}
+                    </text>
+                  </g>
+                ))}
+                <text
+                  y={25}
+                  x={0}
+                  fontSize={12}
+                  fill='#212121'
+                  textAnchor='middle'
+                >
+                  0
+                </text>
+              </g>
+            ) : (
+              <g transform='translate(10,20)'>
+                {percentArray.map((d, i) => (
+                  <g key={i}>
+                    <rect
+                      x={(i * 320) / percentArray.length}
+                      y={1}
+                      width={320 / percentArray.length}
+                      height={8}
+                      fill={colorScaleHeadcount(percentArray[i] - 5)}
+                      stroke='#fff'
+                    />
+                    <text
+                      x={(320 * (i + 1)) / percentArray.length}
+                      y={25}
+                      fontSize={12}
+                      fill='#212121'
+                      textAnchor='middle'
+                    >
+                      {d}
+                    </text>
+                  </g>
+                ))}
+                <text
+                  y={25}
+                  x={0}
+                  fontSize={12}
+                  fill='#212121'
+                  textAnchor='middle'
+                >
+                  0
+                </text>
+              </g>
+            )}
           </svg>
         </LegendEl>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 // import orderBy from 'lodash.sortby';
 // import maxBy from 'lodash.maxby';
@@ -9,12 +10,13 @@ import { MpiDataTypeDiff } from '../Types';
 
 interface Props {
   data: MpiDataTypeDiff[];
+  diffOption: string;
   sortedByKey: string;
   filterByLabel: string;
 }
 
 export function DumbellChart(props: Props) {
-  const { data, sortedByKey, filterByLabel } = props;
+  const { data, diffOption, sortedByKey, filterByLabel } = props;
   const graphWidth = 1280;
   const leftPadding = 300;
   const rightPadding = 100;
@@ -22,17 +24,36 @@ export function DumbellChart(props: Props) {
   const marginTop = 10;
   // eslint-disable-next-line no-console
   console.log('sortedByKey', sortedByKey);
+  console.log('diffOption', diffOption);
 
   if (sortedByKey === 'diff') {
     data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
-      descending(x[sortedByKey], y[sortedByKey]),
+      descending(x[diffOption], y[diffOption]),
     );
   } else if (sortedByKey === 'country') {
     data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
       ascending(x[sortedByKey], y[sortedByKey]),
     );
+  } else {
+    data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
+      descending(x[sortedByKey], y[sortedByKey]),
+    );
   }
-
+  let diff1: string;
+  let diff2: string;
+  let color1: string;
+  let color2: string;
+  if (diffOption === 'gdiff') {
+    diff1 = 'mpiMale';
+    diff2 = 'mpiFemale';
+    color1 = UNDPColorModule.categoricalColors.genderColors.male;
+    color2 = UNDPColorModule.categoricalColors.genderColors.female;
+  } else {
+    diff1 = 'mpiUrban';
+    diff2 = 'mpiRural';
+    color1 = UNDPColorModule.categoricalColors.locationColors.urban;
+    color2 = UNDPColorModule.categoricalColors.locationColors.rural;
+  }
   const xPos = scaleLinear()
     .domain([0, 1])
     .range([0, graphWidth - leftPadding - rightPadding])
@@ -40,7 +61,15 @@ export function DumbellChart(props: Props) {
 
   return (
     <div className='dumbellChart'>
-      <svg viewBox={`0 0 ${graphWidth} ${data.length * rowHeight + marginTop}`}>
+      <svg
+        viewBox={`0 0 ${graphWidth} ${
+          data.filter(k =>
+            filterByLabel === 'All' ? k : k.region === filterByLabel,
+          ).length *
+            rowHeight +
+          marginTop
+        }`}
+      >
         {data
           .filter(k =>
             filterByLabel === 'All' ? k : k.region === filterByLabel,
@@ -70,8 +99,8 @@ export function DumbellChart(props: Props) {
                   shapeRendering='crispEdge'
                 />
                 <line
-                  x1={xPos(d.mpiRural) + leftPadding}
-                  x2={xPos(d.mpiUrban) + leftPadding}
+                  x1={xPos(d[diff2]) + leftPadding}
+                  x2={xPos(d[diff1]) + leftPadding}
                   y1={rowHeight / 2}
                   y2={rowHeight / 2}
                   stroke='#000'
@@ -79,42 +108,42 @@ export function DumbellChart(props: Props) {
                   shapeRendering='crispEdge'
                 />
                 <circle
-                  cx={xPos(d.mpiRural) + leftPadding}
+                  cx={xPos(d[diff2]) + leftPadding}
                   cy={rowHeight / 2}
                   r={7}
-                  fill={UNDPColorModule.categoricalColors.locationColors.rural}
+                  fill={color2}
                 />
                 <text
                   x={
-                    d.diff < 0
-                      ? xPos(d.mpiRural) + leftPadding - 15
-                      : xPos(d.mpiRural) + leftPadding + 15
+                    d[diffOption] < 0
+                      ? xPos(d[diff2]) + leftPadding - 15
+                      : xPos(d[diff2]) + leftPadding + 15
                   }
                   y={0}
                   dy='22px'
                   fontSize='14px'
-                  textAnchor={d.diff < 0 ? 'end' : 'start'}
+                  textAnchor={d[diffOption] < 0 ? 'end' : 'start'}
                 >
-                  {Number(d.mpiRural).toFixed(3)}
+                  {Number(d[diff2]).toFixed(3)}
                 </text>
                 <circle
-                  cx={xPos(d.mpiUrban) + leftPadding}
+                  cx={xPos(d[diff1]) + leftPadding}
                   cy={rowHeight / 2}
                   r={7}
-                  fill={UNDPColorModule.categoricalColors.locationColors.urban}
+                  fill={color1}
                 />
                 <text
                   x={
-                    d.diff >= 0
-                      ? xPos(d.mpiUrban) + leftPadding - 15
-                      : xPos(d.mpiUrban) + leftPadding + 15
+                    d[diffOption] >= 0
+                      ? xPos(d[diff1]) + leftPadding - 15
+                      : xPos(d[diff1]) + leftPadding + 15
                   }
                   y={0}
                   dy='22px'
                   fontSize='14px'
-                  textAnchor={d.diff < 0 ? 'start' : 'end'}
+                  textAnchor={d[diffOption] < 0 ? 'start' : 'end'}
                 >
-                  {Number(d.mpiUrban).toFixed(3)}
+                  {Number(d[diff1]).toFixed(3)}
                 </text>
               </g>
             ) : null,

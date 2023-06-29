@@ -14,7 +14,7 @@ export interface MpiDataTypeDiff {
   yearUrban?: string;
   mpiRural: number;
   yearRural?: string;
-  diff: number;
+  ldiff: number;
   mpiFemale: number;
   yearFemale?: string;
   mpiMale: number;

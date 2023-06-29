@@ -75,20 +75,26 @@ export function Tooltip(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        <div>
-          <span className='tooltipLabel'>MPI: </span>
-          <span className='tooltipValue'>{data.value.toFixed(3)}</span>
-        </div>
-        <div>
-          <span className='tooltipLabel'>Population in poverty: </span>
-          <span className='tooltipValue'>
-            {data.headcountRatio.toFixed(2)}%
-          </span>
-        </div>
-        <div>
-          <span className='tooltipLabel'>Year: </span>
-          <span className='tooltipValue'>{data.year}</span>
-        </div>
+        {data.value === 0 && data.year === 0 ? (
+          'no data available for this country'
+        ) : (
+          <>
+            <div>
+              <span className='tooltipLabel'>MPI: </span>
+              <span className='tooltipValue'>{data.value.toFixed(3)}</span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>Population in poverty: </span>
+              <span className='tooltipValue'>
+                {data.headcountRatio.toFixed(2)}%
+              </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>Year: </span>
+              <span className='tooltipValue'>{data.year}</span>
+            </div>
+          </>
+        )}
       </div>
     </TooltipEl>
   );

@@ -49,3 +49,11 @@
   color: var(--black-600);
   font-weight: 700;
 }
+.ant-select-item-option-content{
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin-top: 0;
+}
+.ant-select-item{
+  border-top: 1px solid var(--gray-300);
+}
