@@ -2,9 +2,16 @@ export interface MpiDataType {
   country: string;
   iso_a3: string;
   region: string;
-  year: number;
+  year: string;
   mpi: number;
   headcountRatio: number;
+  intensity: number;
+}
+export interface MpiDataTypeSubnational extends MpiDataType {
+  subregion: string;
+}
+export interface MpiDataTypeLocation extends MpiDataType {
+  location: string;
 }
 export interface MpiDataTypeDiff {
   country: string;

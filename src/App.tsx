@@ -6,6 +6,7 @@ import { Tabs } from 'antd';
 import { MpiDataType, MpiDataTypeDiff } from './Types';
 import './styles.css';
 import { GlobalMpi } from './GlobalMpi';
+import { CountriesMpi } from './CountriesMpi';
 
 function App() {
   const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
@@ -29,6 +30,7 @@ function App() {
         headcountRatio:
           d['Headcount ratio: Population in multidimensional poverty (H)'],
         year: +d.Year,
+        intensity: d['Intensity of deprivation among the poor (A)'],
       }));
       const diffFetched: MpiDataTypeDiff[] = [];
       data.forEach((d: any) => {
@@ -85,7 +87,7 @@ function App() {
             {
               label: 'Countries',
               key: '2',
-              children: 'Country selection with country data coming soon',
+              children: <CountriesMpi />,
             },
           ]}
         />
