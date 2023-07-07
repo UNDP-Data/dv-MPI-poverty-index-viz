@@ -8,6 +8,7 @@ import {
   MpiDataTypeLocation,
 } from '../Types';
 import { ScatterPlot } from './ScatterPlot';
+import { CountryMap } from './CountryMap';
 
 interface Props {
   national: MpiDataType[];
@@ -28,6 +29,9 @@ export function CountriesMpi(props: Props) {
   );
   const [total, setTotal] = useState<MpiDataType | undefined>(undefined);
   const [year, setYear] = useState<string | undefined>(undefined);
+  const [countrySubnational, setCountrySubnational] = useState<
+    MpiDataTypeSubnational[] | undefined
+  >(undefined);
   console.log('subnational', subnational);
   // setSelectedCountry('Afghanistan');
   useEffect(() => {
@@ -42,6 +46,10 @@ export function CountriesMpi(props: Props) {
     const totalValues = national?.filter(k => k.country === selectedCountry)[0];
     setTotal(totalValues);
     setYear(totalValues.year);
+    const subNatValues = subnational?.filter(
+      k => k.country === selectedCountry,
+    );
+    setCountrySubnational(subNatValues);
     console.log('selectedCountry', selectedCountry, urban, rural, total);
   }, [selectedCountry]);
   return (
@@ -73,6 +81,7 @@ export function CountriesMpi(props: Props) {
         <p className='source'>Source:</p>
       </div>
       <h3>Subnational MPI Data</h3>
+      <CountryMap data={countrySubnational} country={selectedCountry} />
     </div>
   );
 }
