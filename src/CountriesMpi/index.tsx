@@ -12,6 +12,7 @@ import { ScatterPlot } from './ScatterPlot';
 // import { CountryMap } from './CountryMap';
 // <CountryMap data={countrySubnational} country={selectedCountry} />
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
+import { LollipopChart } from './LollipopChart';
 
 interface Props {
   national: MpiDataType[];
@@ -75,7 +76,24 @@ export function CountriesMpi(props: Props) {
           </Select.Option>
         ))}
       </Select>
-      <div className='flex-div'>
+      <div>
+        <div className='chart-container margin-top-05'>
+          <LollipopChart data={countrySubnational} />
+        </div>
+        <div className='chart-container margin-top-05'>
+          <h6 className='undp-typography margin-bottom-01'>
+            Subnational MPI Data
+          </h6>
+          <p className='undp-typography small-font'>Year: {year}</p>
+          {countrySubnational ? (
+            <div>
+              <ScatterPlotSubnational
+                data={countrySubnational}
+                id='subnatScatterPlot'
+              />
+            </div>
+          ) : null}
+        </div>
         <div className='chart-container margin-top-05'>
           <h6 className='undp-typography margin-bottom-01'>
             Rural and Urban MPI
@@ -86,6 +104,7 @@ export function CountriesMpi(props: Props) {
             rural={rural}
             total={total}
             id='locationScatterPlot'
+            country={selectedCountry}
           />
           <p className='source'>Source:</p>
         </div>

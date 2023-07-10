@@ -20,8 +20,6 @@ export function ScatterPlotSubnational(props: Props) {
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
-  // eslint-disable-next-line no-console
-  console.log('data subnational', data);
   const xPos = scaleLinear()
     .domain([0, 100])
     .range([0, graphWidth - margin.left - margin.right])

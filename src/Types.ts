@@ -2,7 +2,7 @@ export interface MpiDataType {
   country: string;
   iso_a3: string;
   region: string;
-  year: string;
+  year?: string;
   mpi: number;
   headcountRatio: number;
   intensity: number;
