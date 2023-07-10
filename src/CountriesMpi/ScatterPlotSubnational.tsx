@@ -4,8 +4,9 @@
 import { scaleLinear, scaleSqrt } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
-import { useEffect } from 'react';
-import { MpiDataTypeSubnational } from '../Types';
+import { useEffect, useState } from 'react';
+import { HoverSubnatDataType, MpiDataTypeSubnational } from '../Types';
+import { TooltipSubnational } from '../Components/TooltipSubnational';
 
 interface Props {
   data: MpiDataTypeSubnational[];
@@ -13,9 +14,12 @@ interface Props {
 }
 export function ScatterPlotSubnational(props: Props) {
   const { data, id } = props;
-  const graphWidth = 800;
-  const graphHeight = 700;
+  const graphWidth = 700;
+  const graphHeight = 600;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
+  const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
+    undefined,
+  );
   // eslint-disable-next-line no-console
   console.log('data subnational', data);
   const xPos = scaleLinear()
@@ -48,40 +52,59 @@ export function ScatterPlotSubnational(props: Props) {
   }, []);
 
   return (
-    <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id={id}>
-      <g transform={`translate(${margin.left},${margin.top})`}>
-        <g
-          className='xAxis'
-          transform={`translate(0 ,${
-            graphHeight - margin.bottom - margin.top
-          })`}
-        />
-        <g className='yAxis' transform='translate(-40,0)' />
-        {data.map((d: any, i: number) => (
+    <div>
+      <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id={id}>
+        <g transform={`translate(${margin.left},${margin.top})`}>
           <g
-            key={i}
-            transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
-              Number(d.intensity),
-            )})`}
-          >
-            <circle r={mpiScale(Number(d.mpi))} fill='#A9B1B7' />
-            <text y={mpiScale(Number(d.mpi)) + 15} textAnchor='middle'>
-              {d.subregion}
-            </text>
-          </g>
-        ))}
-      </g>
-      <text x={graphWidth / 2} y={graphHeight} textAnchor='middle'>
-        Headcount Ratio
-      </text>
-      <text
-        x={-graphHeight / 2}
-        y='20'
-        transform='rotate(-90)'
-        textAnchor='middle'
-      >
-        Intensity
-      </text>
-    </svg>
+            className='xAxis'
+            transform={`translate(0 ,${
+              graphHeight - margin.bottom - margin.top
+            })`}
+          />
+          <g className='yAxis' transform='translate(-40,0)' />
+          {data.map((d: any, i: number) => (
+            <g
+              key={i}
+              onMouseEnter={event => {
+                setHoverData({
+                  country: d.country,
+                  subregion: d.subregion,
+                  value: Number(d.mpi),
+                  year: d.year,
+                  headcountRatio: Number(d.headcountRatio),
+                  intensity: Number(d.intensity),
+                  xPosition: event.clientX,
+                  yPosition: event.clientY,
+                });
+              }}
+              onMouseLeave={() => {
+                setHoverData(undefined);
+              }}
+              transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
+                Number(d.intensity),
+              )})`}
+            >
+              <circle
+                r={mpiScale(Number(d.mpi))}
+                fill='#A9B1B7'
+                stroke='#888'
+              />
+            </g>
+          ))}
+        </g>
+        <text x={graphWidth / 2} y={graphHeight} textAnchor='middle'>
+          Headcount Ratio
+        </text>
+        <text
+          x={-graphHeight / 2}
+          y='20'
+          transform='rotate(-90)'
+          textAnchor='middle'
+        >
+          Intensity
+        </text>
+      </svg>
+      {hoverData ? <TooltipSubnational data={hoverData} /> : null}
+    </div>
   );
 }

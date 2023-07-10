@@ -90,7 +90,11 @@ export function ScatterPlot(props: Props) {
             Number(total?.intensity),
           )})`}
         >
-          <circle r={mpiScale(Number(total?.mpi))} fill='#A9B1B7' />
+          <circle
+            r={mpiScale(Number(total?.mpi))}
+            fill='#A9B1B7'
+            stroke='#888'
+          />
           <text y={mpiScale(Number(total?.mpi)) + 15} textAnchor='middle'>
             Total
           </text>

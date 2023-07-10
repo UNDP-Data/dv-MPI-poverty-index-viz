@@ -11,14 +11,8 @@ import {
 import { ScatterPlot } from './ScatterPlot';
 // import { CountryMap } from './CountryMap';
 // <CountryMap data={countrySubnational} country={selectedCountry} />
-/* import { ScatterPlotSubnational } from './ScatterPlotSubnational';
-<h3>Subnational MPI Data</h3>
-{countrySubnational ? (
-  <ScatterPlotSubnational
-    data={countrySubnational}
-    id='subnatScatterPlot'
-  />
-) : null} */
+import { ScatterPlotSubnational } from './ScatterPlotSubnational';
+
 interface Props {
   national: MpiDataType[];
   subnational: MpiDataTypeSubnational[];
@@ -42,7 +36,7 @@ export function CountriesMpi(props: Props) {
     MpiDataTypeSubnational[] | undefined
   >(undefined);
   national.sort((a, b) => ascending(a.country, b.country));
-  console.log('subnational', countrySubnational);
+  console.log('subnational', subnational, countrySubnational);
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -62,7 +56,7 @@ export function CountriesMpi(props: Props) {
     console.log('selectedCountry', selectedCountry, urban, rural, total);
   }, [selectedCountry]);
   return (
-    <div style={{ width: '1280px', margin: 'auto' }}>
+    <div style={{ width: '1800px', margin: 'auto' }}>
       <div>
         <h3 className='undp-typography'>National values MPI</h3>
       </div>
@@ -81,18 +75,32 @@ export function CountriesMpi(props: Props) {
           </Select.Option>
         ))}
       </Select>
-      <div className='chart-container margin-top-05'>
-        <h6 className='undp-typography margin-bottom-01'>
-          Rural and Urban MPI
-        </h6>
-        <p className='undp-typography small-font'>Year: {year}</p>
-        <ScatterPlot
-          urban={urban}
-          rural={rural}
-          total={total}
-          id='locationScatterPlot'
-        />
-        <p className='source'>Source:</p>
+      <div className='flex-div'>
+        <div className='chart-container margin-top-05'>
+          <h6 className='undp-typography margin-bottom-01'>
+            Rural and Urban MPI
+          </h6>
+          <p className='undp-typography small-font'>Year: {year}</p>
+          <ScatterPlot
+            urban={urban}
+            rural={rural}
+            total={total}
+            id='locationScatterPlot'
+          />
+          <p className='source'>Source:</p>
+        </div>
+        <div className='chart-container margin-top-05'>
+          <h6 className='undp-typography margin-bottom-01'>
+            Subnational MPI Data
+          </h6>
+          <p className='undp-typography small-font'>Year: {year}</p>
+          {countrySubnational ? (
+            <ScatterPlotSubnational
+              data={countrySubnational}
+              id='subnatScatterPlot'
+            />
+          ) : null}
+        </div>
       </div>
     </div>
   );

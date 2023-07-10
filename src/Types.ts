@@ -56,3 +56,13 @@ export interface HoverDataType {
   xPosition: number;
   yPosition: number;
 }
+export interface HoverSubnatDataType {
+  subregion: string;
+  country: string;
+  value: number;
+  headcountRatio: number;
+  intensity: number;
+  year: string;
+  xPosition: number;
+  yPosition: number;
+}

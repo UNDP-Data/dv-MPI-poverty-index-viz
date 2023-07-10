@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { HoverDataType } from '../Types';
+import { HoverSubnatDataType } from '../Types';
 
 interface Props {
-  data: HoverDataType;
+  data: HoverSubnatDataType;
 }
 
 interface TooltipElProps {
@@ -34,7 +34,7 @@ const TooltipEl = styled.div<TooltipElProps>`
     })`};
 `;
 
-export function Tooltip(props: Props) {
+export function TooltipSubnational(props: Props) {
   const { data } = props;
   return (
     <TooltipEl
@@ -55,7 +55,7 @@ export function Tooltip(props: Props) {
           className='undp-typography bold margin-bottom-00'
           style={{ color: 'var(--blue-600)' }}
         >
-          {data.country}{' '}
+          {data.subregion}{' '}
           <span
             className='undp-typography'
             style={{
@@ -65,7 +65,7 @@ export function Tooltip(props: Props) {
               textTransform: 'none',
             }}
           >
-            ({data.continent})
+            ({data.country})
           </span>
         </h6>
       </div>
@@ -75,7 +75,7 @@ export function Tooltip(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        {data.value === 0 && data.year === 0 ? (
+        {data.value === 0 && data.year === '' ? (
           'no data available for this country'
         ) : (
           <>
@@ -88,6 +88,10 @@ export function Tooltip(props: Props) {
               <span className='tooltipValue'>
                 {data.headcountRatio.toFixed(2)}%
               </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>Intensity: </span>
+              <span className='tooltipValue'>{data.intensity.toFixed(2)}%</span>
             </div>
             <div>
               <span className='tooltipLabel'>Year: </span>
