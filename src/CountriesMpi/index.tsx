@@ -2,14 +2,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Select } from 'antd';
 import { useEffect, useState } from 'react';
+import { ascending } from 'd3-array';
 import {
   MpiDataType,
   MpiDataTypeSubnational,
   MpiDataTypeLocation,
 } from '../Types';
 import { ScatterPlot } from './ScatterPlot';
-import { CountryMap } from './CountryMap';
-
+// import { CountryMap } from './CountryMap';
+// <CountryMap data={countrySubnational} country={selectedCountry} />
+/* import { ScatterPlotSubnational } from './ScatterPlotSubnational';
+<h3>Subnational MPI Data</h3>
+{countrySubnational ? (
+  <ScatterPlotSubnational
+    data={countrySubnational}
+    id='subnatScatterPlot'
+  />
+) : null} */
 interface Props {
   national: MpiDataType[];
   subnational: MpiDataTypeSubnational[];
@@ -32,8 +41,8 @@ export function CountriesMpi(props: Props) {
   const [countrySubnational, setCountrySubnational] = useState<
     MpiDataTypeSubnational[] | undefined
   >(undefined);
-  console.log('subnational', subnational);
-  // setSelectedCountry('Afghanistan');
+  national.sort((a, b) => ascending(a.country, b.country));
+  console.log('subnational', countrySubnational);
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -55,7 +64,7 @@ export function CountriesMpi(props: Props) {
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
-        <h2 className='undp-typography'>National values MPI</h2>
+        <h3 className='undp-typography'>National values MPI</h3>
       </div>
       <Select
         className='undp-select'
@@ -77,11 +86,14 @@ export function CountriesMpi(props: Props) {
           Rural and Urban MPI
         </h6>
         <p className='undp-typography small-font'>Year: {year}</p>
-        <ScatterPlot urban={urban} rural={rural} total={total} />
+        <ScatterPlot
+          urban={urban}
+          rural={rural}
+          total={total}
+          id='locationScatterPlot'
+        />
         <p className='source'>Source:</p>
       </div>
-      <h3>Subnational MPI Data</h3>
-      <CountryMap data={countrySubnational} country={selectedCountry} />
     </div>
   );
 }

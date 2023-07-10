@@ -42,6 +42,18 @@ export function CountryMap(props: Props) {
             minzoom: 0,
             maxzoom: 22,
           },
+          {
+            id: 'admin2line',
+            type: 'line',
+            source: 'admin2',
+            'source-layer': 'adm2_polygons',
+            paint: {
+              'line-color': '#888',
+              'line-width': 1,
+            },
+            minzoom: 0,
+            maxzoom: 22,
+          },
         ],
       },
       center: [34.3014, -13.2512],
@@ -63,7 +75,7 @@ export function CountryMap(props: Props) {
         );
       });
       (map as any).current.addLayer({
-        id: 'admin2fill2',
+        id: 'admin2fill',
         type: 'fill',
         source: 'admin2',
         sourceLayer: 'adm2_polygons',
@@ -115,18 +127,6 @@ export function CountryMap(props: Props) {
             UNDPColorModule.sequentialColors.negativeColorsx10[9],
           ],
         },
-      });
-      (map as any).current.addLayer({
-        id: 'admin2line',
-        type: 'line',
-        source: 'admin2',
-        'source-layer': 'adm2_polygons',
-        paint: {
-          'line-color': '#888',
-          'line-width': 1,
-        },
-        minzoom: 0,
-        maxzoom: 22,
       });
     });
   }, [data]);

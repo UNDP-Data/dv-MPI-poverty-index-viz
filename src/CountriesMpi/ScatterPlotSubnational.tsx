@@ -1,25 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-extraneous-dependencies */
-import UNDPColorModule from 'undp-viz-colors';
+// import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear, scaleSqrt } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
 import { useEffect } from 'react';
-import { MpiDataType, MpiDataTypeLocation } from '../Types';
+import { MpiDataTypeSubnational } from '../Types';
 
 interface Props {
-  rural?: MpiDataTypeLocation;
-  urban?: MpiDataTypeLocation;
-  total?: MpiDataType;
+  data: MpiDataTypeSubnational[];
   id: string;
 }
-export function ScatterPlot(props: Props) {
-  const { rural, urban, total, id } = props;
-  const graphWidth = 700;
-  const graphHeight = 600;
+export function ScatterPlotSubnational(props: Props) {
+  const { data, id } = props;
+  const graphWidth = 800;
+  const graphHeight = 700;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   // eslint-disable-next-line no-console
-  console.log('id', id);
+  console.log('data subnational', data);
   const xPos = scaleLinear()
     .domain([0, 100])
     .range([0, graphWidth - margin.left - margin.right])
@@ -27,7 +25,7 @@ export function ScatterPlot(props: Props) {
   const yPos = scaleLinear()
     .domain([100, 0])
     .range([0, graphHeight - margin.top - margin.bottom]);
-  const mpiScale = scaleSqrt().domain([0, 1]).range([2, 40]);
+  const mpiScale = scaleSqrt().domain([0, 1]).range([2, 20]);
   const yAxis = axisLeft(yPos as any)
     .tickSize(-graphWidth - margin.left + margin.right)
     .tickFormat((d: any) => `${d}%`);
@@ -59,42 +57,19 @@ export function ScatterPlot(props: Props) {
           })`}
         />
         <g className='yAxis' transform='translate(-40,0)' />
-        <g
-          transform={`translate(${xPos(Number(rural?.headcountRatio))}, ${yPos(
-            Number(rural?.intensity),
-          )})`}
-        >
-          <circle
-            r={mpiScale(Number(rural?.mpi))}
-            fill={UNDPColorModule.categoricalColors.locationColors.rural}
-          />
-          <text y={mpiScale(Number(rural?.mpi)) + 15} textAnchor='middle'>
-            Rural
-          </text>
-        </g>
-        <g
-          transform={`translate(${xPos(Number(urban?.headcountRatio))}, ${yPos(
-            Number(urban?.intensity),
-          )})`}
-        >
-          <circle
-            r={mpiScale(Number(urban?.mpi))}
-            fill={UNDPColorModule.categoricalColors.locationColors.urban}
-          />
-          <text y={mpiScale(Number(urban?.mpi)) + 15} textAnchor='middle'>
-            Urban
-          </text>
-        </g>
-        <g
-          transform={`translate(${xPos(Number(total?.headcountRatio))}, ${yPos(
-            Number(total?.intensity),
-          )})`}
-        >
-          <circle r={mpiScale(Number(total?.mpi))} fill='#A9B1B7' />
-          <text y={mpiScale(Number(total?.mpi)) + 15} textAnchor='middle'>
-            Total
-          </text>
-        </g>
+        {data.map((d: any, i: number) => (
+          <g
+            key={i}
+            transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
+              Number(d.intensity),
+            )})`}
+          >
+            <circle r={mpiScale(Number(d.mpi))} fill='#A9B1B7' />
+            <text y={mpiScale(Number(d.mpi)) + 15} textAnchor='middle'>
+              {d.subregion}
+            </text>
+          </g>
+        ))}
       </g>
       <text x={graphWidth / 2} y={graphHeight} textAnchor='middle'>
         Headcount Ratio
