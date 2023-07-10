@@ -123,7 +123,11 @@ function App() {
   }, []);
   return (
     <div className='undp-container'>
-      {mpiData && diffData ? (
+      {mpiData &&
+      diffData &&
+      nationalData &&
+      subnationalData &&
+      locationData ? (
         <Tabs
           defaultActiveKey='1'
           className='undp-tabs'
