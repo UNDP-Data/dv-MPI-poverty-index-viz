@@ -3,7 +3,7 @@
 import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear } from 'd3-scale';
 import { descending, ascending } from 'd3-array';
-import { MpiDataTypeDiff } from '../Types';
+import { MpiDataTypeDiff } from '../../Types';
 
 interface Props {
   data: MpiDataTypeDiff[];

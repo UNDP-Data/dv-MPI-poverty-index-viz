@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Select } from 'antd';
 import styled from 'styled-components';
 import UNDPColorModule from 'undp-viz-colors';
-import { MpiDataTypeDiff } from '../Types';
+import { MpiDataTypeDiff } from '../../Types';
 import { DumbellChart } from './DumbellChart';
 
 interface Props {
@@ -48,7 +48,7 @@ export function DumbellChartViz(props: Props) {
     'South Asia',
     'Sub-Saharan Africa',
   ];
-  const sortingOptions = [
+  const sortingOptionsBasic = [
     {
       label: 'MPI difference',
       value: 'diff',
@@ -57,6 +57,8 @@ export function DumbellChartViz(props: Props) {
       label: 'Country Name',
       value: 'country',
     },
+  ];
+  const sortingOptionsLocation = [
     {
       label: 'Urban MPI',
       value: 'mpiUrban',
@@ -65,6 +67,8 @@ export function DumbellChartViz(props: Props) {
       label: 'Rural MPI',
       value: 'mpiRural',
     },
+  ];
+  const sortingOptionsGender = [
     {
       label: 'Female HHs MPI',
       value: 'mpiFemale',
@@ -74,13 +78,16 @@ export function DumbellChartViz(props: Props) {
       value: 'mpiMale',
     },
   ];
+  const [sortingOptions, setSortingOptions] = useState(sortingOptionsBasic);
   useEffect(() => {
     if (diffOption === 'ldiff') {
       setColor1(UNDPColorModule.categoricalColors.locationColors.urban);
       setColor2(UNDPColorModule.categoricalColors.locationColors.rural);
+      setSortingOptions(sortingOptionsBasic.concat(sortingOptionsLocation));
     } else {
       setColor1(UNDPColorModule.categoricalColors.genderColors.male);
       setColor2(UNDPColorModule.categoricalColors.genderColors.female);
+      setSortingOptions(sortingOptionsBasic.concat(sortingOptionsGender));
     }
   }, [diffOption]);
   return (
@@ -122,7 +129,7 @@ export function DumbellChartViz(props: Props) {
             style={{ alignItems: 'center' }}
           >
             <div>
-              <p className='label undp-typography'>filtered by</p>
+              <p className='label undp-typography'>filtered by region</p>
               <Select
                 options={regionsOptions.map(region => ({
                   label: region,

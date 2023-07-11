@@ -8,9 +8,9 @@ import { select } from 'd3-selection';
 import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
 import { Radio, RadioChangeEvent } from 'antd';
-import world from '../Data/worldMap.json';
-import { Tooltip } from '../Components/Tooltip';
-import { MpiDataType, HoverDataType } from '../Types';
+import world from '../../Data/worldMap.json';
+import { Tooltip } from '../../Components/Tooltip';
+import { MpiDataType, HoverDataType } from '../../Types';
 
 interface Props {
   data: MpiDataType[];

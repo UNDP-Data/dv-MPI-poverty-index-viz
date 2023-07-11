@@ -145,7 +145,7 @@ export function ScatterPlot(props: Props) {
           >
             <circle
               r={mpiScale(Number(total?.mpi))}
-              fill='#A9B1B7'
+              fill='#55606E'
               stroke='#888'
             />
             <text y={mpiScale(Number(total?.mpi)) + 15} textAnchor='middle'>

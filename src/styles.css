@@ -18,6 +18,18 @@
 .dumbell-titles{
   padding-left:1rem;
 }
+.lollipop-header{
+  align-items: center;
+  font-size: 1rem;
+  flex-wrap: wrap;
+  color: var(--black-600);
+  padding: 0;
+  border-bottom: 1px solid var(--gray-400);
+}
+.scrollbar-visible{
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+}
 /* color legend styles for charts */
 .legend-container{
   display: flex;
@@ -36,7 +48,13 @@
 .legend-circle{
   width: 16px;
   height: 16px;
-  border-radius: 9px;
+  border-radius: 8px;
+  margin: 0;
+}
+.legend-circle-small{
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
   margin: 0;
 }
 /* tooltip styles */

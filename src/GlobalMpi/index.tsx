@@ -1,5 +1,5 @@
-import { Map } from '../Choropleth/Map';
-import { DumbellChartViz } from '../DumbellChartViz';
+import { Map } from './Choropleth/Map';
+import { DumbellChartViz } from './DumbellChartViz';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
 
 interface Props {

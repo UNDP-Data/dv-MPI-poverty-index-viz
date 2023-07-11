@@ -84,8 +84,9 @@ export function ScatterPlotSubnational(props: Props) {
             >
               <circle
                 r={mpiScale(Number(d.mpi))}
-                fill='#A9B1B7'
-                stroke='#888'
+                fill='#55606E'
+                stroke='#FFF'
+                strokeWidth={2}
               />
             </g>
           ))}

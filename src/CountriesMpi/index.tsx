@@ -12,7 +12,7 @@ import { ScatterPlot } from './ScatterPlot';
 // import { CountryMap } from './CountryMap';
 // <CountryMap data={countrySubnational} country={selectedCountry} />
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
-import { LollipopChart } from './LollipopChart';
+import { LollipopChartViz } from './LollipopChartViz';
 
 interface Props {
   national: MpiDataType[];
@@ -37,7 +37,6 @@ export function CountriesMpi(props: Props) {
     MpiDataTypeSubnational[] | undefined
   >(undefined);
   national.sort((a, b) => ascending(a.country, b.country));
-  console.log('subnational', subnational, countrySubnational);
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -54,7 +53,6 @@ export function CountriesMpi(props: Props) {
       k => k.country === selectedCountry,
     );
     setCountrySubnational(subNatValues);
-    console.log('selectedCountry', selectedCountry, urban, rural, total);
   }, [selectedCountry]);
   return (
     <div style={{ width: '1800px', margin: 'auto' }}>
@@ -77,23 +75,25 @@ export function CountriesMpi(props: Props) {
         ))}
       </Select>
       <div>
-        <div className='chart-container margin-top-05'>
-          <LollipopChart data={countrySubnational} />
-        </div>
-        <div className='chart-container margin-top-05'>
-          <h6 className='undp-typography margin-bottom-01'>
-            Subnational MPI Data
-          </h6>
-          <p className='undp-typography small-font'>Year: {year}</p>
-          {countrySubnational ? (
-            <div>
-              <ScatterPlotSubnational
-                data={countrySubnational}
-                id='subnatScatterPlot'
-              />
+        {countrySubnational ? (
+          <>
+            <div className='chart-container margin-top-05'>
+              <LollipopChartViz data={countrySubnational} />
             </div>
-          ) : null}
-        </div>
+            <div className='chart-container margin-top-05'>
+              <h6 className='undp-typography margin-bottom-01'>
+                Subnational MPI Data
+              </h6>
+              <p className='undp-typography small-font'>Year: {year}</p>
+              <div>
+                <ScatterPlotSubnational
+                  data={countrySubnational}
+                  id='subnatScatterPlot'
+                />
+              </div>
+            </div>
+          </>
+        ) : null}
         <div className='chart-container margin-top-05'>
           <h6 className='undp-typography margin-bottom-01'>
             Rural and Urban MPI
@@ -107,18 +107,6 @@ export function CountriesMpi(props: Props) {
             country={selectedCountry}
           />
           <p className='source'>Source:</p>
-        </div>
-        <div className='chart-container margin-top-05'>
-          <h6 className='undp-typography margin-bottom-01'>
-            Subnational MPI Data
-          </h6>
-          <p className='undp-typography small-font'>Year: {year}</p>
-          {countrySubnational ? (
-            <ScatterPlotSubnational
-              data={countrySubnational}
-              id='subnatScatterPlot'
-            />
-          ) : null}
         </div>
       </div>
     </div>

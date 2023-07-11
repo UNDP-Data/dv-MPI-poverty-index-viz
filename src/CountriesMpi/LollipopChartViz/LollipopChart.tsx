@@ -2,21 +2,32 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear } from 'd3-scale';
-import { MpiDataTypeSubnational } from '../Types';
+import { descending, ascending } from 'd3-array';
+import { MpiDataTypeSubnational } from '../../Types';
 
 interface Props {
   data: MpiDataTypeSubnational[];
+  sortedByKey: string;
 }
 export function LollipopChart(props: Props) {
-  const { data } = props;
-  const graphWidth = 1280;
-  const graphHeight = 600;
-  const leftPadding = 330;
-  const rightPadding = 100;
+  const { data, sortedByKey } = props;
+  const graphWidth = 700;
+  const leftPadding = 200;
+  const rightPadding = 10;
   const rowHeight = 35;
   const marginTop = 10;
 
-  let color2: '#CCC';
+  if (sortedByKey === 'mpi') {
+    data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
+      descending(x.mpi, y.mpi),
+    );
+  } else if (sortedByKey === 'subregion') {
+    data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
+      ascending(x.subregion, y.subregion),
+    );
+  }
+
+  let color2: '#55606E';
 
   const xPos = scaleLinear()
     .domain([0, 1])
@@ -24,19 +35,20 @@ export function LollipopChart(props: Props) {
     .nice();
 
   return (
-    <div className='dumbellChart'>
-      <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`}>
+    <div className='scrollbar-visible'>
+      <svg viewBox={`0 0 ${graphWidth} ${data.length * rowHeight + marginTop}`}>
         {data.map((d, i) =>
           d ? (
             <g key={i} transform={`translate(0,${marginTop + i * rowHeight})`}>
               <text
-                x={0}
+                x={leftPadding - 20}
                 y={rowHeight / 2}
                 dy='3px'
                 fontSize='1rem'
                 color='var(--black-500)'
+                textAnchor='end'
               >
-                {d.country}
+                {d.subregion}
               </text>
               <line
                 x1={leftPadding}
@@ -48,12 +60,12 @@ export function LollipopChart(props: Props) {
                 shapeRendering='crispEdge'
               />
               <line
-                x1={xPos((d as any)[0]) + leftPadding}
+                x1={leftPadding}
                 x2={xPos((d as any).mpi) + leftPadding}
                 y1={rowHeight / 2}
                 y2={rowHeight / 2}
-                stroke='#000'
-                strokeWidth={1}
+                stroke='#D4D6D8'
+                strokeWidth={3}
                 shapeRendering='crispEdge'
               />
               <circle
@@ -62,12 +74,28 @@ export function LollipopChart(props: Props) {
                 r={7}
                 fill={color2}
               />
+              <circle
+                cx={xPos((d as any).intensity / 100) + leftPadding}
+                cy={rowHeight / 2}
+                r={5}
+                fill='#fff'
+                stroke='#59BA47'
+                strokeWidth={3}
+              />
+              <circle
+                cx={xPos((d as any).headcountRatio / 100) + leftPadding}
+                cy={rowHeight / 2}
+                r={5}
+                fill='#fff'
+                stroke='#FBC412'
+                strokeWidth={3}
+              />
               <text
-                x={xPos((d as any).mpi) + leftPadding + 15}
+                x={xPos((d as any).mpi) + leftPadding}
                 y={0}
-                dy='22px'
+                dy='6px'
                 fontSize='14px'
-                textAnchor='start'
+                textAnchor='middle'
               >
                 {Number((d as any).mpi).toFixed(3)}
               </text>
