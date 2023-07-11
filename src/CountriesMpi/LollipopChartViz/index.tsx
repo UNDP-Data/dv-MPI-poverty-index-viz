@@ -37,6 +37,12 @@ export function LollipopChartViz(props: Props) {
                 <Radio className='undp-radio' value='mpi'>
                   MPI
                 </Radio>
+                <Radio className='undp-radio' value='intensity'>
+                  Intensity
+                </Radio>
+                <Radio className='undp-radio' value='headcountRatio'>
+                  Headcount Ratio
+                </Radio>
                 <Radio className='undp-radio' value='subregion'>
                   Subregion name
                 </Radio>

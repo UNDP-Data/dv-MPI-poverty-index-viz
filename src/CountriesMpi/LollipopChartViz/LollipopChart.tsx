@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-extraneous-dependencies */
-// import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear } from 'd3-scale';
 import { descending, ascending } from 'd3-array';
+import { Tooltip } from 'antd';
 import { MpiDataTypeSubnational } from '../../Types';
 
 interface Props {
@@ -17,13 +17,13 @@ export function LollipopChart(props: Props) {
   const rowHeight = 35;
   const marginTop = 10;
 
-  if (sortedByKey === 'mpi') {
-    data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
-      descending(x.mpi, y.mpi),
-    );
-  } else if (sortedByKey === 'subregion') {
+  if (sortedByKey === 'subregion') {
     data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
       ascending(x.subregion, y.subregion),
+    );
+  } else {
+    data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
+      descending((x as any)[sortedByKey], (y as any)[sortedByKey]),
     );
   }
 
@@ -35,7 +35,7 @@ export function LollipopChart(props: Props) {
     .nice();
 
   return (
-    <div className='scrollbar-visible'>
+    <div>
       <svg viewBox={`0 0 ${graphWidth} ${data.length * rowHeight + marginTop}`}>
         {data.map((d, i) =>
           d ? (
@@ -74,22 +74,26 @@ export function LollipopChart(props: Props) {
                 r={7}
                 fill={color2}
               />
-              <circle
-                cx={xPos((d as any).intensity / 100) + leftPadding}
-                cy={rowHeight / 2}
-                r={5}
-                fill='#fff'
-                stroke='#59BA47'
-                strokeWidth={3}
-              />
-              <circle
-                cx={xPos((d as any).headcountRatio / 100) + leftPadding}
-                cy={rowHeight / 2}
-                r={5}
-                fill='#fff'
-                stroke='#FBC412'
-                strokeWidth={3}
-              />
+              <Tooltip title={`Intensity: ${d.intensity}%`}>
+                <circle
+                  cx={xPos((d as any).intensity / 100) + leftPadding}
+                  cy={rowHeight / 2}
+                  r={5}
+                  fill='#fff'
+                  stroke='#59BA47'
+                  strokeWidth={3}
+                />
+              </Tooltip>
+              <Tooltip title={`Headcount Ratio: ${d.headcountRatio}%`}>
+                <circle
+                  cx={xPos((d as any).headcountRatio / 100) + leftPadding}
+                  cy={rowHeight / 2}
+                  r={5}
+                  fill='#fff'
+                  stroke='#FBC412'
+                  strokeWidth={3}
+                />
+              </Tooltip>
               <text
                 x={xPos((d as any).mpi) + leftPadding}
                 y={0}
