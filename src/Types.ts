@@ -1,3 +1,12 @@
+export interface BboxCoords {
+  lat: number;
+  lon: number;
+}
+
+export interface BboxDataType {
+  sw: BboxCoords;
+  ne: BboxCoords;
+}
 export interface MpiDataType {
   country: string;
   iso_a3: string;
@@ -6,6 +15,9 @@ export interface MpiDataType {
   mpi: number;
   headcountRatio: number;
   intensity: number;
+}
+export interface MpiDataTypeNational extends MpiDataType {
+  bbox: BboxDataType;
 }
 export interface MpiDataTypeSubnational extends MpiDataType {
   subregion: string;

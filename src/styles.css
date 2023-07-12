@@ -1,3 +1,4 @@
+/* world map */
 .map-container{
   position: relative;
   border: 1px solid var(--gray-400);
@@ -103,6 +104,10 @@
 }
 /* country map */
 .map{
-  height: 800px;
-  width: 1000px;
+  width: 764px;
+  height: 648px;
+  border: 1px solid var(--gray-400);
+}
+.hide{
+  display: none;
 }

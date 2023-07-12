@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { csv } from 'd3-fetch';
+import { csv, json } from 'd3-fetch';
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import {
@@ -8,6 +8,8 @@ import {
   MpiDataTypeDiff,
   MpiDataTypeSubnational,
   MpiDataTypeLocation,
+  MpiDataTypeNational,
+  BboxDataType,
 } from './Types';
 import './styles.css';
 import { GlobalMpi } from './GlobalMpi';
@@ -18,9 +20,9 @@ function App() {
   const [diffData, setDiffData] = useState<MpiDataTypeDiff[] | undefined>(
     undefined,
   );
-  const [nationalData, setNationalData] = useState<MpiDataType[] | undefined>(
-    undefined,
-  );
+  const [nationalData, setNationalData] = useState<
+    MpiDataTypeNational[] | undefined
+  >(undefined);
   const [subnationalData, setSubnationalData] = useState<
     MpiDataTypeSubnational[] | undefined
   >(undefined);
@@ -37,8 +39,30 @@ function App() {
       csv('./data/MPI_national.csv'),
       csv('./data/MPI_subnational.csv'),
       csv('./data/MPI_location.csv'),
+      json(
+        'https://gist.githubusercontent.com/cplpearce/3bc5f1e9b1187df51d2085ffca795bee/raw/b36904c0c8ea72fdb82f68eb33f29891095deab3/country_codes',
+      ),
     ]).then(
-      ([data, rural, urban, female, male, national, subnational, location]) => {
+      ([
+        data,
+        rural,
+        urban,
+        female,
+        male,
+        national,
+        subnational,
+        location,
+        countries,
+      ]) => {
+        const countriesKeys = Object.keys(countries as object);
+        const countriesArray: { iso_a3: string; boundingBox: BboxDataType }[] =
+          [];
+        countriesKeys.forEach((key: string) => {
+          countriesArray.push({
+            iso_a3: (countries as any)[key]['alpha-3'],
+            boundingBox: (countries as any)[key].boundingBox,
+          });
+        });
         const dataFetched = data.map((d: any) => ({
           country: d.Country,
           iso_a3: d['country code'],
@@ -86,12 +110,17 @@ function App() {
         });
         const nationalFetched = national.map((d: any) => ({
           country: d.country,
-          iso_a3: d.ISOcountry,
+          iso_a3: d['country code'],
           region: '',
           mpi: d.MPI,
           headcountRatio: d['Headcount Ratio (H, %)'],
           year: d.Year,
           intensity: +d['Intensity (A, %)'],
+          bbox: countriesArray[
+            (countriesArray as object[]).findIndex(
+              (k: any) => k.iso_a3 === d['country code'],
+            )
+          ].boundingBox,
         }));
         const subnationalFetched = subnational.map((d: any) => ({
           country: d.country,
@@ -123,6 +152,9 @@ function App() {
   }, []);
   return (
     <div className='undp-container'>
+      <h1>
+        <i>Work in Progress, many things still missing!</i>
+      </h1>
       {mpiData &&
       diffData &&
       nationalData &&
