@@ -22,7 +22,7 @@ interface Props {
 export function ScatterPlot(props: Props) {
   const { rural, urban, total, id, country } = props;
   const graphWidth = 700;
-  const graphHeight = 600;
+  const graphHeight = 500;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
@@ -32,9 +32,9 @@ export function ScatterPlot(props: Props) {
     .range([0, graphWidth - margin.left - margin.right])
     .nice();
   const yPos = scaleLinear()
-    .domain([100, 0])
+    .domain([75, 0])
     .range([0, graphHeight - margin.top - margin.bottom]);
-  const mpiScale = scaleSqrt().domain([0, 1]).range([2, 40]);
+  const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
   const yAxis = axisLeft(yPos as any)
     .tickSize(-graphWidth - margin.left + margin.right)
     .tickFormat((d: any) => `${d}%`);
@@ -91,9 +91,6 @@ export function ScatterPlot(props: Props) {
               r={mpiScale(Number(rural?.mpi))}
               fill={UNDPColorModule.categoricalColors.locationColors.rural}
             />
-            <text y={mpiScale(Number(rural?.mpi)) + 15} textAnchor='middle'>
-              Rural
-            </text>
           </g>
           <g
             transform={`translate(
@@ -119,9 +116,6 @@ export function ScatterPlot(props: Props) {
               r={mpiScale(Number(urban?.mpi))}
               fill={UNDPColorModule.categoricalColors.locationColors.urban}
             />
-            <text y={mpiScale(Number(urban?.mpi)) + 15} textAnchor='middle'>
-              Urban
-            </text>
           </g>
           <g
             transform={`translate(
@@ -148,9 +142,6 @@ export function ScatterPlot(props: Props) {
               fill='#55606E'
               stroke='#888'
             />
-            <text y={mpiScale(Number(total?.mpi)) + 15} textAnchor='middle'>
-              Total
-            </text>
           </g>
         </g>
         <text x={graphWidth / 2} y={graphHeight} textAnchor='middle'>

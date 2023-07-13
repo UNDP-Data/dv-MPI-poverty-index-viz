@@ -13,8 +13,9 @@
   flex-wrap: wrap;
   color: var(--black-600);
   padding: 0;
-  border-bottom: 1px solid var(--gray-400);
+  border-bottom: 1px solid #000;
   background-color: #FFF;
+  position: relative;
 }
 .dumbell-titles{
   padding-left:1rem;
@@ -25,11 +26,7 @@
   flex-wrap: wrap;
   color: var(--black-600);
   padding: 0;
-  border-bottom: 1px solid var(--gray-400);
-}
-.scrollbar-visible{
-  overflow: -moz-scrollbars-vertical; 
-  overflow-y: scroll;
+  border-bottom: 1px solid #000;
 }
 /* color legend styles for charts */
 .legend-container{
@@ -58,6 +55,12 @@
   border-radius: 8px;
   margin: 0;
 }
+.legend-circle-medium{
+  width: 11px;
+  height: 11px;
+  border-radius: 11px;
+  margin: 0;
+}
 /* tooltip styles */
 .tooltipLabel{
   font-size:.9rem;
@@ -76,11 +79,17 @@
 .ant-select-item{
   border-top: 1px solid var(--gray-300);
 }
+/* country page styles */
+.left-side{
+  width: 70%;
+  min-width: 764px;
+}
 /* general charts styles */
 .chart-container{
   background-color: var(--gray-200);
   padding: 24px 32px;
   max-width: 700px;
+  position:relative;
   flex-grow: 1;
 }
 .yAxis text, .xAxis text{
@@ -105,9 +114,16 @@
 /* country map */
 .map{
   width: 764px;
-  height: 648px;
+  height: 598px;
   border: 1px solid var(--gray-400);
+  background-color: #B5D5F5;
 }
 .hide{
   display: none;
+}
+.countrymap-legend{
+  padding: 5px 0 20px;
+}
+.background-legend{
+  background-color: rgba(255, 255, 255, 0.7);
 }

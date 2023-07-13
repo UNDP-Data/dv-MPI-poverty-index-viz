@@ -153,7 +153,7 @@ function App() {
   return (
     <div className='undp-container'>
       <h1>
-        <i>Work in Progress, many things still missing!</i>
+        <i>Work in Progress</i>
       </h1>
       {mpiData &&
       diffData &&
@@ -170,7 +170,7 @@ function App() {
               children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
             },
             {
-              label: 'Countries',
+              label: 'National MPI',
               key: '2',
               children: (
                 <CountriesMpi

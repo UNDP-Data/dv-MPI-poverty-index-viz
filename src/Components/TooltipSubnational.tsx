@@ -17,7 +17,7 @@ const TooltipEl = styled.div<TooltipElProps>`
   position: fixed;
   z-index: 8;
   padding-bottom: 10px;
-  background-color: var(--gray-200);
+  background-color: var(--gray-100);
   border: 1px solid var(--gray-300);
   word-wrap: break-word;
   top: ${(props: { verticalAlignment: string; y: number }) =>

@@ -103,7 +103,6 @@ export function DumbellChartViz(props: Props) {
                 options={diffOptions}
                 className='undp-select'
                 style={{ width: '350px' }}
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onChange={el => setDiffOption(el)}
                 value={diffOption}
               />
@@ -148,10 +147,7 @@ export function DumbellChartViz(props: Props) {
           style={{ alignItems: 'center' }}
         >
           <div style={{ width: '260px', fontWeight: '700' }}>Countries</div>
-          <div style={{ width: '600px', fontWeight: '700' }}>
-            Difference{' '}
-            {diffOptions.filter(d => d.value === diffOption)[0].label}{' '}
-          </div>
+          <div style={{ width: '90px', fontWeight: '700' }}>Difference </div>
           <div className='legend-container' style={{ width: '260px' }}>
             <div className='legend-item'>
               <div
@@ -172,7 +168,11 @@ export function DumbellChartViz(props: Props) {
               <div>{diffOption === 'ldiff' ? 'Rural' : 'Female'}</div>
             </div>
           </div>
-          <div style={{ fontWeight: '700' }}>Year</div>
+          <div
+            style={{ fontWeight: '700', right: '100px', position: 'absolute' }}
+          >
+            Year survey
+          </div>
         </div>
       </div>
       <DumbellChartEl>

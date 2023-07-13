@@ -9,12 +9,12 @@ interface Props {
 }
 
 const LollipopChartEl = styled.div`
-  height: 600px;
+  height: 570px;
   background-color: var(--black-100);
   box-shadow: var(--shadow);
-  padding: 1rem;
   border-radius: 2px;
   overflow: auto;
+  padding-top: 10px;
 `;
 export function LollipopChartViz(props: Props) {
   const { data } = props;
@@ -23,38 +23,35 @@ export function LollipopChartViz(props: Props) {
   return (
     <div className='lollipop-container'>
       <div className='lollipop-header'>
-        <div className='flex-div'>
-          <div className='flex-div' style={{ alignItems: 'center' }}>
-            <div>
-              <p className='label undp-typography'>Sort by</p>
-              <Radio.Group
-                defaultValue='mpi'
-                onChange={(el: RadioChangeEvent) =>
-                  setSortedBy(el.target.value)
-                }
-                className='margin-bottom-05'
-              >
-                <Radio className='undp-radio' value='mpi'>
-                  MPI
-                </Radio>
-                <Radio className='undp-radio' value='intensity'>
-                  Intensity
-                </Radio>
-                <Radio className='undp-radio' value='headcountRatio'>
-                  Headcount Ratio
-                </Radio>
-                <Radio className='undp-radio' value='subregion'>
-                  Subregion name
-                </Radio>
-              </Radio.Group>
-            </div>
-          </div>
+        <div
+          className='flex-div margin-top-05'
+          style={{ alignItems: 'center' }}
+        >
+          <p className='undp-typography small-font'>Sort by:</p>
+          <Radio.Group
+            defaultValue='mpi'
+            onChange={(el: RadioChangeEvent) => setSortedBy(el.target.value)}
+            className='margin-bottom-05'
+          >
+            <Radio className='undp-radio' value='mpi'>
+              MPI
+            </Radio>
+            <Radio className='undp-radio' value='intensity'>
+              Intensity
+            </Radio>
+            <Radio className='undp-radio' value='headcountRatio'>
+              Headcount Ratio
+            </Radio>
+            <Radio className='undp-radio' value='subregion'>
+              Subregion name
+            </Radio>
+          </Radio.Group>
         </div>
         <div
           className='flex-div margin-top-00 lollipop-titles'
           style={{ alignItems: 'center' }}
         >
-          <div style={{ width: '230px', fontWeight: '700' }}>Regions</div>
+          <div style={{ width: '200px', fontWeight: '700' }}>Regions</div>
           <div style={{ width: '200px', fontWeight: '700' }}>MPI value</div>
           <div className='legend-container' style={{ width: '320px' }}>
             <div className='legend-item'>
@@ -80,7 +77,7 @@ export function LollipopChartViz(props: Props) {
           </div>
         </div>
       </div>
-      <LollipopChartEl>
+      <LollipopChartEl className='undp-scrollbar'>
         <LollipopChart data={data} sortedByKey={sortedBy} />
       </LollipopChartEl>
     </div>

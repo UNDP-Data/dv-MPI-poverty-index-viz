@@ -11,7 +11,22 @@ export function GlobalMpi(props: Props) {
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
-        <h2>Global Multidimensional Poverty Index (MPI)</h2>
+        <h3 className='undp-typography'>
+          Global Multidimensional Poverty Index (MPI)
+        </h3>
+        <p className='undp-typography'>
+          The global Multidimensional Poverty Index (MPI) is an inclusive
+          measure that complements monetary poverty assessments by capturing
+          deprivations in health, education, and living standards. It identifies
+          individuals as poor if they are deprived in one-third or more of the
+          ten weighted indicators, measuring the intensity of their poverty
+          based on the percentage of deprivations. The MPI provides insights
+          into who is poor and how they experience poverty, offering a
+          comprehensive understanding of poverty dynamics. It allows for
+          comparisons across various administrative levels and reveals how
+          different groups and countries experience poverty through the
+          composition of the MPI indicators.
+        </p>
         {mpiData ? (
           <div>
             <Map data={mpiData} />

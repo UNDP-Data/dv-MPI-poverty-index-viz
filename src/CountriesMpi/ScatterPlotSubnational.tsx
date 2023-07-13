@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-extraneous-dependencies */
 // import UNDPColorModule from 'undp-viz-colors';
-import { scaleLinear, scaleSqrt } from 'd3-scale';
+import { scaleLinear, scaleThreshold } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
+import UNDPColorModule from 'undp-viz-colors';
 import { useEffect, useState } from 'react';
 import { HoverSubnatDataType, MpiDataTypeSubnational } from '../Types';
 import { TooltipSubnational } from '../Components/TooltipSubnational';
@@ -15,7 +16,7 @@ interface Props {
 export function ScatterPlotSubnational(props: Props) {
   const { data, id } = props;
   const graphWidth = 700;
-  const graphHeight = 600;
+  const graphHeight = 520;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
@@ -25,9 +26,8 @@ export function ScatterPlotSubnational(props: Props) {
     .range([0, graphWidth - margin.left - margin.right])
     .nice();
   const yPos = scaleLinear()
-    .domain([100, 0])
+    .domain([80, 0])
     .range([0, graphHeight - margin.top - margin.bottom]);
-  const mpiScale = scaleSqrt().domain([0, 1]).range([2, 20]);
   const yAxis = axisLeft(yPos as any)
     .tickSize(-graphWidth - margin.left + margin.right)
     .tickFormat((d: any) => `${d}%`);
@@ -36,7 +36,10 @@ export function ScatterPlotSubnational(props: Props) {
     .tickSizeOuter(0)
     .tickPadding(4)
     .tickFormat((d: any) => `${d}%`);
-
+  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
+  const colorScaleMPI = scaleThreshold<number, string>()
+    .domain(valueArray)
+    .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   useEffect(() => {
     const svg = select(`#${id}`);
     svg.select('.yAxis').call(yAxis as any);
@@ -50,7 +53,7 @@ export function ScatterPlotSubnational(props: Props) {
   }, []);
 
   return (
-    <div>
+    <div className='margin-top-06'>
       <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id={id}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g
@@ -83,10 +86,10 @@ export function ScatterPlotSubnational(props: Props) {
               )})`}
             >
               <circle
-                r={mpiScale(Number(d.mpi))}
-                fill='#55606E'
-                stroke='#FFF'
-                strokeWidth={2}
+                r={6}
+                fill={colorScaleMPI(Number(d.mpi))}
+                stroke='var(--gray-500)'
+                strokeWidth={1}
               />
             </g>
           ))}

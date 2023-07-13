@@ -1,8 +1,11 @@
 /* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Segmented, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { ascending } from 'd3-array';
+import { scaleThreshold } from 'd3-scale';
+import UNDPColorModule from 'undp-viz-colors';
 import {
   MpiDataTypeNational,
   MpiDataTypeSubnational,
@@ -41,6 +44,10 @@ export function CountriesMpi(props: Props) {
     MpiDataTypeNational | undefined
   >(undefined);
   const [activeViz, setActiveViz] = useState<string>('map');
+  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
+  const colorScaleMPI = scaleThreshold<number, string>()
+    .domain(valueArray)
+    .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   national.sort((a, b) => ascending(a.country, b.country));
 
   useEffect(() => {
@@ -68,9 +75,21 @@ export function CountriesMpi(props: Props) {
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
-        <h3 className='undp-typography'>National values MPI</h3>
+        <h3 className='undp-typography'>
+          National Multidimensional Poverty Index (NMPI)
+        </h3>
       </div>
-      <div className='margin-bottom-05'>
+      <p className='undp-typography'>
+        A national Multidimensional Poverty Index (MPI) is a poverty measure
+        tailored to specific countries, considering their unique circumstances.
+        These measures typically emphasize important factors such as healthcare,
+        education, and living conditions, while also incorporating other
+        relevant dimensions using appropriate local indicators. On this page,
+        you can access official statistics of national and subnational MPIs,
+        derived from findings obtained through national surveys.
+      </p>
+      <div className='margin-bottom-08'>
+        <p className='undp-typography label'>Select a country</p>
         <Select
           className='undp-select'
           value={selectedCountry}
@@ -87,57 +106,214 @@ export function CountriesMpi(props: Props) {
           ))}
         </Select>
       </div>
-      <div className='margin-bottom-03'>
-        <p className='undp-typograpy label'>Select a view</p>
-        <Segmented
-          className='undp-segmented-small'
-          options={[
-            { label: 'Map', value: 'map' },
-            { label: 'Intensity vs Headcount ratio', value: 'scatterplot' },
-            { label: 'MPI list', value: 'list' },
-          ]}
-          onResize={undefined}
-          onResizeCapture={undefined}
-          onChange={d => setActiveViz(d as string)}
-        />
-      </div>
       <div>
         {countrySubnational ? (
-          <>
-            <div className={activeViz === 'map' ? '' : 'hide'}>
-              <CountryMap countryData={countryData} />
-            </div>
-            <div
-              className={`chart-container margin-top-05 ${
-                activeViz === 'list' ? '' : 'hide'
-              }`}
-            >
-              <LollipopChartViz data={countrySubnational} />
-            </div>
-            <div
-              className={`chart-container margin-top-05 ${
-                activeViz === 'scatterplot' ? '' : 'hide'
-              }`}
-            >
-              <h6 className='undp-typography margin-bottom-01'>
-                Subnational MPI Data
-              </h6>
-              <p className='undp-typography small-font'>Year: {year}</p>
-              <div>
+          <div className='flex-div gap-08'>
+            <div className='left-side chart-container'>
+              <div
+                className='flex-div'
+                style={{ justifyContent: 'space-between' }}
+              >
+                <div>
+                  <h6 className='undp-typography margin-bottom-01'>
+                    Subnational MPI Data
+                  </h6>
+                  <p className='undp-typography small-font'>Year: {year}</p>
+                </div>
+                <div>
+                  <Segmented
+                    style={{ backgroundColor: '#FFF', padding: '1px' }}
+                    className='undp-segmented'
+                    options={[
+                      { label: 'Map', value: 'map' },
+                      {
+                        label: 'Intensity vs Headcount ratio',
+                        value: 'scatterplot',
+                      },
+                      { label: 'MPI list', value: 'list' },
+                    ]}
+                    onResize={undefined}
+                    onResizeCapture={undefined}
+                    onChange={d => setActiveViz(d as string)}
+                  />
+                </div>
+              </div>
+              <div className={activeViz === 'map' ? '' : 'hide'}>
+                <div className='countrymap-legend'>
+                  <svg width='300px' height='45px'>
+                    <g transform='translate(10,20)'>
+                      <text
+                        x={280}
+                        y={-10}
+                        fontSize='0.8rem'
+                        fill='#212121'
+                        textAnchor='end'
+                      >
+                        Higher MPI
+                      </text>
+                      {valueArray.map((d, i) => (
+                        <g key={i}>
+                          <rect
+                            x={(i * 280) / valueArray.length}
+                            y={1}
+                            width={280 / valueArray.length}
+                            height={8}
+                            fill={colorScaleMPI(valueArray[i] - 0.05)}
+                            stroke='#fff'
+                          />
+                          <text
+                            x={(280 * (i + 1)) / valueArray.length}
+                            y={25}
+                            fontSize={12}
+                            fill='#212121'
+                            textAnchor='middle'
+                          >
+                            {d}
+                          </text>
+                        </g>
+                      ))}
+                      <text
+                        y={25}
+                        x={0}
+                        fontSize={12}
+                        fill='#212121'
+                        textAnchor='middle'
+                      >
+                        0
+                      </text>
+                    </g>
+                  </svg>
+                </div>
+                <CountryMap countryData={countryData} />
+              </div>
+              <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
+                <LollipopChartViz data={countrySubnational} />
+              </div>
+              <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
+                <div className='countrymap-legend'>
+                  <svg width='300px' height='45px'>
+                    <g transform='translate(10,20)'>
+                      <text
+                        x={280}
+                        y={-10}
+                        fontSize='0.8rem'
+                        fill='#212121'
+                        textAnchor='end'
+                      >
+                        Higher MPI
+                      </text>
+                      {valueArray.map((d, i) => (
+                        <g key={i}>
+                          <rect
+                            x={(i * 280) / valueArray.length}
+                            y={1}
+                            width={280 / valueArray.length}
+                            height={8}
+                            fill={colorScaleMPI(valueArray[i] - 0.05)}
+                            stroke='#fff'
+                          />
+                          <text
+                            x={(280 * (i + 1)) / valueArray.length}
+                            y={25}
+                            fontSize={12}
+                            fill='#212121'
+                            textAnchor='middle'
+                          >
+                            {d}
+                          </text>
+                        </g>
+                      ))}
+                      <text
+                        y={25}
+                        x={0}
+                        fontSize={12}
+                        fill='#212121'
+                        textAnchor='middle'
+                      >
+                        0
+                      </text>
+                    </g>
+                  </svg>
+                </div>
                 <ScatterPlotSubnational
                   data={countrySubnational}
                   id='subnatScatterPlot'
                 />
               </div>
+              <p className='source'>
+                Source: National MPI data source: Compiled from individual
+                National MPI Reports (
+                <a
+                  href='https://ophi.org.uk/publications/national-mpi-reports/'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='undp-style'
+                >
+                  https://ophi.org.uk/publications/national-mpi-reports/
+                </a>
+                )
+              </p>
             </div>
-          </>
+            <div className='right-side'>
+              <h6 className='undp-typography'>Definitions (temporary text)</h6>
+              <p className='undp-typography small-font'>
+                Headcount Ratio: The percentage of poor people in the population
+              </p>
+              <p className='undp-typography small-font'>
+                Intensity (of deprivation among the poor): Average percentage of
+                weighted deprivations experienced by the poor.
+              </p>
+              <p className='undp-typography small-font'>
+                MPI (Multidimensional Poverty Index) is a product of{' '}
+                <strong>Headcount ratio</strong> and <strong>Intensity</strong>{' '}
+                of deprivation among the poor.
+              </p>
+            </div>
+          </div>
         ) : null}
         <h3> Rural vs urban MPI</h3>
         <div className='chart-container margin-top-05'>
-          <h6 className='undp-typography margin-bottom-01'>
-            Rural and Urban MPI
-          </h6>
-          <p className='undp-typography small-font'>Year: {year}</p>
+          <div className='flex-div' style={{ justifyContent: 'space-between' }}>
+            <div>
+              <h6 className='undp-typography margin-bottom-01'>
+                Rural and Urban MPI
+              </h6>
+              <p className='undp-typography small-font'>Year: {year}</p>
+            </div>
+            <div>
+              <div className='legend-container'>
+                <div className='legend-item'>
+                  <div
+                    className='legend-circle-medium'
+                    style={{
+                      backgroundColor:
+                        UNDPColorModule.categoricalColors.locationColors.urban,
+                    }}
+                  />
+                  <div className='small-font'>Urban</div>
+                </div>
+                <div className='legend-item'>
+                  <div
+                    className='legend-circle-medium'
+                    style={{
+                      backgroundColor:
+                        UNDPColorModule.categoricalColors.locationColors.rural,
+                    }}
+                  />
+                  <div className='small-font'>Rural</div>
+                </div>
+                <div className='legend-item'>
+                  <div
+                    className='legend-circle-medium'
+                    style={{
+                      backgroundColor: '#55606E',
+                    }}
+                  />
+                  <div className='small-font'>Country Total</div>
+                </div>
+              </div>
+            </div>
+          </div>
           <ScatterPlot
             urban={urban}
             rural={rural}
@@ -145,7 +321,19 @@ export function CountriesMpi(props: Props) {
             id='locationScatterPlot'
             country={selectedCountry}
           />
-          <p className='source'>Source:</p>
+          <p className='source'>
+            Source: National MPI data source: Compiled from individual National
+            MPI Reports (
+            <a
+              href='https://ophi.org.uk/publications/national-mpi-reports/'
+              target='_blank'
+              rel='noreferrer'
+              className='undp-style'
+            >
+              https://ophi.org.uk/publications/national-mpi-reports/
+            </a>
+            )
+          </p>
         </div>
       </div>
     </div>

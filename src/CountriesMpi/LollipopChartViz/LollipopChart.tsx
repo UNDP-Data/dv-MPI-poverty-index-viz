@@ -11,10 +11,10 @@ interface Props {
 }
 export function LollipopChart(props: Props) {
   const { data, sortedByKey } = props;
-  const graphWidth = 700;
+  const graphWidth = 740;
   const leftPadding = 200;
   const rightPadding = 10;
-  const rowHeight = 35;
+  const rowHeight = 38;
   const marginTop = 10;
 
   if (sortedByKey === 'subregion') {
@@ -97,7 +97,7 @@ export function LollipopChart(props: Props) {
               <text
                 x={xPos((d as any).mpi) + leftPadding}
                 y={0}
-                dy='6px'
+                dy='8px'
                 fontSize='14px'
                 textAnchor='middle'
               >
