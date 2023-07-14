@@ -64,6 +64,7 @@ export interface HoverDataType {
   continent: string;
   value: number;
   headcountRatio: number;
+  intensity: number;
   year: number;
   xPosition: number;
   yPosition: number;
@@ -74,7 +75,6 @@ export interface HoverSubnatDataType {
   value: number;
   headcountRatio: number;
   intensity: number;
-  year: string;
   xPosition: number;
   yPosition: number;
 }

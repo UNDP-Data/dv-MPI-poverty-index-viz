@@ -16,19 +16,16 @@ const TooltipEl = styled.div<TooltipElProps>`
   display: block;
   position: fixed;
   z-index: 8;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   background-color: var(--gray-100);
   border: 1px solid var(--gray-300);
   word-wrap: break-word;
-  top: ${(props: { verticalAlignment: string; y: number }) =>
+  top: ${props =>
     props.verticalAlignment === 'bottom' ? props.y - 40 : props.y + 40}px;
-  left: ${(props: { horizontalAlignment: string; x: number }) =>
+  left: ${props =>
     props.horizontalAlignment === 'left' ? props.x - 20 : props.x + 20}px;
   max-width: 24rem;
-  transform: ${(props: {
-    horizontalAlignment: string;
-    verticalAlignment: string;
-  }) =>
+  transform: ${props =>
     `translate(${props.horizontalAlignment === 'left' ? '-100%' : '0%'},${
       props.verticalAlignment === 'top' ? '-100%' : '0%'
     })`};
@@ -75,7 +72,7 @@ export function TooltipSubnational(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        {data.value === 0 && data.year === '' ? (
+        {data.value === 0 ? (
           'no data available for this country'
         ) : (
           <>
@@ -92,10 +89,6 @@ export function TooltipSubnational(props: Props) {
             <div>
               <span className='tooltipLabel'>Intensity: </span>
               <span className='tooltipValue'>{data.intensity.toFixed(2)}%</span>
-            </div>
-            <div>
-              <span className='tooltipLabel'>Year: </span>
-              <span className='tooltipValue'>{data.year}</span>
             </div>
           </>
         )}

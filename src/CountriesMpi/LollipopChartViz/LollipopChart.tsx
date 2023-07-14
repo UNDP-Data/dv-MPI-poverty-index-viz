@@ -74,7 +74,7 @@ export function LollipopChart(props: Props) {
                 r={7}
                 fill={color2}
               />
-              <Tooltip title={`Intensity: ${d.intensity}%`}>
+              <Tooltip title={`Intensity: ${d.intensity.toFixed(2)}%`}>
                 <circle
                   cx={xPos((d as any).intensity / 100) + leftPadding}
                   cy={rowHeight / 2}
@@ -84,7 +84,11 @@ export function LollipopChart(props: Props) {
                   strokeWidth={3}
                 />
               </Tooltip>
-              <Tooltip title={`Headcount Ratio: ${d.headcountRatio}%`}>
+              <Tooltip
+                title={`Headcount Ratio: ${Number(d.headcountRatio).toFixed(
+                  2,
+                )}%`}
+              >
                 <circle
                   cx={xPos((d as any).headcountRatio / 100) + leftPadding}
                   cy={rowHeight / 2}

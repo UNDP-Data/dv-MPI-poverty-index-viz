@@ -108,12 +108,9 @@ export function CountriesMpi(props: Props) {
       </div>
       <div>
         {countrySubnational ? (
-          <div className='flex-div gap-08'>
+          <div className='flex-div gap-05'>
             <div className='left-side chart-container'>
-              <div
-                className='flex-div'
-                style={{ justifyContent: 'space-between' }}
-              >
+              <div className='flex-div flex-space-between'>
                 <div>
                   <h6 className='undp-typography margin-bottom-01'>
                     Subnational MPI Data
@@ -241,8 +238,7 @@ export function CountriesMpi(props: Props) {
                 />
               </div>
               <p className='source'>
-                Source: National MPI data source: Compiled from individual
-                National MPI Reports (
+                Source: Compiled from individual National MPI Reports (
                 <a
                   href='https://ophi.org.uk/publications/national-mpi-reports/'
                   target='_blank'
@@ -255,85 +251,123 @@ export function CountriesMpi(props: Props) {
               </p>
             </div>
             <div className='right-side'>
-              <h6 className='undp-typography'>Definitions (temporary text)</h6>
-              <p className='undp-typography small-font'>
-                Headcount Ratio: The percentage of poor people in the population
-              </p>
-              <p className='undp-typography small-font'>
-                Intensity (of deprivation among the poor): Average percentage of
-                weighted deprivations experienced by the poor.
-              </p>
-              <p className='undp-typography small-font'>
-                MPI (Multidimensional Poverty Index) is a product of{' '}
-                <strong>Headcount ratio</strong> and <strong>Intensity</strong>{' '}
-                of deprivation among the poor.
-              </p>
-            </div>
-          </div>
-        ) : null}
-        <h3> Rural vs urban MPI</h3>
-        <div className='chart-container margin-top-05'>
-          <div className='flex-div' style={{ justifyContent: 'space-between' }}>
-            <div>
-              <h6 className='undp-typography margin-bottom-01'>
-                Rural and Urban MPI
-              </h6>
-              <p className='undp-typography small-font'>Year: {year}</p>
-            </div>
-            <div>
-              <div className='legend-container'>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor:
-                        UNDPColorModule.categoricalColors.locationColors.urban,
-                    }}
-                  />
-                  <div className='small-font'>Urban</div>
-                </div>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor:
-                        UNDPColorModule.categoricalColors.locationColors.rural,
-                    }}
-                  />
-                  <div className='small-font'>Rural</div>
-                </div>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor: '#55606E',
-                    }}
-                  />
-                  <div className='small-font'>Country Total</div>
-                </div>
+              <div className='stat-card'>
+                <h3>{total?.mpi}</h3>
+                <h4>National MPI {selectedCountry}</h4>
+                <p>
+                  Headcount Ratio: {total?.headcountRatio}%<br />
+                  Intensity: {total?.intensity}%
+                </p>
+              </div>
+              <div className='margin-top-06'>
+                <h6 className='undp-typography'>
+                  Definitions (temporary text)
+                </h6>
+                <p className='undp-typography small-font'>
+                  <strong>Headcount Ratio:</strong> The percentage of poor
+                  people in the population
+                </p>
+                <p className='undp-typography small-font'>
+                  <strong>Intensity (of deprivation among the poor): </strong>
+                  Intensity (of deprivation among the poor): Average percentage
+                  of weighted deprivations experienced by the poor.
+                </p>
+                <p className='undp-typography small-font'>
+                  <strong>MPI (Multidimensional Poverty Index)</strong> is a
+                  product of <strong>Headcount ratio</strong> and{' '}
+                  <strong>Intensity</strong> of deprivation among the poor.
+                </p>
               </div>
             </div>
           </div>
-          <ScatterPlot
-            urban={urban}
-            rural={rural}
-            total={total}
-            id='locationScatterPlot'
-            country={selectedCountry}
-          />
-          <p className='source'>
-            Source: National MPI data source: Compiled from individual National
-            MPI Reports (
-            <a
-              href='https://ophi.org.uk/publications/national-mpi-reports/'
-              target='_blank'
-              rel='noreferrer'
-              className='undp-style'
-            >
-              https://ophi.org.uk/publications/national-mpi-reports/
-            </a>
-            )
-          </p>
+        ) : null}
+        <h4 className='undp-typography margin-top-10'>
+          {' '}
+          Rural vs urban MPI in {selectedCountry}
+        </h4>
+        <div className='flex-div  margin-top-05'>
+          <div className='chart-container'>
+            <div className='flex-div flex-space-between'>
+              <div>
+                <h6 className='undp-typography margin-bottom-01'>
+                  Rural and Urban MPI
+                </h6>
+                <p className='undp-typography small-font'>Year: {year}</p>
+              </div>
+              <div>
+                <div className='legend-container'>
+                  <div className='legend-item'>
+                    <div
+                      className='legend-circle-medium'
+                      style={{
+                        backgroundColor:
+                          UNDPColorModule.categoricalColors.locationColors
+                            .urban,
+                      }}
+                    />
+                    <div className='small-font'>Urban</div>
+                  </div>
+                  <div className='legend-item'>
+                    <div
+                      className='legend-circle-medium'
+                      style={{
+                        backgroundColor:
+                          UNDPColorModule.categoricalColors.locationColors
+                            .rural,
+                      }}
+                    />
+                    <div className='small-font'>Rural</div>
+                  </div>
+                  <div className='legend-item'>
+                    <div
+                      className='legend-circle-medium'
+                      style={{
+                        backgroundColor: '#55606E',
+                      }}
+                    />
+                    <div className='small-font'>Country Total</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ScatterPlot
+              urban={urban}
+              rural={rural}
+              total={total}
+              id='locationScatterPlot'
+              country={selectedCountry}
+            />
+            <p className='source'>
+              Source: Compiled from individual National MPI Reports (
+              <a
+                href='https://ophi.org.uk/publications/national-mpi-reports/'
+                target='_blank'
+                rel='noreferrer'
+                className='undp-style'
+              >
+                https://ophi.org.uk/publications/national-mpi-reports/
+              </a>
+              )
+            </p>
+          </div>
+          <div className='stat-card-container'>
+            <div className='stat-card' style={{ width: '25%' }}>
+              <h3>{rural?.mpi}</h3>
+              <h4>Rural MPI</h4>
+              <p>
+                Headcount Ratio: {rural?.headcountRatio}%<br />
+                Intensity: {rural?.intensity}%
+              </p>
+            </div>
+            <div className='stat-card' style={{ width: '25%' }}>
+              <h3>{urban?.mpi}</h3>
+              <h4>Urban MPI</h4>
+              <p>
+                Headcount Ratio: {urban?.headcountRatio}%<br />
+                Intensity: {urban?.intensity}%
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

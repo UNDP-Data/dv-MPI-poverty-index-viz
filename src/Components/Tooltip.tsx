@@ -20,15 +20,12 @@ const TooltipEl = styled.div<TooltipElProps>`
   background-color: var(--gray-200);
   border: 1px solid var(--gray-300);
   word-wrap: break-word;
-  top: ${(props: { verticalAlignment: string; y: number }) =>
+  top: ${props =>
     props.verticalAlignment === 'bottom' ? props.y - 40 : props.y + 40}px;
-  left: ${(props: { horizontalAlignment: string; x: number }) =>
+  left: ${props =>
     props.horizontalAlignment === 'left' ? props.x - 20 : props.x + 20}px;
   max-width: 24rem;
-  transform: ${(props: {
-    horizontalAlignment: string;
-    verticalAlignment: string;
-  }) =>
+  transform: ${props =>
     `translate(${props.horizontalAlignment === 'left' ? '-100%' : '0%'},${
       props.verticalAlignment === 'top' ? '-100%' : '0%'
     })`};
@@ -88,6 +85,10 @@ export function Tooltip(props: Props) {
               <span className='tooltipValue'>
                 {data.headcountRatio.toFixed(2)}%
               </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>Intensity: </span>
+              <span className='tooltipValue'>{data.intensity.toFixed(2)}%</span>
             </div>
             <div>
               <span className='tooltipLabel'>Year: </span>

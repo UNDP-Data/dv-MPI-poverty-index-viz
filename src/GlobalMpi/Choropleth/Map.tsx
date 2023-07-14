@@ -40,6 +40,9 @@ export function Map(props: Props) {
   const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
     undefined,
   );
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(
+    undefined,
+  );
   const [zoomLevel, setZoomLevel] = useState(1);
   const [radioValue, setRadioValue] = useState('mpi');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
@@ -130,6 +133,7 @@ export function Map(props: Props) {
                           value: Number(value[0].mpi),
                           year: Number(value[0].year),
                           headcountRatio: Number(value[0].headcountRatio),
+                          intensity: Number(value[0].intensity),
                           xPosition: event.clientX,
                           yPosition: event.clientY,
                         });
@@ -140,6 +144,7 @@ export function Map(props: Props) {
                           value: 0,
                           year: 0,
                           headcountRatio: 0,
+                          intensity: 0,
                           xPosition: event.clientX,
                           yPosition: event.clientY,
                         });
@@ -173,6 +178,11 @@ export function Map(props: Props) {
                               stroke='#FFF'
                               strokeWidth={1 / zoomLevel}
                               fill={color}
+                              opacity={
+                                !selectedColor || selectedColor === color
+                                  ? 1
+                                  : 0.3
+                              }
                             />
                           );
                         })
@@ -195,6 +205,11 @@ export function Map(props: Props) {
                               stroke='#FFF'
                               strokeWidth={1 / zoomLevel}
                               fill={color}
+                              opacity={
+                                !selectedColor || selectedColor === color
+                                  ? 1
+                                  : 0.3
+                              }
                             />
                           );
                         })}
@@ -221,6 +236,10 @@ export function Map(props: Props) {
                 {valueArray.map((d, i) => (
                   <g key={i}>
                     <rect
+                      onMouseOver={() =>
+                        setSelectedColor(colorScaleMPI(valueArray[i] - 0.05))
+                      }
+                      onMouseLeave={() => setSelectedColor(undefined)}
                       x={(i * 320) / valueArray.length}
                       y={1}
                       width={320 / valueArray.length}

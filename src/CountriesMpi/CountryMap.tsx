@@ -153,7 +153,6 @@ export function CountryMap(props: Props) {
               intensity: e.features[0].properties['Intensity (A, %)'],
               headcountRatio:
                 e.features[0].properties['Headcount Ratio (H, %)'],
-              year: e.features[0].properties.Year,
               xPosition: e.originalEvent.clientX,
               yPosition: e.originalEvent.clientY,
             });
