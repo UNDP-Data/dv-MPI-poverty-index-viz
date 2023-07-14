@@ -76,7 +76,7 @@ export function CountriesMpi(props: Props) {
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
         <h3 className='undp-typography'>
-          National Multidimensional Poverty Index (NMPI)
+          National Multidimensional Poverty Index (MPI)
         </h3>
       </div>
       <p className='undp-typography'>
