@@ -73,8 +73,8 @@ export interface HoverSubnatDataType {
   subregion: string;
   country: string;
   value: number;
-  headcountRatio: number;
-  intensity: number;
+  headcountRatio?: number;
+  intensity?: number;
   xPosition: number;
   yPosition: number;
 }

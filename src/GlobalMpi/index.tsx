@@ -10,28 +10,49 @@ export function GlobalMpi(props: Props) {
   const { mpiData, diffData } = props;
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
-      <div>
-        <h3 className='undp-typography'>
-          Global Multidimensional Poverty Index (MPI)
-        </h3>
-        <p className='undp-typography'>
-          The global Multidimensional Poverty Index (MPI) is an inclusive
-          measure that complements monetary poverty assessments by capturing
-          deprivations in health, education, and living standards. It identifies
-          individuals as poor if they are deprived in one-third or more of the
-          ten weighted indicators, measuring the intensity of their poverty
-          based on the percentage of deprivations. The MPI provides insights
-          into who is poor and how they experience poverty, offering a
-          comprehensive understanding of poverty dynamics. It allows for
-          comparisons across various administrative levels and reveals how
-          different groups and countries experience poverty through the
-          composition of the MPI indicators.
+      <h3 className='undp-typography'>
+        Global Multidimensional Poverty Index (MPI)
+      </h3>
+      <p className='undp-typography'>
+        The global Multidimensional Poverty Index (MPI) is an inclusive measure
+        that complements monetary poverty assessments by capturing deprivations
+        in health, education, and living standards. It identifies individuals as
+        poor if they are deprived in one-third or more of the ten weighted
+        indicators, measuring the intensity of their poverty based on the
+        percentage of deprivations. The MPI provides insights into who is poor
+        and how they experience poverty, offering a comprehensive understanding
+        of poverty dynamics. It allows for comparisons across various
+        administrative levels and reveals how different groups and countries
+        experience poverty through the composition of the MPI indicators.
+      </p>
+      {mpiData ? (
+        <div>
+          <Map data={mpiData} />
+        </div>
+      ) : null}
+      <div className='margin-top-06'>
+        <h6 className='undp-typography'>Key Definitions</h6>
+        <p className='undp-typography small-font'>
+          <strong>Headcount Ratio: </strong>The headcount ratio measures the
+          percentage of individuals in a population who are considered
+          multidimensionally poor, indicating the proportion of people
+          experiencing poverty across multiple dimensions.
         </p>
-        {mpiData ? (
-          <div>
-            <Map data={mpiData} />
-          </div>
-        ) : null}
+        <p className='undp-typography small-font'>
+          <strong>Intensity of povery: </strong>
+          The intensity of poverty is the average proportion of weighted
+          indicators in which multidimensionally poor individuals are deprived.
+          It provides insights into the extent or severity of deprivation
+          experienced by those classified as multidimensionally poor.
+        </p>
+        <p className='undp-typography small-font'>
+          <strong>Multidimensional Poverty Index (MPI): </strong>The
+          Multidimensional Poverty Index is calculated as the product of the
+          headcount ratio and the intensity of poverty. It combines both
+          measures to provide a comprehensive assessment of multidimensional
+          poverty, taking into account both the prevalence and severity of
+          poverty among individuals in a population.
+        </p>
       </div>
       <div className='margin-top-09'>
         <h3>Differences in MPI</h3>

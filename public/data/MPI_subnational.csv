@@ -1,51 +1,51 @@
-ISOcountry code,country,World region,Continent,Survey,Year,Admin,Admin name Region,admin level,"Population Share (%)",MPI,"Headcount Ratio (H, %)","Intensity (A, %)"
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kabul,1,16.00,0.071,14.7,48.0
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kapisa,1,1.60,0.119,24.7,48.0
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Parwan,1,2.40,0.217,42.4,51.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Wardak,1,2.20,0.337,67.1,50.2
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Logar,1,1.70,0.140,30.4,46.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Nangarhar,1,5.80,0.349,66.3,52.7
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Laghman,1,1.70,0.341,62.7,54.4
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Panjsher,1,0.50,0.117,25.0,46.8
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Baghlan,1,3.20,0.291,58.0,50.2
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Bamyan,1,1.60,0.309,59.3,52.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Ghazni,1,4.40,0.305,58.7,51.9
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Paktika,1,1.50,0.140,29.7,47.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Paktya,1,1.90,0.235,48.3,48.5
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Khost,1,2.20,0.252,51.6,48.8
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kunarha,1,1.60,0.302,57.0,53.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Nooristan,1,0.50,0.476,80.2,59.3
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Badakhshan,1,3.40,0.348,64.9,53.7
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Takhar,1,3.40,0.259,51.9,49.8
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kunduz,1,3.80,0.430,77.3,55.6
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Samangan,1,1.30,0.409,72.7,56.3
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Balkh,1,4.80,0.237,45.0,52.6
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Sar-e-Pul,1,2.00,0.324,61.3,52.8
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Ghor,1,2.60,0.365,70.1,52.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Daykundi,1,1.60,0.348,67.4,51.7
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Urozgan,1,1.30,0.378,71.2,53.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Zabul,1,1.20,0.416,76.9,54.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kandahar,1,4.40,0.342,66.7,51.3
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Jawzjan,1,1.90,0.207,43.0,48.1
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Faryab,1,3.90,0.388,68.3,56.2
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Helmand,1,3.30,0.376,73.9,50.8
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Badghis,1,2.40,0.504,85.5,58.9
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Herat,1,7.10,0.316,57.6,54.8
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Farah,1,2.10,0.367,66.7,55.0
-AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Nimroz,1,0.70,0.237,47.5,49.9
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Guidimagha,1,8.100,0.577,90.200,63.900
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Gorgol,1,9.000,0.460,79.700,57.700
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Hodh Chargui,1,12.200,0.451,77.800,58.000
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Hodh Gharbi,1,8.100,0.436,74.300,58.700
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Assaba,1,9.200,0.387,67.300,57.500
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Tagant,1,2.000,0.373,64.400,57.900
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Brakna,1,9.200,0.340,62.100,54.800
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Adrar,1,2.000,0.229,44.400,51.500
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Trarza,1,8.200,0.202,39.900,50.600
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Nouakchott ,1,26.200,0.149,30.700,48.700
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Inchiri,1,1.000,0.136,28.500,47.900
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Nouadhibou,1,3.000,0.126,26.400,47.500
-MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Tiris Zemmour,1,1.900,0.122,25.200,48.500
+ISOcountry code,country,World region,Continent,Survey,Year,Admin,Admin name Region,admin level,Population Share (%),MPI,"Headcount Ratio (H, %)","Intensity (A, %)"
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kabul,1,16,0.071,14.7,48
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kapisa,1,1.6,0.119,24.7,48
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Parwan,1,2.4,0.217,42.4,51.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Wardak,1,2.2,0.337,67.1,50.2
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Logar,1,1.7,0.14,30.4,46.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Nangarhar,1,5.8,0.349,66.3,52.7
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Laghman,1,1.7,0.341,62.7,54.4
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Panjsher,1,0.5,0.117,25,46.8
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Baghlan,1,3.2,0.291,58,50.2
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Bamyan,1,1.6,0.309,59.3,52.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Ghazni,1,4.4,0.305,58.7,51.9
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Paktika,1,1.5,0.14,29.7,47.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Paktya,1,1.9,0.235,48.3,48.5
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Khost,1,2.2,0.252,51.6,48.8
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kunarha,1,1.6,0.302,57,53.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Nooristan,1,0.5,0.476,80.2,59.3
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Badakhshan,1,3.4,0.348,64.9,53.7
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Takhar,1,3.4,0.259,51.9,49.8
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kunduz,1,3.8,0.43,77.3,55.6
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Samangan,1,1.3,0.409,72.7,56.3
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Balkh,1,4.8,0.237,45,52.6
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Sar-e-Pul,1,2,0.324,61.3,52.8
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Ghor,1,2.6,0.365,70.1,52.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Daykundi,1,1.6,0.348,67.4,51.7
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Urozgan,1,1.3,0.378,71.2,53.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Zabul,1,1.2,0.416,76.9,54.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Kandahar,1,4.4,0.342,66.7,51.3
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Jawzjan,1,1.9,0.207,43,48.1
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Faryab,1,3.9,0.388,68.3,56.2
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Helmand,1,3.3,0.376,73.9,50.8
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Badghis,1,2.4,0.504,85.5,58.9
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Herat,1,7.1,0.316,57.6,54.8
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Farah,1,2.1,0.367,66.7,55
+AFG,Afghanistan,South Asia,Asia,ALCS,2016-2017,province,Nimroz,1,0.7,0.237,47.5,49.9
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Guidimagha,1,8.1,0.577,90.2,63.9
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Gorgol,1,9,0.46,79.7,57.7
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Hodh Chargui,1,12.2,0.451,77.8,58
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Hodh Gharbi,1,8.1,0.436,74.3,58.7
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Assaba,1,9.2,0.387,67.3,57.5
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Tagant,1,2,0.373,64.4,57.9
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Brakna,1,9.2,0.34,62.1,54.8
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Adrar,1,2,0.229,44.4,51.5
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Trarza,1,8.2,0.202,39.9,50.6
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Nouakchott ,1,26.2,0.149,30.7,48.7
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Inchiri,1,1,0.136,28.5,47.9
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Nouadhibou,1,3,0.126,26.4,47.5
+MRT,Mauritania,Sub-Saharan Africa,Africa,EPCV,2019,region,Tiris Zemmour,1,1.9,0.122,25.2,48.5
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Abia,1,1.8,0.101,29.8,33.9
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Adamawa,1,2.4,0.283,68.7,41.2
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,"Akwa
@@ -53,332 +53,332 @@ Ibom",1,3.4,0.293,71.3,41.1
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Anambra,1,2.4,0.109,32.1,34.1
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Bauchi,1,3.7,0.298,73.9,40.4
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Bayelsa,1,1.4,0.401,88.5,45.3
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Benue,1,3.0,0.312,75.0,41.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Benue,1,3,0.312,75,41.6
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Borno,1,1.5,0.315,72.5,43.4
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,"Cross
 River",1,2.2,0.299,75.4,39.7
 NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,state,Delta,1,2.7,0.173,47.6,36.4
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ebonyi,1,2.200,0.320,78.000,41.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Edo,1,1.900,0.126,35.400,35.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ekiti,1,1.700,0.125,36.000,34.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Enugu,1,2.000,0.234,63.100,37.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Gombe,1,1.700,0.380,86.200,44.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Imo,1,2.100,0.142,40.700,35.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Jigawa,1,3.200,0.385,84.300,45.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kaduna,1,5.100,0.298,73.900,40.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kano,1,7.500,0.270,66.300,40.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Katsina,1,4.500,0.304,72.700,41.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kebbi,1,2.500,0.385,82.200,46.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kogi,1,2.200,0.250,61.300,40.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kwara,1,1.700,0.185,48.300,38.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Lagos,1,6.800,0.101,29.400,34.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Nasarawa,1,1.100,0.243,60.700,39.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Niger,1,2.500,0.278,69.100,40.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ogun,1,2.600,0.289,68.100,42.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ondo,1,2.200,0.095,27.200,34.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Osun,1,2.200,0.150,40.700,36.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Oyo,1,3.700,0.190,48.700,39.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Plateau,1,2.400,0.365,84.000,43.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Rivers,1,3.300,0.241,62.400,38.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Sokoto,1,3.000,0.409,90.500,45.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Taraba,1,1.700,0.340,79.400,42.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Yobe,1,1.800,0.370,83.500,44.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Zamfara,1,2.500,0.328,78.000,42.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,FCT Abuja,1,1.600,0.186,48.300,38.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Abia Central,2,0.800,0.089,26.400,33.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Abia North,2,0.400,0.094,28.800,32.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Abia South,2,0.500,0.125,36.000,34.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Adamawa Central,2,0.700,0.257,63.000,40.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Adamawa North,2,1.000,0.288,70.900,40.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Adamawa South,2,0.600,0.305,71.800,42.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Akwa Ibom North East,2,1.100,0.283,69.300,40.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Akwa Ibom North West,2,1.100,0.288,71.300,40.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Akwa Ibom South,2,1.200,0.308,73.200,42.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Anambra Central,2,0.700,0.090,26.000,34.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Anambra North,2,0.800,0.105,30.700,34.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Anambra South,2,0.900,0.129,38.300,33.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bauchi Central,2,1.500,0.329,78.500,42.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bauchi North,2,1.100,0.318,79.800,39.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bauchi South,2,1.000,0.233,61.100,38.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bayelsa Central,2,0.400,0.353,85.200,41.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bayelsa East,2,0.500,0.347,83.300,41.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bayelsa West,2,0.500,0.494,96.300,51.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Benue North East,2,1.000,0.241,62.900,38.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Benue North West,2,0.700,0.308,75.200,40.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Benue South,2,1.300,0.366,83.700,43.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Borno Central,2,0.900,0.300,71.600,41.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Borno North,2,0.100,0.413,88.900,46.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Borno South,2,0.400,0.318,69.400,45.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Cross River Central,2,0.900,0.290,73.600,39.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Cross River North,2,0.800,0.335,83.500,40.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Cross River South,2,0.500,0.256,65.500,39.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Delta Central,2,0.900,0.174,47.900,36.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Delta North,2,1.000,0.156,43.200,36.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Delta South,2,0.800,0.194,52.500,36.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ebonyi South,2,0.500,0.248,66.200,37.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ebonyi Central,2,0.900,0.341,83.300,40.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ebonyi North,2,0.900,0.339,79.000,42.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Edo South,2,0.700,0.094,27.600,34.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Edo Central,2,0.600,0.128,35.800,35.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Edo North,2,0.500,0.169,46.300,36.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ekiti South,2,0.800,0.128,36.700,34.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ekiti Central,2,0.500,0.122,34.700,35.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ekiti North,2,0.500,0.125,35.900,34.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Enugu North,2,1.000,0.236,63.900,37.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Enugu East,2,0.400,0.297,75.300,39.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Enugu West,2,0.600,0.195,54.700,35.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Gombe Central,2,0.700,0.396,88.800,44.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Gombe North,2,0.400,0.394,88.500,44.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Gombe South,2,0.500,0.346,80.900,42.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Imo East,2,0.800,0.132,38.700,34.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Imo North,2,0.800,0.172,48.800,35.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Imo West,2,0.500,0.113,31.200,36.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Jigawa North East,2,0.700,0.426,87.600,48.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Jigawa North West,2,1.900,0.374,83.300,44.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Jigawa South West,2,0.600,0.373,83.700,44.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kaduna Central,2,1.100,0.263,65.600,40.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kaduna North,2,2.300,0.322,79.400,40.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kaduna South,2,1.700,0.289,72.100,40.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kano South,2,2.700,0.324,77.000,42.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kano Central,2,2.800,0.192,49.800,38.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kano North,2,2.000,0.308,75.000,41.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Katsina Central,2,1.700,0.324,77.900,41.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Katsina North,2,1.500,0.334,76.100,43.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Katsina South,2,1.400,0.245,62.700,39.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kebbi Central,2,0.900,0.373,83.100,44.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kebbi North,2,0.900,0.362,80.300,45.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kebbi South,2,0.700,0.431,83.800,51.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kogi Central,2,0.600,0.179,49.500,36.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kogi East,2,1.000,0.333,77.000,43.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kogi West,2,0.600,0.173,45.500,38.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kwara Central,2,0.600,0.155,42.700,36.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kwara North,2,0.700,0.227,56.700,40.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kwara South,2,0.400,0.153,41.700,36.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Lagos West,2,3.000,0.098,29.700,33.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Lagos Central,2,1.800,0.077,22.600,33.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Lagos East,2,1.900,0.129,35.500,36.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Nassarawa South,2,0.400,0.277,68.500,40.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Nassarawa North,2,0.300,0.235,58.800,40.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Nassarawa West,2,0.300,0.202,51.800,39.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Niger East,2,1.400,0.260,64.500,40.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Niger North,2,0.700,0.313,76.400,41.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Niger South,2,0.400,0.277,72.300,38.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ogun Central,2,0.500,0.180,46.400,38.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ogun East,2,0.700,0.172,48.900,35.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ogun West,2,1.500,0.377,83.900,44.900
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ondo Central,2,0.800,0.072,20.100,35.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ondo North,2,0.600,0.079,23.500,33.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ondo South,2,0.900,0.127,36.200,35.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun Central,2,0.900,0.142,38.000,37.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun East,2,0.500,0.134,38.300,35.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun West,2,0.800,0.171,45.500,37.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Oyo Central,2,1.400,0.167,44.800,37.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Oyo North,2,1.100,0.256,60.100,42.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Oyo South,2,1.100,0.154,42.400,36.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Plateau Central,2,0.900,0.349,83.600,41.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Plateau North,2,0.500,0.353,79.100,44.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Plateau South,2,1.000,0.384,86.500,44.400
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Rivers East,2,1.600,0.186,52.000,35.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Rivers South East,2,0.800,0.299,73.500,40.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Rivers West,2,1.000,0.288,70.600,40.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun West,2,0.800,0.171,45.500,37.500
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Sokoto East,2,1.000,0.408,90.300,45.200
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Sokoto North,2,1.000,0.420,89.400,47.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Sokoto South,2,1.100,0.401,91.800,43.700
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Taraba Central,2,0.500,0.306,75.500,40.600
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Taraba North,2,0.600,0.394,83.600,47.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Taraba South,2,0.600,0.316,78.600,40.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Yobe East,2,1.100,0.345,80.800,42.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Yobe North,2,0.400,0.394,87.600,45.000
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Yobe South,2,0.300,0.425,88.100,48.300
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Zamfara Central,2,0.900,0.286,73.100,39.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Zamfara North,2,0.400,0.315,75.400,41.800
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Zamfara West,2,1.200,0.365,82.600,44.100
-NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,FCT Abuja,2,1.600,0.186,48.300,38.600
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2020,Region,Central,1,,0.108,20.500,52.800
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2021,Region,Eastern,1,,0.245,45.700,53.500
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2022,Region,Northern,1,,0.362,62.900,57.500
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2023,Region,Western,1,,0.242,45.100,53.700
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2024,Sub-region,Kampala,2,,0.002,0.400,42.900
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2025,Sub-region,Buganda South,2,,0.095,17.900,52.900
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2026,Sub-region,Buganda North,2,,0.166,31.500,52.800
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2027,Sub-region,Busoga,2,,0.244,45.100,54.100
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2028,Sub-region,Bukedi,2,,0.224,42.200,53.000
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2029,Sub-region,Elgon,2,,0.205,40.500,50.700
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2030,Sub-region,Teso,2,,0.306,55.600,55.100
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2031,Sub-region,Karamoja,2,,0.550,84.900,64.800
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2032,Sub-region,Lango,2,,0.315,57.000,55.200
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2033,Sub-region,Acholi,2,,0.352,63.600,55.400
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2034,Sub-region,West Nile,2,,0.334,59.100,56.600
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2035,Sub-region,Bunyoro,2,,0.247,45.700,54.000
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2036,Sub-region,Toro,2,,0.246,45.500,54.200
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2037,Sub-region,Ankole,2,,0.229,42.600,53.700
-UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2038,Sub-region,Kigezi,2,,0.254,48.400,52.400
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Andhra Pradesh,1,,0.053,12.310,43.230
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Arunachal Pradesh,1,,0.115,24.270,47.260
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Assam,1,,0.156,32.670,47.890
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Bihar,1,,0.265,51.910,51.020
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Chhattisgarh,1,,0.134,29.910,44.640
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Goa,1,,0.015,3.760,40.160
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Gujarat,1,,0.084,18.600,45.000
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Haryana,1,,0.055,12.280,44.400
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Himachal Pradesh,1,,0.030,7.620,39.430
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Jharkhand,1,,0.202,42.160,47.910
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Karnataka,1,,0.056,13.160,42.700
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Kerala,1,,0.003,0.710,39.020
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Madhya Pradesh,1,,0.173,36.650,47.250
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Maharashtra,1,,0.065,14.850,43.780
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Manipur,1,,0.080,17.890,44.440
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Meghalaya,1,,0.157,32.670,48.060
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Mizoram,1,,0.046,9.800,47.400
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Nagaland,1,,0.117,25.230,46.330
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Odisha,1,,0.136,29.350,46.420
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Punjab,1,,0.024,5.590,43.750
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Rajasthan,1,,0.140,29.460,47.440
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Sikkim,1,,0.016,3.820,41.200
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Tamil Nadu,1,,0.020,4.890,39.970
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Telangana,1,,0.059,13.740,43.200
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Tripura,1,,0.075,16.650,45.020
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Uttar Pradesh,1,,0.180,37.790,47.600
-IND,India,South Asia,Asia,NFHS,2015-2016,State,Uttarakhand,1,,0.079,17.720,44.370
-IND,India,South Asia,Asia,NFHS,2015-2016,State,West Bengal,1,,0.097,21.430,45.490
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,Region,Northern,1,9.600,0.219,43.700,50.200
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,Region,Central,1,45.600,0.348,63.400,54.800
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,Region,Southern,1,45.100,0.351,63.700,55.100
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Balaka,2,,0.364,66.800,54.500
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Blantyre,2,,0.323,60.700,53.100
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Chikwawa,2,,0.421,75.600,55.700
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Chiradzulu,2,,0.360,67.700,53.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Chitipa,2,,0.262,52.400,50.000
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Dedza,2,,0.401,70.200,57.100
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Dowa,2,,0.359,65.800,54.500
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Karonga,2,,0.218,43.900,49.600
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Kasungu,2,,0.384,71.900,53.400
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Likoma,2,,0.175,234.800,50.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Lilongwe,2,,0.384,69.500,55.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Machinga,2,,0.457,80.200,56.900
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mangochi,2,,0.422,74.900,56.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mchinji,2,,0.406,73.400,55.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mulange,2,,0.315,57.300,54.900
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mwanza,2,,0.403,71.200,56.600
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mzimba,2,,0.232,45.600,51.000
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Neno,2,,0.380,69.900,54.400
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Nkhata Bay,2,,0.298,57.600,51.700
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Nkhotakota,2,,0.355,64.400,55.200
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Nsanje,2,,0.425,75.900,56.000
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Ntcheu,2,,0.373,68.700,54.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Ntchisi,2,,0.380,71.900,52.800
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Phalombe,2,,0.441,79.600,55.400
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Rumphi,2,,0.241,49.000,49.200
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Salima,2,,0.428,77.400,55.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Thyolo,2,,0.382,67.500,56.600
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Zomba,2,,0.417,75.300,55.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mzuzu city,2,,0.059,12.600,46.600
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Blantyre city,2,,0.092,19.400,47.100
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Lilongwe city,2,,0.135,25.800,52.300
-MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Zomba city,2,,0.098,20.400,47.900
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Province 1,1,16.900,0.053,13.000,40.800
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Province 2,1,18.800,0.095,21.600,43.900
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Bagmati ,1,23.200,0.020,5.000,40.400
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Gandaki ,1,8.200,0.025,6.700,37.100
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Lumbini ,1,18.400,0.063,14.900,42.100
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Karnali ,1,5.600,0.151,35.600,42.400
-NPL,Nepal,South Asia,Asia,NMICS,2019,province,Sudurpashchim ,1,8.700,0.092,22.700,40.600
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Concepción,1,,0.216,52.070,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,San Pedro,1,,0.233,55.500,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Cordillera,1,,0.125,33.030,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Guairá,1,,0.175,44.410,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caaguazú,1,,0.197,47.020,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caazapá,1,,0.283,64.620,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Itapúa,1,,0.152,36.600,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Misiones,1,,0.098,24.940,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Paraguarí,1,,0.175,44.590,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Alto Paraná,1,,0.112,28.410,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Central,1,,0.060,15.500,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Ñeembucú,1,,0.133,34.480,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Amambay,1,,0.082,22.290,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Canindeyú,1,,0.185,45.170,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Presidente Hayes,1,,0.142,32.420,
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ebonyi,1,2.2,0.32,78,41.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Edo,1,1.9,0.126,35.4,35.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ekiti,1,1.7,0.125,36,34.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Enugu,1,2,0.234,63.1,37.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Gombe,1,1.7,0.38,86.2,44
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Imo,1,2.1,0.142,40.7,35
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Jigawa,1,3.2,0.385,84.3,45.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kaduna,1,5.1,0.298,73.9,40.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kano,1,7.5,0.27,66.3,40.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Katsina,1,4.5,0.304,72.7,41.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kebbi,1,2.5,0.385,82.2,46.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kogi,1,2.2,0.25,61.3,40.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Kwara,1,1.7,0.185,48.3,38.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Lagos,1,6.8,0.101,29.4,34.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Nasarawa,1,1.1,0.243,60.7,39.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Niger,1,2.5,0.278,69.1,40.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ogun,1,2.6,0.289,68.1,42.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Ondo,1,2.2,0.095,27.2,34.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Osun,1,2.2,0.15,40.7,36.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Oyo,1,3.7,0.19,48.7,39
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Plateau,1,2.4,0.365,84,43.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Rivers,1,3.3,0.241,62.4,38.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Sokoto,1,3,0.409,90.5,45.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Taraba,1,1.7,0.34,79.4,42.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Yobe,1,1.8,0.37,83.5,44.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,Zamfara,1,2.5,0.328,78,42.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,State,FCT Abuja,1,1.6,0.186,48.3,38.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Abia Central,2,0.8,0.089,26.4,33.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Abia North,2,0.4,0.094,28.8,32.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Abia South,2,0.5,0.125,36,34.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Adamawa Central,2,0.7,0.257,63,40.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Adamawa North,2,1,0.288,70.9,40.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Adamawa South,2,0.6,0.305,71.8,42.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Akwa Ibom North East,2,1.1,0.283,69.3,40.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Akwa Ibom North West,2,1.1,0.288,71.3,40.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Akwa Ibom South,2,1.2,0.308,73.2,42.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Anambra Central,2,0.7,0.09,26,34.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Anambra North,2,0.8,0.105,30.7,34.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Anambra South,2,0.9,0.129,38.3,33.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bauchi Central,2,1.5,0.329,78.5,42
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bauchi North,2,1.1,0.318,79.8,39.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bauchi South,2,1,0.233,61.1,38.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bayelsa Central,2,0.4,0.353,85.2,41.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bayelsa East,2,0.5,0.347,83.3,41.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Bayelsa West,2,0.5,0.494,96.3,51.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Benue North East,2,1,0.241,62.9,38.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Benue North West,2,0.7,0.308,75.2,40.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Benue South,2,1.3,0.366,83.7,43.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Borno Central,2,0.9,0.3,71.6,41.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Borno North,2,0.1,0.413,88.9,46.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Borno South,2,0.4,0.318,69.4,45.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Cross River Central,2,0.9,0.29,73.6,39.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Cross River North,2,0.8,0.335,83.5,40.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Cross River South,2,0.5,0.256,65.5,39.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Delta Central,2,0.9,0.174,47.9,36.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Delta North,2,1,0.156,43.2,36.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Delta South,2,0.8,0.194,52.5,36.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ebonyi South,2,0.5,0.248,66.2,37.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ebonyi Central,2,0.9,0.341,83.3,40.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ebonyi North,2,0.9,0.339,79,42.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Edo South,2,0.7,0.094,27.6,34.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Edo Central,2,0.6,0.128,35.8,35.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Edo North,2,0.5,0.169,46.3,36.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ekiti South,2,0.8,0.128,36.7,34.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ekiti Central,2,0.5,0.122,34.7,35.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ekiti North,2,0.5,0.125,35.9,34.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Enugu North,2,1,0.236,63.9,37
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Enugu East,2,0.4,0.297,75.3,39.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Enugu West,2,0.6,0.195,54.7,35.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Gombe Central,2,0.7,0.396,88.8,44.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Gombe North,2,0.4,0.394,88.5,44.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Gombe South,2,0.5,0.346,80.9,42.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Imo East,2,0.8,0.132,38.7,34.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Imo North,2,0.8,0.172,48.8,35.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Imo West,2,0.5,0.113,31.2,36.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Jigawa North East,2,0.7,0.426,87.6,48.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Jigawa North West,2,1.9,0.374,83.3,44.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Jigawa South West,2,0.6,0.373,83.7,44.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kaduna Central,2,1.1,0.263,65.6,40.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kaduna North,2,2.3,0.322,79.4,40.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kaduna South,2,1.7,0.289,72.1,40.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kano South,2,2.7,0.324,77,42.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kano Central,2,2.8,0.192,49.8,38.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kano North,2,2,0.308,75,41.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Katsina Central,2,1.7,0.324,77.9,41.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Katsina North,2,1.5,0.334,76.1,43.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Katsina South,2,1.4,0.245,62.7,39
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kebbi Central,2,0.9,0.373,83.1,44.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kebbi North,2,0.9,0.362,80.3,45.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kebbi South,2,0.7,0.431,83.8,51.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kogi Central,2,0.6,0.179,49.5,36.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kogi East,2,1,0.333,77,43.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kogi West,2,0.6,0.173,45.5,38.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kwara Central,2,0.6,0.155,42.7,36.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kwara North,2,0.7,0.227,56.7,40.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Kwara South,2,0.4,0.153,41.7,36.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Lagos West,2,3,0.098,29.7,33
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Lagos Central,2,1.8,0.077,22.6,33.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Lagos East,2,1.9,0.129,35.5,36.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Nassarawa South,2,0.4,0.277,68.5,40.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Nassarawa North,2,0.3,0.235,58.8,40
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Nassarawa West,2,0.3,0.202,51.8,39
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Niger East,2,1.4,0.26,64.5,40.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Niger North,2,0.7,0.313,76.4,41
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Niger South,2,0.4,0.277,72.3,38.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ogun Central,2,0.5,0.18,46.4,38.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ogun East,2,0.7,0.172,48.9,35.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ogun West,2,1.5,0.377,83.9,44.9
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ondo Central,2,0.8,0.072,20.1,35.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ondo North,2,0.6,0.079,23.5,33.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Ondo South,2,0.9,0.127,36.2,35.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun Central,2,0.9,0.142,38,37.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun East,2,0.5,0.134,38.3,35
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun West,2,0.8,0.171,45.5,37.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Oyo Central,2,1.4,0.167,44.8,37.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Oyo North,2,1.1,0.256,60.1,42.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Oyo South,2,1.1,0.154,42.4,36.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Plateau Central,2,0.9,0.349,83.6,41.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Plateau North,2,0.5,0.353,79.1,44.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Plateau South,2,1,0.384,86.5,44.4
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Rivers East,2,1.6,0.186,52,35.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Rivers South East,2,0.8,0.299,73.5,40.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Rivers West,2,1,0.288,70.6,40.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Osun West,2,0.8,0.171,45.5,37.5
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Sokoto East,2,1,0.408,90.3,45.2
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Sokoto North,2,1,0.42,89.4,47
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Sokoto South,2,1.1,0.401,91.8,43.7
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Taraba Central,2,0.5,0.306,75.5,40.6
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Taraba North,2,0.6,0.394,83.6,47.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Taraba South,2,0.6,0.316,78.6,40.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Yobe East,2,1.1,0.345,80.8,42.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Yobe North,2,0.4,0.394,87.6,45
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Yobe South,2,0.3,0.425,88.1,48.3
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Zamfara Central,2,0.9,0.286,73.1,39.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Zamfara North,2,0.4,0.315,75.4,41.8
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,Zamfara West,2,1.2,0.365,82.6,44.1
+NGA,Nigeria,Sub-Saharan Africa,Africa,MPIS,2022,Senatorial district,FCT Abuja,2,1.6,0.186,48.3,38.6
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2020,Region,Central,1,,0.108,20.5,52.8
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2021,Region,Eastern,1,,0.245,45.7,53.5
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2022,Region,Northern,1,,0.362,62.9,57.5
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2023,Region,Western,1,,0.242,45.1,53.7
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2024,Sub-region,Kampala,2,,0.002,0.4,42.9
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2025,Sub-region,Buganda South,2,,0.095,17.9,52.9
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2026,Sub-region,Buganda North,2,,0.166,31.5,52.8
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2027,Sub-region,Busoga,2,,0.244,45.1,54.1
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2028,Sub-region,Bukedi,2,,0.224,42.2,53
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2029,Sub-region,Elgon,2,,0.205,40.5,50.7
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2030,Sub-region,Teso,2,,0.306,55.6,55.1
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2031,Sub-region,Karamoja,2,,0.55,84.9,64.8
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2032,Sub-region,Lango,2,,0.315,57,55.2
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2033,Sub-region,Acholi,2,,0.352,63.6,55.4
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2034,Sub-region,West Nile,2,,0.334,59.1,56.6
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2035,Sub-region,Bunyoro,2,,0.247,45.7,54
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2036,Sub-region,Toro,2,,0.246,45.5,54.2
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2037,Sub-region,Ankole,2,,0.229,42.6,53.7
+UGA,Uganda,Sub-Saharan Africa,Africa,UNHS ,2019-2038,Sub-region,Kigezi,2,,0.254,48.4,52.4
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Andhra Pradesh,1,,0.053,12.31,43.23
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Arunachal Pradesh,1,,0.115,24.27,47.26
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Assam,1,,0.156,32.67,47.89
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Bihar,1,,0.265,51.91,51.02
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Chhattisgarh,1,,0.134,29.91,44.64
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Goa,1,,0.015,3.76,40.16
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Gujarat,1,,0.084,18.6,45
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Haryana,1,,0.055,12.28,44.4
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Himachal Pradesh,1,,0.03,7.62,39.43
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Jharkhand,1,,0.202,42.16,47.91
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Karnataka,1,,0.056,13.16,42.7
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Kerala,1,,0.003,0.71,39.02
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Madhya Pradesh,1,,0.173,36.65,47.25
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Maharashtra,1,,0.065,14.85,43.78
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Manipur,1,,0.08,17.89,44.44
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Meghalaya,1,,0.157,32.67,48.06
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Mizoram,1,,0.046,9.8,47.4
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Nagaland,1,,0.117,25.23,46.33
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Odisha,1,,0.136,29.35,46.42
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Punjab,1,,0.024,5.59,43.75
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Rajasthan,1,,0.14,29.46,47.44
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Sikkim,1,,0.016,3.82,41.2
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Tamil Nadu,1,,0.02,4.89,39.97
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Telangana,1,,0.059,13.74,43.2
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Tripura,1,,0.075,16.65,45.02
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Uttar Pradesh,1,,0.18,37.79,47.6
+IND,India,South Asia,Asia,NFHS,2015-2016,State,Uttarakhand,1,,0.079,17.72,44.37
+IND,India,South Asia,Asia,NFHS,2015-2016,State,West Bengal,1,,0.097,21.43,45.49
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,Region,Northern,1,9.6,0.219,43.7,50.2
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,Region,Central,1,45.6,0.348,63.4,54.8
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,Region,Southern,1,45.1,0.351,63.7,55.1
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Balaka,2,,0.364,66.8,54.5
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Blantyre,2,,0.323,60.7,53.1
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Chikwawa,2,,0.421,75.6,55.7
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Chiradzulu,2,,0.36,67.7,53.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Chitipa,2,,0.262,52.4,50
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Dedza,2,,0.401,70.2,57.1
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Dowa,2,,0.359,65.8,54.5
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Karonga,2,,0.218,43.9,49.6
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Kasungu,2,,0.384,71.9,53.4
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Likoma,2,,0.175,234.8,50.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Lilongwe,2,,0.384,69.5,55.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Machinga,2,,0.457,80.2,56.9
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mangochi,2,,0.422,74.9,56.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mchinji,2,,0.406,73.4,55.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mulange,2,,0.315,57.3,54.9
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mwanza,2,,0.403,71.2,56.6
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mzimba,2,,0.232,45.6,51
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Neno,2,,0.38,69.9,54.4
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Nkhata Bay,2,,0.298,57.6,51.7
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Nkhotakota,2,,0.355,64.4,55.2
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Nsanje,2,,0.425,75.9,56
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Ntcheu,2,,0.373,68.7,54.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Ntchisi,2,,0.38,71.9,52.8
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Phalombe,2,,0.441,79.6,55.4
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Rumphi,2,,0.241,49,49.2
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Salima,2,,0.428,77.4,55.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Thyolo,2,,0.382,67.5,56.6
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Zomba,2,,0.417,75.3,55.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Mzuzu city,2,,0.059,12.6,46.6
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Blantyre city,2,,0.092,19.4,47.1
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Lilongwe city,2,,0.135,25.8,52.3
+MWI,Malawi,Sub-Saharan Africa,Africa,IHS4,2016-2017,District,Zomba city,2,,0.098,20.4,47.9
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Province 1,1,16.9,0.053,13,40.8
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Province 2,1,18.8,0.095,21.6,43.9
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Bagmati ,1,23.2,0.02,5,40.4
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Gandaki ,1,8.2,0.025,6.7,37.1
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Lumbini ,1,18.4,0.063,14.9,42.1
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Karnali ,1,5.6,0.151,35.6,42.4
+NPL,Nepal,South Asia,Asia,NMICS,2019,province,Sudurpashchim ,1,8.7,0.092,22.7,40.6
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Concepción,1,,0.216,52.07,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,San Pedro,1,,0.233,55.5,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Cordillera,1,,0.125,33.03,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Guairá,1,,0.175,44.41,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caaguazú,1,,0.197,47.02,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caazapá,1,,0.283,64.62,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Itapúa,1,,0.152,36.6,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Misiones,1,,0.098,24.94,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Paraguarí,1,,0.175,44.59,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Alto Paraná,1,,0.112,28.41,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Central,1,,0.06,15.5,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Ñeembucú,1,,0.133,34.48,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Amambay,1,,0.082,22.29,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Canindeyú,1,,0.185,45.17,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Presidente Hayes,1,,0.142,32.42,
 PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Alto Paraguay,1,,,,
 PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Boquerón,1,,,,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Total pais,1,,0.124,30.550,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Asunción,1,,0.036,9.530,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Total pais,1,,0.124,30.55,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Asunción,1,,0.036,9.53,
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Karas,1,3.8,0.047,19.6,39.4
-NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Erongo,1,7.7,0.044,16.6,38.0
+NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Erongo,1,7.7,0.044,16.6,38
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Hardap,1,3.8,0.071,26.9,40.4
-NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Kavango East,1,5.8,0.291,70.0,47.4
+NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Kavango East,1,5.8,0.291,70,47.4
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,"Kavango
-West",1,4.0,0.348,79.6,48.5
+West",1,4,0.348,79.6,48.5
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Khomas,1,17.6,0.076,25.5,39.5
-NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Kunene,1,4.0,0.304,64.1,59.2
+NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Kunene,1,4,0.304,64.1,59.2
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Ohangwena,1,11.4,0.212,56.6,42.7
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Omaheke,1,3.3,0.171,51.4,43.8
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Omusati,1,11.2,0.177,50.7,41.2
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Oshana,1,8.1,0.102,33.1,37.8
-NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Oshikoto,1,8.3,0.181,50.0,42.8
+NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Oshikoto,1,8.3,0.181,50,42.8
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Otjozondjupa,1,6.8,0.149,40.5,50.9
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Zambezi,1,4.3,0.224,60.7,42.9
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Cunene,1,3.80,0.41,77.60,52.20
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Bié,1,5.60,0.40,78.30,51.10
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Lunda Norte,1,3.30,0.39,77.40,50.90
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,cuanza sul,1,7.30,0.39,61.20,47.00
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Huila,1,9.70,0.39,74.00,53.00
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,moxico,1,2.90,0.38,76.20,49.40
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,When Cubango,1,2.10,0.38,74.80,50.10
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Uíge,1,5.70,0.37,74.20,49.40
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Huambo,1,7.90,0.35,71.80,48.80
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Lunda Sul,1,2.10,0.35,69.60,49.90
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Malanje,1,3.80,0.33,67.00,49.10
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Cuanza Norte,1,1.70,0.29,73.50,53.30
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Bengo,1,1.40,0.29,62.50,45.90
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Benguela,1,8.60,0.28,55.20,50.00
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Namib,1,1.90,0.26,52.10,50.60
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Zaire,1,2.30,0.22,51.80,42.60
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,cabin,1,3.80,0.15,34.10,44.80
-AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Luanda,1,27.10,0.09,23.70,39.60
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Western,1,,0.235,47.600,49.400
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Central,1,,0.239,47.600,50.100
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Greater Accra,1,,0.102,22.500,45.500
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Volta,1,,0.306,58.200,52.700
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Eastern,1,,0.217,44.000,49.300
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Ashanti,1,,0.147,31.100,47.500
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Ahafo,1,,0.255,49.400,51.600
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Northern,1,,0.491,80.800,60.700
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Upper East,1,,0.359,68.000,52.800
-GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Upper West,1,,0.348,65.500,53.100
-PSE,Palestine,Western Asia,Asia,PECS ,2016-2017,region,West Bank,1,,0.043,10.600,40.200
-PSE,Palestine,Western Asia,Asia,PECS ,2016-2017,region,Gaza Strip,1,,0.194,44.700,44.240
-MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,Male,1,39.000,0.047,9.600,48.700
-MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,North,1,13.800,0.231,44.000,52.400
-MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,North Central ,1,13.300,0.185,36.500,50.700
-MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,Central ,1,6.300,0.239,46.700,51.200
-MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South Central,1,12.400,0.198,38.500,51.400
-MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South,1,15.200,0.200,39.000,51.100
-SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Mahe,1,88.000,0.041,12.000,33.390
-SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Inner islands,1,12.000,0.022,7.410,30.300
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Bangkok,,9.000,0.057,17.3%,33.0%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nonthaburi,1,27.000,0.060,17.6%,34.4%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phra Nakhon Si Ayutthaya,1,27.000,0.060,17.6%,34.4%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Saraburi,1,27.000,0.060,17.6%,34.4%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Chiang Mai,1,16.000,0.084,23.2%,36.1%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Chiang Rai,1,16.000,0.084,23.2%,36.1%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Lampang,1,16.000,0.084,23.2%,36.1%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Lamphun,1,16.000,0.084,23.2%,36.1%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nakhon Ratchasima,1,32.000,0.088,25.6%,34.5%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region, Ubon Ratchathani,1,32.000,0.088,25.6%,34.5%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Khon Kaen,1,32.000,0.088,25.6%,34.5%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Udon Thani,1,32.000,0.088,25.6%,34.5%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nakhon Si Thammarat,1,16.000,0.072,20.6%,35.1%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Songkhla,1,16.000,0.072,20.6%,35.1%
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phuket,,16.000,0.072,20.6%,35.1%
-SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Eastern,1,23.2,0.385,67.6,57.0
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Cunene,1,3.8,0.41,77.6,52.2
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Bié,1,5.6,0.4,78.3,51.1
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Lunda Norte,1,3.3,0.39,77.4,50.9
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,cuanza sul,1,7.3,0.39,61.2,47
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Huila,1,9.7,0.39,74,53
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,moxico,1,2.9,0.38,76.2,49.4
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,When Cubango,1,2.1,0.38,74.8,50.1
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Uíge,1,5.7,0.37,74.2,49.4
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Huambo,1,7.9,0.35,71.8,48.8
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Lunda Sul,1,2.1,0.35,69.6,49.9
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Malanje,1,3.8,0.33,67,49.1
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Cuanza Norte,1,1.7,0.29,73.5,53.3
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Bengo,1,1.4,0.29,62.5,45.9
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Benguela,1,8.6,0.28,55.2,50
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Namib,1,1.9,0.26,52.1,50.6
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Zaire,1,2.3,0.22,51.8,42.6
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,cabin,1,3.8,0.15,34.1,44.8
+AGO,Angola,Sub-Saharan Africa,Africa,Multiple Health Indicators Survey (IIMS),2015-2016,province,Luanda,1,27.1,0.09,23.7,39.6
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Western,1,,0.235,47.6,49.4
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Central,1,,0.239,47.6,50.1
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Greater Accra,1,,0.102,22.5,45.5
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Volta,1,,0.306,58.2,52.7
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Eastern,1,,0.217,44,49.3
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Ashanti,1,,0.147,31.1,47.5
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Ahafo,1,,0.255,49.4,51.6
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Northern,1,,0.491,80.8,60.7
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Upper East,1,,0.359,68,52.8
+GHA,Ghana,Sub-Saharan Africa,Africa,Ghana Living Standards Survey ,2016-2017,region,Upper West,1,,0.348,65.5,53.1
+PSE,Palestine,Western Asia,Asia,PECS ,2016-2017,region,West Bank,1,,0.043,10.6,40.2
+PSE,Palestine,Western Asia,Asia,PECS ,2016-2017,region,Gaza Strip,1,,0.194,44.7,44.24
+MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,Male,1,39,0.047,9.6,48.7
+MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,North,1,13.8,0.231,44,52.4
+MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,North Central ,1,13.3,0.185,36.5,50.7
+MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,Central ,1,6.3,0.239,46.7,51.2
+MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South Central,1,12.4,0.198,38.5,51.4
+MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South,1,15.2,0.2,39,51.1
+SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Mahe,1,88,0.041,12,33.39
+SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Inner islands,1,12,0.022,7.41,30.3
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Bangkok,,9,0.057,17.3,33.0
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nonthaburi,1,27,0.06,17.6,34.4
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phra Nakhon Si Ayutthaya,1,27,0.06,17.6,34.4
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Saraburi,1,27,0.06,17.6,34.4
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Chiang Mai,1,16,0.084,23.2,36.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Chiang Rai,1,16,0.084,23.2,36.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Lampang,1,16,0.084,23.2,36.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Lamphun,1,16,0.084,23.2,36.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nakhon Ratchasima,1,32,0.088,25.6,34.5
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region, Ubon Ratchathani,1,32,0.088,25.6,34.5
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Khon Kaen,1,32,0.088,25.6,34.5
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Udon Thani,1,32,0.088,25.6,34.5
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nakhon Si Thammarat,1,16,0.072,20.6,35.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Songkhla,1,16,0.072,20.6,35.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phuket,,16,0.072,20.6,35.1
+SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Eastern,1,23.2,0.385,67.6,57
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Northern,1,33.7,0.452,75.8,59.6
-SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Southern,1,20.0,0.456,76.0,60.0
+SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Southern,1,20,0.456,76,60
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Western,1,23.1,0.182,36.2,50.2
-SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Western Urban,2,15.9,0.140,28.5,48.9
-SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Western Rural,2,7.2,0.275,53.0,51.8
+SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Western Urban,2,15.9,0.14,28.5,48.9
+SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Western Rural,2,7.2,0.275,53,51.8
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Bo,2,8.8,0.367,64.9,56.6
-SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Kenema,2,10.0,0.354,62.4,56.8
+SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Kenema,2,10,0.354,62.4,56.8
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Kailahun,2,6.4,0.441,77.6,56.8
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Kono,2,6.9,0.378,65.9,57.4
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Kambia,2,4.7,0.447,77.3,57.9
@@ -389,194 +389,194 @@ SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Moyamba,2,4.7,0.517,83.7,
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Tonkolili,2,6.7,0.528,85.4,61.9
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Bonthe,2,2.6,0.511,82.5,61.9
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Pujehun,2,3.9,0.544,87.2,62.4
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Province 1,1,17.600,0.085,19.7,43.2
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Province 2,1,18.400,0.217,47.9,45.3
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Bagmati ,1,22.000,0.051,12.2,41.9
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Gandaki ,1,11.600,0.061,14.2,42.9
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Lumbini ,1,16.500,0.133,29.9,44.3
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Karnali ,1,5.400,0.230,51.2,44.9
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Sudurpashchim ,1,8.500,0.146,33.6,43.5
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Bumthang,1,2.30,0.017,3.9,44.3
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Province 1,1,17.6,0.085,19.7,43.2
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Province 2,1,18.4,0.217,47.9,45.3
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Bagmati ,1,22,0.051,12.2,41.9
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Gandaki ,1,11.6,0.061,14.2,42.9
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Lumbini ,1,16.5,0.133,29.9,44.3
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Karnali ,1,5.4,0.23,51.2,44.9
+NPL,Nepal,South Asia,Asia,NMICS,2014,province,Sudurpashchim ,1,8.5,0.146,33.6,43.5
+BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Bumthang,1,2.3,0.017,3.9,44.3
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Chhukha,1,9.14,0.031,7.9,39.6
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Dagana,1,3.38,0.036,8.8,41.6
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Gasa,1,0.52,0.125,29.0,43.0
+BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Gasa,1,0.52,0.125,29,43
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Haa,1,1.59,0.045,11.4,39.1
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Lhuentse,1,2.24,0.017,4.5,37.0
+BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Lhuentse,1,2.24,0.017,4.5,37
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Monggar,1,6.06,0.018,4.8,38.2
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Paro,1,5.24,0.008,2.1,36.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Pema Gatshel,1,3.99,0.007,1.7,37.9
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Punakha,1,3.86,0.020,5.2,39.1
+BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Punakha,1,3.86,0.02,5.2,39.1
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Samdrup Jong-khar,1,5.22,0.022,5.7,38.6
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Samtse,1,9.11,0.035,8.7,40.6
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Sarpang,1,5.95,0.027,7.2,37.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Thimphu,1,18.12,0.009,2.6,36.5
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trashigang,1,6.80,0.029,7.2,39.8
+BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trashigang,1,6.8,0.029,7.2,39.8
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trashi Yangtse,1,2.22,0.032,8.1,38.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trongsa,1,2.56,0.027,6.8,39.4
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Tsirang,1,2.95,0.034,8.2,41.4
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Wangduephodrang,1,5.98,0.026,6.7,39.6
 BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Zhemgang,1,2.77,0.017,4.3,38.8
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Punjab,1,,0.152,31.400,48.400
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Sindh,1,,0.231,43.100,53.500
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Khyber Pakhtunkhwa,1,,0.250,49.200,50.700
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Balochistan,1,,0.394,71.200,55.300
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Gilgit Baltistan,1,,0.209,43.200,48.300
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Azad Kashmir,1,,0.115,24.900,46.300
-PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,FATA,1,,0.337,73.700,45.800
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kaimbu,1,11.200,0.074,18.300,40.300
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kirinyaga,1,11.200,0.074,18.300,40.300
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Murang'a,1,11.200,0.074,18.300,40.300
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nyandarua,1,11.200,0.074,18.300,40.300
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nyeri,1,11.200,0.074,18.300,40.300
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kilifi,1,9.800,0.212,44.700,47.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kwale,1,9.800,0.212,44.700,47.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Lamu,1,9.800,0.212,44.700,47.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Mombasa,1,9.800,0.212,44.700,47.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Taita-Taveta,1,9.800,0.212,44.700,47.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Tana River,1,9.800,0.212,44.700,47.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Embu,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Isiolo ,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region, Kitui ,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Machakos,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Makueni,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Marsabit,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Meru,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Tharaka Nithi,1,14.900,0.178,40.100,44.400
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nairobi,1,8.700,0.028,7.100,39.700
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Garissa,1,2.900,0.484,84.600,57.200
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Mandera,1,2.900,0.484,84.600,57.200
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Wajir ,1,2.900,0.484,84.600,57.200
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region, Homa Bay,1,14.100,0.165,38.800,42.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kisii ,1,14.100,0.165,38.800,42.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kisumu ,1,14.100,0.165,38.800,42.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Migori,1,14.100,0.165,38.800,42.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nyamira,1,14.100,0.165,38.800,42.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Siaya,1,14.100,0.165,38.800,42.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Baringo,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Bomet,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Elgeyo-Marakwet ,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kajiado,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kericho,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Laikipia,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nakuru,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nandi,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Narok,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Samburu,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Trans-Nzoia,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Turkana ,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Uasin Gishu ,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,West Pokot ,1,26.600,0.206,44.200,46.600
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Bungoma ,1,11.800,0.177,40.600,43.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Busia,1,11.800,0.177,40.600,43.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kakamega,1,11.800,0.177,40.600,43.500
-KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Vihiga ,1,11.800,0.177,40.600,43.500
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Butha-Buthe,1,8.700,0.154,35.500,43.500
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Mafeteng,1,64.000,0.041,9.800,41.500
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Maseru,1,64.000,0.041,9.800,41.500
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Berea,1,64.000,0.041,9.800,41.500
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Leribe,1,64.000,0.041,9.800,41.500
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Thaba-Tseka,1,19.100,0.185,41.600,44.400
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Mokhotlong,1,19.100,0.185,41.600,44.400
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Mohale's Hoek,1,8.200,0.116,27.800,41.800
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Qacha's Nek,1,8.200,0.116,27.800,41.800
-LSO,Lesotho,South Africa,Africa,MICS,2018,region,Quthing,1,8.200,0.116,27.800,41.800
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Bomi,1,3.200,0.304,65.400,46.500
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Bong,1,10.000,0.371,71.100,52.200
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Gbarpolu,1,1.600,0.396,76.100,52.000
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Bassa,1,5.700,0.391,72.000,54.300
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Cape Mount,1,3.300,0.361,73.300,49.200
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Gedeh,1,2.100,0.297,62.000,47.900
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Kru,1,1.800,0.336,66.900,50.200
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Lofa,1,7.900,0.318,66.300,48.000
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Margibi,1,5.900,0.255,50.800,50.100
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Maryland,1,2.900,0.282,57.000,49.500
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Montserrado,1,34.000,0.122,26.400,46.300
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Nimba,1,16.000,0.326,65.800,49.600
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,River Cess,1,1.600,0.415,76.000,54.600
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,River Gee,1,1.200,0.280,59.900,46.800
-LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Sinoe,1,2.600,0.267,54.400,49.000
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Ejdabia,2,2.400,0.013,3.500,37.000
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Benghazi,2,10.000,0.003,0.900,35.700
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Derna,2,3.200,0.009,2.600,35.600
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Al Jabal Al Akhdar,2,3.900,0.015,4.000,37.800
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Al Jabal Al Gharbi,2,6.100,0.006,1.500,37.700
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Almarj,2,3.400,0.007,1.700,39.500
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,El-Merqab,2,5.200,0.008,2.300,36.400
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Alkufra,2,1.200,0.004,1.100,35.300
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,El-Zawya,2,5.900,0.002,0.600,34.100
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Aljfara,2,2.600,0.003,0.700,37.900
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Murzuq,2,1.600,0.004,0.900,40.400
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Misrata,2,8.100,0.004,1.300,34.600
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Nalut,2,2.000,0.003,0.900,34.900
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Sebha,2,3.500,0.007,1.900,35.700
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Sirt,2,2.900,0.006,1.500,38.300
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Tarhuna,2,4.400,0.003,1.000,35.200
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Tripoli,2,19.200,0.014,3.700,38.000
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Tubruk,2,2.900,0.009,2.600,35.300
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Wadi Ashshati,2,1.800,0.015,3.900,39.300
-LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Zwara,2,5.900,0.003,0.800,39.000
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Alaotra Mangoro,1,5.000,0.341,64.900,52.600
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Amoron’I Mania,1,3.300,0.423,77.100,54.900
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Analamanga,1,13.600,0.180,36.900,48.600
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Analanjirofo,1,4.100,0.278,57.000,48.700
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Androy,1,4.200,0.560,92.900,60.200
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Anosy,1,3.400,0.519,84.400,61.400
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Atsimo Andrefana,1,7.400,0.552,87.900,62.800
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Atsimo Atsinanana,1,4.400,0.536,91.200,58.800
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Atsinanana,1,5.600,0.349,66.500,52.400
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Betsiboka,1,1.500,0.435,76.900,56.600
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Boeny,1,3.000,0.401,68.800,58.300
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Bongolava,1,2.900,0.435,78.900,55.100
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Diana,1,3.500,0.256,52.100,49.100
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Haute Matsiatra,1,5.600,0.409,74.700,54.700
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Ihorombe,1,1.400,0.480,81.800,58.700
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Itasy,1,3.600,0.376,71.300,52.700
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Melaky,1,1.100,0.487,84.900,57.400
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Menabe,1,3.500,0.472,79.700,59.200
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Sava,1,3.400,0.259,55.400,46.800
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Sofia,1,5.800,0.316,62.100,50.900
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Vakinankaratra,1,8.100,0.383,70.000,54.600
-MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Vatovavy Fitovinany,1,5.600,0.512,85.800,59.700
-ML,Mali,West Africa,Africa,DHS,2018,region,Bamako,1,14.900,0.110,25.500,43.300
-ML,Mali,West Africa,Africa,DHS,2018,region,Gao,1,2.800,0.473,83.700,56.400
-ML,Mali,West Africa,Africa,DHS,2018,region,Kayes,1,14.400,0.421,75.100,56.000
-ML,Mali,West Africa,Africa,DHS,2018,region,Kidal,1,0.100,0.476,83.800,56.800
-ML,Mali,West Africa,Africa,DHS,2018,region,Koulikoro,1,19.200,0.353,64.300,54.800
-ML,Mali,West Africa,Africa,DHS,2018,region,Mopti,1,11.800,0.496,86.400,57.400
-ML,Mali,West Africa,Africa,DHS,2018,region,Sikasso,1,16.800,0.416,77.800,53.500
-ML,Mali,West Africa,Africa,DHS,2018,region,Ségou,1,16.100,0.424,76.200,55.600
-ML,Mali,West Africa,Africa,DHS,2018,region,Timbuktu,1,3.900,0.535,87.500,61.200
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Béni Mellal-Khénifra,1,6.800,0.070,14.200,49.400
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Drâa-Tafilalet,1,4.400,0.040,9.100,44.400
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Ed Dakhla-Oued ed Dahab,1,0.400,0.016,4.300,38.500
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Fès-Meknès,1,12.000,0.023,5.800,40.600
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Guelmim-Oued Noun,1,1.200,0.017,4.800,35.100
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Laâyoune-Sakia El Hamra,1,1.200,0.010,2.700,37.700
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Marrakech-Safi,1,14.000,0.039,9.700,40.000
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Marrakech-Tensift-El Haouz,1,20.800,0.014,3.500,39.800
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Oriental,1,7.300,0.042,9.200,45.800
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Rabat-Salé-Kénitra,1,13.000,0.014,3.700,36.900
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Souss-Massa,1,7.400,0.030,7.400,40.500
-MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Tanger-Tetouan-Al Hoceima,1,11.600,0.014,3.600,38.200
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Cabo Delgado,1,8.000,0.540,88.800,60.800
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Gaza,1,5.500,0.355,66.500,53.400
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Inhambane,1,5.900,0.366,70.500,52.000
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Manica,1,6.600,0.335,65.200,51.400
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Maputo,1,6.800,0.147,31.400,46.900
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Maputo City,1,5.100,0.043,10.300,41.900
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Nampula,1,15.500,0.456,80.100,56.900
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Niassa,1,5.900,0.481,83.100,57.900
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Sofala,1,9.300,0.406,72.800,55.800
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Tete,1,12.500,0.482,82.300,58.600
-MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Zambezia,1,18.900,0.536,89.300,60.000
-NER,Niger ,West Africa,Africa,DHS,2012,region,Agadez,1,1.900,0.413,71.200,58.000
-NER,Niger ,West Africa,Africa,DHS,2012,region,Diffa,1,3.000,0.577,92.600,62.300
-NER,Niger ,West Africa,Africa,DHS,2012,region,Dosso,1,12.600,0.625,95.200,65.600
-NER,Niger ,West Africa,Africa,DHS,2012,region,Maradi,1,23.300,0.651,95.300,68.400
-NER,Niger ,West Africa,Africa,DHS,2012,region,Niamey,1,6.400,0.231,46.200,50.000
-NER,Niger ,West Africa,Africa,DHS,2012,region,Tahoua,1,22.100,0.632,94.600,66.800
-NER,Niger ,West Africa,Africa,DHS,2012,region,Tillaberi,1,12.600,0.613,93.100,65.800
-NER,Niger ,West Africa,Africa,DHS,2012,region,Zinder,1,18.100,0.630,94.200,66.900
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Punjab,1,,0.152,31.4,48.4
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Sindh,1,,0.231,43.1,53.5
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Khyber Pakhtunkhwa,1,,0.25,49.2,50.7
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Balochistan,1,,0.394,71.2,55.3
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Gilgit Baltistan,1,,0.209,43.2,48.3
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Azad Kashmir,1,,0.115,24.9,46.3
+PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,FATA,1,,0.337,73.7,45.8
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kaimbu,1,11.2,0.074,18.3,40.3
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kirinyaga,1,11.2,0.074,18.3,40.3
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Murang'a,1,11.2,0.074,18.3,40.3
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nyandarua,1,11.2,0.074,18.3,40.3
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nyeri,1,11.2,0.074,18.3,40.3
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kilifi,1,9.8,0.212,44.7,47.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kwale,1,9.8,0.212,44.7,47.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Lamu,1,9.8,0.212,44.7,47.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Mombasa,1,9.8,0.212,44.7,47.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Taita-Taveta,1,9.8,0.212,44.7,47.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Tana River,1,9.8,0.212,44.7,47.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Embu,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Isiolo ,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region, Kitui ,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Machakos,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Makueni,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Marsabit,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Meru,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Tharaka Nithi,1,14.9,0.178,40.1,44.4
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nairobi,1,8.7,0.028,7.1,39.7
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Garissa,1,2.9,0.484,84.6,57.2
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Mandera,1,2.9,0.484,84.6,57.2
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Wajir ,1,2.9,0.484,84.6,57.2
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region, Homa Bay,1,14.1,0.165,38.8,42.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kisii ,1,14.1,0.165,38.8,42.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kisumu ,1,14.1,0.165,38.8,42.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Migori,1,14.1,0.165,38.8,42.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nyamira,1,14.1,0.165,38.8,42.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Siaya,1,14.1,0.165,38.8,42.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Baringo,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Bomet,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Elgeyo-Marakwet ,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kajiado,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kericho,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Laikipia,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nakuru,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Nandi,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Narok,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Samburu,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Trans-Nzoia,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Turkana ,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Uasin Gishu ,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,West Pokot ,1,26.6,0.206,44.2,46.6
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Bungoma ,1,11.8,0.177,40.6,43.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Busia,1,11.8,0.177,40.6,43.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Kakamega,1,11.8,0.177,40.6,43.5
+KEN,Kenya,Eastern Africa,Africa,DHS,2014,region,Vihiga ,1,11.8,0.177,40.6,43.5
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Butha-Buthe,1,8.7,0.154,35.5,43.5
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Mafeteng,1,64,0.041,9.8,41.5
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Maseru,1,64,0.041,9.8,41.5
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Berea,1,64,0.041,9.8,41.5
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Leribe,1,64,0.041,9.8,41.5
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Thaba-Tseka,1,19.1,0.185,41.6,44.4
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Mokhotlong,1,19.1,0.185,41.6,44.4
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Mohale's Hoek,1,8.2,0.116,27.8,41.8
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Qacha's Nek,1,8.2,0.116,27.8,41.8
+LSO,Lesotho,South Africa,Africa,MICS,2018,region,Quthing,1,8.2,0.116,27.8,41.8
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Bomi,1,3.2,0.304,65.4,46.5
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Bong,1,10,0.371,71.1,52.2
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Gbarpolu,1,1.6,0.396,76.1,52
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Bassa,1,5.7,0.391,72,54.3
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Cape Mount,1,3.3,0.361,73.3,49.2
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Gedeh,1,2.1,0.297,62,47.9
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Grand Kru,1,1.8,0.336,66.9,50.2
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Lofa,1,7.9,0.318,66.3,48
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Margibi,1,5.9,0.255,50.8,50.1
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Maryland,1,2.9,0.282,57,49.5
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Montserrado,1,34,0.122,26.4,46.3
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Nimba,1,16,0.326,65.8,49.6
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,River Cess,1,1.6,0.415,76,54.6
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,River Gee,1,1.2,0.28,59.9,46.8
+LBR,Liberia,Sub-Saharan Africa,Africa,DHS,2019-2020,region,Sinoe,1,2.6,0.267,54.4,49
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Ejdabia,2,2.4,0.013,3.5,37
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Benghazi,2,10,0.003,0.9,35.7
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Derna,2,3.2,0.009,2.6,35.6
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Al Jabal Al Akhdar,2,3.9,0.015,4,37.8
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Al Jabal Al Gharbi,2,6.1,0.006,1.5,37.7
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Almarj,2,3.4,0.007,1.7,39.5
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,El-Merqab,2,5.2,0.008,2.3,36.4
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Alkufra,2,1.2,0.004,1.1,35.3
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,El-Zawya,2,5.9,0.002,0.6,34.1
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Aljfara,2,2.6,0.003,0.7,37.9
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Murzuq,2,1.6,0.004,0.9,40.4
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Misrata,2,8.1,0.004,1.3,34.6
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Nalut,2,2,0.003,0.9,34.9
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Sebha,2,3.5,0.007,1.9,35.7
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Sirt,2,2.9,0.006,1.5,38.3
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Tarhuna,2,4.4,0.003,1,35.2
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Tripoli,2,19.2,0.014,3.7,38
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Tubruk,2,2.9,0.009,2.6,35.3
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Wadi Ashshati,2,1.8,0.015,3.9,39.3
+LBY,Libya,North Africa,Africa,PAPFAM,2014,region,Zwara,2,5.9,0.003,0.8,39
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Alaotra Mangoro,1,5,0.341,64.9,52.6
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Amoron’I Mania,1,3.3,0.423,77.1,54.9
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Analamanga,1,13.6,0.18,36.9,48.6
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Analanjirofo,1,4.1,0.278,57,48.7
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Androy,1,4.2,0.56,92.9,60.2
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Anosy,1,3.4,0.519,84.4,61.4
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Atsimo Andrefana,1,7.4,0.552,87.9,62.8
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Atsimo Atsinanana,1,4.4,0.536,91.2,58.8
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Atsinanana,1,5.6,0.349,66.5,52.4
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Betsiboka,1,1.5,0.435,76.9,56.6
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Boeny,1,3,0.401,68.8,58.3
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Bongolava,1,2.9,0.435,78.9,55.1
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Diana,1,3.5,0.256,52.1,49.1
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Haute Matsiatra,1,5.6,0.409,74.7,54.7
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Ihorombe,1,1.4,0.48,81.8,58.7
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Itasy,1,3.6,0.376,71.3,52.7
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Melaky,1,1.1,0.487,84.9,57.4
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Menabe,1,3.5,0.472,79.7,59.2
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Sava,1,3.4,0.259,55.4,46.8
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Sofia,1,5.8,0.316,62.1,50.9
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Vakinankaratra,1,8.1,0.383,70,54.6
+MD,Madagascar ,Southeastern Africa,Africa,MICS,2018,region,Vatovavy Fitovinany,1,5.6,0.512,85.8,59.7
+ML,Mali,West Africa,Africa,DHS,2018,region,Bamako,1,14.9,0.11,25.5,43.3
+ML,Mali,West Africa,Africa,DHS,2018,region,Gao,1,2.8,0.473,83.7,56.4
+ML,Mali,West Africa,Africa,DHS,2018,region,Kayes,1,14.4,0.421,75.1,56
+ML,Mali,West Africa,Africa,DHS,2018,region,Kidal,1,0.1,0.476,83.8,56.8
+ML,Mali,West Africa,Africa,DHS,2018,region,Koulikoro,1,19.2,0.353,64.3,54.8
+ML,Mali,West Africa,Africa,DHS,2018,region,Mopti,1,11.8,0.496,86.4,57.4
+ML,Mali,West Africa,Africa,DHS,2018,region,Sikasso,1,16.8,0.416,77.8,53.5
+ML,Mali,West Africa,Africa,DHS,2018,region,Ségou,1,16.1,0.424,76.2,55.6
+ML,Mali,West Africa,Africa,DHS,2018,region,Timbuktu,1,3.9,0.535,87.5,61.2
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Béni Mellal-Khénifra,1,6.8,0.07,14.2,49.4
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Drâa-Tafilalet,1,4.4,0.04,9.1,44.4
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Ed Dakhla-Oued ed Dahab,1,0.4,0.016,4.3,38.5
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Fès-Meknès,1,12,0.023,5.8,40.6
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Guelmim-Oued Noun,1,1.2,0.017,4.8,35.1
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Laâyoune-Sakia El Hamra,1,1.2,0.01,2.7,37.7
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Marrakech-Safi,1,14,0.039,9.7,40
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Marrakech-Tensift-El Haouz,1,20.8,0.014,3.5,39.8
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Oriental,1,7.3,0.042,9.2,45.8
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Rabat-Salé-Kénitra,1,13,0.014,3.7,36.9
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Souss-Massa,1,7.4,0.03,7.4,40.5
+MAR,Morocco,North Africa,Africa,PAPFAM,2017-2018,region,Tanger-Tetouan-Al Hoceima,1,11.6,0.014,3.6,38.2
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Cabo Delgado,1,8,0.54,88.8,60.8
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Gaza,1,5.5,0.355,66.5,53.4
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Inhambane,1,5.9,0.366,70.5,52
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Manica,1,6.6,0.335,65.2,51.4
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Maputo,1,6.8,0.147,31.4,46.9
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Maputo City,1,5.1,0.043,10.3,41.9
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Nampula,1,15.5,0.456,80.1,56.9
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Niassa,1,5.9,0.481,83.1,57.9
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Sofala,1,9.3,0.406,72.8,55.8
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Tete,1,12.5,0.482,82.3,58.6
+MOZ,Mozambique ,South Africa,Africa,DHS,2011,region,Zambezia,1,18.9,0.536,89.3,60
+NER,Niger ,West Africa,Africa,DHS,2012,region,Agadez,1,1.9,0.413,71.2,58
+NER,Niger ,West Africa,Africa,DHS,2012,region,Diffa,1,3,0.577,92.6,62.3
+NER,Niger ,West Africa,Africa,DHS,2012,region,Dosso,1,12.6,0.625,95.2,65.6
+NER,Niger ,West Africa,Africa,DHS,2012,region,Maradi,1,23.3,0.651,95.3,68.4
+NER,Niger ,West Africa,Africa,DHS,2012,region,Niamey,1,6.4,0.231,46.2,50
+NER,Niger ,West Africa,Africa,DHS,2012,region,Tahoua,1,22.1,0.632,94.6,66.8
+NER,Niger ,West Africa,Africa,DHS,2012,region,Tillaberi,1,12.6,0.613,93.1,65.8
+NER,Niger ,West Africa,Africa,DHS,2012,region,Zinder,1,18.1,0.63,94.2,66.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Bumthang,1,,0.044,10.5,41.5
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Chhukha,1,,0.073,17.6,41.4
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Dagana,1,,0.092,21.3,42.9
@@ -585,9 +585,9 @@ BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Haa,1,,0.066,14.2,46.3
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Lhuentse,1,,0.114,25.9,44
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Monggar,1,,0.107,24.9,42.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Paro,1,,0.032,8.1,39.4
-BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Pema Gatshel,1,,0.110,25.7,42.8
+BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Pema Gatshel,1,,0.11,25.7,42.8
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Punakha,1,,0.077,18.8,41.2
-BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Samdrup Jongkhar,1,,0.100,23.3,43.1
+BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Samdrup Jongkhar,1,,0.1,23.3,43.1
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Samtse,1,,0.165,36.9,44.6
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Sarpang,1,,0.074,17.7,41.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Thimphu,1,,0.028,6.8,40.9
@@ -597,7 +597,7 @@ BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Trongsa,1,,0.053,13.2,40
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Tsirang,1,,0.112,25.6,43.9
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Wangdue Phodrang,1,,0.075,17.7,42.1
 BTN,Bhutan,South Central Asia,Asia,BLSS,2022,region,Zhemgang,1,,0.133,29.7,44.9
-LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Colombo,2,9.80,0.014,3.5,39.9
+LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Colombo,2,9.8,0.014,3.5,39.9
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Gampaha,2,7.9,0.019,5.1,37.9
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Jaffna,2,6.1,0.039,10,39.6
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Galle,2,6,0.041,10,40.7
@@ -607,7 +607,7 @@ LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Kurunegala,2,5.7,0.048,11.8,40.
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Mullaitivu,2,5.4,0.054,13.8,38.8
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Ampara,2,3.5,0.058,13.9,41.9
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Trincomalee,2,3.7,0.059,14.6,40.5
-LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Kilinochchi,2,1.6,0.060,15.2,39.1
+LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Kilinochchi,2,1.6,0.06,15.2,39.1
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Anuradhapura,2,1.9,0.071,18,39.5
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Matara,2,1.3,0.074,17.4,42.8
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Kegalle,2,2,0.075,18.2,41.6
@@ -616,7 +616,7 @@ LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Hambantota,2,3.7,0.081,20.4,40
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Batticaloa,2,2.8,0.085,20.2,42.1
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Polonnaruwa,2,6.1,0.085,20.2,42.1
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Kandy,2,3,0.096,21.9,43.7
-LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Vavuniya,2,3.2,0.110,26.3,41.7
+LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Vavuniya,2,3.2,0.11,26.3,41.7
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Mannar,2,2.7,0.112,27,41.4
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Ratnapura,2,3.5,0.116,28,41.3
 LKA,Sri Lanka,South Asia,Asia,HIES,2019,district,Monaragala,2,2.9,0.141,32.7,43.2
