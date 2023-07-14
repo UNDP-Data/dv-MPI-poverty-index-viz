@@ -71,7 +71,6 @@ export function ScatterPlotSubnational(props: Props) {
                   country: d.country,
                   subregion: d.subregion,
                   value: Number(d.mpi),
-                  year: d.year,
                   headcountRatio: Number(d.headcountRatio),
                   intensity: Number(d.intensity),
                   xPosition: event.clientX,
