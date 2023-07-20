@@ -43,6 +43,9 @@ export function Map(props: Props) {
   const [selectedColor, setSelectedColor] = useState<string | undefined>(
     undefined,
   );
+  const [selectedCountry, setSelectedCountry] = useState<string | undefined>(
+    undefined,
+  );
   const [zoomLevel, setZoomLevel] = useState(1);
   const [radioValue, setRadioValue] = useState('mpi');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
@@ -126,6 +129,7 @@ export function Map(props: Props) {
                   <g
                     key={i}
                     onMouseEnter={event => {
+                      setSelectedCountry(d.properties.ISO3);
                       if (value.length > 0) {
                         setHoverData({
                           country: value[0].country,
@@ -151,6 +155,7 @@ export function Map(props: Props) {
                       }
                     }}
                     onMouseLeave={() => {
+                      setSelectedCountry(undefined);
                       setHoverData(undefined);
                     }}
                   >
@@ -173,6 +178,11 @@ export function Map(props: Props) {
                           });
                           return (
                             <path
+                              className={
+                                selectedCountry === d.properties.ISO3
+                                  ? 'high-opa'
+                                  : ''
+                              }
                               key={j}
                               d={masterPath}
                               stroke='#FFF'
@@ -200,6 +210,11 @@ export function Map(props: Props) {
                           });
                           return (
                             <path
+                              className={
+                                selectedCountry === d.properties.ISO3
+                                  ? 'high-opa'
+                                  : ''
+                              }
                               key={j}
                               d={path}
                               stroke='#FFF'

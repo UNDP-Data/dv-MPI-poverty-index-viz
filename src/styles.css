@@ -127,3 +127,21 @@
 .background-legend{
   background-color: rgba(255, 255, 255, 0.7);
 }
+
+
+@-webkit-keyframes highlight-opacity {
+  0%   {opacity: 1;}
+  50%  {opacity:.8;fill:#55606E}
+}
+
+@keyframes highlight-opacity {
+  0%   {opacity: 1;}
+  50%  {opacity:.8;fill:#55606E}
+}
+.high-opa{
+  -webkit-animation-name: highlight-opacity;
+  -webkit-animation-duration: 1s;
+  animation-name: highlight-opacity;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
