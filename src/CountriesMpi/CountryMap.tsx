@@ -72,6 +72,59 @@ export function CountryMap(props: Props) {
             minzoom: 0,
             maxzoom: 22,
           },
+          {
+            id: 'admin2choropleth',
+            type: 'fill',
+            source: 'admin2',
+            'source-layer': 'adm_Export_jso_FeaturesToJSO',
+            paint: {
+              'fill-color': [
+                'interpolate',
+                ['linear'],
+                ['get', 'MPI'],
+                0,
+                UNDPColorModule.sequentialColors.negativeColorsx07[0],
+                0.0999,
+                UNDPColorModule.sequentialColors.negativeColorsx07[0],
+                0.1,
+                UNDPColorModule.sequentialColors.negativeColorsx07[1],
+                0.1999,
+                UNDPColorModule.sequentialColors.negativeColorsx07[1],
+                0.2,
+                UNDPColorModule.sequentialColors.negativeColorsx07[2],
+                0.2999,
+                UNDPColorModule.sequentialColors.negativeColorsx07[2],
+                0.3,
+                UNDPColorModule.sequentialColors.negativeColorsx07[3],
+                0.3999,
+                UNDPColorModule.sequentialColors.negativeColorsx07[3],
+                0.4,
+                UNDPColorModule.sequentialColors.negativeColorsx07[4],
+                0.4999,
+                UNDPColorModule.sequentialColors.negativeColorsx07[4],
+                0.5,
+                UNDPColorModule.sequentialColors.negativeColorsx07[5],
+                0.5999,
+                UNDPColorModule.sequentialColors.negativeColorsx07[5],
+                0.6,
+                UNDPColorModule.sequentialColors.negativeColorsx07[6],
+                1,
+                UNDPColorModule.sequentialColors.negativeColorsx07[6],
+              ],
+            },
+          },
+          {
+            id: 'admin2line',
+            type: 'line',
+            source: 'admin2',
+            'source-layer': 'adm_Export_jso_FeaturesToJSO',
+            paint: {
+              'line-color': '#FFF',
+              'line-width': 0.5,
+            },
+            minzoom: 0,
+            maxzoom: 22,
+          },
         ],
       },
       center: [lon, lat],
@@ -79,57 +132,22 @@ export function CountryMap(props: Props) {
     });
     (map as any).current.on('load', () => {
       (map as any).current.addLayer({
-        id: 'admin2choropleth',
+        id: 'admin2opacityLayer',
         type: 'fill',
         source: 'admin2',
+        layout: {
+          visibility: 'visible',
+        },
         'source-layer': 'adm_Export_jso_FeaturesToJSO',
         paint: {
-          'fill-color': [
-            'interpolate',
-            ['linear'],
-            ['get', 'MPI'],
-            0,
-            UNDPColorModule.sequentialColors.negativeColorsx07[0],
-            0.0999,
-            UNDPColorModule.sequentialColors.negativeColorsx07[0],
-            0.1,
-            UNDPColorModule.sequentialColors.negativeColorsx07[1],
-            0.1999,
-            UNDPColorModule.sequentialColors.negativeColorsx07[1],
+          'fill-color': '#000',
+          'fill-opacity': [
+            'case',
+            ['boolean', ['feature-state', 'hover'], false],
             0.2,
-            UNDPColorModule.sequentialColors.negativeColorsx07[2],
-            0.2999,
-            UNDPColorModule.sequentialColors.negativeColorsx07[2],
-            0.3,
-            UNDPColorModule.sequentialColors.negativeColorsx07[3],
-            0.3999,
-            UNDPColorModule.sequentialColors.negativeColorsx07[3],
-            0.4,
-            UNDPColorModule.sequentialColors.negativeColorsx07[4],
-            0.4999,
-            UNDPColorModule.sequentialColors.negativeColorsx07[4],
-            0.5,
-            UNDPColorModule.sequentialColors.negativeColorsx07[5],
-            0.5999,
-            UNDPColorModule.sequentialColors.negativeColorsx07[5],
-            0.6,
-            UNDPColorModule.sequentialColors.negativeColorsx07[6],
-            1,
-            UNDPColorModule.sequentialColors.negativeColorsx07[6],
+            0,
           ],
         },
-      });
-      (map as any).current.addLayer({
-        id: 'admin2line',
-        type: 'line',
-        source: 'admin2',
-        'source-layer': 'adm_Export_jso_FeaturesToJSO',
-        paint: {
-          'line-color': '#FFF',
-          'line-width': 0.5,
-        },
-        minzoom: 0,
-        maxzoom: 22,
       });
       (map as any).current.setFilter('admin2choropleth', [
         '==',
@@ -140,35 +158,42 @@ export function CountryMap(props: Props) {
         [countryData?.bbox.sw.lon, countryData?.bbox.sw.lat],
         [countryData?.bbox.ne.lon, countryData?.bbox.ne.lat],
       ]);
-      (map as any).current.on('mousemove', 'admin2choropleth', (e: any) => {
+      (map as any).current.on('mousemove', 'admin2opacityLayer', (e: any) => {
         (map as any).current.getCanvas().style.cursor = 'pointer';
         if (e.features.length > 0) {
-          districtHoveredStateId = e.features[0].layer.id;
           if (districtHoveredStateId) {
             // console.log('===========', e.features[0].properties);
-            setHoverData({
-              subregion: e.features[0].properties.region,
-              country: e.features[0].properties.country,
-              value: e.features[0].properties.MPI,
-              intensity: e.features[0].properties['Intensity (A, %)'],
-              headcountRatio:
-                e.features[0].properties['Headcount Ratio (H, %)'],
-              xPosition: e.originalEvent.clientX,
-              yPosition: e.originalEvent.clientY,
-            });
             (map as any).current.setFeatureState(
               {
                 source: 'admin2',
                 id: districtHoveredStateId,
                 sourceLayer: 'adm_Export_jso_FeaturesToJSO',
               },
-              { hover: true },
+              { hover: false },
             );
           }
+          districtHoveredStateId = e.features[0].id;
+          setHoverData({
+            subregion: e.features[0].properties.region,
+            country: e.features[0].properties.country,
+            value: e.features[0].properties.MPI,
+            intensity: e.features[0].properties['Intensity (A, %)'],
+            headcountRatio: e.features[0].properties['Headcount Ratio (H, %)'],
+            xPosition: e.originalEvent.clientX,
+            yPosition: e.originalEvent.clientY,
+          });
+          (map as any).current.setFeatureState(
+            {
+              source: 'admin2',
+              id: districtHoveredStateId,
+              sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+            },
+            { hover: true },
+          );
         }
       });
 
-      (map as any).current.on('mouseleave', 'admin2choropleth', () => {
+      (map as any).current.on('mouseleave', 'admin2opacityLayer', () => {
         if (districtHoveredStateId) {
           setHoverData(null);
           (map as any).current.setFeatureState(
