@@ -129,6 +129,7 @@ function App() {
           mpi: d.MPI,
           year: d.Year,
           subregion: d['Admin name Region'],
+          adminLevel: d['admin level'],
           headcountRatio: d['Headcount Ratio (H, %)'],
           intensity: +d['Intensity (A, %)'],
         }));

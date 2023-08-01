@@ -11,18 +11,20 @@ import { TooltipSubnational } from '../Components/TooltipSubnational';
 
 interface Props {
   countryData?: MpiDataTypeNational;
+  selectedAdminLevel: string;
+  adminLevels: string[];
 }
 export function CountryMap(props: Props) {
-  const { countryData } = props;
+  const { countryData, selectedAdminLevel, adminLevels } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
   const protocol = new pmtiles.Protocol();
   let lat = 0;
   let lon = 0;
   const [hoverData, setHoverData] = useState<null | HoverSubnatDataType>(null);
+  let visibilityValue;
 
   useEffect(() => {
-    let districtHoveredStateId: string | null = null;
     if (
       countryData !== undefined &&
       countryData.bbox.ne !== undefined &&
@@ -72,84 +74,89 @@ export function CountryMap(props: Props) {
             minzoom: 0,
             maxzoom: 22,
           },
-          {
-            id: 'admin2choropleth',
-            type: 'fill',
-            source: 'admin2',
-            'source-layer': 'adm_Export_jso_FeaturesToJSO',
-            paint: {
-              'fill-color': [
-                'interpolate',
-                ['linear'],
-                ['get', 'MPI'],
-                0,
-                UNDPColorModule.sequentialColors.negativeColorsx07[0],
-                0.0999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[0],
-                0.1,
-                UNDPColorModule.sequentialColors.negativeColorsx07[1],
-                0.1999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[1],
-                0.2,
-                UNDPColorModule.sequentialColors.negativeColorsx07[2],
-                0.2999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[2],
-                0.3,
-                UNDPColorModule.sequentialColors.negativeColorsx07[3],
-                0.3999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[3],
-                0.4,
-                UNDPColorModule.sequentialColors.negativeColorsx07[4],
-                0.4999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[4],
-                0.5,
-                UNDPColorModule.sequentialColors.negativeColorsx07[5],
-                0.5999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[5],
-                0.6,
-                UNDPColorModule.sequentialColors.negativeColorsx07[6],
-                1,
-                UNDPColorModule.sequentialColors.negativeColorsx07[6],
-              ],
-            },
-          },
-          {
-            id: 'admin2line',
-            type: 'line',
-            source: 'admin2',
-            'source-layer': 'adm_Export_jso_FeaturesToJSO',
-            paint: {
-              'line-color': '#FFF',
-              'line-width': 0.5,
-            },
-            minzoom: 0,
-            maxzoom: 22,
-          },
         ],
       },
       center: [lon, lat],
       zoom: 4, // starting zoom
     });
     (map as any).current.on('load', () => {
-      (map as any).current.addLayer({
-        id: 'admin2opacityLayer',
-        type: 'fill',
-        source: 'admin2',
-        layout: {
-          visibility: 'visible',
-        },
-        'source-layer': 'adm_Export_jso_FeaturesToJSO',
-        paint: {
-          'fill-color': '#000',
-          'fill-opacity': [
-            'case',
-            ['boolean', ['feature-state', 'hover'], false],
-            0.2,
-            0,
-          ],
-        },
+      // console.log('in on load');
+      adminLevels.forEach(adminLevel => {
+        visibilityValue =
+          adminLevel === selectedAdminLevel ? 'visible' : 'none';
+
+        (map as any).current.addLayer({
+          id: `choroplethAdmin${adminLevel}`,
+          type: 'fill',
+          source: 'admin2',
+          'source-layer': 'adm_Export_jso_FeaturesToJSO',
+          filter: ['==', 'admin level', adminLevel],
+          layout: {
+            visibility: visibilityValue,
+          },
+          paint: {
+            'fill-color': [
+              'interpolate',
+              ['linear'],
+              ['get', 'MPI'],
+              0,
+              UNDPColorModule.sequentialColors.negativeColorsx07[0],
+              0.0999,
+              UNDPColorModule.sequentialColors.negativeColorsx07[0],
+              0.1,
+              UNDPColorModule.sequentialColors.negativeColorsx07[1],
+              0.1999,
+              UNDPColorModule.sequentialColors.negativeColorsx07[1],
+              0.2,
+              UNDPColorModule.sequentialColors.negativeColorsx07[2],
+              0.2999,
+              UNDPColorModule.sequentialColors.negativeColorsx07[2],
+              0.3,
+              UNDPColorModule.sequentialColors.negativeColorsx07[3],
+              0.3999,
+              UNDPColorModule.sequentialColors.negativeColorsx07[3],
+              0.4,
+              UNDPColorModule.sequentialColors.negativeColorsx07[4],
+              0.4999,
+              UNDPColorModule.sequentialColors.negativeColorsx07[4],
+              0.5,
+              UNDPColorModule.sequentialColors.negativeColorsx07[5],
+              0.5999,
+              UNDPColorModule.sequentialColors.negativeColorsx07[5],
+              0.6,
+              UNDPColorModule.sequentialColors.negativeColorsx07[6],
+              1,
+              UNDPColorModule.sequentialColors.negativeColorsx07[6],
+            ],
+            'fill-outline-color': '#fff' /* 'hsla(0, 0%, 100%, 0.1)', */,
+          },
+        });
+        (map as any).current.addLayer({
+          id: `overlayAdmin${adminLevel}`,
+          type: 'fill',
+          source: 'admin2',
+          'source-layer': 'adm_Export_jso_FeaturesToJSO',
+          layout: {
+            visibility: visibilityValue,
+          },
+          paint: {
+            'fill-color': '#000',
+            'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              0.2,
+              0,
+            ],
+          },
+        });
       });
-      (map as any).current.setFilter('admin2choropleth', [
+
+      (map as any).current.setFilter(`choroplethAdmin${selectedAdminLevel}`, [
+        '==',
+        'country',
+        countryData?.country,
+      ]);
+      (map as any).current.setFilter(`overlayAdmin${selectedAdminLevel}`, [
         '==',
         'country',
         countryData?.country,
@@ -158,55 +165,6 @@ export function CountryMap(props: Props) {
         [countryData?.bbox.sw.lon, countryData?.bbox.sw.lat],
         [countryData?.bbox.ne.lon, countryData?.bbox.ne.lat],
       ]);
-      (map as any).current.on('mousemove', 'admin2opacityLayer', (e: any) => {
-        (map as any).current.getCanvas().style.cursor = 'pointer';
-        if (e.features.length > 0) {
-          if (districtHoveredStateId) {
-            // console.log('===========', e.features[0].properties);
-            (map as any).current.setFeatureState(
-              {
-                source: 'admin2',
-                id: districtHoveredStateId,
-                sourceLayer: 'adm_Export_jso_FeaturesToJSO',
-              },
-              { hover: false },
-            );
-          }
-          districtHoveredStateId = e.features[0].id;
-          setHoverData({
-            subregion: e.features[0].properties.region,
-            country: e.features[0].properties.country,
-            value: e.features[0].properties.MPI,
-            intensity: e.features[0].properties['Intensity (A, %)'],
-            headcountRatio: e.features[0].properties['Headcount Ratio (H, %)'],
-            xPosition: e.originalEvent.clientX,
-            yPosition: e.originalEvent.clientY,
-          });
-          (map as any).current.setFeatureState(
-            {
-              source: 'admin2',
-              id: districtHoveredStateId,
-              sourceLayer: 'adm_Export_jso_FeaturesToJSO',
-            },
-            { hover: true },
-          );
-        }
-      });
-
-      (map as any).current.on('mouseleave', 'admin2opacityLayer', () => {
-        if (districtHoveredStateId) {
-          setHoverData(null);
-          (map as any).current.setFeatureState(
-            {
-              source: 'admin2',
-              id: districtHoveredStateId,
-              sourceLayer: 'adm_Export_jso_FeaturesToJSO',
-            },
-            { hover: false },
-          );
-        }
-        districtHoveredStateId = null;
-      });
     });
   }, []);
   // when changing country
@@ -223,13 +181,10 @@ export function CountryMap(props: Props) {
       lat = 0;
     }
     if (map.current) {
-      if ((map as any).current.getLayer('admin2choropleth')) {
-        (map as any).current.setFilter('admin2choropleth', [
-          '==',
-          'country',
-          countryData?.country,
-        ]);
-        (map as any).current.setFilter('admin2line', [
+      if (
+        (map as any).current.getLayer(`choroplethAdmin${selectedAdminLevel}`)
+      ) {
+        (map as any).current.setFilter(`choroplethAdmin${selectedAdminLevel}`, [
           '==',
           'country',
           countryData?.country,
@@ -244,6 +199,87 @@ export function CountryMap(props: Props) {
       }
     }
   }, [countryData?.country]);
+  // when changing selectedAdminLevel
+  useEffect(() => {
+    let districtHoveredStateId: string | null = null;
+    if (map.current) {
+      adminLevels.forEach(adminLevel => {
+        visibilityValue =
+          adminLevel === selectedAdminLevel ? 'visible' : 'none';
+        if ((map as any).current.getLayer(`choroplethAdmin${adminLevel}`)) {
+          (map as any).current.setLayoutProperty(
+            `choroplethAdmin${adminLevel}`,
+            'visibility',
+            visibilityValue,
+          );
+        }
+        if ((map as any).current.getLayer(`overlayAdmin${adminLevel}`)) {
+          (map as any).current.setLayoutProperty(
+            `overlayAdmin${adminLevel}`,
+            'visibility',
+            visibilityValue,
+          );
+        }
+      });
+      (map as any).current.on(
+        'mousemove',
+        `overlayAdmin${selectedAdminLevel}`,
+        (e: any) => {
+          (map as any).current.getCanvas().style.cursor = 'pointer';
+          if (e.features.length > 0) {
+            if (districtHoveredStateId) {
+              (map as any).current.setFeatureState(
+                {
+                  source: 'admin2',
+                  id: districtHoveredStateId,
+                  sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+                },
+                { hover: false },
+              );
+            }
+            districtHoveredStateId = e.features[0].id;
+            setHoverData({
+              subregion: e.features[0].properties.region,
+              country: e.features[0].properties.country,
+              value: e.features[0].properties.MPI,
+              intensity: e.features[0].properties['Intensity (A, %)'],
+              headcountRatio:
+                e.features[0].properties['Headcount Ratio (H, %)'],
+              xPosition: e.originalEvent.clientX,
+              yPosition: e.originalEvent.clientY,
+            });
+            (map as any).current.setFeatureState(
+              {
+                source: 'admin2',
+                id: districtHoveredStateId,
+                sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+              },
+              { hover: true },
+            );
+          }
+        },
+      );
+
+      (map as any).current.on(
+        'mouseleave',
+        `overlayAdmin${selectedAdminLevel}`,
+        () => {
+          if (districtHoveredStateId) {
+            setHoverData(null);
+            (map as any).current.setFeatureState(
+              {
+                source: 'admin2',
+                id: districtHoveredStateId,
+                sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+              },
+              { hover: false },
+            );
+          }
+          districtHoveredStateId = null;
+        },
+      );
+    }
+  }, [selectedAdminLevel]);
   return (
     <div>
       <div ref={mapContainer} className='map' />

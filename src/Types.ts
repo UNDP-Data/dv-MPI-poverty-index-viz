@@ -21,6 +21,7 @@ export interface MpiDataTypeNational extends MpiDataType {
 }
 export interface MpiDataTypeSubnational extends MpiDataType {
   subregion: string;
+  adminLevel: string;
 }
 export interface MpiDataTypeLocation extends MpiDataType {
   location: string;

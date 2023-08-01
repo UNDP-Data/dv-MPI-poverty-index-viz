@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Segmented, Select } from 'antd';
+import { Segmented, Select, Radio, RadioChangeEvent } from 'antd';
 import { useEffect, useState } from 'react';
 import { ascending } from 'd3-array';
 import { scaleThreshold } from 'd3-scale';
@@ -43,6 +43,8 @@ export function CountriesMpi(props: Props) {
   const [countryData, setCountryData] = useState<
     MpiDataTypeNational | undefined
   >(undefined);
+  const [adminLevels, setAdminLevels] = useState<string[]>([]);
+  const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>('1');
   const [activeViz, setActiveViz] = useState<string>('map');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const colorScaleMPI = scaleThreshold<number, string>()
@@ -71,6 +73,12 @@ export function CountriesMpi(props: Props) {
         (d: MpiDataTypeNational) => d.country === selectedCountry,
       )[0],
     );
+    const adminValues = subNatValues.map(
+      (d: MpiDataTypeSubnational) => d.adminLevel,
+    );
+    // console.log('adminValues', adminValues);
+    setAdminLevels([...new Set(adminValues)]);
+    // console.log('admin levels', adminLevels, selectedAdminLevel);
   }, [selectedCountry]);
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
@@ -97,6 +105,7 @@ export function CountriesMpi(props: Props) {
           style={{ width: '400px' }}
           onChange={d => {
             setSelectedCountry(national[d as any].country);
+            if (adminLevels.length < 2) setSelectedAdminLevel(adminLevels[0]);
           }}
         >
           {national.map((d, i) => (
@@ -136,52 +145,75 @@ export function CountriesMpi(props: Props) {
                 </div>
               </div>
               <div className={activeViz === 'map' ? '' : 'hide'}>
-                <div className='countrymap-legend'>
-                  <svg width='300px' height='45px'>
-                    <g transform='translate(10,20)'>
-                      <text
-                        x={280}
-                        y={-10}
-                        fontSize='0.8rem'
-                        fill='#212121'
-                        textAnchor='end'
+                <div className='flex-div'>
+                  <div className='countrymap-legend'>
+                    <svg width='300px' height='45px'>
+                      <g transform='translate(10,20)'>
+                        <text
+                          x={280}
+                          y={-10}
+                          fontSize='0.8rem'
+                          fill='#212121'
+                          textAnchor='end'
+                        >
+                          Higher MPI
+                        </text>
+                        {valueArray.map((d, i) => (
+                          <g key={i}>
+                            <rect
+                              x={(i * 280) / valueArray.length}
+                              y={1}
+                              width={280 / valueArray.length}
+                              height={8}
+                              fill={colorScaleMPI(valueArray[i] - 0.05)}
+                              stroke='#fff'
+                            />
+                            <text
+                              x={(280 * (i + 1)) / valueArray.length}
+                              y={25}
+                              fontSize={12}
+                              fill='#212121'
+                              textAnchor='middle'
+                            >
+                              {d}
+                            </text>
+                          </g>
+                        ))}
+                        <text
+                          y={25}
+                          x={0}
+                          fontSize={12}
+                          fill='#212121'
+                          textAnchor='middle'
+                        >
+                          0
+                        </text>
+                      </g>
+                    </svg>
+                  </div>
+                  {adminLevels.length > 1 ? (
+                    <div>
+                      <p className='undp-typography small-font'>Admin level:</p>
+                      <Radio.Group
+                        defaultValue={adminLevels[0]}
+                        onChange={(el: RadioChangeEvent) => {
+                          setSelectedAdminLevel(el.target.value);
+                        }}
                       >
-                        Higher MPI
-                      </text>
-                      {valueArray.map((d, i) => (
-                        <g key={i}>
-                          <rect
-                            x={(i * 280) / valueArray.length}
-                            y={1}
-                            width={280 / valueArray.length}
-                            height={8}
-                            fill={colorScaleMPI(valueArray[i] - 0.05)}
-                            stroke='#fff'
-                          />
-                          <text
-                            x={(280 * (i + 1)) / valueArray.length}
-                            y={25}
-                            fontSize={12}
-                            fill='#212121'
-                            textAnchor='middle'
-                          >
+                        {adminLevels.map((d, i) => (
+                          <Radio key={i} className='undp-radio' value={d}>
                             {d}
-                          </text>
-                        </g>
-                      ))}
-                      <text
-                        y={25}
-                        x={0}
-                        fontSize={12}
-                        fill='#212121'
-                        textAnchor='middle'
-                      >
-                        0
-                      </text>
-                    </g>
-                  </svg>
+                          </Radio>
+                        ))}
+                      </Radio.Group>
+                    </div>
+                  ) : null}
                 </div>
-                <CountryMap countryData={countryData} />
+                <CountryMap
+                  countryData={countryData}
+                  selectedAdminLevel={selectedAdminLevel}
+                  adminLevels={adminLevels}
+                />
               </div>
               <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
                 <LollipopChartViz data={countrySubnational} />
@@ -268,7 +300,7 @@ export function CountriesMpi(props: Props) {
                   of people experiencing poverty across multiple dimensions.
                 </p>
                 <p className='undp-typography small-font'>
-                  <strong>Intensity of povery: </strong>
+                  <strong>Intensity of Poverty: </strong>
                   The intensity of poverty is the average proportion of weighted
                   indicators in which multidimensionally poor individuals are
                   deprived. It provides insights into the extent or severity of
