@@ -26,7 +26,11 @@ export function CountriesMpi(props: Props) {
   const { national, subnational, location } = props;
   // const queryParams = new URLSearchParams(window.location.search);
   // const queryCountry = queryParams.get('country');
-  const [selectedCountry, setSelectedCountry] = useState<string>('Malawi');
+  const [selectedCountry, setSelectedCountry] = useState<string>('');
+  const [adminLevels, setAdminLevels] = useState<string[] | undefined>(
+    undefined,
+  );
+  const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>('');
   const [rural, setRural] = useState<MpiDataTypeLocation | undefined>(
     undefined,
   );
@@ -43,15 +47,16 @@ export function CountriesMpi(props: Props) {
   const [countryData, setCountryData] = useState<
     MpiDataTypeNational | undefined
   >(undefined);
-  const [adminLevels, setAdminLevels] = useState<string[]>([]);
-  const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>('1');
   const [activeViz, setActiveViz] = useState<string>('map');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   national.sort((a, b) => ascending(a.country, b.country));
+  const [sortedBy, setSortedBy] = useState('mpi');
 
+  const defaultCountry = 'Malawi';
+  if (selectedCountry === '') setSelectedCountry(defaultCountry);
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -73,11 +78,17 @@ export function CountriesMpi(props: Props) {
         (d: MpiDataTypeNational) => d.country === selectedCountry,
       )[0],
     );
-    const adminValues = subNatValues.map(
-      (d: MpiDataTypeSubnational) => d.adminLevel,
-    );
-    setAdminLevels([...new Set(adminValues)]);
+    setAdminLevels([
+      ...new Set(subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel)),
+    ]);
   }, [selectedCountry]);
+  useEffect(() => {
+    if (
+      (adminLevels && adminLevels.length < 2) ||
+      (adminLevels && selectedAdminLevel === '')
+    )
+      setSelectedAdminLevel(adminLevels[0]);
+  }, [adminLevels]);
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
@@ -141,61 +152,94 @@ export function CountriesMpi(props: Props) {
                   />
                 </div>
               </div>
-              <div className={activeViz === 'map' ? '' : 'hide'}>
+              <div className='legend-interactionBar'>
                 <div className='flex-div flex-space-between'>
-                  <div className='countrymap-legend'>
-                    <svg width='300px' height='45px'>
-                      <g transform='translate(10,20)'>
-                        <text
-                          x={280}
-                          y={-10}
-                          fontSize='0.8rem'
-                          fill='#212121'
-                          textAnchor='end'
-                        >
-                          Higher MPI
-                        </text>
-                        {valueArray.map((d, i) => (
-                          <g key={i}>
-                            <rect
-                              x={(i * 280) / valueArray.length}
-                              y={1}
-                              width={280 / valueArray.length}
-                              height={8}
-                              fill={colorScaleMPI(valueArray[i] - 0.05)}
-                              stroke='#fff'
-                            />
-                            <text
-                              x={(280 * (i + 1)) / valueArray.length}
-                              y={25}
-                              fontSize={12}
-                              fill='#212121'
-                              textAnchor='middle'
-                            >
-                              {d}
-                            </text>
-                          </g>
-                        ))}
-                        <text
-                          y={25}
-                          x={0}
-                          fontSize={12}
-                          fill='#212121'
-                          textAnchor='middle'
-                        >
-                          0
-                        </text>
-                      </g>
-                    </svg>
-                  </div>
+                  {activeViz !== 'list' ? (
+                    <div className='countrymap-legend'>
+                      <svg width='300px' height='45px'>
+                        <g transform='translate(10,20)'>
+                          <text
+                            x={280}
+                            y={-10}
+                            fontSize='0.8rem'
+                            fill='#212121'
+                            textAnchor='end'
+                          >
+                            Higher MPI
+                          </text>
+                          {valueArray.map((d, i) => (
+                            <g key={i}>
+                              <rect
+                                x={(i * 280) / valueArray.length}
+                                y={1}
+                                width={280 / valueArray.length}
+                                height={8}
+                                fill={colorScaleMPI(valueArray[i] - 0.05)}
+                                stroke='#fff'
+                              />
+                              <text
+                                x={(280 * (i + 1)) / valueArray.length}
+                                y={25}
+                                fontSize={12}
+                                fill='#212121'
+                                textAnchor='middle'
+                              >
+                                {d}
+                              </text>
+                            </g>
+                          ))}
+                          <text
+                            y={25}
+                            x={0}
+                            fontSize={12}
+                            fill='#212121'
+                            textAnchor='middle'
+                          >
+                            0
+                          </text>
+                        </g>
+                      </svg>
+                    </div>
+                  ) : (
+                    <div
+                      className='flex-div margin-top-05'
+                      style={{ alignItems: 'center' }}
+                    >
+                      <p className='undp-typography small-font'>Sort by:</p>
+                      <Radio.Group
+                        defaultValue='mpi'
+                        onChange={(el: RadioChangeEvent) =>
+                          setSortedBy(el.target.value)
+                        }
+                        className='margin-bottom-05'
+                      >
+                        <Radio className='undp-radio' value='mpi'>
+                          MPI
+                        </Radio>
+                        <Radio className='undp-radio' value='intensity'>
+                          Intensity
+                        </Radio>
+                        <Radio className='undp-radio' value='headcountRatio'>
+                          Headcount Ratio
+                        </Radio>
+                        <Radio className='undp-radio' value='subregion'>
+                          Subregion name
+                        </Radio>
+                      </Radio.Group>
+                    </div>
+                  )}
                   {adminLevels.length > 1 ? (
-                    <div className='flex-div margin-top-05'>
+                    <div
+                      className='flex-div margin-top-05'
+                      style={{ alignItems: 'center' }}
+                    >
                       <p className='undp-typography small-font'>Admin level:</p>
                       <Radio.Group
-                        defaultValue={adminLevels[0]}
+                        value={selectedAdminLevel}
                         onChange={(el: RadioChangeEvent) => {
                           setSelectedAdminLevel(el.target.value);
                         }}
+                        className='margin-bottom-05'
                       >
                         {adminLevels.map((d, i) => (
                           <Radio key={i} className='undp-radio' value={d}>
@@ -206,62 +250,26 @@ export function CountriesMpi(props: Props) {
                     </div>
                   ) : null}
                 </div>
+              </div>
+              <div className={activeViz === 'map' ? '' : 'hide'}>
                 <CountryMap
                   countryData={countryData}
                   selectedAdminLevel={selectedAdminLevel}
                 />
               </div>
               <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
-                <LollipopChartViz data={countrySubnational} />
+                <LollipopChartViz
+                  data={countrySubnational.filter(
+                    d => d.adminLevel === selectedAdminLevel,
+                  )}
+                  sortedBy={sortedBy}
+                />
               </div>
               <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
-                <div className='countrymap-legend'>
-                  <svg width='300px' height='45px'>
-                    <g transform='translate(10,20)'>
-                      <text
-                        x={280}
-                        y={-10}
-                        fontSize='0.8rem'
-                        fill='#212121'
-                        textAnchor='end'
-                      >
-                        Higher MPI
-                      </text>
-                      {valueArray.map((d, i) => (
-                        <g key={i}>
-                          <rect
-                            x={(i * 280) / valueArray.length}
-                            y={1}
-                            width={280 / valueArray.length}
-                            height={8}
-                            fill={colorScaleMPI(valueArray[i] - 0.05)}
-                            stroke='#fff'
-                          />
-                          <text
-                            x={(280 * (i + 1)) / valueArray.length}
-                            y={25}
-                            fontSize={12}
-                            fill='#212121'
-                            textAnchor='middle'
-                          >
-                            {d}
-                          </text>
-                        </g>
-                      ))}
-                      <text
-                        y={25}
-                        x={0}
-                        fontSize={12}
-                        fill='#212121'
-                        textAnchor='middle'
-                      >
-                        0
-                      </text>
-                    </g>
-                  </svg>
-                </div>
                 <ScatterPlotSubnational
-                  data={countrySubnational}
+                  data={countrySubnational.filter(
+                    d => d.adminLevel === selectedAdminLevel,
+                  )}
                   id='subnatScatterPlot'
                 />
               </div>

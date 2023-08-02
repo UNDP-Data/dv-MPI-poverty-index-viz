@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import { Radio, RadioChangeEvent } from 'antd';
 import styled from 'styled-components';
 import { MpiDataTypeSubnational } from '../../Types';
 import { LollipopChart } from './LollipopChart';
 
 interface Props {
   data: MpiDataTypeSubnational[];
+  sortedBy: string;
 }
 
 const LollipopChartEl = styled.div`
@@ -17,36 +16,11 @@ const LollipopChartEl = styled.div`
   padding-top: 10px;
 `;
 export function LollipopChartViz(props: Props) {
-  const { data } = props;
-  const [sortedBy, setSortedBy] = useState('mpi');
+  const { data, sortedBy } = props;
 
   return (
     <div className='lollipop-container'>
       <div className='lollipop-header'>
-        <div
-          className='flex-div margin-top-05'
-          style={{ alignItems: 'center' }}
-        >
-          <p className='undp-typography small-font'>Sort by:</p>
-          <Radio.Group
-            defaultValue='mpi'
-            onChange={(el: RadioChangeEvent) => setSortedBy(el.target.value)}
-            className='margin-bottom-05'
-          >
-            <Radio className='undp-radio' value='mpi'>
-              MPI
-            </Radio>
-            <Radio className='undp-radio' value='intensity'>
-              Intensity
-            </Radio>
-            <Radio className='undp-radio' value='headcountRatio'>
-              Headcount Ratio
-            </Radio>
-            <Radio className='undp-radio' value='subregion'>
-              Subregion name
-            </Radio>
-          </Radio.Group>
-        </div>
         <div
           className='flex-div margin-top-00 lollipop-titles'
           style={{ alignItems: 'center' }}

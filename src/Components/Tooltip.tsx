@@ -25,6 +25,7 @@ const TooltipEl = styled.div<TooltipElProps>`
   left: ${props =>
     props.horizontalAlignment === 'left' ? props.x - 20 : props.x + 20}px;
   max-width: 24rem;
+  min-width: 20rem;
   transform: ${props =>
     `translate(${props.horizontalAlignment === 'left' ? '-100%' : '0%'},${
       props.verticalAlignment === 'top' ? '-100%' : '0%'

@@ -202,6 +202,7 @@ export function CountryMap(props: Props) {
   }, []);
   // when changing country
   useEffect(() => {
+    console.log('selectedAdminLevel', selectedAdminLevel);
     if (
       countryData !== undefined &&
       countryData.bbox.ne !== undefined &&
