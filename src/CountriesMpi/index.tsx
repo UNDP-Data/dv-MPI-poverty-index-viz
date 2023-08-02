@@ -76,9 +76,7 @@ export function CountriesMpi(props: Props) {
     const adminValues = subNatValues.map(
       (d: MpiDataTypeSubnational) => d.adminLevel,
     );
-    // console.log('adminValues', adminValues);
     setAdminLevels([...new Set(adminValues)]);
-    // console.log('admin levels', adminLevels, selectedAdminLevel);
   }, [selectedCountry]);
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
@@ -105,7 +103,6 @@ export function CountriesMpi(props: Props) {
           style={{ width: '400px' }}
           onChange={d => {
             setSelectedCountry(national[d as any].country);
-            if (adminLevels.length < 2) setSelectedAdminLevel(adminLevels[0]);
           }}
         >
           {national.map((d, i) => (
@@ -145,7 +142,7 @@ export function CountriesMpi(props: Props) {
                 </div>
               </div>
               <div className={activeViz === 'map' ? '' : 'hide'}>
-                <div className='flex-div'>
+                <div className='flex-div flex-space-between'>
                   <div className='countrymap-legend'>
                     <svg width='300px' height='45px'>
                       <g transform='translate(10,20)'>
@@ -192,7 +189,7 @@ export function CountriesMpi(props: Props) {
                     </svg>
                   </div>
                   {adminLevels.length > 1 ? (
-                    <div>
+                    <div className='flex-div margin-top-05'>
                       <p className='undp-typography small-font'>Admin level:</p>
                       <Radio.Group
                         defaultValue={adminLevels[0]}
@@ -212,7 +209,6 @@ export function CountriesMpi(props: Props) {
                 <CountryMap
                   countryData={countryData}
                   selectedAdminLevel={selectedAdminLevel}
-                  adminLevels={adminLevels}
                 />
               </div>
               <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
