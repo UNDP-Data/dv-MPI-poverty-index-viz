@@ -27,6 +27,7 @@ export function ScatterPlot(props: Props) {
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
+  const [hoverValue, setHoverValue] = useState<string>('');
   const xPos = scaleLinear()
     .domain([0, 100])
     .range([0, graphWidth - margin.left - margin.right])
@@ -36,12 +37,12 @@ export function ScatterPlot(props: Props) {
     .range([0, graphHeight - margin.top - margin.bottom]);
   const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
   const yAxis = axisLeft(yPos as any)
-    .tickSize(-graphWidth - margin.left + margin.right)
+    .tickSize(-graphWidth + margin.left + margin.right)
     .tickFormat((d: any) => `${d}%`);
   const xAxis = axisBottom(xPos)
     .tickSize(0)
     .tickSizeOuter(0)
-    .tickPadding(4)
+    .tickPadding(6)
     .tickFormat((d: any) => `${d}%`);
 
   useEffect(() => {
@@ -52,12 +53,12 @@ export function ScatterPlot(props: Props) {
     svg
       .selectAll('.yAxis text')
       .attr('dy', '-4px')
-      .attr('x', '0')
-      .attr('text-anchor', 'start');
+      .attr('x', '-4px')
+      .attr('text-anchor', 'end');
   }, []);
 
   return (
-    <div>
+    <div className='scatterPlot'>
       <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id={id}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g
@@ -66,12 +67,13 @@ export function ScatterPlot(props: Props) {
               graphHeight - margin.bottom - margin.top
             })`}
           />
-          <g className='yAxis' transform='translate(-40,0)' />
+          <g className='yAxis' transform='translate(0,0)' />
           <g
             transform={`translate(
             ${xPos(Number(rural?.headcountRatio))}, 
             ${yPos(Number(rural?.intensity))})`}
             onMouseEnter={event => {
+              setHoverValue('rural');
               setHoverData({
                 country,
                 subregion: 'Rural Areas',
@@ -84,11 +86,13 @@ export function ScatterPlot(props: Props) {
             }}
             onMouseLeave={() => {
               setHoverData(undefined);
+              setHoverValue('');
             }}
           >
             <circle
               r={mpiScale(Number(rural?.mpi))}
               fill={UNDPColorModule.categoricalColors.locationColors.rural}
+              stroke={hoverValue === 'rural' ? '#232E3D' : '#fff'}
             />
           </g>
           <g
@@ -96,6 +100,7 @@ export function ScatterPlot(props: Props) {
             ${xPos(Number(urban?.headcountRatio))}, 
             ${yPos(Number(urban?.intensity))})`}
             onMouseEnter={event => {
+              setHoverValue('urban');
               setHoverData({
                 country,
                 subregion: 'Urban Areas',
@@ -107,12 +112,14 @@ export function ScatterPlot(props: Props) {
               });
             }}
             onMouseLeave={() => {
+              setHoverValue('');
               setHoverData(undefined);
             }}
           >
             <circle
               r={mpiScale(Number(urban?.mpi))}
               fill={UNDPColorModule.categoricalColors.locationColors.urban}
+              stroke={hoverValue === 'urban' ? '#232E3D' : '#fff'}
             />
           </g>
           <g
@@ -120,6 +127,7 @@ export function ScatterPlot(props: Props) {
             ${xPos(Number(total?.headcountRatio))}, 
             ${yPos(Number(total?.intensity))})`}
             onMouseEnter={event => {
+              setHoverValue('total');
               setHoverData({
                 country,
                 subregion: 'Country Total',
@@ -132,12 +140,13 @@ export function ScatterPlot(props: Props) {
             }}
             onMouseLeave={() => {
               setHoverData(undefined);
+              setHoverValue('');
             }}
           >
             <circle
               r={mpiScale(Number(total?.mpi))}
               fill='#55606E'
-              stroke='#888'
+              stroke={hoverValue === 'total' ? '#232E3D' : '#fff'}
             />
           </g>
         </g>

@@ -21,6 +21,7 @@ export function ScatterPlotSubnational(props: Props) {
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
+  const [hoverValue, setHoverValue] = useState<string>('');
   const xPos = scaleLinear()
     .domain([0, 100])
     .range([0, graphWidth - margin.left - margin.right])
@@ -29,12 +30,12 @@ export function ScatterPlotSubnational(props: Props) {
     .domain([80, 0])
     .range([0, graphHeight - margin.top - margin.bottom]);
   const yAxis = axisLeft(yPos as any)
-    .tickSize(-graphWidth - margin.left + margin.right)
+    .tickSize(-graphWidth + margin.left + margin.right)
     .tickFormat((d: any) => `${d}%`);
   const xAxis = axisBottom(xPos)
     .tickSize(0)
     .tickSizeOuter(0)
-    .tickPadding(4)
+    .tickPadding(6)
     .tickFormat((d: any) => `${d}%`);
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const colorScaleMPI = scaleThreshold<number, string>()
@@ -48,8 +49,8 @@ export function ScatterPlotSubnational(props: Props) {
     svg
       .selectAll('.yAxis text')
       .attr('dy', '-4px')
-      .attr('x', '0')
-      .attr('text-anchor', 'start');
+      .attr('x', '-4px')
+      .attr('text-anchor', 'end');
   }, []);
 
   return (
@@ -62,11 +63,12 @@ export function ScatterPlotSubnational(props: Props) {
               graphHeight - margin.bottom - margin.top
             })`}
           />
-          <g className='yAxis' transform='translate(-40,0)' />
+          <g className='yAxis' transform='translate(0,0)' />
           {data.map((d: any, i: number) => (
             <g
               key={i}
               onMouseEnter={event => {
+                setHoverValue(d.subregion);
                 setHoverData({
                   country: d.country,
                   subregion: d.subregion,
@@ -79,6 +81,7 @@ export function ScatterPlotSubnational(props: Props) {
               }}
               onMouseLeave={() => {
                 setHoverData(undefined);
+                setHoverValue('');
               }}
               transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
                 Number(d.intensity),
@@ -87,13 +90,17 @@ export function ScatterPlotSubnational(props: Props) {
               <circle
                 r={6}
                 fill={colorScaleMPI(Number(d.mpi))}
-                stroke='var(--gray-500)'
-                strokeWidth={1}
+                stroke={
+                  hoverValue === d.subregion
+                    ? 'var(--gray-700)'
+                    : 'var(--gray-500)'
+                }
+                strokeWidth={1.5}
               />
             </g>
           ))}
         </g>
-        <text x={graphWidth / 2} y={graphHeight} textAnchor='middle'>
+        <text x={graphWidth / 2} y={graphHeight - 3} textAnchor='middle'>
           Headcount Ratio
         </text>
         <text

@@ -127,7 +127,11 @@
 .background-legend{
   background-color: rgba(255, 255, 255, 0.7);
 }
-
+/* scatterplot */
+.scatterPlot circle{
+  stroke-width: 2;
+  shape-rendering: geometricPrecision;
+}
 
 @-webkit-keyframes highlight-opacity {
   0%   {opacity: 1;}
