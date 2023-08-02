@@ -228,7 +228,7 @@ export function CountriesMpi(props: Props) {
                       </Radio.Group>
                     </div>
                   )}
-                  {adminLevels.length > 1 ? (
+                  {adminLevels && adminLevels.length > 1 ? (
                     <div
                       className='flex-div margin-top-05'
                       style={{ alignItems: 'center' }}
