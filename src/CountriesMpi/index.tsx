@@ -26,11 +26,6 @@ export function CountriesMpi(props: Props) {
   const { national, subnational, location } = props;
   // const queryParams = new URLSearchParams(window.location.search);
   // const queryCountry = queryParams.get('country');
-  const [selectedCountry, setSelectedCountry] = useState<string>('');
-  const [adminLevels, setAdminLevels] = useState<string[] | undefined>(
-    undefined,
-  );
-  const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>('');
   const [rural, setRural] = useState<MpiDataTypeLocation | undefined>(
     undefined,
   );
@@ -52,11 +47,19 @@ export function CountriesMpi(props: Props) {
   const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
-  national.sort((a, b) => ascending(a.country, b.country));
   const [sortedBy, setSortedBy] = useState('mpi');
 
-  const defaultCountry = 'Malawi';
-  if (selectedCountry === '') setSelectedCountry(defaultCountry);
+  national.sort((a, b) => ascending(a.country, b.country));
+  const defaultCountry = national[0].country;
+  const [selectedCountry, setSelectedCountry] =
+    useState<string>(defaultCountry);
+  const subNat = subnational?.filter(k => k.country === selectedCountry);
+  const [adminLevels, setAdminLevels] = useState<string[]>([
+    ...new Set(subNat.map((d: MpiDataTypeSubnational) => d.adminLevel)),
+  ]);
+  const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>(
+    adminLevels[0],
+  );
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -82,13 +85,6 @@ export function CountriesMpi(props: Props) {
       ...new Set(subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel)),
     ]);
   }, [selectedCountry]);
-  useEffect(() => {
-    if (
-      (adminLevels && adminLevels.length < 2) ||
-      (adminLevels && selectedAdminLevel === '')
-    )
-      setSelectedAdminLevel(adminLevels[0]);
-  }, [adminLevels]);
   return (
     <div style={{ width: '1280px', margin: 'auto' }}>
       <div>
