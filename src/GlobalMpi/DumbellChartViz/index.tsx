@@ -93,62 +93,55 @@ export function DumbellChartViz(props: Props) {
   return (
     <div className='dumbell-container'>
       <div className='dumbell-header'>
-        <div className='flex-div'>
-          <div className='flex-div' style={{ alignItems: 'center' }}>
-            <div>
-              <p className='label undp-typography'>
-                Display differences between
-              </p>
-              <Select
-                options={diffOptions}
-                className='undp-select'
-                style={{ width: '350px' }}
-                onChange={el => setDiffOption(el)}
-                value={diffOption}
-              />
-            </div>
+        <div className='flex-div flex-wrap'>
+          <div className='dumbell-select'>
+            <p className='label undp-typography'>Display differences between</p>
+            <Select
+              options={diffOptions}
+              className='undp-select'
+              style={{ width: '100%' }}
+              onChange={el => setDiffOption(el)}
+              value={diffOption}
+            />
           </div>
-          <div
-            className='flex-div margin-left-04'
-            style={{ alignItems: 'center' }}
-          >
-            <div>
-              <p className='label undp-typography'>sorted by</p>
-              <Select
-                options={sortingOptions}
-                className='undp-select'
-                style={{ width: '350px' }}
-                onChange={el => setSortedBy(el)}
-                value={sortedBy}
-              />
-            </div>
+          <div className='dumbell-select'>
+            <p className='label undp-typography'>sorted by</p>
+            <Select
+              options={sortingOptions}
+              className='undp-select'
+              style={{ width: '100%' }}
+              onChange={el => setSortedBy(el)}
+              value={sortedBy}
+            />
           </div>
-          <div
-            className='flex-div margin-left-04'
-            style={{ alignItems: 'center' }}
-          >
-            <div>
-              <p className='label undp-typography'>filtered by region</p>
-              <Select
-                options={regionsOptions.map(region => ({
-                  label: region,
-                  value: region,
-                }))}
-                className='undp-select'
-                style={{ width: '350px' }}
-                onChange={el => setFilterBy(el)}
-                value={filterBy}
-              />
-            </div>
+          <div className='dumbell-select'>
+            <p className='label undp-typography'>filtered by region</p>
+            <Select
+              options={regionsOptions.map(region => ({
+                label: region,
+                value: region,
+              }))}
+              className='undp-select'
+              style={{ width: '100%' }}
+              onChange={el => setFilterBy(el)}
+              value={filterBy}
+            />
           </div>
         </div>
         <div
-          className='flex-div margin-top-05 dumbell-titles'
+          className='flex-div margin-top-05'
           style={{ alignItems: 'center' }}
         >
-          <div style={{ width: '260px', fontWeight: '700' }}>Countries</div>
-          <div style={{ width: '90px', fontWeight: '700' }}>Difference </div>
-          <div className='legend-container' style={{ width: '260px' }}>
+          <div style={{ width: '27%' }} className='dumbell-titles'>
+            Countries
+          </div>
+          <div style={{ width: '90px' }} className='dumbell-titles'>
+            Difference{' '}
+          </div>
+          <div
+            className='legend-container dumbel-titles'
+            style={{ width: '260px' }}
+          >
             <div className='legend-item'>
               <div
                 className='legend-circle'
@@ -169,7 +162,8 @@ export function DumbellChartViz(props: Props) {
             </div>
           </div>
           <div
-            style={{ fontWeight: '700', right: '100px', position: 'absolute' }}
+            style={{ right: '10px', position: 'absolute' }}
+            className='dumbell-titles'
           >
             Year survey
           </div>

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useRef, useState } from 'react';
 import UNDPColorModule from 'undp-viz-colors';
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const LegendEl = styled.div`
-  position: absolute;
+  position: relative;
   right: 10px;
   padding: 0.5rem 0.5rem 0 0.5rem;
   background-color: rgba(255, 255, 255, 0.5);
@@ -27,6 +26,7 @@ const LegendEl = styled.div`
   margin-top: -1rem;
   z-index: 5;
   @media (min-width: 961px) {
+    position: absolute;
     transform: translateY(-100%);
   }
 `;
@@ -94,13 +94,7 @@ export function Map(props: Props) {
           Population in multidimensional poverty
         </Radio>
       </Radio.Group>
-      <div
-        className='map-container'
-        style={{
-          width: `${svgWidth}px`,
-          height: `${svgHeight}px`,
-        }}
-      >
+      <div className='map-container'>
         <svg
           width='100%'
           height='100%'

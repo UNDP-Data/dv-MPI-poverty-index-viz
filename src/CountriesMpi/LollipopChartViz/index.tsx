@@ -20,34 +20,29 @@ export function LollipopChartViz(props: Props) {
 
   return (
     <div className='lollipop-container'>
-      <div className='lollipop-header'>
-        <div
-          className='flex-div margin-top-00 lollipop-titles'
-          style={{ alignItems: 'center' }}
-        >
-          <div style={{ width: '200px', fontWeight: '700' }}>Regions</div>
-          <div style={{ width: '200px', fontWeight: '700' }}>MPI value</div>
-          <div className='legend-container' style={{ width: '320px' }}>
-            <div className='legend-item'>
-              <div
-                className='legend-circle-small'
-                style={{
-                  backgroundColor: '#FFF',
-                  border: '3px solid #59BA47',
-                }}
-              />
-              <div>Intensity</div>
-            </div>
-            <div className='legend-item'>
-              <div
-                className='legend-circle-small'
-                style={{
-                  backgroundColor: '#FFF',
-                  border: '3px solid #FBC412',
-                }}
-              />
-              <div>Headcount ratio</div>
-            </div>
+      <div className='flex-div flex-wrap margin-top-00 lollipop-header'>
+        <div style={{ width: '25%', fontWeight: '600' }}>Regions</div>
+        <div style={{ width: '20%', fontWeight: '600' }}>MPI value</div>
+        <div className='legend-container'>
+          <div className='legend-item'>
+            <div
+              className='legend-circle-small'
+              style={{
+                backgroundColor: '#FFF',
+                border: '3px solid #59BA47',
+              }}
+            />
+            <div>Intensity</div>
+          </div>
+          <div className='legend-item'>
+            <div
+              className='legend-circle-small'
+              style={{
+                backgroundColor: '#FFF',
+                border: '3px solid #FBC412',
+              }}
+            />
+            <div>Headcount ratio</div>
           </div>
         </div>
       </div>

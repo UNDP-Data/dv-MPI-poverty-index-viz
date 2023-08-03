@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import { useEffect, useRef, useState } from 'react';
 import maplibreGl from 'maplibre-gl';

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-extraneous-dependencies */
 import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear } from 'd3-scale';
 import { descending, ascending } from 'd3-array';
+import { useRef, useEffect, useState } from 'react';
 import { MpiDataTypeDiff } from '../../Types';
 
 interface Props {
@@ -13,11 +13,15 @@ interface Props {
 }
 export function DumbellChart(props: Props) {
   const { data, diffOption, sortedByKey, filterByLabel } = props;
-  const graphWidth = 1280;
-  const leftPadding = 330;
+  let width = 1280;
+  // const leftPadding = 330;
   const rightPadding = 100;
   const rowHeight = 35;
   const marginTop = 10;
+  const visContainer = useRef(null);
+  const [graphWidth, setWidth] = useState<number>(0);
+  const [leftPadding, setLeftPadding] = useState<number>(330);
+  const [textSize, setTextSize] = useState<number>(1);
 
   if (sortedByKey === 'diff') {
     data.sort((x: MpiDataTypeDiff, y: MpiDataTypeDiff) =>
@@ -52,16 +56,28 @@ export function DumbellChart(props: Props) {
     .range([0, graphWidth - leftPadding - rightPadding])
     .nice();
 
+  useEffect(() => {
+    const handleResize = () => {
+      // eslint-disable-next-line @typescript-eslint/dot-notation
+      if (visContainer.current) width = visContainer.current['offsetWidth'];
+      setWidth(width);
+      setLeftPadding(width > 960 ? width / 4 : width / 3);
+      setTextSize(width > 960 ? 1 : 0.8);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  }, []);
   return (
-    <div className='dumbellChart'>
+    <div className='dumbellChart' ref={visContainer}>
       <svg
-        viewBox={`0 0 ${graphWidth} ${
+        width={graphWidth}
+        height={
           data.filter(k =>
             filterByLabel === 'All' ? k : k.region === filterByLabel,
           ).length *
             rowHeight +
           marginTop
-        }`}
+        }
       >
         {data
           .filter(k =>
@@ -77,7 +93,7 @@ export function DumbellChart(props: Props) {
                   x={0}
                   y={rowHeight / 2}
                   dy='3px'
-                  fontSize='1rem'
+                  fontSize={`${textSize}rem`}
                   color='var(--black-500)'
                 >
                   {d.country}
@@ -89,7 +105,6 @@ export function DumbellChart(props: Props) {
                   y2={rowHeight / 2}
                   stroke='#FFF'
                   strokeWidth={3}
-                  shapeRendering='crispEdge'
                 />
                 <line
                   x1={xPos((d as any)[diff2]) + leftPadding}
@@ -98,13 +113,24 @@ export function DumbellChart(props: Props) {
                   y2={rowHeight / 2}
                   stroke='#000'
                   strokeWidth={1}
-                  shapeRendering='crispEdge'
                 />
                 <circle
                   cx={xPos((d as any)[diff2]) + leftPadding}
                   cy={rowHeight / 2}
                   r={7}
                   fill={color2}
+                />
+                <line
+                  x1={xPos((d as any)[diff2]) + leftPadding}
+                  x2={
+                    (d as any)[diffOption] < 0
+                      ? xPos((d as any)[diff2]) + leftPadding - 10
+                      : xPos((d as any)[diff2]) + leftPadding + 10
+                  }
+                  y1={rowHeight / 2}
+                  y2={rowHeight / 2}
+                  stroke={color2}
+                  strokeWidth={2}
                 />
                 <text
                   x={
@@ -114,7 +140,7 @@ export function DumbellChart(props: Props) {
                   }
                   y={0}
                   dy='22px'
-                  fontSize='14px'
+                  fontSize={`${textSize - 0.1}rem`}
                   textAnchor={(d as any)[diffOption] < 0 ? 'end' : 'start'}
                 >
                   {Number((d as any)[diff2]).toFixed(3)}
@@ -125,6 +151,18 @@ export function DumbellChart(props: Props) {
                   r={7}
                   fill={color1}
                 />
+                <line
+                  x1={xPos((d as any)[diff1]) + leftPadding}
+                  x2={
+                    (d as any)[diffOption] < 0
+                      ? xPos((d as any)[diff1]) + leftPadding + 10
+                      : xPos((d as any)[diff1]) + leftPadding - 10
+                  }
+                  y1={rowHeight / 2}
+                  y2={rowHeight / 2}
+                  stroke={color1}
+                  strokeWidth={2}
+                />
                 <text
                   x={
                     (d as any)[diffOption] >= 0
@@ -133,12 +171,17 @@ export function DumbellChart(props: Props) {
                   }
                   y={0}
                   dy='22px'
-                  fontSize='14px'
+                  fontSize={`${textSize - 0.1}rem`}
                   textAnchor={(d as any)[diffOption] < 0 ? 'start' : 'end'}
                 >
                   {Number((d as any)[diff1]).toFixed(3)}
                 </text>
-                <text x={graphWidth - 80} y={0} dy='22px' fontSize='14px'>
+                <text
+                  x={graphWidth - 80}
+                  y={0}
+                  dy='22px'
+                  fontSize={`${textSize - 0.1}rem`}
+                >
                   {(d as any).year}
                 </text>
               </g>

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { csv, json } from 'd3-fetch';
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
@@ -152,7 +151,10 @@ function App() {
     );
   }, []);
   return (
-    <div className='undp-container'>
+    <div
+      className='undp-container'
+      style={{ maxWidth: '1280px', margin: 'auto' }}
+    >
       <h1>
         <i>Work in Progress</i>
       </h1>
