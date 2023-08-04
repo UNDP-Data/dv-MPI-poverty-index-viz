@@ -1,0 +1,136 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { scaleLinear, scaleOrdinal } from 'd3-scale';
+import { axisBottom, axisLeft } from 'd3-axis';
+import { select } from 'd3-selection';
+import UNDPColorModule from 'undp-viz-colors';
+import { useEffect, useState } from 'react';
+import { HoverDataType, MpiDataType } from '../Types';
+import { Tooltip } from '../Components/Tooltip';
+
+interface Props {
+  data: MpiDataType[];
+}
+const regionsOptions = [
+  'Arab States',
+  'East Asia and the Pacific',
+  'Europe and Central Asia',
+  'Latin America and the Caribbean',
+  'South Asia',
+  'Sub-Saharan Africa',
+];
+const regionColors = UNDPColorModule.categoricalColors.colors;
+const regionScale = scaleOrdinal<string>()
+  .domain(regionsOptions)
+  .range(regionColors);
+export function ScatterPlotGlobal(props: Props) {
+  const { data } = props;
+  const graphWidth = 1280;
+  const graphHeight = 550;
+  const margin = { top: 20, right: 30, bottom: 50, left: 80 };
+  const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
+    undefined,
+  );
+  const [hoverValue, setHoverValue] = useState<string>('');
+  const xPos = scaleLinear()
+    .domain([0, 100])
+    .range([0, graphWidth - margin.left - margin.right])
+    .nice();
+  const yPos = scaleLinear()
+    .domain([80, 0])
+    .range([0, graphHeight - margin.top - margin.bottom]);
+  const yAxis = axisLeft(yPos as any)
+    .tickSize(-graphWidth + margin.left + margin.right)
+    .tickFormat((d: any) => `${d}%`);
+  const xAxis = axisBottom(xPos)
+    .tickSize(0)
+    .tickSizeOuter(0)
+    .tickPadding(6)
+    .tickFormat((d: any) => `${d}%`);
+  // eslint-disable-next-line no-console
+  console.log('mpiData', data);
+  useEffect(() => {
+    const svg = select('#scatterGlobal');
+    svg.select('.yAxis').call(yAxis as any);
+    svg.select('.xAxis').call(xAxis as any);
+    svg.selectAll('.domain').remove();
+    svg
+      .selectAll('.yAxis text')
+      .attr('dy', '-4px')
+      .attr('x', '-4px')
+      .attr('text-anchor', 'end');
+  }, []);
+
+  return (
+    <div className='chart-container margin-top-06'>
+      <h6 className='undp-typography'>Headcount ratio vs Intensity</h6>
+      <div className='legend-container margin-left-08 margin-bottom-03'>
+        {regionsOptions.map((d, i) => (
+          <div className='legend-item' key={i}>
+            <div
+              className='legend-circle'
+              style={{
+                backgroundColor: `${regionScale(d)}`,
+              }}
+            />
+            <div className='small-font'>{d}</div>
+          </div>
+        ))}
+      </div>
+      <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id='scatterGlobal'>
+        <g transform={`translate(${margin.left},${margin.top})`}>
+          <g
+            className='xAxis'
+            transform={`translate(0 ,${
+              graphHeight - margin.bottom - margin.top
+            })`}
+          />
+          <g className='yAxis' transform='translate(0,0)' />
+          {data.map((d: any, i: number) => (
+            <g
+              key={i}
+              onMouseEnter={event => {
+                setHoverValue(d.country);
+                setHoverData({
+                  country: d.country,
+                  continent: d.region,
+                  value: Number(d.mpi),
+                  year: Number(d.year),
+                  headcountRatio: Number(d.headcountRatio),
+                  intensity: Number(d.intensity),
+                  xPosition: event.clientX,
+                  yPosition: event.clientY,
+                });
+              }}
+              onMouseLeave={() => {
+                setHoverData(undefined);
+                setHoverValue('');
+              }}
+              transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
+                Number(d.intensity),
+              )})`}
+            >
+              <circle
+                r={6}
+                fill={regionScale(d.region)}
+                stroke={hoverValue === d.country ? 'var(--gray-700)' : '#FFF'}
+                strokeWidth={1}
+              />
+            </g>
+          ))}
+        </g>
+        <text x={graphWidth / 2} y={graphHeight - 3} textAnchor='middle'>
+          Headcount Ratio
+        </text>
+        <text
+          x={-graphHeight / 2}
+          y='20'
+          transform='rotate(-90)'
+          textAnchor='middle'
+        >
+          Intensity
+        </text>
+      </svg>
+      {hoverData ? <Tooltip data={hoverData} /> : null}
+    </div>
+  );
+}

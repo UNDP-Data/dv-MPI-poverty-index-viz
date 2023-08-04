@@ -3,6 +3,12 @@
   position: relative;
   border: 1px solid var(--gray-400);
 }
+.chart-global-container{
+  max-width: 800px;
+  flex-grow: 1;
+  flex-shrink: 1; 
+  flex-basis: 800px;
+}
 /* dumbell styles */
 .dumbell-container{
   background-color: var(--gray-100);
@@ -89,8 +95,10 @@
 .chart-container{
   background-color: var(--gray-200);
   padding: 24px 32px;
-  max-width: 700px;
   position:relative;
+}
+.flex-chart{  
+  max-width: 700px;
   flex-grow: 1;
   flex-shrink: 1; 
   flex-basis: 700px;

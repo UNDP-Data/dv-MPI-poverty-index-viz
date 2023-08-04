@@ -21,7 +21,7 @@ const LegendEl = styled.div`
   padding: 0.5rem 0.5rem 0 0.5rem;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: var(--shadow);
-  width: 440px;
+  width: 360px;
   margin-left: 1rem;
   margin-top: -1rem;
   z-index: 5;
@@ -34,7 +34,7 @@ const LegendEl = styled.div`
 export function Map(props: Props) {
   const { data } = props;
   const svgWidth = 1280;
-  const svgHeight = 550;
+  const svgHeight = 750;
   const mapSvg = useRef<SVGSVGElement>(null);
   const mapG = useRef<SVGGElement>(null);
   const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
@@ -52,9 +52,8 @@ export function Map(props: Props) {
   const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   const projection = geoEqualEarth()
     .rotate([0, 0])
-    .scale(230)
-    // .rotate([-10, 0])
-    .translate([svgWidth / 2, svgHeight / 2]);
+    .scale(300)
+    .translate([svgWidth / 2 - 50, svgHeight / 2]);
   const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
@@ -81,7 +80,7 @@ export function Map(props: Props) {
     mapSvgSelect.call(zoomBehaviour as any);
   }, []);
   return (
-    <div>
+    <div className='chart-global-container'>
       <Radio.Group
         defaultValue='mpi'
         onChange={onChange}
@@ -95,12 +94,7 @@ export function Map(props: Props) {
         </Radio>
       </Radio.Group>
       <div className='map-container'>
-        <svg
-          width='100%'
-          height='100%'
-          viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-          ref={mapSvg}
-        >
+        <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} ref={mapSvg}>
           <g ref={mapG}>
             {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -229,8 +223,10 @@ export function Map(props: Props) {
           </g>
         </svg>
         <LegendEl>
-          <h6 className='undp-typography margin-left-03'>Legend</h6>
-          <svg width='100%' viewBox='0 0 400 50'>
+          <h6 className='undp-typography margin-left-03 margin-bottom-00'>
+            LEGEND
+          </h6>
+          <svg viewBox='0 0 340 50'>
             {radioValue === 'mpi' ? (
               <g transform='translate(10,20)'>
                 <text

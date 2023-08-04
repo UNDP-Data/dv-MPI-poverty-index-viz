@@ -118,7 +118,7 @@ export function CountriesMpi(props: Props) {
       </div>
       {countrySubnational ? (
         <div className='flex-div flex-wrap'>
-          <div className='chart-container'>
+          <div className='chart-container flex-chart'>
             <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
               <div>
                 <h6 className='undp-typography margin-bottom-01'>
@@ -341,7 +341,7 @@ export function CountriesMpi(props: Props) {
         Rural vs urban MPI in {selectedCountry}
       </h4>
       <div className='flex-div  margin-top-05'>
-        <div className='chart-container'>
+        <div className='chart-container flex-chart'>
           <div className='flex-div flex-space-between'>
             <div>
               <h6 className='undp-typography margin-bottom-01'>
