@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Radio, RadioChangeEvent } from 'antd';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
-import UNDPColorModule from 'undp-viz-colors';
+// import UNDPColorModule from 'undp-viz-colors';
 import { useEffect, useState } from 'react';
 import { HoverDataType, MpiDataType } from '../Types';
 import { Tooltip } from '../Components/Tooltip';
@@ -18,7 +19,15 @@ const regionsOptions = [
   'South Asia',
   'Sub-Saharan Africa',
 ];
-const regionColors = UNDPColorModule.categoricalColors.colors;
+const regionColors = [
+  '#006eb5',
+  '#5DD4F0',
+  '#02A38A',
+  '#E78625',
+  '#E0529E',
+  '#757AF0',
+];
+// const regionColors = UNDPColorModule.categoricalColors.colors;
 const regionScale = scaleOrdinal<string>()
   .domain(regionsOptions)
   .range(regionColors);
@@ -30,13 +39,14 @@ export function ScatterPlotGlobal(props: Props) {
   const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
     undefined,
   );
+  const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [hoverValue, setHoverValue] = useState<string>('');
   const xPos = scaleLinear()
     .domain([0, 100])
     .range([0, graphWidth - margin.left - margin.right])
     .nice();
   const yPos = scaleLinear()
-    .domain([80, 0])
+    .domain([70, 0])
     .range([0, graphHeight - margin.top - margin.bottom]);
   const yAxis = axisLeft(yPos as any)
     .tickSize(-graphWidth + margin.left + margin.right)
@@ -47,7 +57,7 @@ export function ScatterPlotGlobal(props: Props) {
     .tickPadding(6)
     .tickFormat((d: any) => `${d}%`);
   // eslint-disable-next-line no-console
-  console.log('mpiData', data);
+  console.log('mpiData', data, selectedRegion);
   useEffect(() => {
     const svg = select('#scatterGlobal');
     svg.select('.yAxis').call(yAxis as any);
@@ -63,18 +73,28 @@ export function ScatterPlotGlobal(props: Props) {
   return (
     <div className='chart-container margin-top-06'>
       <h6 className='undp-typography'>Headcount ratio vs Intensity</h6>
-      <div className='legend-container margin-left-08 margin-bottom-03'>
-        {regionsOptions.map((d, i) => (
-          <div className='legend-item' key={i}>
-            <div
-              className='legend-circle'
-              style={{
-                backgroundColor: `${regionScale(d)}`,
-              }}
-            />
-            <div className='small-font'>{d}</div>
-          </div>
-        ))}
+      <div className='margin-left-08 margin-bottom-03'>
+        <Radio.Group
+          defaultValue='All'
+          onChange={(el: RadioChangeEvent) =>
+            setSelectedRegion(el.target.value)
+          }
+          className='margin-bottom-05'
+        >
+          <Radio className='undp-radio' value='All'>
+            All
+          </Radio>
+          {regionsOptions.map((d, i) => (
+            <Radio key={i} className='undp-radio' value={d}>
+              <span
+                className='small-font padding-bottom-01'
+                style={{ borderBottom: `4px solid ${regionScale(d)}` }}
+              >
+                {d}
+              </span>
+            </Radio>
+          ))}
+        </Radio.Group>
       </div>
       <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id='scatterGlobal'>
         <g transform={`translate(${margin.left},${margin.top})`}>
@@ -114,6 +134,11 @@ export function ScatterPlotGlobal(props: Props) {
                 fill={regionScale(d.region)}
                 stroke={hoverValue === d.country ? 'var(--gray-700)' : '#FFF'}
                 strokeWidth={1}
+                visibility={
+                  selectedRegion === d.region || selectedRegion === 'All'
+                    ? 'visible'
+                    : 'hidden'
+                }
               />
             </g>
           ))}

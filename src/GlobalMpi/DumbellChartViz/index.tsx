@@ -169,7 +169,7 @@ export function DumbellChartViz(props: Props) {
           </div>
         </div>
       </div>
-      <DumbellChartEl>
+      <DumbellChartEl className='undp-scrollbar'>
         <DumbellChart
           data={data}
           diffOption={diffOption}
