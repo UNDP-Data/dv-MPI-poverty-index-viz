@@ -57,7 +57,6 @@ export function ScatterPlotGlobal(props: Props) {
     .tickPadding(6)
     .tickFormat((d: any) => `${d}%`);
   // eslint-disable-next-line no-console
-  console.log('mpiData', data, selectedRegion);
   useEffect(() => {
     const svg = select('#scatterGlobal');
     svg.select('.yAxis').call(yAxis as any);
@@ -81,18 +80,20 @@ export function ScatterPlotGlobal(props: Props) {
           }
           className='margin-bottom-05'
         >
-          <Radio className='undp-radio' value='All'>
+          <Radio.Button className='radio-button' value='All'>
             All
-          </Radio>
+          </Radio.Button>
           {regionsOptions.map((d, i) => (
-            <Radio key={i} className='undp-radio' value={d}>
-              <span
-                className='small-font padding-bottom-01'
-                style={{ borderBottom: `4px solid ${regionScale(d)}` }}
-              >
-                {d}
-              </span>
-            </Radio>
+            <Radio.Button
+              key={i}
+              className='radio-button'
+              value={d}
+              style={{
+                borderBottom: `4px solid ${regionScale(d)}`,
+              }}
+            >
+              {d}
+            </Radio.Button>
           ))}
         </Radio.Group>
       </div>

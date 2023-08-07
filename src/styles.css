@@ -178,3 +178,21 @@
     font-size: 1rem;
   }
 }
+
+.radio-button.ant-radio-button-wrapper {
+  font-family: var(--fontFamily);
+  background-color: var(--gray-200);
+  border-radius: 2px;
+  border-color: var(--gray-200);
+  font-size: 0.9rem;
+}
+.radio-button.ant-radio-button-wrapper-checked, .radio-button.ant-radio-button-wrapper-checked:first-child {
+  border-color: var(--gray-200);
+}
+.radio-button.ant-radio-button-wrapper-checked::before, .radio-button.ant-radio-button-wrapper{
+  background-color: var(--gray-200);
+}
+.radio-button .ant-radio-button-checked {
+  background-color: white;
+  border-color: var(--gray-300);
+}
