@@ -20,7 +20,6 @@ export function CountryMap(props: Props) {
   let lat = 0;
   let lon = 0;
   const [hoverData, setHoverData] = useState<null | HoverSubnatDataType>(null);
-
   useEffect(() => {
     if (
       countryData !== undefined &&

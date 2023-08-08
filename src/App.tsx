@@ -15,6 +15,8 @@ import { GlobalMpi } from './GlobalMpi';
 import { CountriesMpi } from './CountriesMpi';
 
 function App() {
+  const queryParams = new URLSearchParams(window.location.search);
+  const queryCountry = queryParams.get('country');
   const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
   const [diffData, setDiffData] = useState<MpiDataTypeDiff[] | undefined>(
     undefined,
@@ -163,28 +165,39 @@ function App() {
       nationalData &&
       subnationalData &&
       locationData ? (
-        <Tabs
-          defaultActiveKey='1'
-          className='undp-tabs'
-          items={[
-            {
-              label: 'Global MPI',
-              key: '1',
-              children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
-            },
-            {
-              label: 'National MPI',
-              key: '2',
-              children: (
-                <CountriesMpi
-                  national={nationalData}
-                  subnational={subnationalData}
-                  location={locationData}
-                />
-              ),
-            },
-          ]}
-        />
+        <>
+          {!queryCountry ? (
+            <Tabs
+              defaultActiveKey='1'
+              className='undp-tabs'
+              items={[
+                {
+                  label: 'Global MPI',
+                  key: '1',
+                  children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
+                },
+                {
+                  label: 'National MPI',
+                  key: '2',
+                  children: (
+                    <CountriesMpi
+                      national={nationalData}
+                      subnational={subnationalData}
+                      location={locationData}
+                    />
+                  ),
+                },
+              ]}
+            />
+          ) : (
+            <CountriesMpi
+              national={nationalData}
+              subnational={subnationalData}
+              location={locationData}
+            />
+          )}
+          <div>---</div>
+        </>
       ) : null}
     </div>
   );

@@ -23,8 +23,6 @@ interface Props {
 
 export function CountriesMpi(props: Props) {
   const { national, subnational, location } = props;
-  // const queryParams = new URLSearchParams(window.location.search);
-  // const queryCountry = queryParams.get('country');
   const [rural, setRural] = useState<MpiDataTypeLocation | undefined>(
     undefined,
   );
@@ -49,7 +47,9 @@ export function CountriesMpi(props: Props) {
   const [sortedBy, setSortedBy] = useState('mpi');
 
   national.sort((a, b) => ascending(a.country, b.country));
-  const defaultCountry = national[0].country;
+  const queryParams = new URLSearchParams(window.location.search);
+  const queryCountry = queryParams.get('country');
+  const defaultCountry = queryCountry || national[0].country;
   const [selectedCountry, setSelectedCountry] =
     useState<string>(defaultCountry);
   const subNat = subnational?.filter(k => k.country === selectedCountry);
@@ -87,7 +87,7 @@ export function CountriesMpi(props: Props) {
   return (
     <div>
       <h3 className='undp-typography'>
-        National Multidimensional Poverty Index (MPI)
+        National Multidimensional Poverty Index (MPI) {queryCountry || ''}
       </h3>
       <p className='undp-typography'>
         A national Multidimensional Poverty Index (MPI) is a poverty measure
@@ -98,24 +98,26 @@ export function CountriesMpi(props: Props) {
         you can access official statistics of national and subnational MPIs,
         derived from findings obtained through national surveys.
       </p>
-      <div className='margin-bottom-08'>
-        <p className='undp-typography label'>Select a country</p>
-        <Select
-          className='undp-select'
-          value={selectedCountry}
-          showSearch
-          style={{ width: '400px' }}
-          onChange={d => {
-            setSelectedCountry(national[d as any].country);
-          }}
-        >
-          {national.map((d, i) => (
-            <Select.Option className='undp-select-option' key={i}>
-              {d.country}
-            </Select.Option>
-          ))}
-        </Select>
-      </div>
+      {!queryCountry ? (
+        <div className='margin-bottom-08'>
+          <p className='undp-typography label'>Select a country</p>
+          <Select
+            className='undp-select'
+            value={selectedCountry}
+            showSearch
+            style={{ width: '400px' }}
+            onChange={d => {
+              setSelectedCountry(national[d as any].country);
+            }}
+          >
+            {national.map((d, i) => (
+              <Select.Option className='undp-select-option' key={i}>
+                {d.country}
+              </Select.Option>
+            ))}
+          </Select>
+        </div>
+      ) : null}
       {countrySubnational ? (
         <div className='flex-div flex-wrap'>
           <div className='chart-container flex-chart'>
@@ -162,6 +164,12 @@ export function CountriesMpi(props: Props) {
                         {valueArray.map((d, i) => (
                           <g key={i}>
                             <rect
+                              onMouseOver={() =>
+                                setSelectedColor(
+                                  colorScaleMPI(valueArray[i] - 0.05),
+                                )
+                              }
+                              onMouseLeave={() => setSelectedColor(undefined)}
                               x={(i * 280) / valueArray.length}
                               y={1}
                               width={280 / valueArray.length}
@@ -291,10 +299,10 @@ export function CountriesMpi(props: Props) {
             <div className='stat-card'>
               <h3>{total?.mpi}</h3>
               <h4>National MPI {selectedCountry}</h4>
-              <p>
-                Headcount Ratio: {total?.headcountRatio}%<br />
-                Intensity: {total?.intensity}%
+              <p className='margin-bottom-01'>
+                Headcount Ratio: {total?.headcountRatio}%
               </p>
+              <p>Intensity: {total?.intensity}%</p>
             </div>
             <div className='margin-top-06'>
               <h5 className='undp-typography'>Key Definitions</h5>
