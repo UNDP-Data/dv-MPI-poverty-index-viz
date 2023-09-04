@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useRef, useState } from 'react';
 import UNDPColorModule from 'undp-viz-colors';
@@ -6,9 +7,8 @@ import { scaleThreshold } from 'd3-scale';
 import { select } from 'd3-selection';
 import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
-import { Radio, RadioChangeEvent } from 'antd';
 import world from '../../Data/worldMap.json';
-import { Tooltip } from '../../Components/Tooltip';
+import { Tooltip } from '../Tooltip';
 import { MpiDataType, HoverDataType } from '../../Types';
 
 interface Props {
@@ -47,7 +47,7 @@ export function Map(props: Props) {
     undefined,
   );
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [radioValue, setRadioValue] = useState('mpi');
+  const radioValue = 'mpi';
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   const projection = geoEqualEarth()
@@ -60,9 +60,6 @@ export function Map(props: Props) {
   const colorScaleHeadcount = scaleThreshold<number, string>()
     .domain(percentArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx10);
-  const onChange = (e: RadioChangeEvent) => {
-    setRadioValue(e.target.value);
-  };
   useEffect(() => {
     const mapGSelect = select(mapG.current);
     const mapSvgSelect = select(mapSvg.current);
@@ -81,18 +78,6 @@ export function Map(props: Props) {
   }, []);
   return (
     <div className='chart-global-container'>
-      <Radio.Group
-        defaultValue='mpi'
-        onChange={onChange}
-        className='margin-bottom-05'
-      >
-        <Radio className='undp-radio' value='mpi'>
-          MPI
-        </Radio>
-        <Radio className='undp-radio' value='percent'>
-          Population in multidimensional poverty
-        </Radio>
-      </Radio.Group>
       <div className='map-container'>
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} ref={mapSvg}>
           <g ref={mapG}>

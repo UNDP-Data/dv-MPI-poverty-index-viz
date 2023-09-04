@@ -10,6 +10,7 @@ import {
   MpiDataTypeSubnational,
   MpiDataTypeLocation,
 } from '../Types';
+import { Map } from '../Components/Choropleth/Map';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
@@ -86,18 +87,27 @@ export function CountriesMpi(props: Props) {
   }, [selectedCountry]);
   return (
     <div>
-      <h3 className='undp-typography'>
+      <h3 className='undp-typography margin-bottom-07'>
         National Multidimensional Poverty Index (MPI) {queryCountry || ''}
       </h3>
-      <p className='undp-typography'>
-        A national Multidimensional Poverty Index (MPI) is a poverty measure
-        tailored to specific countries, considering their unique circumstances.
-        These measures typically emphasize important factors such as healthcare,
-        education, and living conditions, while also incorporating other
-        relevant dimensions using appropriate local indicators. On this page,
-        you can access official statistics of national and subnational MPIs,
-        derived from findings obtained through national surveys.
-      </p>
+      {national ? (
+        <div className='flex-div flex-wrap margin-bottom-05'>
+          <div className='chart-explanation'>
+            <p className='undp-typography'>
+              A national Multidimensional Poverty Index (MPI) is a poverty
+              measure tailored to specific countries, considering their unique
+              These measures typically emphasize important factors such as
+              healthcare, education, and living conditions, while also
+              incorporating other relevant dimensions using appropriate local
+              indicators. On this page, you can access official statistics of
+              national and subnational MPIs, derived from findings obtained
+              through national surveys.
+            </p>
+          </div>
+          {!queryCountry ? <Map data={national} /> : null}
+        </div>
+      ) : null}
+      <hr className='undp-style light margin-bottom-06' />
       {!queryCountry ? (
         <div className='margin-bottom-08'>
           <p className='undp-typography label'>Select a country</p>
@@ -164,12 +174,6 @@ export function CountriesMpi(props: Props) {
                         {valueArray.map((d, i) => (
                           <g key={i}>
                             <rect
-                              onMouseOver={() =>
-                                setSelectedColor(
-                                  colorScaleMPI(valueArray[i] - 0.05),
-                                )
-                              }
-                              onMouseLeave={() => setSelectedColor(undefined)}
                               x={(i * 280) / valueArray.length}
                               y={1}
                               width={280 / valueArray.length}

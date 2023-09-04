@@ -153,13 +153,7 @@ function App() {
     );
   }, []);
   return (
-    <div
-      className='undp-container'
-      style={{ maxWidth: '1280px', margin: 'auto' }}
-    >
-      <h1>
-        <i>Work in Progress</i>
-      </h1>
+    <div className='undp-container'>
       {mpiData &&
       diffData &&
       nationalData &&
@@ -172,13 +166,8 @@ function App() {
               className='undp-tabs'
               items={[
                 {
-                  label: 'Global MPI',
-                  key: '1',
-                  children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
-                },
-                {
                   label: 'National MPI',
-                  key: '2',
+                  key: '1',
                   children: (
                     <CountriesMpi
                       national={nationalData}
@@ -186,6 +175,11 @@ function App() {
                       location={locationData}
                     />
                   ),
+                },
+                {
+                  label: 'Global MPI',
+                  key: '',
+                  children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
                 },
               ]}
             />
@@ -196,7 +190,7 @@ function App() {
               location={locationData}
             />
           )}
-          <div>---</div>
+          <div>-</div>
         </>
       ) : null}
     </div>

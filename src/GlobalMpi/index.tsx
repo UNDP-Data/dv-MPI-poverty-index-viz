@@ -1,4 +1,4 @@
-import { Map } from './Choropleth/Map';
+import { Map } from '../Components/Choropleth/Map';
 import { DumbellChartViz } from './DumbellChartViz';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
 import { ScatterPlotGlobal } from './ScatterPlotGlobal';
@@ -14,7 +14,7 @@ export function GlobalMpi(props: Props) {
       <h3 className='undp-typography'>
         Global Multidimensional Poverty Index (MPI)
       </h3>
-      <p className='undp-typography'>
+      <p className='undp-typography margin-bottom-07'>
         The global Multidimensional Poverty Index (MPI) is an inclusive measure
         that complements monetary poverty assessments by capturing deprivations
         in health, education, and living standards. It identifies individuals as
@@ -30,7 +30,7 @@ export function GlobalMpi(props: Props) {
         <div className='flex-div flex-wrap gap-07'>
           <Map data={mpiData} />
           <div className='chart-explanation'>
-            <h5 className='undp-typography margin-top-09'>Key Definitions</h5>
+            <h5 className='undp-typography margin-top-00'>Key Definitions</h5>
             <div>
               <div className='definitionDiv'>
                 <h6 className='undp-typography'>
