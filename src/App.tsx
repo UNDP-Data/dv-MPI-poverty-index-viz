@@ -30,16 +30,18 @@ function App() {
   const [locationData, setLocationData] = useState<
     MpiDataTypeLocation[] | undefined
   >(undefined);
+  const dataurl =
+    'https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-viz/main/public/data/';
   useEffect(() => {
     Promise.all([
-      csv('./data/Global-MPI_national.csv'),
-      csv('./data/Global-MPI_rural.csv'),
-      csv('./data/Global-MPI_urban.csv'),
-      csv('./data/Global-MPI_female.csv'),
-      csv('./data/Global-MPI_male.csv'),
-      csv('./data/MPI_national.csv'),
-      csv('./data/MPI_subnational.csv'),
-      csv('./data/MPI_location.csv'),
+      csv(`${dataurl}Global-MPI_national.csv`),
+      csv(`${dataurl}Global-MPI_rural.csv`),
+      csv(`${dataurl}Global-MPI_urban.csv`),
+      csv(`${dataurl}Global-MPI_female.csv`),
+      csv(`${dataurl}Global-MPI_male.csv`),
+      csv(`${dataurl}MPI_national.csv`),
+      csv(`${dataurl}MPI_subnational.csv`),
+      csv(`${dataurl}MPI_location.csv`),
       json(
         'https://gist.githubusercontent.com/cplpearce/3bc5f1e9b1187df51d2085ffca795bee/raw/b36904c0c8ea72fdb82f68eb33f29891095deab3/country_codes',
       ),
