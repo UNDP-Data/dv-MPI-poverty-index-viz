@@ -39,11 +39,11 @@ export function CountryMap(props: Props) {
         sources: {
           admin0: {
             type: 'vector',
-            url: 'pmtiles://../data/geoBADM0.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/geoBADM0.pmtiles',
           },
           admin2: {
             type: 'vector',
-            url: 'pmtiles://../data/adm_Export_jso_FeaturesToJSO.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
           },
         },
         layers: [
