@@ -356,7 +356,7 @@ MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South Central,1,12.4,0.198,38.
 MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South,1,15.2,0.2,39,51.1
 SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Mahe,1,88,0.041,12,33.39
 SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Inner islands,1,12,0.022,7.41,30.3
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Bangkok,,9,0.057,17.3,33.0
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Bangkok,,9,0.057,17.3,33
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nonthaburi,1,27,0.06,17.6,34.4
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phra Nakhon Si Ayutthaya,1,27,0.06,17.6,34.4
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Saraburi,1,27,0.06,17.6,34.4
@@ -389,33 +389,6 @@ SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Moyamba,2,4.7,0.517,83.7,
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Tonkolili,2,6.7,0.528,85.4,61.9
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Bonthe,2,2.6,0.511,82.5,61.9
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,district,Pujehun,2,3.9,0.544,87.2,62.4
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Province 1,1,17.6,0.085,19.7,43.2
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Province 2,1,18.4,0.217,47.9,45.3
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Bagmati ,1,22,0.051,12.2,41.9
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Gandaki ,1,11.6,0.061,14.2,42.9
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Lumbini ,1,16.5,0.133,29.9,44.3
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Karnali ,1,5.4,0.23,51.2,44.9
-NPL,Nepal,South Asia,Asia,NMICS,2014,province,Sudurpashchim ,1,8.5,0.146,33.6,43.5
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Bumthang,1,2.3,0.017,3.9,44.3
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Chhukha,1,9.14,0.031,7.9,39.6
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Dagana,1,3.38,0.036,8.8,41.6
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Gasa,1,0.52,0.125,29,43
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Haa,1,1.59,0.045,11.4,39.1
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Lhuentse,1,2.24,0.017,4.5,37
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Monggar,1,6.06,0.018,4.8,38.2
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Paro,1,5.24,0.008,2.1,36.9
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Pema Gatshel,1,3.99,0.007,1.7,37.9
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Punakha,1,3.86,0.02,5.2,39.1
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Samdrup Jong-khar,1,5.22,0.022,5.7,38.6
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Samtse,1,9.11,0.035,8.7,40.6
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Sarpang,1,5.95,0.027,7.2,37.9
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Thimphu,1,18.12,0.009,2.6,36.5
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trashigang,1,6.8,0.029,7.2,39.8
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trashi Yangtse,1,2.22,0.032,8.1,38.9
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Trongsa,1,2.56,0.027,6.8,39.4
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Tsirang,1,2.95,0.034,8.2,41.4
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Wangduephodrang,1,5.98,0.026,6.7,39.6
-BTN,Bhutan,South Central Asia,Asia,BLSS,2017,region,Zhemgang,1,2.77,0.017,4.3,38.8
 PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Punjab,1,,0.152,31.4,48.4
 PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Sindh,1,,0.231,43.1,53.5
 PAK,Pakistan,South Asia,Asia,PSLM,2014-2015,province,Khyber Pakhtunkhwa,1,,0.25,49.2,50.7

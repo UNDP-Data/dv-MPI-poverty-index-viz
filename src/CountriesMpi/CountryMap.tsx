@@ -17,6 +17,7 @@ export function CountryMap(props: Props) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
   const protocol = new pmtiles.Protocol();
+  // console.log('selectedAdminlevel', selectedAdminLevel);
   let lat = 0;
   let lon = 0;
   const [hoverData, setHoverData] = useState<null | HoverSubnatDataType>(null);
@@ -39,11 +40,11 @@ export function CountryMap(props: Props) {
         sources: {
           admin0: {
             type: 'vector',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/geoBADM0.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-viz/main/public/data/geoBADM0.pmtiles',
           },
           admin2: {
             type: 'vector',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-viz/main/public/data/adm_Export_jso_FeaturesToJSO.pmtiles',
           },
         },
         layers: [
@@ -137,7 +138,7 @@ export function CountryMap(props: Props) {
     (map as any).current.on('load', () => {
       const filters = [
         'all',
-        ['==', 'country', countryData?.country],
+        ['==', 'country', countryData?.country.trim()],
         ['==', 'admin level', selectedAdminLevel],
       ];
       (map as any).current.setFilter('choropleth', filters);

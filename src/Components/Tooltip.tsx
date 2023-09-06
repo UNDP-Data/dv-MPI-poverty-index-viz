@@ -73,7 +73,7 @@ export function Tooltip(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        {data.value === 0 && data.year === 0 ? (
+        {data.value === 0 && data.year === '' ? (
           'no data available for this country'
         ) : (
           <>

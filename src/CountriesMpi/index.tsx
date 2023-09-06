@@ -50,10 +50,15 @@ export function CountriesMpi(props: Props) {
   national.sort((a, b) => ascending(a.country, b.country));
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');
-  const defaultCountry = queryCountry || national[0].country;
+  const countryList = [
+    ...new Set(
+      subnational.map((d: MpiDataTypeSubnational) => d.country.trim()),
+    ),
+  ].sort();
+  const defaultCountry = queryCountry || countryList[0];
   const [selectedCountry, setSelectedCountry] =
     useState<string>(defaultCountry);
-  const subNat = subnational?.filter(k => k.country === selectedCountry);
+  const subNat = subnational?.filter(k => k.country.trim() === selectedCountry);
   const [adminLevels, setAdminLevels] = useState<string[]>([
     ...new Set(subNat.map((d: MpiDataTypeSubnational) => d.adminLevel)),
   ]);
@@ -96,12 +101,10 @@ export function CountriesMpi(props: Props) {
             <p className='undp-typography'>
               A national Multidimensional Poverty Index (MPI) is a poverty
               measure tailored to specific countries, considering their unique
-              These measures typically emphasize important factors such as
-              healthcare, education, and living conditions, while also
-              incorporating other relevant dimensions using appropriate local
-              indicators. On this page, you can access official statistics of
-              national and subnational MPIs, derived from findings obtained
-              through national surveys.
+              circumstances. These measures typically emphasize important
+              factors such as healthcare, education, and living conditions,
+              while also incorporating other relevant dimensions using
+              appropriate local indicators.
             </p>
           </div>
           {!queryCountry ? <Map data={national} /> : null}
@@ -112,20 +115,16 @@ export function CountriesMpi(props: Props) {
         <div className='margin-bottom-08'>
           <p className='undp-typography label'>Select a country</p>
           <Select
+            options={countryList.map(country => ({
+              label: country,
+              value: country,
+            }))}
             className='undp-select'
             value={selectedCountry}
             showSearch
             style={{ width: '400px' }}
-            onChange={d => {
-              setSelectedCountry(national[d as any].country);
-            }}
-          >
-            {national.map((d, i) => (
-              <Select.Option className='undp-select-option' key={i}>
-                {d.country}
-              </Select.Option>
-            ))}
-          </Select>
+            onChange={d => setSelectedCountry(d)}
+          />
         </div>
       ) : null}
       {countrySubnational ? (
@@ -310,7 +309,7 @@ export function CountriesMpi(props: Props) {
             </div>
             <div className='margin-top-06'>
               <h5 className='undp-typography'>Key Definitions</h5>
-              <div className='flex-div flex-wrap'>
+              <div>
                 <div className='definitionDiv'>
                   <h6 className='undp-typography'>
                     Multidimensional Poverty Index (MPI)
@@ -416,7 +415,10 @@ export function CountriesMpi(props: Props) {
           </p>
         </div>
         <div className='stat-card-container'>
-          <div className='stat-card' style={{ width: '25%' }}>
+          <div
+            className='stat-card'
+            style={{ width: '25%', minWidth: '330px' }}
+          >
             <h3>{rural?.mpi}</h3>
             <h4>Rural MPI</h4>
             <p>
@@ -424,7 +426,10 @@ export function CountriesMpi(props: Props) {
               Intensity: {rural?.intensity}%
             </p>
           </div>
-          <div className='stat-card' style={{ width: '25%' }}>
+          <div
+            className='stat-card'
+            style={{ width: '25%', minWidth: '330px' }}
+          >
             <h3>{urban?.mpi}</h3>
             <h4>Urban MPI</h4>
             <p>

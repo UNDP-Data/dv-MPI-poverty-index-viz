@@ -73,8 +73,8 @@ export function TooltipSubnational(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        {data.value === 0 ? (
-          'no data available for this country'
+        {data.value === 0 || data.value === undefined ? (
+          'no data available for this area'
         ) : (
           <>
             <div>

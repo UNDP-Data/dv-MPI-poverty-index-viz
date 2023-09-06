@@ -66,7 +66,7 @@ export interface HoverDataType {
   value: number;
   headcountRatio: number;
   intensity: number;
-  year: number;
+  year?: string;
   xPosition: number;
   yPosition: number;
 }
