@@ -115,7 +115,7 @@ export function ScatterPlotGlobal(props: Props) {
                   country: d.country,
                   continent: d.region,
                   value: Number(d.mpi),
-                  year: Number(d.year),
+                  year: d.year,
                   headcountRatio: Number(d.headcountRatio),
                   intensity: Number(d.intensity),
                   xPosition: event.clientX,
