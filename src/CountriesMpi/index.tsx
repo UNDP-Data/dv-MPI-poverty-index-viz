@@ -89,25 +89,74 @@ export function CountriesMpi(props: Props) {
     setAdminLevels([
       ...new Set(subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel)),
     ]);
+    if (
+      [
+        ...new Set(
+          subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel),
+        ),
+      ].length === 1
+    ) {
+      setSelectedAdminLevel(
+        [
+          ...new Set(
+            subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel),
+          ),
+        ][0],
+      );
+    }
   }, [selectedCountry]);
   return (
     <div>
       <h3 className='undp-typography margin-bottom-07'>
         National Multidimensional Poverty Index (MPI) {queryCountry || ''}
       </h3>
+      <p className='undp-typography'>
+        A national Multidimensional Poverty Index (MPI) is a poverty measure
+        tailored to specific countries, considering their unique circumstances.
+        These measures typically emphasize important factors such as healthcare,
+        education, and living conditions, while also incorporating other
+        relevant dimensions using appropriate local indicators.
+      </p>
       {national ? (
-        <div className='flex-div flex-wrap margin-bottom-05'>
+        <div className='flex-div flex-wrap gap-07'>
+          <Map data={national} />
           <div className='chart-explanation'>
-            <p className='undp-typography'>
-              A national Multidimensional Poverty Index (MPI) is a poverty
-              measure tailored to specific countries, considering their unique
-              circumstances. These measures typically emphasize important
-              factors such as healthcare, education, and living conditions,
-              while also incorporating other relevant dimensions using
-              appropriate local indicators.
-            </p>
+            <h5 className='undp-typography margin-top-00'>Key Definitions</h5>
+            <div>
+              <div className='definitionDiv'>
+                <h6 className='undp-typography'>
+                  Multidimensional Poverty Index (MPI)
+                </h6>
+                <p className='undp-typography small-font'>
+                  Multidimensional Poverty Index is calculated as the product of
+                  the headcount ratio and the intensity of poverty. It combines
+                  measures to provide a comprehensive assessment of
+                  multidimensional poverty, taking into account both the
+                  prevalence and severity of poverty among individuals in a
+                  population.
+                </p>
+              </div>
+              <div className='definitionDiv'>
+                <h6 className='undp-typography'>Headcount Ratio</h6>
+                <p className='undp-typography small-font'>
+                  The headcount ratio measures the percentage of individuals in
+                  a population who are considered multidimensionally poor,
+                  indicating the proportion of people experiencing poverty
+                  across multiple dimensions.
+                </p>
+              </div>
+              <div className='definitionDiv'>
+                <h6 className='undp-typography'>Intensity of poverty</h6>
+                <p className='undp-typography small-font'>
+                  The intensity of poverty is the average proportion of weighted
+                  indicators in which multidimensionally poor individuals are
+                  deprived. It provides insights into the extent or severity of
+                  deprivation experienced by those classified as
+                  multidimensionally poor.
+                </p>
+              </div>
+            </div>
           </div>
-          {!queryCountry ? <Map data={national} /> : null}
         </div>
       ) : null}
       <hr className='undp-style light margin-bottom-06' />
@@ -285,18 +334,6 @@ export function CountriesMpi(props: Props) {
                 id='subnatScatterPlot'
               />
             </div>
-            <p className='source'>
-              Source: Compiled from individual National MPI Reports (
-              <a
-                href='https://ophi.org.uk/publications/national-mpi-reports/'
-                target='_blank'
-                rel='noreferrer'
-                className='undp-style'
-              >
-                https://ophi.org.uk/publications/national-mpi-reports/
-              </a>
-              )
-            </p>
           </div>
           <div className='chart-explanation'>
             <div className='stat-card'>
@@ -308,137 +345,74 @@ export function CountriesMpi(props: Props) {
               <p>Intensity: {total?.intensity}%</p>
             </div>
             <div className='margin-top-06'>
-              <h5 className='undp-typography'>Key Definitions</h5>
-              <div>
-                <div className='definitionDiv'>
-                  <h6 className='undp-typography'>
-                    Multidimensional Poverty Index (MPI)
-                  </h6>
-                  <p className='undp-typography small-font'>
-                    Multidimensional Poverty Index is calculated as the product
-                    of the headcount ratio and the intensity of poverty. It
-                    combines both measures to provide a comprehensive assessment
-                    of multidimensional poverty, taking into account both the
-                    prevalence and severity of poverty among individuals in a
-                    population.
-                  </p>
+              <div className='chart-container flex-chart'>
+                <div className='flex-div flex-space-between'>
+                  <div>
+                    <h6 className='undp-typography margin-bottom-01'>
+                      Rural and Urban MPI
+                    </h6>
+                    <p className='undp-typography small-font'>Year: {year}</p>
+                  </div>
+                  <div>
+                    <div className='legend-container'>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor:
+                              UNDPColorModule.categoricalColors.locationColors
+                                .urban,
+                          }}
+                        />
+                        <div className='small-font'>Urban</div>
+                      </div>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor:
+                              UNDPColorModule.categoricalColors.locationColors
+                                .rural,
+                          }}
+                        />
+                        <div className='small-font'>Rural</div>
+                      </div>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor: '#55606E',
+                          }}
+                        />
+                        <div className='small-font'>Country Total</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className='definitionDiv'>
-                  <h6 className='undp-typography'>Headcount Ratio</h6>
-                  <p className='undp-typography small-font'>
-                    The headcount ratio measures the percentage of individuals
-                    in a population who are considered multidimensionally poor,
-                    the proportion of people experiencing poverty across
-                    multiple dimensions.
-                  </p>
-                </div>
-                <div className='definitionDiv'>
-                  <h6 className='undp-typography'>Intensity of poverty</h6>
-                  <p className='undp-typography small-font'>
-                    The intensity of poverty is the average proportion of
-                    weighted indicators in which multidimensionally poor
-                    individuals are deprived. It provides insights into the
-                    extent or severity of deprivation experienced by those
-                    classified as multidimensionally poor.
-                  </p>
-                </div>
+                <ScatterPlot
+                  urban={urban}
+                  rural={rural}
+                  total={total}
+                  id='locationScatterPlot'
+                  country={selectedCountry}
+                />
               </div>
             </div>
           </div>
         </div>
       ) : null}
-      <h4 className='undp-typography margin-top-10'>
-        {' '}
-        Rural vs urban MPI in {selectedCountry}
-      </h4>
-      <div className='flex-div  margin-top-05'>
-        <div className='chart-container flex-chart'>
-          <div className='flex-div flex-space-between'>
-            <div>
-              <h6 className='undp-typography margin-bottom-01'>
-                Rural and Urban MPI
-              </h6>
-              <p className='undp-typography small-font'>Year: {year}</p>
-            </div>
-            <div>
-              <div className='legend-container'>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor:
-                        UNDPColorModule.categoricalColors.locationColors.urban,
-                    }}
-                  />
-                  <div className='small-font'>Urban</div>
-                </div>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor:
-                        UNDPColorModule.categoricalColors.locationColors.rural,
-                    }}
-                  />
-                  <div className='small-font'>Rural</div>
-                </div>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor: '#55606E',
-                    }}
-                  />
-                  <div className='small-font'>Country Total</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ScatterPlot
-            urban={urban}
-            rural={rural}
-            total={total}
-            id='locationScatterPlot'
-            country={selectedCountry}
-          />
-          <p className='source'>
-            Source: Compiled from individual National MPI Reports (
-            <a
-              href='https://ophi.org.uk/publications/national-mpi-reports/'
-              target='_blank'
-              rel='noreferrer'
-              className='undp-style'
-            >
-              https://ophi.org.uk/publications/national-mpi-reports/
-            </a>
-            )
-          </p>
-        </div>
-        <div className='stat-card-container'>
-          <div
-            className='stat-card'
-            style={{ width: '25%', minWidth: '330px' }}
-          >
-            <h3>{rural?.mpi}</h3>
-            <h4>Rural MPI</h4>
-            <p>
-              Headcount Ratio: {rural?.headcountRatio}%<br />
-              Intensity: {rural?.intensity}%
-            </p>
-          </div>
-          <div
-            className='stat-card'
-            style={{ width: '25%', minWidth: '330px' }}
-          >
-            <h3>{urban?.mpi}</h3>
-            <h4>Urban MPI</h4>
-            <p>
-              Headcount Ratio: {urban?.headcountRatio}%<br />
-              Intensity: {urban?.intensity}%
-            </p>
-          </div>
-        </div>
-      </div>
+      <p className='source'>
+        Source: Compiled from individual National MPI Reports (
+        <a
+          href='https://ophi.org.uk/publications/national-mpi-reports/'
+          target='_blank'
+          rel='noreferrer'
+          className='undp-style'
+        >
+          https://ophi.org.uk/publications/national-mpi-reports/
+        </a>
+        )
+      </p>
     </div>
   );
 }

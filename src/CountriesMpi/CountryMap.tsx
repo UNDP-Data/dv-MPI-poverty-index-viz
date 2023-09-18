@@ -17,7 +17,6 @@ export function CountryMap(props: Props) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
   const protocol = new pmtiles.Protocol();
-  // console.log('selectedAdminlevel', selectedAdminLevel);
   let lat = 0;
   let lon = 0;
   const [hoverData, setHoverData] = useState<null | HoverSubnatDataType>(null);
@@ -138,7 +137,7 @@ export function CountryMap(props: Props) {
     (map as any).current.on('load', () => {
       const filters = [
         'all',
-        ['==', 'country', countryData?.country.trim()],
+        ['==', 'ISO', countryData?.iso_a3],
         ['==', 'admin level', selectedAdminLevel],
       ];
       (map as any).current.setFilter('choropleth', filters);
@@ -220,7 +219,7 @@ export function CountryMap(props: Props) {
       ) {
         const filters = [
           'all',
-          ['==', 'country', countryData?.country],
+          ['==', 'ISO', countryData?.iso_a3],
           ['==', 'admin level', selectedAdminLevel],
         ];
         (map as any).current.setFilter('choropleth', filters);
@@ -235,7 +234,7 @@ export function CountryMap(props: Props) {
         ]);
       }
     }
-  }, [countryData?.country]);
+  }, [countryData?.iso_a3]);
   // when changing selectedAdminLevel
   useEffect(() => {
     if (map.current) {
@@ -245,7 +244,7 @@ export function CountryMap(props: Props) {
       ) {
         const filters = [
           'all',
-          ['==', 'country', countryData?.country],
+          ['==', 'ISO', countryData?.iso_a3],
           ['==', 'admin level', selectedAdminLevel],
         ];
         (map as any).current.setFilter('choropleth', filters);
