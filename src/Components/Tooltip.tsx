@@ -63,7 +63,7 @@ export function Tooltip(props: Props) {
               textTransform: 'none',
             }}
           >
-            ({data.continent})
+            {data.continent ? `(${data.continent})` : null}
           </span>
         </h6>
       </div>

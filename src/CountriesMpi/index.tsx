@@ -172,7 +172,7 @@ export function CountriesMpi(props: Props) {
             value={selectedCountry}
             showSearch
             style={{ width: '400px' }}
-            onChange={d => setSelectedCountry(d)}
+            onChange={d => setSelectedCountry(d.trim())}
           />
         </div>
       ) : null}
@@ -344,7 +344,7 @@ export function CountriesMpi(props: Props) {
               </p>
               <p>Intensity: {total?.intensity}%</p>
             </div>
-            <div className='margin-top-06'>
+            <div className='margin-top-05'>
               <div className='chart-container flex-chart'>
                 <div className='flex-div flex-space-between'>
                   <div>
