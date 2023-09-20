@@ -284,25 +284,25 @@ NPL,Nepal,South Asia,Asia,NMICS,2019,province,Gandaki ,1,8.2,0.025,6.7,37.1
 NPL,Nepal,South Asia,Asia,NMICS,2019,province,Lumbini ,1,18.4,0.063,14.9,42.1
 NPL,Nepal,South Asia,Asia,NMICS,2019,province,Karnali ,1,5.6,0.151,35.6,42.4
 NPL,Nepal,South Asia,Asia,NMICS,2019,province,Sudurpashchim ,1,8.7,0.092,22.7,40.6
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Concepción,1,,0.216,52.07,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,San Pedro,1,,0.233,55.5,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Cordillera,1,,0.125,33.03,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Guairá,1,,0.175,44.41,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caaguazú,1,,0.197,47.02,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caazapá,1,,0.283,64.62,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Itapúa,1,,0.152,36.6,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Misiones,1,,0.098,24.94,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Paraguarí,1,,0.175,44.59,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Alto Paraná,1,,0.112,28.41,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Central,1,,0.06,15.5,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Ñeembucú,1,,0.133,34.48,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Amambay,1,,0.082,22.29,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Canindeyú,1,,0.185,45.17,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Presidente Hayes,1,,0.142,32.42,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Concepción,1,,0.216,52.07,41.483
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,San Pedro,1,,0.233,55.5,41.982
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Cordillera,1,,0.125,33.03,37.844
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Guairá,1,,0.175,44.41,39.406
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caaguazú,1,,0.197,47.02,41.897
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Caazapá,1,,0.283,64.62,43.794
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Itapúa,1,,0.152,36.6,41.53
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Misiones,1,,0.098,24.94,39.294
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Paraguarí,1,,0.175,44.59,39.246
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Alto Paraná,1,,0.112,28.41,39.423
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Central,1,,0.06,15.5,38.71
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Ñeembucú,1,,0.133,34.48,38.573
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Amambay,1,,0.082,22.29,36.788
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Canindeyú,1,,0.185,45.17,40.956
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Presidente Hayes,1,,0.142,32.42,43.8
 PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Alto Paraguay,1,,,,
 PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Boquerón,1,,,,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Total pais,1,,0.124,30.55,
-PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Asunción,1,,0.036,9.53,
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Total pais,1,,0.124,30.55,40.589
+PRY,Paraguay,Latin America and the Caribbean,,,2017,departments,Asunción,1,,0.036,9.53,37.775
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Karas,1,3.8,0.047,19.6,39.4
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Erongo,1,7.7,0.044,16.6,38
 NAM,Namibia,Sub-Saharan Africa,Africa,amibian Household Income and Expenditure Survey (NHIES),2015-2016,region,Hardap,1,3.8,0.071,26.9,40.4
@@ -356,7 +356,7 @@ MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South Central,1,12.4,0.198,38.
 MDV,Maldives,South Asia,Asia,DHS,2016-2017,region,South,1,15.2,0.2,39,51.1
 SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Mahe,1,88,0.041,12,33.39
 SYC,Seychelles,Eastern Africa,Africa,Quarterly Labour Force Survey (QLFS) of quarter 3 ,2019,island,Inner islands,1,12,0.022,7.41,30.3
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Bangkok,,9,0.057,17.3,33
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Bangkok,1,9,0.057,17.3,33
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nonthaburi,1,27,0.06,17.6,34.4
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phra Nakhon Si Ayutthaya,1,27,0.06,17.6,34.4
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Saraburi,1,27,0.06,17.6,34.4
@@ -370,7 +370,7 @@ THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Khon Kaen,1,32,0.088,25.
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Udon Thani,1,32,0.088,25.6,34.5
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Nakhon Si Thammarat,1,16,0.072,20.6,35.1
 THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Songkhla,1,16,0.072,20.6,35.1
-THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phuket,,16,0.072,20.6,35.1
+THA,Thailand,South East Asia,Asia,MICS,2015-2016,region,Phuket,1,16,0.072,20.6,35.1
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Eastern,1,23.2,0.385,67.6,57
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Northern,1,33.7,0.452,75.8,59.6
 SLE,Sierra Leone,West Africa,Africa,MICS,2017,region,Southern,1,20,0.456,76,60
