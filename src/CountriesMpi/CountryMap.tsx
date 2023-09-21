@@ -158,7 +158,6 @@ export function CountryMap(props: Props) {
             );
           }
           districtHoveredStateId = e.features[0].id;
-          console.log('e.features[0]', e.features[0]);
           setHoverData({
             subregion: e.features[0].properties.region,
             country: e.features[0].properties.country,

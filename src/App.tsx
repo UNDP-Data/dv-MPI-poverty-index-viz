@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { csv, json } from 'd3-fetch';
 import { useEffect, useState } from 'react';
@@ -39,7 +40,8 @@ function App() {
       csv(`${dataurl}Global-MPI_urban.csv`),
       csv(`${dataurl}Global-MPI_female.csv`),
       csv(`${dataurl}Global-MPI_male.csv`),
-      csv(`${dataurl}MPI_national.csv`),
+      // csv(`${dataurl}MPI_national.csv`),
+      csv(`./data/MPI_national.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location.csv`),
       json(
@@ -124,6 +126,7 @@ function App() {
               (k: any) => k.iso_a3 === d['country code'],
             )
           ].boundingBox,
+          indicatorFiles: d['indicators files'].split(','),
         }));
         const subnationalFetched = subnational.map((d: any) => ({
           country: d.country,

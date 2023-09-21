@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Segmented, Select, Radio, RadioChangeEvent } from 'antd';
-import { useEffect, useState } from 'react';
+import { Key, useEffect, useState } from 'react';
 import { ascending } from 'd3-array';
 import { scaleThreshold } from 'd3-scale';
 import UNDPColorModule from 'undp-viz-colors';
@@ -15,6 +15,7 @@ import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
 import { LollipopChartViz } from './LollipopChartViz';
+import { ListView } from './ListView';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -40,6 +41,9 @@ export function CountriesMpi(props: Props) {
   const [countryData, setCountryData] = useState<
     MpiDataTypeNational | undefined
   >(undefined);
+  const [indicatorFiles, setIndicatorFiles] = useState<string[] | undefined>(
+    undefined,
+  );
   const [activeViz, setActiveViz] = useState<string>('map');
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const colorScaleMPI = scaleThreshold<number, string>()
@@ -66,6 +70,7 @@ export function CountriesMpi(props: Props) {
     adminLevels[0],
   );
   useEffect(() => {
+    console.log('selectedcountry', selectedCountry);
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
     )[0];
@@ -85,6 +90,11 @@ export function CountriesMpi(props: Props) {
       national.filter(
         (d: MpiDataTypeNational) => d.country === selectedCountry,
       )[0],
+    );
+    setIndicatorFiles(
+      national.filter(
+        (d: MpiDataTypeNational) => d.country === selectedCountry,
+      )[0].indicatorFiles,
     );
     setAdminLevels([
       ...new Set(subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel)),
@@ -413,6 +423,29 @@ export function CountriesMpi(props: Props) {
         </a>
         )
       </p>
+      {indicatorFiles !== undefined ? (
+        <div>
+          <h3 className='undp-typography margin-top-08'>
+            Multidimensional poverty indicators
+          </h3>
+          <p className='undp-typography margin-top-05'>
+            The indicators used to measure multidimensional poverty can differ
+            based on the particular context and goals of the assessment.
+            Together, these indicators offer a more comprehensive perspective on
+            people&apos;s overall well-being and enable the identification of
+            the interrelated factors that underlie their multidimensional
+            Consequently, they serve as valuable tools for policymakers and
+            researchers seeking to develop a deeper and more nuanced
+            comprehension of multidimensional poverty, as well as to devise
+            precise strategies for its alleviation.
+          </p>
+          {indicatorFiles.map((d: any, i: Key | null | undefined) => (
+            <div key={i}>
+              <ListView indicatorFileName={d} />
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
