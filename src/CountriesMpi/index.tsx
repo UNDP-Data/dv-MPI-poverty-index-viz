@@ -424,17 +424,17 @@ export function CountriesMpi(props: Props) {
       </p>
       {indicatorFiles !== undefined && indicatorFiles.length > 0 ? (
         <div>
-          <h3 className='undp-typography margin-top-08'>
+          <h4 className='undp-typography margin-top-09'>
             Multidimensional poverty indicators
-          </h3>
-          <p className='undp-typography margin-top-05'>
+          </h4>
+          <p className='undp-typography margin-top-06'>
             The indicators used to measure multidimensional poverty can differ
             based on the particular context and goals of the assessment.
             Together, these indicators offer a more comprehensive perspective on
             people&apos;s overall well-being and enable the identification of
             the interrelated factors that underlie their multidimensional
-            Consequently, they serve as valuable tools for policymakers and
-            researchers seeking to develop a deeper and more nuanced
+            poverty. Consequently, they serve as valuable tools for policymakers
+            and researchers seeking to develop a deeper and more nuanced
             comprehension of multidimensional poverty, as well as to devise
             precise strategies for its alleviation.
           </p>
