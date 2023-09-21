@@ -70,7 +70,6 @@ export function CountriesMpi(props: Props) {
     adminLevels[0],
   );
   useEffect(() => {
-    console.log('selectedcountry', selectedCountry);
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
     )[0];
@@ -423,7 +422,7 @@ export function CountriesMpi(props: Props) {
         </a>
         )
       </p>
-      {indicatorFiles !== undefined ? (
+      {indicatorFiles !== undefined && indicatorFiles.length > 0 ? (
         <div>
           <h3 className='undp-typography margin-top-08'>
             Multidimensional poverty indicators

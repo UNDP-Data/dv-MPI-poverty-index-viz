@@ -9,11 +9,12 @@ interface Props {
 
 export function ListView(props: Props) {
   const { indicatorFileName } = props;
-  // console.log('indicatorFileName', indicatorFileName);
   const [mpiData, setMpiData] = useState<object[] | undefined>(undefined);
+  const dataurl =
+    'https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-viz/main/public/data/';
   useEffect(() => {
     /// read file
-    csv(`.././data/indicators/${indicatorFileName.trim()}.csv`).then(data => {
+    csv(`${dataurl}indicators/${indicatorFileName.trim()}.csv`).then(data => {
       setMpiData(data);
     });
   }, [indicatorFileName]);

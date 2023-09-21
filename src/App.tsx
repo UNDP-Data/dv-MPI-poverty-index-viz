@@ -40,8 +40,7 @@ function App() {
       csv(`${dataurl}Global-MPI_urban.csv`),
       csv(`${dataurl}Global-MPI_female.csv`),
       csv(`${dataurl}Global-MPI_male.csv`),
-      // csv(`${dataurl}MPI_national.csv`),
-      csv(`./data/MPI_national.csv`),
+      csv(`${dataurl}MPI_national.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location.csv`),
       json(
@@ -126,7 +125,9 @@ function App() {
               (k: any) => k.iso_a3 === d['country code'],
             )
           ].boundingBox,
-          indicatorFiles: d['indicators files'].split(','),
+          indicatorFiles: d['indicators files']
+            .split(',')
+            .filter((k: any) => k !== ''),
         }));
         const subnationalFetched = subnational.map((d: any) => ({
           country: d.country,
