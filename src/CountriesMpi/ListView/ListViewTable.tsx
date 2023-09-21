@@ -11,7 +11,7 @@ const TableRowEl = styled.div`
 `;
 
 const CellDiv = styled.div`
-  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
   font-size: 0.9rem;
 `;
 
@@ -30,7 +30,7 @@ export function ListViewTable(props: Props) {
           <div className='undp-table-head-small undp-table-head-sticky'>
             {columns?.map((d, i) => (
               <div key={i} style={{ width: '10%', minWidth: '6rem' }}>
-                <CellDiv>{d}</CellDiv>
+                <CellDiv style={{ fontSize: '0.9rem' }}>{d}</CellDiv>
               </div>
             ))}
           </div>
@@ -42,7 +42,9 @@ export function ListViewTable(props: Props) {
                   style={{ width: '10%', minWidth: '6rem' }}
                   className='undp-table-row-cell-small'
                 >
-                  <CellDiv>{(row as any)[k]}</CellDiv>
+                  <CellDiv style={{ fontSize: '0.9rem' }}>
+                    {(row as any)[k]}
+                  </CellDiv>
                 </div>
               ))}
             </TableRowEl>
