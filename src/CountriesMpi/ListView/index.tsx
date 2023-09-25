@@ -19,7 +19,7 @@ export function ListView(props: Props) {
     });
   }, [indicatorFileName]);
   return (
-    <div className='margin-top-08'>
+    <div className='margin-top-00'>
       {mpiData ? (
         <div className='table-container'>
           <ListViewTable data={mpiData} />

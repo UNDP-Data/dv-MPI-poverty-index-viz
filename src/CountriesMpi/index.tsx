@@ -438,6 +438,10 @@ export function CountriesMpi(props: Props) {
             comprehension of multidimensional poverty, as well as to devise
             precise strategies for its alleviation.
           </p>
+          <h6 className='undp-typography margin-top-06'>
+            Percentage of households experiencing deprivations in the listed
+            indicators
+          </h6>
           {indicatorFiles.map((d: any, i: Key | null | undefined) => (
             <div key={i}>
               <ListView indicatorFileName={d} />
