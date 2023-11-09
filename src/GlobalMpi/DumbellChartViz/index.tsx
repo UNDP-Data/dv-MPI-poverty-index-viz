@@ -135,7 +135,7 @@ export function DumbellChartViz(props: Props) {
           <div style={{ width: '27%' }} className='dumbell-titles'>
             Countries
           </div>
-          <div style={{ width: '90px' }} className='dumbell-titles'>
+          <div style={{ width: '150px' }} className='dumbell-titles'>
             Difference{' '}
           </div>
           <div
