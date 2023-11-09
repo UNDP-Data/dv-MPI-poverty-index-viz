@@ -6,12 +6,8 @@ interface Props {
   data: object[];
 }
 
-const TableRowEl = styled.div`
-  cursor: pointer;
-`;
-
 const CellDiv = styled.div`
-  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  padding: 0.5rem;
   font-size: 0.9rem;
 `;
 
@@ -20,6 +16,8 @@ export function ListViewTable(props: Props) {
   const columns = Object.keys(data[0]).filter(
     d => d !== 'ISO country code' && d !== 'Country' && d !== 'Survey Year',
   );
+  const columnWidth = 130;
+  const tableWidth = columns.length * columnWidth;
   return (
     <div>
       {data ? (
@@ -27,19 +25,29 @@ export function ListViewTable(props: Props) {
           style={{ width: 'auto', overflow: 'auto', maxHeight: '70vh' }}
           className='undp-scrollbar'
         >
-          <div className='undp-table-head-small undp-table-head-sticky'>
+          <div
+            style={{ width: `${tableWidth}px` }}
+            className='undp-table-head-small undp-table-head-sticky'
+          >
             {columns?.map((d, i) => (
-              <div key={i} style={{ width: '10%', minWidth: '6rem' }}>
+              <div
+                key={i}
+                style={{ width: `${columnWidth}px`, minWidth: '7rem' }}
+              >
                 <CellDiv style={{ fontSize: '0.9rem' }}>{d}</CellDiv>
               </div>
             ))}
           </div>
           {data.map((row, i) => (
-            <TableRowEl key={i} className='undp-table-row'>
+            <div
+              key={i}
+              className='undp-table-row'
+              style={{ width: `${tableWidth}px` }}
+            >
               {columns?.map((k, j) => (
                 <div
                   key={j}
-                  style={{ width: '10%', minWidth: '6rem' }}
+                  style={{ width: `${columnWidth}px`, minWidth: '7rem' }}
                   className='undp-table-row-cell-small'
                 >
                   <CellDiv style={{ fontSize: '0.9rem' }}>
@@ -47,7 +55,7 @@ export function ListViewTable(props: Props) {
                   </CellDiv>
                 </div>
               ))}
-            </TableRowEl>
+            </div>
           ))}
         </div>
       ) : null}

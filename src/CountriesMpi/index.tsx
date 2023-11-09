@@ -50,7 +50,6 @@ export function CountriesMpi(props: Props) {
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   const [sortedBy, setSortedBy] = useState('mpi');
-
   national.sort((a, b) => ascending(a.country, b.country));
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');

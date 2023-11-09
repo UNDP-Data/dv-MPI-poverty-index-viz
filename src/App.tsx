@@ -32,7 +32,7 @@ function App() {
     MpiDataTypeLocation[] | undefined
   >(undefined);
   const dataurl =
-    'https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-viz/main/public/data/';
+    'https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/';
   useEffect(() => {
     Promise.all([
       csv(`${dataurl}Global-MPI_national.csv`),
