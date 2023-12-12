@@ -39,7 +39,7 @@ export function CountryMap(props: Props) {
         sources: {
           admin0: {
             type: 'vector',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-viz/main/public/data/geoBADM0.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/geoBADM0.pmtiles',
           },
           admin2: {
             type: 'vector',
