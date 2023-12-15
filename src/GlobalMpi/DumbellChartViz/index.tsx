@@ -1,5 +1,6 @@
+/* eslint-disable no-console */
 import { useState, useEffect } from 'react';
-import { Select } from 'antd';
+import { Select, Radio, RadioChangeEvent } from 'antd';
 import styled from 'styled-components';
 import UNDPColorModule from 'undp-viz-colors';
 import { MpiDataTypeDiff } from '../../Types';
@@ -19,16 +20,17 @@ const DumbellChartEl = styled.div`
 `;
 export function DumbellChartViz(props: Props) {
   const { data } = props;
+  console.log('data', data);
   const [sortedBy, setSortedBy] = useState('diff');
   const [filterBy, setFilterBy] = useState('All');
   const [diffOption, setDiffOption] = useState('ldiff');
+  const [indicatorOption, setIndicatorOption] = useState('mpi');
   const [color1, setColor1] = useState(
     UNDPColorModule.categoricalColors.locationColors.urban,
   );
   const [color2, setColor2] = useState(
     UNDPColorModule.categoricalColors.locationColors.rural,
   );
-
   const diffOptions = [
     {
       label: 'Rural - Urban',
@@ -50,7 +52,7 @@ export function DumbellChartViz(props: Props) {
   ];
   const sortingOptionsBasic = [
     {
-      label: 'MPI difference',
+      label: 'Difference',
       value: 'diff',
     },
     {
@@ -60,21 +62,21 @@ export function DumbellChartViz(props: Props) {
   ];
   const sortingOptionsLocation = [
     {
-      label: 'Urban MPI',
+      label: 'Urban',
       value: 'mpiUrban',
     },
     {
-      label: 'Rural MPI',
+      label: 'Rural',
       value: 'mpiRural',
     },
   ];
   const sortingOptionsGender = [
     {
-      label: 'Female HHs MPI',
+      label: 'Female HHs',
       value: 'mpiFemale',
     },
     {
-      label: 'Male HHs MPI',
+      label: 'Male HHs',
       value: 'mpiMale',
     },
   ];
@@ -93,6 +95,28 @@ export function DumbellChartViz(props: Props) {
   return (
     <div className='dumbell-container'>
       <div className='dumbell-header'>
+        <div>
+          <span className='label undp-typography'>
+            Select an indicator: &nbsp;&nbsp;&nbsp;
+          </span>
+          <Radio.Group
+            defaultValue='mpi'
+            onChange={(el: RadioChangeEvent) =>
+              setIndicatorOption(el.target.value)
+            }
+            className='margin-bottom-05'
+          >
+            <Radio className='undp-radio' value='mpi'>
+              MPI
+            </Radio>
+            <Radio className='undp-radio' value='intensity'>
+              Intensity (%)
+            </Radio>
+            <Radio className='undp-radio' value='headcountR'>
+              Headcount Ratio (%)
+            </Radio>
+          </Radio.Group>
+        </div>
         <div className='flex-div flex-wrap'>
           <div className='dumbell-select'>
             <p className='label undp-typography'>Display differences between</p>
@@ -175,6 +199,7 @@ export function DumbellChartViz(props: Props) {
           diffOption={diffOption}
           sortedByKey={sortedBy}
           filterByLabel={filterBy}
+          indicatorOption={indicatorOption}
         />
       </DumbellChartEl>
     </div>

@@ -31,6 +31,10 @@ function App() {
   const [locationData, setLocationData] = useState<
     MpiDataTypeLocation[] | undefined
   >(undefined);
+  // long names csv table headings
+  const mpi = 'Multidimensional Poverty Index';
+  const headcountR = 'Headcount ratio: Population in multidimensional poverty';
+  const intensity = 'Intensity of deprivation among the poor';
   const dataurl =
     'https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/';
   useEffect(() => {
@@ -71,11 +75,10 @@ function App() {
           country: d.Country,
           iso_a3: d['country code'],
           region: d['World region'],
-          mpi: d['MPI (National)'],
-          headcountRatio:
-            d['Headcount ratio: Population in multidimensional poverty (H)'],
+          mpi: d[mpi],
+          headcountRatio: d[headcountR],
           year: d.Year,
-          intensity: d['Intensity of deprivation among the poor (A)'],
+          intensity: d[intensity],
         }));
         const diffFetched: MpiDataTypeDiff[] = [];
         data.forEach((d: any) => {
@@ -97,18 +100,38 @@ function App() {
               iso_a3: d['country code'],
               region: d['World region'],
               year: d.Year,
-              mpiUrban: Number(uData.MPI),
-              yearUrban: uData.Year,
-              mpiRural: Number(rData.MPI),
-              yearRural: rData.Year,
-              ldiff: Number(rData.MPI) - Number(uData.MPI),
-              mpiFemale: Number(fData['Multidimensional Poverty Index']),
-              yearFemale: fData.Year,
-              mpiMale: Number(mData['Multidimensional Poverty Index']),
-              yearMale: fData.Year,
-              gdiff:
-                Number(fData['Multidimensional Poverty Index']) -
-                Number(mData['Multidimensional Poverty Index']),
+              mpiUrban: {
+                mpi: Number(uData[mpi]),
+                headcountR: Number(uData[headcountR]),
+                intensity: Number(uData[intensity]),
+              },
+              mpiRural: {
+                mpi: Number(rData[mpi]),
+                headcountR: Number(rData[headcountR]),
+                intensity: Number(rData[intensity]),
+              },
+              ldiff: {
+                mpi: Number(rData[mpi]) - Number(uData[mpi]),
+                headcountR:
+                  Number(rData[headcountR]) - Number(uData[headcountR]),
+                intensity: Number(rData[intensity]) - Number(uData[intensity]),
+              },
+              mpiFemale: {
+                mpi: Number(fData[mpi]),
+                headcountR: Number(fData[headcountR]),
+                intensity: Number(fData[intensity]),
+              },
+              mpiMale: {
+                mpi: Number(mData[mpi]),
+                headcountR: Number(mData[headcountR]),
+                intensity: Number(mData[intensity]),
+              },
+              gdiff: {
+                mpi: Number(fData[mpi]) - Number(mData[mpi]),
+                headcountR:
+                  Number(fData[headcountR]) - Number(mData[headcountR]),
+                intensity: Number(fData[intensity]) - Number(mData[intensity]),
+              },
             });
           }
         });

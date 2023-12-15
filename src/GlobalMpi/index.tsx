@@ -72,7 +72,7 @@ export function GlobalMpi(props: Props) {
         <ScatterPlotGlobal data={mpiData} />
       </div>
       <div className='margin-top-09'>
-        <h3>Differences in MPI</h3>
+        <h3>Differences</h3>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
     </div>

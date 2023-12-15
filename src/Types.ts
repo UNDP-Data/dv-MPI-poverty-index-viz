@@ -27,22 +27,24 @@ export interface MpiDataTypeSubnational extends MpiDataType {
 export interface MpiDataTypeLocation extends MpiDataType {
   location: string;
 }
+export interface MpiComponentsType {
+  mpi: number;
+  headcountR: number;
+  intensity: number;
+}
 export interface MpiDataTypeDiff {
   country: string;
   iso_a3: string;
   region: string;
   year?: string;
-  mpiUrban: number;
-  yearUrban?: string;
-  mpiRural: number;
-  yearRural?: string;
-  ldiff: number;
-  mpiFemale: number;
-  yearFemale?: string;
-  mpiMale: number;
-  yearMale?: string;
-  gdiff: number;
+  mpiUrban: MpiComponentsType;
+  mpiRural: MpiComponentsType;
+  ldiff: MpiComponentsType;
+  mpiFemale: MpiComponentsType;
+  mpiMale: MpiComponentsType;
+  gdiff: MpiComponentsType;
 }
+
 export interface WorldFeatures {
   type: string;
   geometry: MapGeometry;

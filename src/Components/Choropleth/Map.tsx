@@ -158,7 +158,7 @@ export function Map(props: Props) {
                               }
                               key={j}
                               d={masterPath}
-                              stroke='#FFF'
+                              stroke='#ccc'
                               strokeWidth={1 / zoomLevel}
                               fill={color}
                               opacity={
@@ -190,7 +190,7 @@ export function Map(props: Props) {
                               }
                               key={j}
                               d={path}
-                              stroke='#FFF'
+                              stroke='#ccc'
                               strokeWidth={1 / zoomLevel}
                               fill={color}
                               opacity={
