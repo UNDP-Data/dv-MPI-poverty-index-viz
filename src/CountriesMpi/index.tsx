@@ -10,7 +10,7 @@ import {
   MpiDataTypeSubnational,
   MpiDataTypeLocation,
 } from '../Types';
-import { Map } from '../Components/Choropleth/Map';
+// import { Map } from '../Components/Choropleth/Map';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
@@ -113,18 +113,7 @@ export function CountriesMpi(props: Props) {
       );
     }
   }, [selectedCountry]);
-  return (
-    <div>
-      <h3 className='undp-typography margin-bottom-07'>
-        National Multidimensional Poverty Index (MPI) {queryCountry || ''}
-      </h3>
-      <p className='undp-typography'>
-        A national Multidimensional Poverty Index (MPI) is a poverty measure
-        tailored to specific countries, considering their unique circumstances.
-        These measures typically emphasize important factors such as healthcare,
-        education, and living conditions, while also incorporating other
-        relevant dimensions using appropriate local indicators.
-      </p>
+  /*
       {national ? (
         <div className='flex-div flex-wrap gap-07'>
           <Map data={national} />
@@ -167,6 +156,19 @@ export function CountriesMpi(props: Props) {
           </div>
         </div>
       ) : null}
+  */
+  return (
+    <div>
+      <h3 className='undp-typography margin-bottom-07'>
+        National Multidimensional Poverty Index (MPI) {queryCountry || ''}
+      </h3>
+      <p className='undp-typography'>
+        A national Multidimensional Poverty Index (MPI) is a poverty measure
+        tailored to specific countries, considering their unique circumstances.
+        These measures typically emphasize important factors such as healthcare,
+        education, and living conditions, while also incorporating other
+        relevant dimensions using appropriate local indicators.
+      </p>
       <hr className='undp-style light margin-bottom-06' />
       {!queryCountry ? (
         <div className='margin-bottom-08'>
@@ -213,112 +215,110 @@ export function CountriesMpi(props: Props) {
               </div>
             </div>
             <div className='legend-interactionBar'>
-              <div className='flex-div flex-space-between'>
-                {activeViz !== 'list' ? (
-                  <div className='countrymap-legend'>
-                    <svg width='300px' height='45px'>
-                      <g transform='translate(10,20)'>
-                        <text
-                          x={280}
-                          y={-10}
-                          fontSize='0.8rem'
-                          fill='#212121'
-                          textAnchor='end'
-                        >
-                          Higher MPI
-                        </text>
-                        {valueArray.map((d, i) => (
-                          <g key={i}>
-                            <rect
-                              x={(i * 280) / valueArray.length}
-                              y={1}
-                              width={280 / valueArray.length}
-                              height={8}
-                              fill={colorScaleMPI(valueArray[i] - 0.05)}
-                              stroke='#fff'
-                            />
-                            <text
-                              x={(280 * (i + 1)) / valueArray.length}
-                              y={25}
-                              fontSize={12}
-                              fill='#212121'
-                              textAnchor='middle'
-                            >
-                              {d}
-                            </text>
-                          </g>
-                        ))}
-                        <text
-                          y={25}
-                          x={0}
-                          fontSize={12}
-                          fill='#212121'
-                          textAnchor='middle'
-                        >
-                          0
-                        </text>
-                      </g>
-                    </svg>
-                  </div>
-                ) : (
-                  <div className='flex-div' style={{ alignItems: 'center' }}>
-                    <div style={{ flexBasis: '80px' }}>
-                      <p className='undp-typography small-font'>Sort by:</p>
-                    </div>
-                    <div>
-                      <Radio.Group
-                        defaultValue='mpi'
-                        onChange={(el: RadioChangeEvent) =>
-                          setSortedBy(el.target.value)
-                        }
-                        className='margin-bottom-05'
+              {activeViz !== 'list' ? (
+                <div className='countrymap-legend'>
+                  <svg width='300px' height='45px'>
+                    <g transform='translate(10,20)'>
+                      <text
+                        x={280}
+                        y={-10}
+                        fontSize='0.8rem'
+                        fill='#212121'
+                        textAnchor='end'
                       >
-                        <Radio className='undp-radio' value='mpi'>
-                          MPI
-                        </Radio>
-                        <Radio className='undp-radio' value='intensity'>
-                          Intensity
-                        </Radio>
-                        <Radio className='undp-radio' value='headcountRatio'>
-                          Headcount Ratio
-                        </Radio>
-                        <Radio className='undp-radio' value='subregion'>
-                          Subregion name
-                        </Radio>
-                      </Radio.Group>
-                    </div>
-                  </div>
-                )}
-                {adminLevels && adminLevels.length > 1 ? (
-                  <div
-                    className='flex-div'
-                    style={{
-                      alignItems: 'center',
-                      flexBasis: '190px',
-                      minWidth: '190px',
-                    }}
-                  >
-                    <div>
-                      <p className='undp-typography small-font'>Admin level:</p>
-                    </div>
-                    <div>
-                      <Radio.Group
-                        value={selectedAdminLevel}
-                        onChange={(el: RadioChangeEvent) => {
-                          setSelectedAdminLevel(el.target.value);
-                        }}
-                        className='margin-bottom-05'
-                      >
-                        {adminLevels.map((d, i) => (
-                          <Radio key={i} className='undp-radio' value={d}>
+                        Higher MPI
+                      </text>
+                      {valueArray.map((d, i) => (
+                        <g key={i}>
+                          <rect
+                            x={(i * 280) / valueArray.length}
+                            y={1}
+                            width={280 / valueArray.length}
+                            height={8}
+                            fill={colorScaleMPI(valueArray[i] - 0.05)}
+                            stroke='#fff'
+                          />
+                          <text
+                            x={(280 * (i + 1)) / valueArray.length}
+                            y={25}
+                            fontSize={12}
+                            fill='#212121'
+                            textAnchor='middle'
+                          >
                             {d}
-                          </Radio>
-                        ))}
-                      </Radio.Group>
-                    </div>
+                          </text>
+                        </g>
+                      ))}
+                      <text
+                        y={25}
+                        x={0}
+                        fontSize={12}
+                        fill='#212121'
+                        textAnchor='middle'
+                      >
+                        0
+                      </text>
+                    </g>
+                  </svg>
+                </div>
+              ) : (
+                <div className='flex-div' style={{ alignItems: 'center' }}>
+                  <div style={{ flexBasis: '80px' }}>
+                    <p className='undp-typography small-font'>Sort by:</p>
                   </div>
-                ) : null}
-              </div>
+                  <div>
+                    <Radio.Group
+                      defaultValue='mpi'
+                      onChange={(el: RadioChangeEvent) =>
+                        setSortedBy(el.target.value)
+                      }
+                      className='margin-bottom-05'
+                    >
+                      <Radio className='undp-radio' value='mpi'>
+                        MPI
+                      </Radio>
+                      <Radio className='undp-radio' value='intensity'>
+                        Intensity
+                      </Radio>
+                      <Radio className='undp-radio' value='headcountRatio'>
+                        Headcount Ratio
+                      </Radio>
+                      <Radio className='undp-radio' value='subregion'>
+                        Subregion name
+                      </Radio>
+                    </Radio.Group>
+                  </div>
+                </div>
+              )}
+              {adminLevels && adminLevels.length > 1 ? (
+                <div
+                  className='flex-div'
+                  style={{
+                    alignItems: 'center',
+                    flexBasis: '190px',
+                    minWidth: '190px',
+                  }}
+                >
+                  <div>
+                    <p className='undp-typography small-font'>Admin level:</p>
+                  </div>
+                  <div>
+                    <Radio.Group
+                      value={selectedAdminLevel}
+                      onChange={(el: RadioChangeEvent) => {
+                        setSelectedAdminLevel(el.target.value);
+                      }}
+                      className='margin-bottom-05'
+                    >
+                      {adminLevels.map((d, i) => (
+                        <Radio key={i} className='undp-radio' value={d}>
+                          {d}
+                        </Radio>
+                      ))}
+                    </Radio.Group>
+                  </div>
+                </div>
+              ) : null}
             </div>
             <div className={activeViz === 'map' ? '' : 'hide'}>
               <CountryMap
@@ -409,7 +409,7 @@ export function CountriesMpi(props: Props) {
           </div>
         </div>
       ) : null}
-      <p className='source'>
+      <p className='source margin-top-04'>
         Source: Compiled from individual National MPI Reports (
         <a
           href='https://ophi.org.uk/publications/national-mpi-reports/'
