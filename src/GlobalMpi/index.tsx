@@ -72,7 +72,9 @@ export function GlobalMpi(props: Props) {
         <ScatterPlotGlobal data={mpiData} />
       </div>
       <div className='margin-top-09'>
-        <h3>Differences</h3>
+        <h3>
+          Comparisons: Urban vs Rural and Female vs Male headed households
+        </h3>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
     </div>

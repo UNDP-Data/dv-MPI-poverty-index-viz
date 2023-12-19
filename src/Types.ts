@@ -19,6 +19,12 @@ export interface MpiDataType {
 export interface MpiDataTypeNational extends MpiDataType {
   bbox: BboxDataType;
   indicatorFiles?: string[];
+  displayMap: boolean;
+  note: string;
+  reportName: string;
+  reportUrl: string;
+  placement: string;
+  page: string;
 }
 export interface MpiDataTypeSubnational extends MpiDataType {
   subregion: string;

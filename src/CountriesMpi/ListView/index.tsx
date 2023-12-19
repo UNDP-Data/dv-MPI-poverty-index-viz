@@ -29,7 +29,7 @@ export function ListView(props: Props) {
   return (
     <div className='margin-top-00'>
       {tableTitle !== '' ? (
-        <h5 className='margin-top-10'>{tableTitle}</h5>
+        <p className='margin-top-10 undp-typography'>{tableTitle}</p>
       ) : null}
       {mpiData ? (
         <div className='table-container'>

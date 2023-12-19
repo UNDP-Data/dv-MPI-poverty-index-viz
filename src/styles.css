@@ -126,8 +126,8 @@
   opacity: 0.8
 }
 .source{
-  font-size: 1rem;
-  color: var(--gray-500);
+  font-size: 0.875rem;
+  color: var(--gray-600);
 }
 /* country map */
 .map{

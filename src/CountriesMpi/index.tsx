@@ -54,9 +54,7 @@ export function CountriesMpi(props: Props) {
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');
   const countryList = [
-    ...new Set(
-      subnational.map((d: MpiDataTypeSubnational) => d.country.trim()),
-    ),
+    ...new Set(national.map((d: MpiDataTypeNational) => d.country.trim())),
   ].sort();
   const defaultCountry = queryCountry || countryList[0];
   const [selectedCountry, setSelectedCountry] =
@@ -84,11 +82,15 @@ export function CountriesMpi(props: Props) {
       k => k.country === selectedCountry,
     );
     setCountrySubnational(subNatValues);
-    setCountryData(
-      national.filter(
-        (d: MpiDataTypeNational) => d.country === selectedCountry,
-      )[0],
-    );
+    const countryDataValues = national.filter(
+      (d: MpiDataTypeNational) => d.country === selectedCountry,
+    )[0];
+    setCountryData(countryDataValues);
+
+    const displayMap = countryDataValues?.displayMap;
+    if (!displayMap) setActiveViz('scatterplot');
+    else setActiveViz('map');
+
     setIndicatorFiles(
       national.filter(
         (d: MpiDataTypeNational) => d.country === selectedCountry,
@@ -159,33 +161,41 @@ export function CountriesMpi(props: Props) {
   */
   return (
     <div>
-      <h3 className='undp-typography margin-bottom-07'>
-        National Multidimensional Poverty Index (MPI) {queryCountry || ''}
-      </h3>
-      <p className='undp-typography'>
-        A national Multidimensional Poverty Index (MPI) is a poverty measure
-        tailored to specific countries, considering their unique circumstances.
-        These measures typically emphasize important factors such as healthcare,
-        education, and living conditions, while also incorporating other
-        relevant dimensions using appropriate local indicators.
-      </p>
-      <hr className='undp-style light margin-bottom-06' />
-      {!queryCountry ? (
-        <div className='margin-bottom-08'>
-          <p className='undp-typography label'>Select a country</p>
-          <Select
-            options={countryList.map(country => ({
-              label: country,
-              value: country,
-            }))}
-            className='undp-select'
-            value={selectedCountry}
-            showSearch
-            style={{ width: '400px' }}
-            onChange={d => setSelectedCountry(d.trim())}
-          />
-        </div>
-      ) : null}
+      <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+        <h3 className='undp-typography margin-bottom-07'>
+          National Multidimensional Poverty Index (MPI) {queryCountry || ''}
+        </h3>
+        <p className='undp-typography'>
+          A national Multidimensional Poverty Index (MPI) is a poverty measure
+          tailored to specific countries, considering their unique
+          circumstances. These measures typically emphasize important factors
+          such as healthcare, education, and living conditions, while also
+          incorporating other relevant dimensions using appropriate local
+          indicators.
+        </p>
+        {countryData?.note !== '' ? (
+          <p>
+            Note: <strong>{countryData?.note}</strong>
+          </p>
+        ) : null}
+        <hr className='undp-style light margin-bottom-06' />
+        {!queryCountry ? (
+          <div className='margin-bottom-08'>
+            <p className='undp-typography label'>Select a country</p>
+            <Select
+              options={countryList.map(country => ({
+                label: country,
+                value: country,
+              }))}
+              className='undp-select'
+              value={selectedCountry}
+              showSearch
+              style={{ width: '400px' }}
+              onChange={d => setSelectedCountry(d.trim())}
+            />
+          </div>
+        ) : null}
+      </div>
       {countrySubnational ? (
         <div className='flex-div flex-wrap'>
           <div className='chart-container flex-chart'>
@@ -200,8 +210,13 @@ export function CountriesMpi(props: Props) {
                 <Segmented
                   style={{ backgroundColor: '#FFF', padding: '1px' }}
                   className='undp-segmented'
+                  value={activeViz}
                   options={[
-                    { label: 'Map', value: 'map' },
+                    {
+                      label: 'Map',
+                      value: 'map',
+                      disabled: !countryData?.displayMap,
+                    },
                     {
                       label: 'Intensity vs Headcount ratio',
                       value: 'scatterplot',
@@ -410,34 +425,47 @@ export function CountriesMpi(props: Props) {
         </div>
       ) : null}
       <p className='source margin-top-04'>
-        Source: Compiled from individual National MPI Reports (
+        Source:{' '}
         <a
-          href='https://ophi.org.uk/publications/national-mpi-reports/'
+          className='undp-style'
+          href={countryData?.reportUrl}
           target='_blank'
           rel='noreferrer'
-          className='undp-style'
         >
-          https://ophi.org.uk/publications/national-mpi-reports/
+          {countryData?.reportName}
         </a>
-        )
       </p>
       {indicatorFiles !== undefined && indicatorFiles.length > 0 ? (
         <div>
-          <h4 className='undp-typography margin-top-09'>
-            Multidimensional poverty indicators
-          </h4>
-          <p className='undp-typography margin-top-06'>
-            The indicators used to measure multidimensional poverty can differ
-            based on the particular context and goals of the assessment.
-            Together, these indicators offer a more comprehensive perspective on
-            people&apos;s overall well-being and enable the identification of
-            the interrelated factors that underlie their multidimensional
-            poverty. Consequently, they serve as valuable tools for policymakers
-            and researchers seeking to develop a deeper and more nuanced
-            comprehension of multidimensional poverty, as well as to devise
-            precise strategies for its alleviation.
-          </p>
-          <h6 className='undp-typography margin-top-06'>
+          <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+            <h4 className='undp-typography margin-top-09'>
+              Multidimensional poverty indicators for {countryData?.country}
+            </h4>
+            <p className='undp-typography margin-top-06'>
+              The indicators used to measure multidimensional poverty can differ
+              based on the particular context and goals of the assessment.
+              Together, these indicators offer a more comprehensive perspective
+              on people&apos;s overall well-being and enable the identification
+              of the interrelated factors that underlie their multidimensional
+              poverty. Consequently, they serve as valuable tools for
+              policymakers and researchers seeking to develop a deeper and more
+              nuanced comprehension of multidimensional poverty, as well as to
+              precise strategies for its alleviation.
+            </p>
+            <p className='undp-typography small-font'>
+              For a definition of the indicators see{' '}
+              <a
+                className='undp-style'
+                href={countryData?.reportUrl}
+                target='_blank'
+                rel='noreferrer'
+              >
+                {countryData?.reportName}
+              </a>{' '}
+              (Page {countryData?.page} {countryData?.placement})
+            </p>
+          </div>
+          <h6 className='undp-typography margin-top-09'>
             Percentage of households experiencing deprivations in the listed
             indicators
           </h6>

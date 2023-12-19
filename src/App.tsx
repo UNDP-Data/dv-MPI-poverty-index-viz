@@ -143,6 +143,12 @@ function App() {
           headcountRatio: d['Headcount Ratio (H, %)'],
           year: d.Year,
           intensity: +d['Intensity (A, %)'],
+          displayMap: Boolean(Number(d['display map'])),
+          note: d.note,
+          reportName: d['report name'],
+          reportUrl: d['url report'],
+          placement: d['placement definitions'],
+          page: d['page definitions'],
           bbox: countriesArray[
             (countriesArray as object[]).findIndex(
               (k: any) => k.iso_a3 === d['country code'],
@@ -219,7 +225,7 @@ function App() {
               location={locationData}
             />
           )}
-          <div>-</div>
+          <div>{}</div>
         </>
       ) : null}
     </div>
