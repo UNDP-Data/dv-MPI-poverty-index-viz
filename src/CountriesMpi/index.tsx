@@ -161,7 +161,9 @@ export function CountriesMpi(props: Props) {
   */
   return (
     <div>
-      <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+      <div
+        style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
+      >
         <h3 className='undp-typography margin-bottom-07'>
           National Multidimensional Poverty Index (MPI) {queryCountry || ''}
         </h3>
@@ -427,7 +429,7 @@ export function CountriesMpi(props: Props) {
       <p className='source margin-top-04'>
         Source:{' '}
         <a
-          className='undp-style'
+          className='undp-style small'
           href={countryData?.reportUrl}
           target='_blank'
           rel='noreferrer'
@@ -437,7 +439,13 @@ export function CountriesMpi(props: Props) {
       </p>
       {indicatorFiles !== undefined && indicatorFiles.length > 0 ? (
         <div>
-          <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+          <div
+            style={{
+              maxWidth: '1024px',
+              margin: '0 auto',
+              padding: '0 1.5rem',
+            }}
+          >
             <h4 className='undp-typography margin-top-09'>
               Multidimensional poverty indicators for {countryData?.country}
             </h4>
@@ -455,7 +463,7 @@ export function CountriesMpi(props: Props) {
             <p className='undp-typography small-font'>
               For a definition of the indicators see{' '}
               <a
-                className='undp-style'
+                className='undp-style small'
                 href={countryData?.reportUrl}
                 target='_blank'
                 rel='noreferrer'
