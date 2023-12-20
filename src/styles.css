@@ -9,6 +9,11 @@
   flex-shrink: 1; 
   flex-basis: 800px;
 }
+/* tabs */
+.undp-tabs.narrow-tabs .ant-tabs-nav{
+  margin: 0 auto;
+  width: 1024px;
+}
 /* dumbell styles */
 .dumbell-container{
   background-color: var(--gray-100);

@@ -429,7 +429,7 @@ export function CountriesMpi(props: Props) {
       <p className='source margin-top-04'>
         Source:{' '}
         <a
-          className='undp-style small'
+          className='undp-style small-font'
           href={countryData?.reportUrl}
           target='_blank'
           rel='noreferrer'
@@ -463,7 +463,7 @@ export function CountriesMpi(props: Props) {
             <p className='undp-typography small-font'>
               For a definition of the indicators see{' '}
               <a
-                className='undp-style small'
+                className='undp-style small-font'
                 href={countryData?.reportUrl}
                 target='_blank'
                 rel='noreferrer'

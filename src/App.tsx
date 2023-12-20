@@ -198,7 +198,7 @@ function App() {
           {!queryCountry ? (
             <Tabs
               defaultActiveKey='1'
-              className='undp-tabs'
+              className='undp-tabs narrow-tabs'
               items={[
                 {
                   label: 'National MPI',
