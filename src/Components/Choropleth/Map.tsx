@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useRef, useState } from 'react';
-import UNDPColorModule from 'undp-viz-colors';
 import styled from 'styled-components';
 import { scaleThreshold } from 'd3-scale';
 import { select } from 'd3-selection';
@@ -9,10 +9,13 @@ import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
 import world from '../../Data/worldMap.json';
 import { Tooltip } from '../Tooltip';
-import { MpiDataType, HoverDataType } from '../../Types';
+import { HoverDataType } from '../../Types';
 
 interface Props {
-  data: MpiDataType[];
+  data: object[];
+  prop: string;
+  valueArray: number[];
+  colors: string[];
 }
 
 const LegendEl = styled.div`
@@ -32,7 +35,8 @@ const LegendEl = styled.div`
 `;
 
 export function Map(props: Props) {
-  const { data } = props;
+  const { data, prop, valueArray, colors } = props;
+  console.log('data for map ===========', data);
   const svgWidth = 1280;
   const svgHeight = 750;
   const mapSvg = useRef<SVGSVGElement>(null);
@@ -47,19 +51,13 @@ export function Map(props: Props) {
     undefined,
   );
   const [zoomLevel, setZoomLevel] = useState(1);
-  const radioValue = 'mpi';
-  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
-  const percentArray = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   const projection = geoEqualEarth()
     .rotate([0, 0])
     .scale(300)
     .translate([svgWidth / 2 - 50, svgHeight / 2]);
-  const colorScaleMPI = scaleThreshold<number, string>()
+  const colorScale = scaleThreshold<number, string>()
     .domain(valueArray)
-    .range(UNDPColorModule.sequentialColors.negativeColorsx07);
-  const colorScaleHeadcount = scaleThreshold<number, string>()
-    .domain(percentArray)
-    .range(UNDPColorModule.sequentialColors.negativeColorsx10);
+    .range(colors);
   useEffect(() => {
     const mapGSelect = select(mapG.current);
     const mapSvgSelect = select(mapSvg.current);
@@ -85,13 +83,15 @@ export function Map(props: Props) {
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               world.features.map((d: any, i: number) => {
                 const value = data.filter(k => {
-                  return k.iso_a3 === d.properties.ISO3;
+                  return (k as any).iso_a3 === d.properties.ISO3;
                 });
                 const color =
                   value.length > 0
-                    ? radioValue === 'mpi'
-                      ? colorScaleMPI(Number(value[0].mpi))
-                      : colorScaleHeadcount(Number(value[0].headcountRatio))
+                    ? prop === 'mpi'
+                      ? colorScale(Number((value as any)[0][prop]))
+                      : Number((value as any)[0][prop]) === 0
+                      ? 'var(--gray-600)'
+                      : colorScale(Number((value as any)[0][prop]))
                     : 'var(--gray-300)';
                 if (
                   d.properties.NAME === '' ||
@@ -107,7 +107,7 @@ export function Map(props: Props) {
                         setHoverData({
                           country: value[0].country,
                           continent: value[0].region,
-                          value: Number(value[0].mpi),
+                          value: Number(value[0][prop]),
                           year: value[0].year,
                           headcountRatio: Number(value[0].headcountRatio),
                           intensity: Number(value[0].intensity),
@@ -212,95 +212,51 @@ export function Map(props: Props) {
             LEGEND
           </h6>
           <svg viewBox='0 0 340 50'>
-            {radioValue === 'mpi' ? (
-              <g transform='translate(10,20)'>
-                <text
-                  x={320}
-                  y={-10}
-                  fontSize='0.8rem'
-                  fill='#212121'
-                  textAnchor='end'
-                >
-                  Higher MPI
-                </text>
-                {valueArray.map((d, i) => (
-                  <g key={i}>
-                    <rect
-                      onMouseOver={() =>
-                        setSelectedColor(colorScaleMPI(valueArray[i] - 0.05))
-                      }
-                      onMouseLeave={() => setSelectedColor(undefined)}
-                      x={(i * 320) / valueArray.length}
-                      y={1}
-                      width={320 / valueArray.length}
-                      height={8}
-                      fill={colorScaleMPI(valueArray[i] - 0.05)}
-                      stroke='#fff'
-                    />
-                    <text
-                      x={(320 * (i + 1)) / valueArray.length}
-                      y={25}
-                      fontSize={12}
-                      fill='#212121'
-                      textAnchor='middle'
-                    >
-                      {d}
-                    </text>
-                  </g>
-                ))}
-                <text
-                  y={25}
-                  x={0}
-                  fontSize={12}
-                  fill='#212121'
-                  textAnchor='middle'
-                >
-                  0
-                </text>
-              </g>
-            ) : (
-              <g transform='translate(10,20)'>
-                <text
-                  x={320}
-                  y={-10}
-                  fontSize='0.8rem'
-                  fill='#212121'
-                  textAnchor='end'
-                >
-                  Higher Headcount (%)
-                </text>
-                {percentArray.map((d, i) => (
-                  <g key={i}>
-                    <rect
-                      x={(i * 320) / percentArray.length}
-                      y={1}
-                      width={320 / percentArray.length}
-                      height={8}
-                      fill={colorScaleHeadcount(percentArray[i] - 5)}
-                      stroke='#fff'
-                    />
-                    <text
-                      x={(320 * (i + 1)) / percentArray.length}
-                      y={25}
-                      fontSize={12}
-                      fill='#212121'
-                      textAnchor='middle'
-                    >
-                      {d}
-                    </text>
-                  </g>
-                ))}
-                <text
-                  y={25}
-                  x={0}
-                  fontSize={12}
-                  fill='#212121'
-                  textAnchor='middle'
-                >
-                  0
-                </text>
-              </g>
-            )}
+            <g transform='translate(10,20)'>
+              <text
+                x={320}
+                y={-10}
+                fontSize='0.8rem'
+                fill='#212121'
+                textAnchor='end'
+              >
+                Higher Poverty
+              </text>
+              {valueArray.map((d, i) => (
+                <g key={i}>
+                  <rect
+                    onMouseOver={() =>
+                      setSelectedColor(colorScale(valueArray[i] - 0.05))
+                    }
+                    onMouseLeave={() => setSelectedColor(undefined)}
+                    x={(i * 320) / valueArray.length}
+                    y={1}
+                    width={320 / valueArray.length}
+                    height={8}
+                    fill={colorScale(valueArray[i] - 0.05)}
+                    stroke='#fff'
+                  />
+                  <text
+                    x={(320 * (i + 1)) / valueArray.length}
+                    y={25}
+                    fontSize={12}
+                    fill='#212121'
+                    textAnchor='middle'
+                  >
+                    {d}
+                  </text>
+                </g>
+              ))}
+              <text
+                y={25}
+                x={0}
+                fontSize={12}
+                fill='#212121'
+                textAnchor='middle'
+              >
+                0
+              </text>
+            </g>
           </svg>
         </LegendEl>
       </div>

@@ -10,11 +10,11 @@ import { TooltipSubnational } from '../Components/TooltipSubnational';
 interface Props {
   data: MpiDataTypeSubnational[];
   id: string;
+  svgWidth: number;
+  svgHeight: number;
 }
 export function ScatterPlotSubnational(props: Props) {
-  const { data, id } = props;
-  const graphWidth = 700;
-  const graphHeight = 520;
+  const { data, id, svgWidth, svgHeight } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
@@ -22,19 +22,20 @@ export function ScatterPlotSubnational(props: Props) {
   const [hoverValue, setHoverValue] = useState<string>('');
   const xPos = scaleLinear()
     .domain([0, 100])
-    .range([0, graphWidth - margin.left - margin.right])
+    .range([0, svgWidth - margin.left - margin.right])
     .nice();
   const yPos = scaleLinear()
     .domain([80, 0])
-    .range([0, graphHeight - margin.top - margin.bottom]);
+    .range([0, svgHeight - margin.top - margin.bottom]);
   const yAxis = axisLeft(yPos as any)
-    .tickSize(-graphWidth + margin.left + margin.right)
+    .tickSize(-svgWidth + margin.left + margin.right)
     .tickFormat((d: any) => `${d}%`);
   const xAxis = axisBottom(xPos)
     .tickSize(0)
     .tickSizeOuter(0)
     .tickPadding(6)
-    .tickFormat((d: any) => `${d}%`);
+    .tickFormat((d: any) => `${d}%`)
+    .ticks(10);
   const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
   const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
@@ -49,16 +50,21 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, []);
+  }, [id, svgWidth, svgHeight]);
 
   return (
     <div className='margin-top-06'>
-      <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id={id}>
+      <svg
+        width='100%'
+        height='100%'
+        viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+        id={id}
+      >
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g
             className='xAxis'
             transform={`translate(0 ,${
-              graphHeight - margin.bottom - margin.top
+              svgHeight - margin.bottom - margin.top
             })`}
           />
           <g className='yAxis' transform='translate(0,0)' />
@@ -98,11 +104,11 @@ export function ScatterPlotSubnational(props: Props) {
             </g>
           ))}
         </g>
-        <text x={graphWidth / 2} y={graphHeight - 3} textAnchor='middle'>
+        <text x={svgWidth / 2} y={svgHeight - 3} textAnchor='middle'>
           Headcount Ratio
         </text>
         <text
-          x={-graphHeight / 2}
+          x={-svgHeight / 2}
           y='20'
           transform='rotate(-90)'
           textAnchor='middle'

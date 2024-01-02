@@ -1,13 +1,13 @@
 /* world map */
 .map-container{
   position: relative;
-  /* border: 1px solid var(--gray-400); */
+  max-width: 1280px;
+  margin: auto;
 }
 .chart-global-container{
-  max-width: 800px;
   flex-grow: 1;
   flex-shrink: 1; 
-  flex-basis: 800px;
+  flex-basis: 70%;
 }
 /* tabs */
 .undp-tabs.narrow-tabs .ant-tabs-nav{
@@ -102,16 +102,19 @@
   padding: 24px 32px;
   position:relative;
 }
-.flex-chart{  
-  max-width: 700px;
+.flex-chart{ 
   flex-grow: 1;
   flex-shrink: 1; 
-  flex-basis: 700px;
+  flex-basis: 480px;
 }
 .chart-explanation{
   flex-grow: 1;
   flex-shrink: 1; 
   flex-basis: 300px;
+}
+.chart-top{
+  flex-grow: 1;
+  flex-basis: 60%;
 }
 /* general charts styles */
 
@@ -136,8 +139,6 @@
 }
 /* country map */
 .map{
-  width: 100%;
-  height: 598px;
   border: 1px solid var(--gray-400);
   background-color: #B5D5F5;
 }

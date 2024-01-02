@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Segmented, Select, Radio, RadioChangeEvent } from 'antd';
-import { Key, useEffect, useState } from 'react';
+import { Key, useEffect, useState, useRef } from 'react';
 import { ascending } from 'd3-array';
 import { scaleThreshold } from 'd3-scale';
 import UNDPColorModule from 'undp-viz-colors';
@@ -9,8 +9,9 @@ import {
   MpiDataTypeNational,
   MpiDataTypeSubnational,
   MpiDataTypeLocation,
+  MpiDataTypeNationalYears,
 } from '../Types';
-// import { Map } from '../Components/Choropleth/Map';
+import { Map } from '../Components/Choropleth/Map';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
@@ -19,12 +20,13 @@ import { ListView } from './ListView';
 
 interface Props {
   national: MpiDataTypeNational[];
+  nationalYears: MpiDataTypeNationalYears[];
   subnational: MpiDataTypeSubnational[];
   location: MpiDataTypeLocation[];
 }
 
 export function CountriesMpi(props: Props) {
-  const { national, subnational, location } = props;
+  const { national, nationalYears, subnational, location } = props;
   const [rural, setRural] = useState<MpiDataTypeLocation | undefined>(
     undefined,
   );
@@ -50,12 +52,18 @@ export function CountriesMpi(props: Props) {
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   const [sortedBy, setSortedBy] = useState('mpi');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [svgWidth, setSvgWidth] = useState<number | 800>(800);
+  const [svgHeight, setSvgHeight] = useState<number | 500>(500);
   national.sort((a, b) => ascending(a.country, b.country));
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');
   const countryList = [
-    ...new Set(national.map((d: MpiDataTypeNational) => d.country.trim())),
+    ...new Set(
+      nationalYears.map((d: MpiDataTypeNationalYears) => d.country.trim()),
+    ),
   ].sort();
+  console.log('countryList', countryList);
   const defaultCountry = queryCountry || countryList[0];
   const [selectedCountry, setSelectedCountry] =
     useState<string>(defaultCountry);
@@ -75,27 +83,29 @@ export function CountriesMpi(props: Props) {
       k => k.country === selectedCountry && k.location === 'urban',
     )[0];
     setUrban(urbanValues);
-    const totalValues = national?.filter(k => k.country === selectedCountry)[0];
+    const totalValues = nationalYears?.filter(
+      k => k.country === selectedCountry,
+    )[0].countryData[0];
     setTotal(totalValues);
     setYear(totalValues.year);
     const subNatValues = subnational?.filter(
       k => k.country === selectedCountry,
     );
     setCountrySubnational(subNatValues);
-    const countryDataValues = national.filter(
-      (d: MpiDataTypeNational) => d.country === selectedCountry,
-    )[0];
+    console.log('subnational ============> ', subNatValues);
+    /// filtering most recent national data
+    const countryDataValues = nationalYears.filter(
+      (d: MpiDataTypeNationalYears) => d.country === selectedCountry,
+    )[0].countryData[0];
+
     setCountryData(countryDataValues);
 
     const displayMap = countryDataValues?.displayMap;
+    console.log('countryDataValues =========> ', countryDataValues);
     if (!displayMap) setActiveViz('scatterplot');
     else setActiveViz('map');
 
-    setIndicatorFiles(
-      national.filter(
-        (d: MpiDataTypeNational) => d.country === selectedCountry,
-      )[0].indicatorFiles,
-    );
+    setIndicatorFiles(countryDataValues.indicatorFiles);
     setAdminLevels([
       ...new Set(subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel)),
     ]);
@@ -115,50 +125,12 @@ export function CountriesMpi(props: Props) {
       );
     }
   }, [selectedCountry]);
-  /*
-      {national ? (
-        <div className='flex-div flex-wrap gap-07'>
-          <Map data={national} />
-          <div className='chart-explanation'>
-            <h5 className='undp-typography margin-top-00'>Key Definitions</h5>
-            <div>
-              <div className='definitionDiv'>
-                <h6 className='undp-typography'>
-                  Multidimensional Poverty Index (MPI)
-                </h6>
-                <p className='undp-typography small-font'>
-                  Multidimensional Poverty Index is calculated as the product of
-                  the headcount ratio and the intensity of poverty. It combines
-                  measures to provide a comprehensive assessment of
-                  multidimensional poverty, taking into account both the
-                  prevalence and severity of poverty among individuals in a
-                  population.
-                </p>
-              </div>
-              <div className='definitionDiv'>
-                <h6 className='undp-typography'>Headcount Ratio</h6>
-                <p className='undp-typography small-font'>
-                  The headcount ratio measures the percentage of individuals in
-                  a population who are considered multidimensionally poor,
-                  indicating the proportion of people experiencing poverty
-                  across multiple dimensions.
-                </p>
-              </div>
-              <div className='definitionDiv'>
-                <h6 className='undp-typography'>Intensity of poverty</h6>
-                <p className='undp-typography small-font'>
-                  The intensity of poverty is the average proportion of weighted
-                  indicators in which multidimensionally poor individuals are
-                  deprived. It provides insights into the extent or severity of
-                  deprivation experienced by those classified as
-                  multidimensionally poor.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
-  */
+  useEffect(() => {
+    if (containerRef.current) {
+      setSvgWidth(containerRef.current.clientWidth);
+      setSvgHeight(containerRef.current.clientHeight);
+    }
+  }, [containerRef.current]);
   return (
     <div>
       <div
@@ -175,31 +147,45 @@ export function CountriesMpi(props: Props) {
           incorporating other relevant dimensions using appropriate local
           indicators.
         </p>
-        {countryData?.note !== '' ? (
-          <p>
-            Note: <strong>{countryData?.note}</strong>
-          </p>
-        ) : null}
-        <hr className='undp-style light margin-bottom-06' />
-        {!queryCountry ? (
-          <div className='margin-bottom-08'>
-            <p className='undp-typography label'>Select a country</p>
-            <Select
-              options={countryList.map(country => ({
-                label: country,
-                value: country,
-              }))}
-              className='undp-select'
-              value={selectedCountry}
-              showSearch
-              style={{ width: '400px' }}
-              onChange={d => setSelectedCountry(d.trim())}
-            />
-          </div>
-        ) : null}
       </div>
-      {countrySubnational ? (
-        <div className='flex-div flex-wrap'>
+      {nationalYears ? (
+        <div className='flex-div flex-wrap gap-07 margin-top-10'>
+          <Map
+            data={nationalYears}
+            prop='percentChange'
+            valueArray={[-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]}
+            colors={UNDPColorModule.divergentColors.colorsx10.reverse()}
+          />
+          <div className='chart-explanation'>
+            <h5 className='undp-typography margin-top-00'>Key Definitions</h5>
+            <div>Here explanation map</div>
+          </div>
+        </div>
+      ) : null}
+      {countryData?.note !== '' ? (
+        <p>
+          Note: <strong>{countryData?.note}</strong>
+        </p>
+      ) : null}
+      <hr className='undp-style light margin-bottom-06' />
+      {!queryCountry ? (
+        <div className='margin-bottom-08'>
+          <p className='undp-typography label'>Select a country</p>
+          <Select
+            options={countryList.map(country => ({
+              label: country,
+              value: country,
+            }))}
+            className='undp-select'
+            value={selectedCountry}
+            showSearch
+            style={{ width: '400px' }}
+            onChange={d => setSelectedCountry(d.trim())}
+          />
+        </div>
+      ) : null}
+      <div className='flex-div flex-wrap'>
+        {countrySubnational && countrySubnational.length > 0 ? (
           <div className='chart-container flex-chart'>
             <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
               <div>
@@ -243,7 +229,7 @@ export function CountriesMpi(props: Props) {
                         fill='#212121'
                         textAnchor='end'
                       >
-                        Higher MPI
+                        Higher Poverty
                       </text>
                       {valueArray.map((d, i) => (
                         <g key={i}>
@@ -337,11 +323,27 @@ export function CountriesMpi(props: Props) {
                 </div>
               ) : null}
             </div>
-            <div className={activeViz === 'map' ? '' : 'hide'}>
-              <CountryMap
-                countryData={countryData}
-                selectedAdminLevel={selectedAdminLevel}
-              />
+            <div ref={containerRef}>
+              <div className={activeViz === 'map' ? '' : 'hide'}>
+                <CountryMap
+                  countryData={
+                    nationalYears?.filter(k => k.country === selectedCountry)[0]
+                  }
+                  selectedAdminLevel={selectedAdminLevel}
+                  mapWidth={svgWidth}
+                  mapHeight={svgHeight}
+                />
+              </div>
+              <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
+                <ScatterPlotSubnational
+                  data={countrySubnational.filter(
+                    d => d.adminLevel === selectedAdminLevel,
+                  )}
+                  id='subnatScatterPlot'
+                  svgWidth={svgWidth}
+                  svgHeight={svgHeight}
+                />
+              </div>
             </div>
             <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
               <LollipopChartViz
@@ -351,92 +353,141 @@ export function CountriesMpi(props: Props) {
                 sortedBy={sortedBy}
               />
             </div>
-            <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
-              <ScatterPlotSubnational
-                data={countrySubnational.filter(
-                  d => d.adminLevel === selectedAdminLevel,
-                )}
-                id='subnatScatterPlot'
-              />
-            </div>
+            <p className='source margin-top-04'>
+              Source:{' '}
+              <a
+                className='undp-style small-font'
+                href={countryData?.reportUrl}
+                target='_blank'
+                rel='noreferrer'
+              >
+                {countryData?.reportName}
+              </a>
+            </p>
           </div>
-          <div className='chart-explanation'>
-            <div className='stat-card'>
-              <h3>{total?.mpi}</h3>
-              <h4>National MPI {selectedCountry}</h4>
-              <p className='margin-bottom-01'>
-                Headcount Ratio: {total?.headcountRatio}%
+        ) : null}
+        <div className='chart-explanation flex-div flex-wrap'>
+          <div
+            className='stat-card'
+            style={{ minWidth: '400px', maxWidth: '800px' }}
+          >
+            <h3>{total?.mpi}</h3>
+            <h4>National MPI {selectedCountry}</h4>
+            <p className='margin-bottom-01'>
+              Headcount Ratio: {total?.headcountRatio}%
+            </p>
+            <p>Intensity: {total?.intensity}%</p>
+          </div>
+          <div>
+            <h5 className='undp-typography margin-top-05'>Key Definitions</h5>
+            <div className='definitionDiv'>
+              <h6 className='undp-typography'>
+                Multidimensional Poverty Index (MPI)
+              </h6>
+              <p className='undp-typography small-font'>
+                Multidimensional Poverty Index is calculated as the product of
+                the headcount ratio and the intensity of poverty. It measures to
+                provide a comprehensive assessment of multidimensional poverty,
+                taking into account both the prevalence and severity of poverty
+                among individuals in a population.
               </p>
-              <p>Intensity: {total?.intensity}%</p>
             </div>
-            <div className='margin-top-05'>
-              <div className='chart-container flex-chart'>
-                <div className='flex-div flex-space-between'>
-                  <div>
-                    <h6 className='undp-typography margin-bottom-01'>
-                      Rural and Urban MPI
-                    </h6>
-                    <p className='undp-typography small-font'>Year: {year}</p>
-                  </div>
-                  <div>
-                    <div className='legend-container'>
-                      <div className='legend-item'>
-                        <div
-                          className='legend-circle-medium'
-                          style={{
-                            backgroundColor:
-                              UNDPColorModule.categoricalColors.locationColors
-                                .urban,
-                          }}
-                        />
-                        <div className='small-font'>Urban</div>
-                      </div>
-                      <div className='legend-item'>
-                        <div
-                          className='legend-circle-medium'
-                          style={{
-                            backgroundColor:
-                              UNDPColorModule.categoricalColors.locationColors
-                                .rural,
-                          }}
-                        />
-                        <div className='small-font'>Rural</div>
-                      </div>
-                      <div className='legend-item'>
-                        <div
-                          className='legend-circle-medium'
-                          style={{
-                            backgroundColor: '#55606E',
-                          }}
-                        />
-                        <div className='small-font'>Country Total</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <ScatterPlot
-                  urban={urban}
-                  rural={rural}
-                  total={total}
-                  id='locationScatterPlot'
-                  country={selectedCountry}
-                />
-              </div>
+            <div className='definitionDiv'>
+              <h6 className='undp-typography'>Headcount Ratio</h6>
+              <p className='undp-typography small-font'>
+                The headcount ratio measures the percentage of individuals in a
+                population who are considered multidimensionally poor,
+                indicating the proportion of people experiencing poverty across
+                multiple dimensions.
+              </p>
+            </div>
+            <div className='definitionDiv'>
+              <h6 className='undp-typography'>Intensity of poverty</h6>
+              <p className='undp-typography small-font'>
+                The intensity of poverty is the average proportion of weighted
+                indicators in which multidimensionally poor individuals are
+                deprived. It provides insights into the extent or severity of
+                deprivation experienced by those classified as
+                multidimensionally poor.
+              </p>
             </div>
           </div>
         </div>
-      ) : null}
-      <p className='source margin-top-04'>
-        Source:{' '}
-        <a
-          className='undp-style small-font'
-          href={countryData?.reportUrl}
-          target='_blank'
-          rel='noreferrer'
+      </div>
+      <div
+        className='flex-div flex-wrap gap-07 margin-top-07'
+        style={{ maxWidth: '1024px', margin: '0 auto' }}
+      >
+        <div
+          className='chart-container flex-chart'
+          style={{ maxWidth: '400px' }}
         >
-          {countryData?.reportName}
-        </a>
-      </p>
+          <div className='flex-div flex-space-between'>
+            <div className='chart-top'>
+              <h6 className='undp-typography margin-bottom-01'>
+                Rural and Urban MPI
+              </h6>
+              <p className='undp-typography small-font'>Year: {year}</p>
+            </div>
+            <div>
+              <div className='legend-container'>
+                <div className='legend-item'>
+                  <div
+                    className='legend-circle-medium'
+                    style={{
+                      backgroundColor:
+                        UNDPColorModule.categoricalColors.locationColors.urban,
+                    }}
+                  />
+                  <div className='small-font'>Urban</div>
+                </div>
+                <div className='legend-item'>
+                  <div
+                    className='legend-circle-medium'
+                    style={{
+                      backgroundColor:
+                        UNDPColorModule.categoricalColors.locationColors.rural,
+                    }}
+                  />
+                  <div className='small-font'>Rural</div>
+                </div>
+                <div className='legend-item'>
+                  <div
+                    className='legend-circle-medium'
+                    style={{
+                      backgroundColor: '#55606E',
+                    }}
+                  />
+                  <div className='small-font'>Country Total</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='scatterPlot'>
+            <ScatterPlot
+              urban={urban}
+              rural={rural}
+              total={total}
+              id='locationScatterPlot'
+              country={selectedCountry}
+            />
+            <p className='source margin-top-04'>
+              Source:{' '}
+              <a
+                className='undp-style small-font'
+                href={countryData?.reportUrl}
+                target='_blank'
+                rel='noreferrer'
+              >
+                {countryData?.reportName}
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className='chart-container'>
+          <h6 className='undp-typography margin-bottom-01'>Change in time</h6>
+        </div>
+      </div>
       {indicatorFiles !== undefined && indicatorFiles.length > 0 ? (
         <div>
           <div

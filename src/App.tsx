@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { csv, json } from 'd3-fetch';
+import { descending } from 'd3-array';
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import {
@@ -10,6 +11,7 @@ import {
   MpiDataTypeLocation,
   MpiDataTypeNational,
   BboxDataType,
+  MpiDataTypeNationalYears,
 } from './Types';
 import './styles.css';
 import { GlobalMpi } from './GlobalMpi';
@@ -24,6 +26,9 @@ function App() {
   );
   const [nationalData, setNationalData] = useState<
     MpiDataTypeNational[] | undefined
+  >(undefined);
+  const [nationalYearsData, setNationalYearsData] = useState<
+    MpiDataTypeNationalYears[] | undefined
   >(undefined);
   const [subnationalData, setSubnationalData] = useState<
     MpiDataTypeSubnational[] | undefined
@@ -44,9 +49,9 @@ function App() {
       csv(`${dataurl}Global-MPI_urban.csv`),
       csv(`${dataurl}Global-MPI_female.csv`),
       csv(`${dataurl}Global-MPI_male.csv`),
-      csv(`${dataurl}MPI_national.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location.csv`),
+      csv(`${dataurl}MPI_national_multiple_years.csv`),
       json(
         'https://gist.githubusercontent.com/cplpearce/3bc5f1e9b1187df51d2085ffca795bee/raw/b36904c0c8ea72fdb82f68eb33f29891095deab3/country_codes',
       ),
@@ -57,9 +62,9 @@ function App() {
         urban,
         female,
         male,
-        national,
         subnational,
         location,
+        nationalYears,
         countries,
       ]) => {
         const countriesKeys = Object.keys(countries as object);
@@ -135,29 +140,6 @@ function App() {
             });
           }
         });
-        const nationalFetched = national.map((d: any) => ({
-          country: d.country,
-          iso_a3: d['country code'],
-          region: '',
-          mpi: d.MPI,
-          headcountRatio: d['Headcount Ratio (H, %)'],
-          year: d.Year,
-          intensity: +d['Intensity (A, %)'],
-          displayMap: Boolean(Number(d['display map'])),
-          note: d.note,
-          reportName: d['report name'],
-          reportUrl: d['url report'],
-          placement: d['placement definitions'],
-          page: d['page definitions'],
-          bbox: countriesArray[
-            (countriesArray as object[]).findIndex(
-              (k: any) => k.iso_a3 === d['country code'],
-            )
-          ].boundingBox,
-          indicatorFiles: d['indicators files']
-            .split(',')
-            .filter((k: any) => k !== ''),
-        }));
         const subnationalFetched = subnational.map((d: any) => ({
           country: d.country,
           iso_a3: d.ISOcountry,
@@ -179,11 +161,71 @@ function App() {
           headcountRatio: d['Headcount Ratio (H, %)'],
           intensity: +d['Intensity (A, %)'],
         }));
+        const nationalFetched = nationalYears.map((d: any) => ({
+          country: d.country,
+          iso_a3: d['country code'],
+          region: '',
+          mpi: d.MPI,
+          headcountRatio: d['Headcount Ratio (H, %)'],
+          year: d.Year,
+          intensity: +d['Intensity (A, %)'],
+          displayMap: Boolean(Number(d['display map'])),
+          note: d.note,
+          reportName: d['report name'],
+          reportUrl: d['url report'],
+          placement: d['placement definitions'],
+          page: d['page definitions'],
+          indicatorFiles: d['indicators files']
+            .split(',')
+            .filter((k: any) => k !== ''),
+          firstYear: Number(d.Year.split('-')[0]),
+        }));
+        // create an array with all countries with no repetition
+        // create an array with country/change and all the data of the country in an array
+        const allCountriesYears = [
+          ...new Set(nationalYears.map((d: any) => d['country code'])),
+        ];
+        const nationalYearsAll: MpiDataTypeNationalYears[] = [];
+        allCountriesYears.forEach(country => {
+          const countryDataValues = nationalFetched.filter(
+            k => k.iso_a3 === country,
+          );
+          countryDataValues.sort((a, b) =>
+            descending(a.firstYear, b.firstYear),
+          );
+          // poverty change: if negative it means there's a decrease in poverty
+          // as the latest value is smaller than the first one
+          const indicatorChange =
+            countryDataValues[0].mpi === '' ? 'headcountRatio' : 'mpi';
+          const povertyChange =
+            ((countryDataValues[0][indicatorChange] -
+              countryDataValues[countryDataValues.length - 1][
+                indicatorChange
+              ]) /
+              countryDataValues[countryDataValues.length - 1][
+                indicatorChange
+              ]) *
+            100;
+          // sort data by year
+          nationalYearsAll.push({
+            iso_a3: country,
+            bbox: countriesArray[
+              (countriesArray as object[]).findIndex(
+                (k: any) => k.iso_a3 === country,
+              )
+            ].boundingBox,
+            country: countryDataValues[0].country,
+            percentChange: povertyChange,
+            countryData: countryDataValues,
+            note: `based on ${indicatorChange}`,
+          });
+        });
         setMpiData(dataFetched);
         setDiffData(diffFetched);
         setNationalData(nationalFetched);
         setSubnationalData(subnationalFetched);
         setLocationData(locationFetched);
+        setNationalYearsData(nationalYearsAll);
       },
     );
   }, []);
@@ -193,7 +235,8 @@ function App() {
       diffData &&
       nationalData &&
       subnationalData &&
-      locationData ? (
+      locationData &&
+      nationalYearsData ? (
         <>
           {!queryCountry ? (
             <Tabs
@@ -206,6 +249,7 @@ function App() {
                   children: (
                     <CountriesMpi
                       national={nationalData}
+                      nationalYears={nationalYearsData}
                       subnational={subnationalData}
                       location={locationData}
                     />
@@ -221,6 +265,7 @@ function App() {
           ) : (
             <CountriesMpi
               national={nationalData}
+              nationalYears={nationalYearsData}
               subnational={subnationalData}
               location={locationData}
             />

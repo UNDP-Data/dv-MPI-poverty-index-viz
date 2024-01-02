@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { MpiDataTypeSubnational } from '../../Types';
 import { LollipopChart } from './LollipopChart';
@@ -17,9 +18,15 @@ const LollipopChartEl = styled.div`
 `;
 export function LollipopChartViz(props: Props) {
   const { data, sortedBy } = props;
-
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [svgWidth, setSvgWidth] = useState<number | 800>(800);
+  useEffect(() => {
+    if (containerRef.current) {
+      setSvgWidth(containerRef.current.clientWidth);
+    }
+  }, [data]);
   return (
-    <div className='lollipop-container'>
+    <div className='lollipop-container' ref={containerRef}>
       <div className='flex-div flex-wrap margin-top-00 lollipop-header'>
         <div style={{ width: '25%', fontWeight: '600' }}>Regions</div>
         <div style={{ width: '20%', fontWeight: '600' }}>MPI value</div>
@@ -47,7 +54,7 @@ export function LollipopChartViz(props: Props) {
         </div>
       </div>
       <LollipopChartEl className='undp-scrollbar'>
-        <LollipopChart data={data} sortedByKey={sortedBy} />
+        <LollipopChart data={data} sortedByKey={sortedBy} svgWidth={svgWidth} />
       </LollipopChartEl>
     </div>
   );

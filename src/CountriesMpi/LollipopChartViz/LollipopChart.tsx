@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/no-extraneous-dependencies */
 import { scaleLinear } from 'd3-scale';
@@ -8,15 +9,14 @@ import { MpiDataTypeSubnational } from '../../Types';
 interface Props {
   data: MpiDataTypeSubnational[];
   sortedByKey: string;
+  svgWidth: number;
 }
 export function LollipopChart(props: Props) {
-  const { data, sortedByKey } = props;
-  const graphWidth = 740;
+  const { data, sortedByKey, svgWidth } = props;
   const leftPadding = 200;
   const rightPadding = 10;
   const rowHeight = 38;
   const marginTop = 10;
-
   if (sortedByKey === 'subregion') {
     data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
       ascending(x.subregion, y.subregion),
@@ -31,11 +31,11 @@ export function LollipopChart(props: Props) {
 
   const xPos = scaleLinear()
     .domain([0, 1])
-    .range([0, graphWidth - leftPadding - rightPadding])
+    .range([0, svgWidth - leftPadding - rightPadding])
     .nice();
 
   return (
-    <svg viewBox={`0 0 ${graphWidth} ${data.length * rowHeight + marginTop}`}>
+    <svg width={svgWidth} height={data.length * rowHeight + marginTop}>
       {data.map((d, i) =>
         d ? (
           <g key={i} transform={`translate(0,${marginTop + i * rowHeight})`}>
@@ -51,7 +51,7 @@ export function LollipopChart(props: Props) {
             </text>
             <line
               x1={leftPadding}
-              x2={graphWidth - rightPadding}
+              x2={svgWidth - rightPadding}
               y1={rowHeight / 2}
               y2={rowHeight / 2}
               stroke='#FFF'

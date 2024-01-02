@@ -1,3 +1,4 @@
+import UNDPColorModule from 'undp-viz-colors';
 import { Map } from '../Components/Choropleth/Map';
 import { DumbellChartViz } from './DumbellChartViz';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
@@ -28,7 +29,12 @@ export function GlobalMpi(props: Props) {
       </p>
       {mpiData ? (
         <div className='flex-div flex-wrap gap-07'>
-          <Map data={mpiData} />
+          <Map
+            data={mpiData}
+            prop='mpi'
+            valueArray={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
+            colors={UNDPColorModule.sequentialColors.negativeColorsx07}
+          />
           <div className='chart-explanation'>
             <h5 className='undp-typography margin-top-00'>Key Definitions</h5>
             <div>

@@ -5,15 +5,17 @@ import maplibreGl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as pmtiles from 'pmtiles';
 import UNDPColorModule from 'undp-viz-colors';
-import { MpiDataTypeNational, HoverSubnatDataType } from '../Types';
+import { HoverSubnatDataType, MpiDataTypeNationalYears } from '../Types';
 import { TooltipSubnational } from '../Components/TooltipSubnational';
 
 interface Props {
-  countryData?: MpiDataTypeNational;
+  countryData?: MpiDataTypeNationalYears;
   selectedAdminLevel: string;
+  mapWidth: number;
+  mapHeight: number;
 }
 export function CountryMap(props: Props) {
-  const { countryData, selectedAdminLevel } = props;
+  const { countryData, selectedAdminLevel, mapHeight, mapWidth } = props;
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
   const protocol = new pmtiles.Protocol();
@@ -254,7 +256,11 @@ export function CountryMap(props: Props) {
   }, [selectedAdminLevel]);
   return (
     <div>
-      <div ref={mapContainer} className='map' />
+      <div
+        ref={mapContainer}
+        className='map'
+        style={{ height: `${mapHeight}px`, width: `${mapWidth}px` }}
+      />
       {hoverData ? <TooltipSubnational data={hoverData} /> : null}
     </div>
   );

@@ -8,8 +8,8 @@ import {
   HoverSubnatDataType,
   MpiDataType,
   MpiDataTypeLocation,
-} from '../Types';
-import { TooltipSubnational } from '../Components/TooltipSubnational';
+} from '../../Types';
+import { TooltipSubnational } from '../../Components/TooltipSubnational';
 
 interface Props {
   rural?: MpiDataTypeLocation;
@@ -17,22 +17,24 @@ interface Props {
   total?: MpiDataType;
   id: string;
   country: string;
+  divWidth: number;
+  divHeight: number;
 }
-export function ScatterPlot(props: Props) {
-  const { rural, urban, total, id, country } = props;
-  const graphWidth = 700;
-  const graphHeight = 500;
+export function ScatterPlotChart(props: Props) {
+  const { rural, urban, total, id, country, divWidth, divHeight } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
+  const graphWidth = divWidth;
+  const graphHeight = divHeight;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
   const [hoverValue, setHoverValue] = useState<string>('');
   const xPos = scaleLinear()
-    .domain([0, 100])
+    .domain([0, 80])
     .range([0, graphWidth - margin.left - margin.right])
     .nice();
   const yPos = scaleLinear()
-    .domain([75, 0])
+    .domain([80, 0])
     .range([0, graphHeight - margin.top - margin.bottom]);
   const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
   const yAxis = axisLeft(yPos as any)
@@ -42,7 +44,8 @@ export function ScatterPlot(props: Props) {
     .tickSize(0)
     .tickSizeOuter(0)
     .tickPadding(6)
-    .tickFormat((d: any) => `${d}%`);
+    .tickFormat((d: any) => `${d}%`)
+    .ticks(5);
 
   useEffect(() => {
     const svg = select(`#${id}`);
@@ -57,8 +60,8 @@ export function ScatterPlot(props: Props) {
   }, []);
 
   return (
-    <div className='scatterPlot'>
-      <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id={id}>
+    <>
+      <svg width={graphWidth} height={graphHeight} id={id}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g
             className='xAxis'
@@ -162,6 +165,6 @@ export function ScatterPlot(props: Props) {
         </text>
       </svg>
       {hoverData ? <TooltipSubnational data={hoverData} /> : null}
-    </div>
+    </>
   );
 }

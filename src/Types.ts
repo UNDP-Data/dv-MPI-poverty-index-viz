@@ -17,7 +17,6 @@ export interface MpiDataType {
   intensity: number;
 }
 export interface MpiDataTypeNational extends MpiDataType {
-  bbox: BboxDataType;
   indicatorFiles?: string[];
   displayMap: boolean;
   note: string;
@@ -25,6 +24,14 @@ export interface MpiDataTypeNational extends MpiDataType {
   reportUrl: string;
   placement: string;
   page: string;
+}
+export interface MpiDataTypeNationalYears {
+  iso_a3: string;
+  country: string;
+  bbox: BboxDataType;
+  percentChange: number;
+  countryData: MpiDataTypeNational[];
+  note: string;
 }
 export interface MpiDataTypeSubnational extends MpiDataType {
   subregion: string;
