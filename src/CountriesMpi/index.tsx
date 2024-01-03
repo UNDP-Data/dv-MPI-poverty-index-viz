@@ -17,6 +17,7 @@ import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
 import { LollipopChartViz } from './LollipopChartViz';
 import { ListView } from './ListView';
+import { BarChart } from './BarChart';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -63,7 +64,6 @@ export function CountriesMpi(props: Props) {
       nationalYears.map((d: MpiDataTypeNationalYears) => d.country.trim()),
     ),
   ].sort();
-  console.log('countryList', countryList);
   const defaultCountry = queryCountry || countryList[0];
   const [selectedCountry, setSelectedCountry] =
     useState<string>(defaultCountry);
@@ -83,6 +83,7 @@ export function CountriesMpi(props: Props) {
       k => k.country === selectedCountry && k.location === 'urban',
     )[0];
     setUrban(urbanValues);
+    console.log('Location data', urbanValues, ruralValues);
     const totalValues = nationalYears?.filter(
       k => k.country === selectedCountry,
     )[0].countryData[0];
@@ -157,7 +158,6 @@ export function CountriesMpi(props: Props) {
             colors={UNDPColorModule.divergentColors.colorsx10.reverse()}
           />
           <div className='chart-explanation'>
-            <h5 className='undp-typography margin-top-00'>Key Definitions</h5>
             <div>Here explanation map</div>
           </div>
         </div>
@@ -378,116 +378,113 @@ export function CountriesMpi(props: Props) {
             </p>
             <p>Intensity: {total?.intensity}%</p>
           </div>
-          <div>
-            <h5 className='undp-typography margin-top-05'>Key Definitions</h5>
-            <div className='definitionDiv'>
-              <h6 className='undp-typography'>
-                Multidimensional Poverty Index (MPI)
-              </h6>
-              <p className='undp-typography small-font'>
-                Multidimensional Poverty Index is calculated as the product of
-                the headcount ratio and the intensity of poverty. It measures to
-                provide a comprehensive assessment of multidimensional poverty,
-                taking into account both the prevalence and severity of poverty
-                among individuals in a population.
-              </p>
-            </div>
-            <div className='definitionDiv'>
-              <h6 className='undp-typography'>Headcount Ratio</h6>
-              <p className='undp-typography small-font'>
-                The headcount ratio measures the percentage of individuals in a
-                population who are considered multidimensionally poor,
-                indicating the proportion of people experiencing poverty across
-                multiple dimensions.
-              </p>
-            </div>
-            <div className='definitionDiv'>
-              <h6 className='undp-typography'>Intensity of poverty</h6>
-              <p className='undp-typography small-font'>
-                The intensity of poverty is the average proportion of weighted
-                indicators in which multidimensionally poor individuals are
-                deprived. It provides insights into the extent or severity of
-                deprivation experienced by those classified as
-                multidimensionally poor.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className='flex-div flex-wrap gap-07 margin-top-07'
-        style={{ maxWidth: '1024px', margin: '0 auto' }}
-      >
-        <div
-          className='chart-container flex-chart'
-          style={{ maxWidth: '400px' }}
-        >
-          <div className='flex-div flex-space-between'>
-            <div className='chart-top'>
-              <h6 className='undp-typography margin-bottom-01'>
-                Rural and Urban MPI
-              </h6>
-              <p className='undp-typography small-font'>Year: {year}</p>
-            </div>
-            <div>
-              <div className='legend-container'>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor:
-                        UNDPColorModule.categoricalColors.locationColors.urban,
-                    }}
-                  />
-                  <div className='small-font'>Urban</div>
+          {urban || rural ? (
+            <div className='chart-container flex-chart'>
+              <div className='flex-div flex-space-between'>
+                <div className='chart-top'>
+                  <h6 className='undp-typography margin-bottom-01'>
+                    Rural and Urban MPI
+                  </h6>
+                  <p className='undp-typography small-font'>Year: {year}</p>
                 </div>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor:
-                        UNDPColorModule.categoricalColors.locationColors.rural,
-                    }}
-                  />
-                  <div className='small-font'>Rural</div>
-                </div>
-                <div className='legend-item'>
-                  <div
-                    className='legend-circle-medium'
-                    style={{
-                      backgroundColor: '#55606E',
-                    }}
-                  />
-                  <div className='small-font'>Country Total</div>
+                <div>
+                  <div className='legend-container'>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor:
+                            UNDPColorModule.categoricalColors.locationColors
+                              .urban,
+                        }}
+                      />
+                      <div className='small-font'>Urban</div>
+                    </div>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor:
+                            UNDPColorModule.categoricalColors.locationColors
+                              .rural,
+                        }}
+                      />
+                      <div className='small-font'>Rural</div>
+                    </div>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor: '#55606E',
+                        }}
+                      />
+                      <div className='small-font'>Country Total</div>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <div className='scatterPlot'>
+                <ScatterPlot
+                  urban={urban}
+                  rural={rural}
+                  total={total}
+                  id='locationScatterPlot'
+                  country={selectedCountry}
+                />
+                <p className='source margin-top-04'>
+                  Source:{' '}
+                  <a
+                    className='undp-style small-font'
+                    href={countryData?.reportUrl}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {countryData?.reportName}
+                  </a>
+                </p>
+              </div>
             </div>
-          </div>
-          <div className='scatterPlot'>
-            <ScatterPlot
-              urban={urban}
-              rural={rural}
-              total={total}
-              id='locationScatterPlot'
-              country={selectedCountry}
-            />
-            <p className='source margin-top-04'>
-              Source:{' '}
-              <a
-                className='undp-style small-font'
-                href={countryData?.reportUrl}
-                target='_blank'
-                rel='noreferrer'
-              >
-                {countryData?.reportName}
-              </a>
-            </p>
-          </div>
-        </div>
-        <div className='chart-container'>
-          <h6 className='undp-typography margin-bottom-01'>Change in time</h6>
+          ) : null}
         </div>
       </div>
+      {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
+        .length > 1 ? (
+        <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+          <h4 className='undp-typography margin-top-09'>
+            Evolution of MPI through the years in {countryData?.country}
+          </h4>
+          <div className='flex-div flex-wrap gap-07 margin-top-07'>
+            <div className='chart-container'>
+              <h6 className='undp-typography margin-bottom-01'>
+                Change in time
+              </h6>
+              <BarChart
+                data={
+                  nationalYears?.filter(k => k.country === selectedCountry)[0]
+                    .countryData
+                }
+              />
+            </div>
+            <div>
+              <h5>Sources</h5>
+              {nationalYears
+                ?.filter(k => k.country === selectedCountry)[0]
+                .countryData.map((d, i) => (
+                  <div key={i}>
+                    <a
+                      className='undp-style small-font'
+                      href={d.reportUrl}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      {d.reportName}
+                    </a>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
       {indicatorFiles !== undefined && indicatorFiles.length > 0 ? (
         <div>
           <div

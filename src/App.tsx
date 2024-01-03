@@ -68,12 +68,16 @@ function App() {
         countries,
       ]) => {
         const countriesKeys = Object.keys(countries as object);
-        const countriesArray: { iso_a3: string; boundingBox: BboxDataType }[] =
-          [];
+        const countriesArray: {
+          region: string;
+          iso_a3: string;
+          boundingBox: BboxDataType;
+        }[] = [];
         countriesKeys.forEach((key: string) => {
           countriesArray.push({
             iso_a3: (countries as any)[key]['alpha-3'],
             boundingBox: (countries as any)[key].boundingBox,
+            region: (countries as any)[key].region,
           });
         });
         const dataFetched = data.map((d: any) => ({
@@ -214,6 +218,12 @@ function App() {
                 (k: any) => k.iso_a3 === country,
               )
             ].boundingBox,
+            region:
+              countriesArray[
+                (countriesArray as object[]).findIndex(
+                  (k: any) => k.iso_a3 === country,
+                )
+              ].region,
             country: countryDataValues[0].country,
             percentChange: povertyChange,
             countryData: countryDataValues,

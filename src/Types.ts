@@ -28,6 +28,7 @@ export interface MpiDataTypeNational extends MpiDataType {
 export interface MpiDataTypeNationalYears {
   iso_a3: string;
   country: string;
+  region: string;
   bbox: BboxDataType;
   percentChange: number;
   countryData: MpiDataTypeNational[];
@@ -79,10 +80,7 @@ export interface MapGeometry {
 export interface HoverDataType {
   country: string;
   continent: string;
-  value: number;
-  headcountRatio: number;
-  intensity: number;
-  year?: string;
+  countryValues: object;
   xPosition: number;
   yPosition: number;
 }

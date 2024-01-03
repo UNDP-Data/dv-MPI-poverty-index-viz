@@ -23,22 +23,18 @@ interface Props {
 export function ScatterPlotChart(props: Props) {
   const { rural, urban, total, id, country, divWidth, divHeight } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
-  const graphWidth = divWidth;
-  const graphHeight = divHeight;
+  const graphWidth = divWidth - margin.left - margin.right;
+  const graphHeight = divHeight - margin.top - margin.bottom;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
   const [hoverValue, setHoverValue] = useState<string>('');
-  const xPos = scaleLinear()
-    .domain([0, 80])
-    .range([0, graphWidth - margin.left - margin.right])
-    .nice();
-  const yPos = scaleLinear()
-    .domain([80, 0])
-    .range([0, graphHeight - margin.top - margin.bottom]);
+  const xPos = scaleLinear().domain([0, 80]).range([0, graphWidth]).nice();
+  const yPos = scaleLinear().domain([80, 0]).range([0, graphHeight]);
   const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
+
   const yAxis = axisLeft(yPos as any)
-    .tickSize(-graphWidth + margin.left + margin.right)
+    .tickSize(-graphWidth)
     .tickFormat((d: any) => `${d}%`);
   const xAxis = axisBottom(xPos)
     .tickSize(0)
@@ -57,18 +53,18 @@ export function ScatterPlotChart(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, []);
+  }, [country, divHeight, divWidth]);
 
   return (
     <>
-      <svg width={graphWidth} height={graphHeight} id={id}>
+      <svg
+        width='100%'
+        height='100%'
+        viewBox={`0 0 ${divWidth} ${divHeight}`}
+        id={id}
+      >
         <g transform={`translate(${margin.left},${margin.top})`}>
-          <g
-            className='xAxis'
-            transform={`translate(0 ,${
-              graphHeight - margin.bottom - margin.top
-            })`}
-          />
+          <g className='xAxis' transform={`translate(0 ,${graphHeight})`} />
           <g className='yAxis' transform='translate(0,0)' />
           <g
             transform={`translate(
@@ -151,10 +147,10 @@ export function ScatterPlotChart(props: Props) {
               stroke={hoverValue === 'total' ? '#232E3D' : '#fff'}
             />
           </g>
+          <text x={graphWidth / 2} y={graphHeight + 50} textAnchor='middle'>
+            Headcount Ratio
+          </text>
         </g>
-        <text x={graphWidth / 2} y={graphHeight} textAnchor='middle'>
-          Headcount Ratio
-        </text>
         <text
           x={-graphHeight / 2}
           y='20'

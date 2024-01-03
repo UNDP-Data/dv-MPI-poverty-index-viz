@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 import styled from 'styled-components';
 import { HoverDataType } from '../Types';
 
 interface Props {
   data: HoverDataType;
+  prop: string;
 }
 
 interface TooltipElProps {
@@ -11,7 +14,23 @@ interface TooltipElProps {
   verticalAlignment: string;
   horizontalAlignment: string;
 }
+/*
+                          country: value[0].country,
+                          continent: value[0].region,
+                          value: Number(value[0][prop]),
+                          year: value[0].year,
+                          headcountRatio: Number(value[0].headcountRatio),
+                          intensity: Number(value[0].intensity),
 
+                                                  setHoverData({
+                          country: d.properties.NAME,
+                          continent: d.properties.REGION,
+                          value: 0,
+                          year: '',
+                          headcountRatio: 0,
+                          intensity: 0,
+
+*/
 const TooltipEl = styled.div<TooltipElProps>`
   display: block;
   position: fixed;
@@ -33,7 +52,8 @@ const TooltipEl = styled.div<TooltipElProps>`
 `;
 
 export function Tooltip(props: Props) {
-  const { data } = props;
+  const { data, prop } = props;
+  console.log('data', data, prop);
   return (
     <TooltipEl
       x={data.xPosition}
@@ -73,29 +93,73 @@ export function Tooltip(props: Props) {
           padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
-        {data.value === 0 && data.year === '' ? (
+        {Object.keys(data.countryValues).length === 0 &&
+        data.countryValues.constructor === Object ? (
           'no data available for this country'
-        ) : (
+        ) : prop === 'mpi' ? (
           <>
             <div>
               <span className='tooltipLabel'>MPI: </span>
-              <span className='tooltipValue'>{data.value.toFixed(3)}</span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any)[prop]).toFixed(3)}
+              </span>
             </div>
             <div>
               <span className='tooltipLabel'>Headcount Ratio: </span>
               <span className='tooltipValue'>
-                {data.headcountRatio.toFixed(2)}%
+                {Number((data.countryValues as any).headcountRatio).toFixed(2)}%
               </span>
             </div>
             <div>
               <span className='tooltipLabel'>Intensity: </span>
-              <span className='tooltipValue'>{data.intensity.toFixed(2)}%</span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any).intensity).toFixed(2)}%
+              </span>
             </div>
             <div>
               <span className='tooltipLabel'>Year: </span>
-              <span className='tooltipValue'>{data.year}</span>
+              <span className='tooltipValue'>
+                {(data.countryValues as any).year}
+              </span>
             </div>
           </>
+        ) : (data.countryValues as any).countryData.length > 1 ? (
+          <>
+            <div>
+              <span className='tooltipLabel'>Change in MPI: </span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any).percentChange).toFixed(2)}%
+              </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>
+                MPI in{' '}
+                {
+                  (data.countryValues as any).countryData[
+                    (data.countryValues as any).countryData.length - 1
+                  ].year
+                }
+                :{' '}
+              </span>
+              <span className='tooltipValue'>
+                {Number(
+                  (data.countryValues as any).countryData[
+                    (data.countryValues as any).countryData.length - 1
+                  ].mpi,
+                ).toFixed(3)}
+              </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>
+                MPI in {(data.countryValues as any).countryData[0].year}:{' '}
+              </span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any).countryData[0].mpi)}
+              </span>
+            </div>
+          </>
+        ) : (
+          <div>Data available only for 1 year</div>
         )}
       </div>
     </TooltipEl>

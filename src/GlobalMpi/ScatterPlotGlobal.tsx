@@ -114,10 +114,7 @@ export function ScatterPlotGlobal(props: Props) {
                 setHoverData({
                   country: d.country,
                   continent: d.region,
-                  value: Number(d.mpi),
-                  year: d.year,
-                  headcountRatio: Number(d.headcountRatio),
-                  intensity: Number(d.intensity),
+                  countryValues: d,
                   xPosition: event.clientX,
                   yPosition: event.clientY,
                 });
@@ -156,7 +153,7 @@ export function ScatterPlotGlobal(props: Props) {
           Intensity
         </text>
       </svg>
-      {hoverData ? <Tooltip data={hoverData} /> : null}
+      {hoverData ? <Tooltip data={hoverData} prop='mpi' /> : null}
     </div>
   );
 }

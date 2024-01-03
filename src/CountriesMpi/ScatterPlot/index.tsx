@@ -19,7 +19,7 @@ export function ScatterPlot(props: Props) {
       setDivWidth(containerRef.current.clientWidth);
       setDivHeight(containerRef.current.clientHeight);
     }
-  }, []);
+  }, [country]);
   return (
     <div ref={containerRef}>
       <ScatterPlotChart

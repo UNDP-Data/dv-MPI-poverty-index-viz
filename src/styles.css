@@ -9,6 +9,11 @@
   flex-shrink: 1; 
   flex-basis: 70%;
 }
+.chart-left-div{
+  flex-grow: 1;
+  flex-shrink: 1; 
+  flex-basis: 27%;
+}
 /* tabs */
 .undp-tabs.narrow-tabs .ant-tabs-nav{
   margin: 0 auto;
@@ -44,6 +49,11 @@
   color: var(--black-600);
   padding: 0;
   border-bottom: 1px solid #000;
+}
+/* barchart */
+.barLabel{
+  text-anchor:middle;
+  font-size: 0.9rem;
 }
 /* color legend styles for charts */
 .legend-container{

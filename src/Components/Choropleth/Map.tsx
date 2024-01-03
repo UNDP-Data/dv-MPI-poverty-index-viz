@@ -105,12 +105,9 @@ export function Map(props: Props) {
                       setSelectedCountry(d.properties.ISO3);
                       if (value.length > 0) {
                         setHoverData({
-                          country: value[0].country,
-                          continent: value[0].region,
-                          value: Number(value[0][prop]),
-                          year: value[0].year,
-                          headcountRatio: Number(value[0].headcountRatio),
-                          intensity: Number(value[0].intensity),
+                          country: (value[0] as any).country,
+                          continent: (value[0] as any).region,
+                          countryValues: value[0],
                           xPosition: event.clientX,
                           yPosition: event.clientY,
                         });
@@ -118,10 +115,7 @@ export function Map(props: Props) {
                         setHoverData({
                           country: d.properties.NAME,
                           continent: d.properties.REGION,
-                          value: 0,
-                          year: '',
-                          headcountRatio: 0,
-                          intensity: 0,
+                          countryValues: {},
                           xPosition: event.clientX,
                           yPosition: event.clientY,
                         });
@@ -220,7 +214,7 @@ export function Map(props: Props) {
                 fill='#212121'
                 textAnchor='end'
               >
-                Higher Poverty
+                {prop === 'mpi' ? 'Higher poverty' : 'Increase in poverty'}
               </text>
               {valueArray.map((d, i) => (
                 <g key={i}>
@@ -254,13 +248,13 @@ export function Map(props: Props) {
                 fill='#212121'
                 textAnchor='middle'
               >
-                0
+                {prop === 'mpi' ? '0' : '-50'}
               </text>
             </g>
           </svg>
         </LegendEl>
       </div>
-      {hoverData ? <Tooltip data={hoverData} /> : null}
+      {hoverData ? <Tooltip data={hoverData} prop={prop} /> : null}
     </div>
   );
 }
