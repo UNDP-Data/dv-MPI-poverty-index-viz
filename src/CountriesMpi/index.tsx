@@ -127,7 +127,7 @@ export function CountriesMpi(props: Props) {
       setSvgWidth(containerRef.current.clientWidth);
       setSvgHeight(containerRef.current.clientHeight);
     }
-  }, [containerRef.current, activeViz]);
+  }, [containerRef.current]);
   return (
     <div>
       <div
