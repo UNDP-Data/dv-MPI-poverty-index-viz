@@ -13,7 +13,7 @@ export function ScatterPlot(props: Props) {
   const { rural, urban, total, id, country } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const [divWidth, setDivWidth] = useState<number | 400>(400);
-  const [divHeight, setDivHeight] = useState<number | 400>(400);
+  const [divHeight, setDivHeight] = useState<number | 350>(350);
   useEffect(() => {
     if (containerRef.current) {
       setDivWidth(containerRef.current.clientWidth);

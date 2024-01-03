@@ -36,7 +36,6 @@ const LegendEl = styled.div`
 
 export function Map(props: Props) {
   const { data, prop, valueArray, colors } = props;
-  console.log('data for map ===========', data);
   const svgWidth = 1280;
   const svgHeight = 750;
   const mapSvg = useRef<SVGSVGElement>(null);

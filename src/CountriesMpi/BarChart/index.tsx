@@ -10,7 +10,6 @@ interface Props {
 
 export function BarChart(props: Props) {
   const { data } = props;
-  console.log('data bar chart', data);
   const options = [
     { value: 'mpi', name: 'MPI' },
     { value: 'headcountRatio', name: 'Headcount Ratio' },

@@ -14,6 +14,9 @@
   flex-shrink: 1; 
   flex-basis: 27%;
 }
+.stat-card{
+  max-height: 250px;
+}
 /* tabs */
 .undp-tabs.narrow-tabs .ant-tabs-nav{
   margin: 0 auto;
@@ -115,7 +118,6 @@
 .flex-chart{ 
   flex-grow: 1;
   flex-shrink: 1; 
-  flex-basis: 480px;
 }
 .chart-explanation{
   flex-grow: 1;

@@ -83,7 +83,6 @@ export function CountriesMpi(props: Props) {
       k => k.country === selectedCountry && k.location === 'urban',
     )[0];
     setUrban(urbanValues);
-    console.log('Location data', urbanValues, ruralValues);
     const totalValues = nationalYears?.filter(
       k => k.country === selectedCountry,
     )[0].countryData[0];
@@ -93,16 +92,13 @@ export function CountriesMpi(props: Props) {
       k => k.country === selectedCountry,
     );
     setCountrySubnational(subNatValues);
-    console.log('subnational ============> ', subNatValues);
     /// filtering most recent national data
     const countryDataValues = nationalYears.filter(
       (d: MpiDataTypeNationalYears) => d.country === selectedCountry,
     )[0].countryData[0];
 
     setCountryData(countryDataValues);
-
     const displayMap = countryDataValues?.displayMap;
-    console.log('countryDataValues =========> ', countryDataValues);
     if (!displayMap) setActiveViz('scatterplot');
     else setActiveViz('map');
 
@@ -131,7 +127,7 @@ export function CountriesMpi(props: Props) {
       setSvgWidth(containerRef.current.clientWidth);
       setSvgHeight(containerRef.current.clientHeight);
     }
-  }, [containerRef.current]);
+  }, [containerRef.current, activeViz]);
   return (
     <div>
       <div
@@ -186,7 +182,10 @@ export function CountriesMpi(props: Props) {
       ) : null}
       <div className='flex-div flex-wrap'>
         {countrySubnational && countrySubnational.length > 0 ? (
-          <div className='chart-container flex-chart'>
+          <div
+            className='chart-container flex-chart'
+            style={{ maxHeight: '750px' }}
+          >
             <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
               <div>
                 <h6 className='undp-typography margin-bottom-01'>
@@ -369,7 +368,7 @@ export function CountriesMpi(props: Props) {
         <div className='chart-explanation flex-div flex-wrap'>
           <div
             className='stat-card'
-            style={{ minWidth: '400px', maxWidth: '800px' }}
+            style={{ minWidth: '400px', maxHeight: '250px' }}
           >
             <h3>{total?.mpi}</h3>
             <h4>National MPI {selectedCountry}</h4>
@@ -379,7 +378,10 @@ export function CountriesMpi(props: Props) {
             <p>Intensity: {total?.intensity}%</p>
           </div>
           {urban || rural ? (
-            <div className='chart-container flex-chart'>
+            <div
+              className='chart-container flex-chart'
+              style={{ maxHeight: '478px' }}
+            >
               <div className='flex-div flex-space-between'>
                 <div className='chart-top'>
                   <h6 className='undp-typography margin-bottom-01'>
@@ -423,15 +425,15 @@ export function CountriesMpi(props: Props) {
                   </div>
                 </div>
               </div>
-              <div className='scatterPlot'>
-                <ScatterPlot
-                  urban={urban}
-                  rural={rural}
-                  total={total}
-                  id='locationScatterPlot'
-                  country={selectedCountry}
-                />
-                <p className='source margin-top-04'>
+              <ScatterPlot
+                urban={urban}
+                rural={rural}
+                total={total}
+                id='locationScatterPlot'
+                country={selectedCountry}
+              />
+              <div>
+                <p className='source margin-top-00'>
                   Source:{' '}
                   <a
                     className='undp-style small-font'

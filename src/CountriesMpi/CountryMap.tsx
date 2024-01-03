@@ -253,7 +253,7 @@ export function CountryMap(props: Props) {
         (map as any).current.setFilter('overlay', filters);
       }
     }
-  }, [selectedAdminLevel]);
+  }, [selectedAdminLevel, mapWidth, mapHeight]);
   return (
     <div>
       <div

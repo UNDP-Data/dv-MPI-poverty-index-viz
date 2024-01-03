@@ -22,14 +22,14 @@ interface Props {
 }
 export function ScatterPlotChart(props: Props) {
   const { rural, urban, total, id, country, divWidth, divHeight } = props;
-  const margin = { top: 20, right: 30, bottom: 50, left: 80 };
+  const margin = { top: 20, right: 30, bottom: 70, left: 80 };
   const graphWidth = divWidth - margin.left - margin.right;
   const graphHeight = divHeight - margin.top - margin.bottom;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
   const [hoverValue, setHoverValue] = useState<string>('');
-  const xPos = scaleLinear().domain([0, 80]).range([0, graphWidth]).nice();
+  const xPos = scaleLinear().domain([0, 100]).range([0, graphWidth]);
   const yPos = scaleLinear().domain([80, 0]).range([0, graphHeight]);
   const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
 

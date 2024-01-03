@@ -20,7 +20,6 @@ const DumbellChartEl = styled.div`
 `;
 export function DumbellChartViz(props: Props) {
   const { data } = props;
-  console.log('data', data);
   const [sortedBy, setSortedBy] = useState('diff');
   const [filterBy, setFilterBy] = useState('All');
   const [diffOption, setDiffOption] = useState('ldiff');

@@ -14,23 +14,6 @@ interface TooltipElProps {
   verticalAlignment: string;
   horizontalAlignment: string;
 }
-/*
-                          country: value[0].country,
-                          continent: value[0].region,
-                          value: Number(value[0][prop]),
-                          year: value[0].year,
-                          headcountRatio: Number(value[0].headcountRatio),
-                          intensity: Number(value[0].intensity),
-
-                                                  setHoverData({
-                          country: d.properties.NAME,
-                          continent: d.properties.REGION,
-                          value: 0,
-                          year: '',
-                          headcountRatio: 0,
-                          intensity: 0,
-
-*/
 const TooltipEl = styled.div<TooltipElProps>`
   display: block;
   position: fixed;
@@ -53,7 +36,6 @@ const TooltipEl = styled.div<TooltipElProps>`
 
 export function Tooltip(props: Props) {
   const { data, prop } = props;
-  console.log('data', data, prop);
   return (
     <TooltipEl
       x={data.xPosition}
