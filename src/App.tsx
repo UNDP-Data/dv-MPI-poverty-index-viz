@@ -50,7 +50,7 @@ function App() {
       csv(`${dataurl}Global-MPI_female.csv`),
       csv(`${dataurl}Global-MPI_male.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
-      csv(`${dataurl}MPI_location.csv`),
+      csv(`${dataurl}MPI_location_multiple_years.csv`),
       csv(`${dataurl}MPI_national_multiple_years.csv`),
       json(
         'https://gist.githubusercontent.com/cplpearce/3bc5f1e9b1187df51d2085ffca795bee/raw/b36904c0c8ea72fdb82f68eb33f29891095deab3/country_codes',
@@ -160,11 +160,13 @@ function App() {
           iso_a3: d.ISOcountry,
           region: d['World region'],
           year: d.Year,
+          firstYear: Number(d.Year.split('-')[0]),
           location: d.location,
           mpi: d.MPI,
           headcountRatio: d['Headcount Ratio (H, %)'],
           intensity: +d['Intensity (A, %)'],
         }));
+        locationFetched.sort((a, b) => descending(a.firstYear, b.firstYear));
         const nationalFetched = nationalYears.map((d: any) => ({
           country: d.country,
           iso_a3: d['country code'],
@@ -227,7 +229,7 @@ function App() {
             country: countryDataValues[0].country,
             percentChange: povertyChange,
             countryData: countryDataValues,
-            note: `based on ${indicatorChange}`,
+            indicatorChange,
           });
         });
         setMpiData(dataFetched);

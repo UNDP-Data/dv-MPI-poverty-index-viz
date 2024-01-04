@@ -6,10 +6,12 @@ import { Graph } from './Graph';
 
 interface Props {
   data: MpiDataType[];
+  indicator: string;
 }
 
 export function BarChart(props: Props) {
-  const { data } = props;
+  const { data, indicator } = props;
+  console.log('indicator ----------', indicator);
   const options = [
     { value: 'mpi', name: 'MPI' },
     { value: 'headcountRatio', name: 'Headcount Ratio' },
@@ -32,29 +34,37 @@ export function BarChart(props: Props) {
             Years: {data[data.length - 1].year} - {data[0].year}
           </p>
         </div>
-        <div className='flex-div flex-space-between flex-wrap'>
-          <div>
-            <Radio.Group
-              defaultValue='mpi'
-              onChange={(el: RadioChangeEvent) => {
-                setRadioSelection(
-                  options.filter(d => d.value === el.target.value)[0],
-                );
-              }}
-            >
-              {options.map((d, i) => (
-                <Radio key={i} className='undp-radio' value={d.value}>
-                  {d.name}
-                </Radio>
-              ))}
-            </Radio.Group>
+        {indicator !== 'headcountRatio' ? (
+          <div className='flex-div flex-space-between flex-wrap'>
+            <div>
+              <Radio.Group
+                defaultValue='mpi'
+                onChange={(el: RadioChangeEvent) => {
+                  setRadioSelection(
+                    options.filter(d => d.value === el.target.value)[0],
+                  );
+                }}
+              >
+                {options.map((d, i) => (
+                  <Radio key={i} className='undp-radio' value={d.value}>
+                    {d.name}
+                  </Radio>
+                ))}
+              </Radio.Group>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div>
+            <h6>Headcount ratio</h6>
+          </div>
+        )}
       </div>
       <div ref={containerRef}>
         <Graph
           data={data}
-          radioOption={radioSelection}
+          radioOption={
+            indicator === 'headcountRatio' ? options[1] : radioSelection
+          }
           svgWidth={divWidth}
           svgHeight={divHeight}
         />

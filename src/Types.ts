@@ -32,7 +32,7 @@ export interface MpiDataTypeNationalYears {
   bbox: BboxDataType;
   percentChange: number;
   countryData: MpiDataTypeNational[];
-  note: string;
+  indicatorChange: string;
 }
 export interface MpiDataTypeSubnational extends MpiDataType {
   subregion: string;

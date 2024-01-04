@@ -184,14 +184,16 @@ export function CountriesMpi(props: Props) {
         {countrySubnational && countrySubnational.length > 0 ? (
           <div
             className='chart-container flex-chart'
-            style={{ maxHeight: '750px' }}
+            style={{ maxHeight: '750px', maxWidth: '700px' }}
           >
             <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
               <div>
                 <h6 className='undp-typography margin-bottom-01'>
                   Subnational MPI Data
                 </h6>
-                <p className='undp-typography small-font'>Year: {year}</p>
+                <p className='undp-typography small-font'>
+                  Year: {countrySubnational[0].year}
+                </p>
               </div>
               <div>
                 <Segmented
@@ -371,7 +373,9 @@ export function CountriesMpi(props: Props) {
             style={{ minWidth: '400px', maxHeight: '250px' }}
           >
             <h3>{total?.mpi}</h3>
-            <h4>National MPI {selectedCountry}</h4>
+            <h4>
+              National MPI {selectedCountry} ({total?.year})
+            </h4>
             <p className='margin-bottom-01'>
               Headcount Ratio: {total?.headcountRatio}%
             </p>
@@ -464,6 +468,10 @@ export function CountriesMpi(props: Props) {
                 data={
                   nationalYears?.filter(k => k.country === selectedCountry)[0]
                     .countryData
+                }
+                indicator={
+                  nationalYears?.filter(k => k.country === selectedCountry)[0]
+                    .indicatorChange
                 }
               />
             </div>

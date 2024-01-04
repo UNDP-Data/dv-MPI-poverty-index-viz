@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear, scaleSqrt } from 'd3-scale';
@@ -32,10 +33,8 @@ export function ScatterPlotChart(props: Props) {
   const xPos = scaleLinear().domain([0, 100]).range([0, graphWidth]);
   const yPos = scaleLinear().domain([80, 0]).range([0, graphHeight]);
   const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
-
-  const yAxis = axisLeft(yPos as any)
-    .tickSize(-graphWidth)
-    .tickFormat((d: any) => `${d}%`);
+  console.log('in scatterPlotChart', divWidth, divHeight);
+  const yAxis = axisLeft(yPos as any).tickFormat((d: any) => `${d}%`);
   const xAxis = axisBottom(xPos)
     .tickSize(0)
     .tickSizeOuter(0)
@@ -44,6 +43,7 @@ export function ScatterPlotChart(props: Props) {
     .ticks(5);
 
   useEffect(() => {
+    yAxis.tickSize(-divWidth + margin.top + margin.bottom);
     const svg = select(`#${id}`);
     svg.select('.yAxis').call(yAxis as any);
     svg.select('.xAxis').call(xAxis as any);
