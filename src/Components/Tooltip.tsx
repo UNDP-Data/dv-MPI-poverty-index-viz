@@ -36,6 +36,10 @@ const TooltipEl = styled.div<TooltipElProps>`
 
 export function Tooltip(props: Props) {
   const { data, prop } = props;
+  const label =
+    (data.countryValues as any).indicatorChange === 'headcountRatio'
+      ? 'Headcount Ratio'
+      : 'MPI';
   return (
     <TooltipEl
       x={data.xPosition}
@@ -108,14 +112,14 @@ export function Tooltip(props: Props) {
         ) : (data.countryValues as any).countryData.length > 1 ? (
           <>
             <div>
-              <span className='tooltipLabel'>Change in MPI: </span>
+              <span className='tooltipLabel'>Change in {label}: </span>
               <span className='tooltipValue'>
                 {Number((data.countryValues as any).percentChange).toFixed(2)}%
               </span>
             </div>
             <div>
               <span className='tooltipLabel'>
-                MPI in{' '}
+                {label} in{' '}
                 {
                   (data.countryValues as any).countryData[
                     (data.countryValues as any).countryData.length - 1
@@ -127,16 +131,20 @@ export function Tooltip(props: Props) {
                 {Number(
                   (data.countryValues as any).countryData[
                     (data.countryValues as any).countryData.length - 1
-                  ].mpi,
+                  ][(data.countryValues as any).indicatorChange],
                 ).toFixed(3)}
               </span>
             </div>
             <div>
               <span className='tooltipLabel'>
-                MPI in {(data.countryValues as any).countryData[0].year}:{' '}
+                {label} in {(data.countryValues as any).countryData[0].year}:{' '}
               </span>
               <span className='tooltipValue'>
-                {Number((data.countryValues as any).countryData[0].mpi)}
+                {Number(
+                  (data.countryValues as any).countryData[0][
+                    (data.countryValues as any).indicatorChange
+                  ],
+                )}
               </span>
             </div>
           </>
