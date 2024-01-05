@@ -12,7 +12,9 @@
 .chart-left-div{
   flex-grow: 1;
   flex-shrink: 1; 
-  flex-basis: 27%;
+  flex-basis: 400px;
+  max-width: 960px;
+  margin: 0 auto;
 }
 .stat-card{
   max-height: 250px;

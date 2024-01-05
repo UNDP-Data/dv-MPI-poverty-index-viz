@@ -152,17 +152,30 @@ export function CountriesMpi(props: Props) {
         </p>
       </div>
       {nationalYears ? (
-        <div className='flex-div flex-wrap gap-07 margin-top-10'>
-          <Map
-            data={nationalYears}
-            prop='percentChange'
-            valueArray={[-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]}
-            colors={UNDPColorModule.divergentColors.colorsx10.reverse()}
-          />
-          <div className='chart-explanation'>
-            <div>Here explanation map</div>
+        <>
+          <h6 className='margin-top-10 undp-typography'>
+            Change in National MPI
+          </h6>
+          <div className='flex-div flex-wrap gap-07'>
+            <Map
+              data={nationalYears}
+              prop='percentChange'
+              valueArray={[-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]}
+              colors={UNDPColorModule.divergentColors.colorsx10}
+            />
+            <div className='chart-explanation'>
+              <div>
+                <i>
+                  Temporary text: This map is showing the change in MPI through
+                  years, a negative value means that there has been poverty
+                  reduction (the darker the blue, the better). We have
+                  considered that in most cases the methodology for calculating
+                  remained the same through the years.
+                </i>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       ) : null}
       {countryData?.note !== '' ? (
         <p>
@@ -347,6 +360,7 @@ export function CountriesMpi(props: Props) {
                     d => d.adminLevel === selectedAdminLevel,
                   )}
                   id='subnatScatterPlot'
+                  country={selectedCountry}
                 />
               </div>
               <div className={`${activeViz === 'list' ? '' : 'hide'}`}>

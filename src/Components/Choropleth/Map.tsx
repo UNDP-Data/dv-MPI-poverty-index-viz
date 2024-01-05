@@ -89,7 +89,7 @@ export function Map(props: Props) {
                     ? prop === 'mpi'
                       ? colorScale(Number((value as any)[0][prop]))
                       : Number((value as any)[0][prop]) === 0
-                      ? 'var(--gray-600)'
+                      ? 'var(--gray-500)'
                       : colorScale(Number((value as any)[0][prop]))
                     : 'var(--gray-300)';
                 if (
@@ -204,7 +204,7 @@ export function Map(props: Props) {
           <h6 className='undp-typography margin-left-03 margin-bottom-00'>
             LEGEND
           </h6>
-          <svg viewBox='0 0 340 50'>
+          <svg viewBox='0 0 340 70'>
             <g transform='translate(10,20)'>
               <text
                 x={320}
@@ -249,6 +249,26 @@ export function Map(props: Props) {
               >
                 {prop === 'mpi' ? '0' : '-50'}
               </text>
+              {prop !== 'mpi' ? (
+                <>
+                  <text
+                    y={42}
+                    x={320 / valueArray.length + 10}
+                    fontSize={12}
+                    fill='#212121'
+                  >
+                    Countries with MPI value for only one year
+                  </text>
+                  <rect
+                    x={0}
+                    y={35}
+                    width={320 / valueArray.length}
+                    height={8}
+                    fill='var(--gray-500)'
+                    stroke='#fff'
+                  />
+                </>
+              ) : null}
             </g>
           </svg>
         </LegendEl>

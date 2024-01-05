@@ -10,9 +10,10 @@ import { TooltipSubnational } from '../Components/TooltipSubnational';
 interface Props {
   data: MpiDataTypeSubnational[];
   id: string;
+  country: string;
 }
 export function ScatterPlotSubnational(props: Props) {
-  const { data, id } = props;
+  const { data, id, country } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const visContainer = useRef(null);
   let width = 800;
@@ -64,7 +65,7 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, [data, svgWidth]);
+  }, [country, svgWidth]);
 
   return (
     <div ref={visContainer}>
