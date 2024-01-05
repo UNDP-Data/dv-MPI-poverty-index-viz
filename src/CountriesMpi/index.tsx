@@ -53,9 +53,9 @@ export function CountriesMpi(props: Props) {
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
   const [sortedBy, setSortedBy] = useState('mpi');
+  const containerSubnat = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [svgWidth, setSvgWidth] = useState<number | 800>(800);
-  const [svgHeight, setSvgHeight] = useState<number | 500>(500);
+  const [subnatWidth, setSubnatWidth] = useState<number | 1000>(1000);
   national.sort((a, b) => ascending(a.country, b.country));
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');
@@ -124,12 +124,18 @@ export function CountriesMpi(props: Props) {
   }, [selectedCountry]);
   useEffect(() => {
     if (containerRef.current) {
-      setSvgWidth(containerRef.current.clientWidth);
-      setSvgHeight(containerRef.current.clientHeight);
+      if (containerRef.current.clientWidth > 1800) setSubnatWidth(1200);
+      else if (containerRef.current.clientWidth > 1200) setSubnatWidth(760);
+      else setSubnatWidth(containerRef.current.clientWidth);
+      console.log(
+        'containerRef',
+        containerRef.current?.clientWidth,
+        containerRef.current?.clientHeight,
+      );
     }
   }, [containerRef.current]);
   return (
-    <div>
+    <div ref={containerRef}>
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
@@ -183,8 +189,8 @@ export function CountriesMpi(props: Props) {
       <div className='flex-div flex-wrap'>
         {countrySubnational && countrySubnational.length > 0 ? (
           <div
-            className='chart-container flex-chart'
-            style={{ maxHeight: '750px', maxWidth: '700px' }}
+            className='chart-container'
+            style={{ maxHeight: '750px', width: `${subnatWidth}px` }}
           >
             <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
               <div>
@@ -324,15 +330,15 @@ export function CountriesMpi(props: Props) {
                 </div>
               ) : null}
             </div>
-            <div ref={containerRef}>
+            <div ref={containerSubnat}>
               <div className={activeViz === 'map' ? '' : 'hide'}>
                 <CountryMap
                   countryData={
                     nationalYears?.filter(k => k.country === selectedCountry)[0]
                   }
                   selectedAdminLevel={selectedAdminLevel}
-                  mapWidth={svgWidth}
-                  mapHeight={svgHeight}
+                  mapWidth={subnatWidth}
+                  mapHeight={500}
                 />
               </div>
               <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
@@ -341,18 +347,16 @@ export function CountriesMpi(props: Props) {
                     d => d.adminLevel === selectedAdminLevel,
                   )}
                   id='subnatScatterPlot'
-                  svgWidth={svgWidth}
-                  svgHeight={svgHeight}
                 />
               </div>
-            </div>
-            <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
-              <LollipopChartViz
-                data={countrySubnational.filter(
-                  d => d.adminLevel === selectedAdminLevel,
-                )}
-                sortedBy={sortedBy}
-              />
+              <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
+                <LollipopChartViz
+                  data={countrySubnational.filter(
+                    d => d.adminLevel === selectedAdminLevel,
+                  )}
+                  sortedBy={sortedBy}
+                />
+              </div>
             </div>
             <p className='source margin-top-04'>
               Source:{' '}
@@ -455,11 +459,14 @@ export function CountriesMpi(props: Props) {
       </div>
       {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
         .length > 1 ? (
-        <div style={{ maxWidth: '1024px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1024px', margin: '0 auto 5rem auto' }}>
           <h4 className='undp-typography margin-top-09'>
             Evolution of MPI through the years in {countryData?.country}
           </h4>
-          <div className='flex-div flex-wrap gap-07 margin-top-07'>
+          <div
+            className='flex-div flex-wrap gap-07 margin-top-07'
+            style={{ height: '500px' }}
+          >
             <div className='chart-container'>
               <h6 className='undp-typography margin-bottom-01'>
                 Change in time

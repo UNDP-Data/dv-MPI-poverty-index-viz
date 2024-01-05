@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
 import { MpiDataType } from '../../Types';
 import { Graph } from './Graph';
@@ -11,26 +11,17 @@ interface Props {
 
 export function BarChart(props: Props) {
   const { data, indicator } = props;
-  console.log('indicator ----------', indicator);
   const options = [
     { value: 'mpi', name: 'MPI' },
     { value: 'headcountRatio', name: 'Headcount Ratio' },
   ];
   const [radioSelection, setRadioSelection] = useState(options[0]);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [divWidth, setDivWidth] = useState<number | 500>(500);
-  const [divHeight, setDivHeight] = useState<number | 500>(500);
-  useEffect(() => {
-    if (containerRef.current) {
-      setDivWidth(containerRef.current.clientWidth);
-      setDivHeight(containerRef.current.clientHeight);
-    }
-  }, [data]);
   return (
     <>
       <div className='margin-bottom-03'>
         <div>
-          <p className='undp-typography small-font margin-bottom-01'>
+          <p className='undp-typography small-font margin-bottom-02'>
             Years: {data[data.length - 1].year} - {data[0].year}
           </p>
         </div>
@@ -65,8 +56,8 @@ export function BarChart(props: Props) {
           radioOption={
             indicator === 'headcountRatio' ? options[1] : radioSelection
           }
-          svgWidth={divWidth}
-          svgHeight={divHeight}
+          svgWidth={400}
+          svgHeight={400}
         />
       </div>
     </>

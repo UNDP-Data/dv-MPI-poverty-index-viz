@@ -9,7 +9,7 @@ interface Props {
 }
 
 const LollipopChartEl = styled.div`
-  height: 540px;
+  height: 490px;
   background-color: var(--black-100);
   box-shadow: var(--shadow);
   border-radius: 2px;

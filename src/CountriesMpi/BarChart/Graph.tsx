@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { scaleBand, scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
-import { axisBottom, axisLeft } from 'd3-axis';
+import { axisBottom } from 'd3-axis';
 import { select } from 'd3-selection';
 import UNDPColorModule from 'undp-viz-colors';
 import { MpiDataType } from '../../Types';
@@ -19,7 +19,7 @@ export function Graph(props: Props) {
   const id = 'mpiBarChart';
   const { data, radioOption, svgWidth, svgHeight } = props;
   const reversedData = [...data].reverse();
-  const margin = { top: 20, right: 30, bottom: 50, left: 40 };
+  const margin = { top: 20, right: 10, bottom: 50, left: 10 };
   const graphWidth = svgWidth - margin.left - margin.right;
   const graphHeight = svgHeight - margin.top - margin.bottom;
   const minParam = 0;
@@ -41,22 +41,12 @@ export function Graph(props: Props) {
     .range([graphHeight, 0])
     .nice();
 
-  const yAxis = axisLeft(y as any)
-    .tickSize(-graphWidth)
-    .ticks(5);
-  // .tickFormat(radioOption === 'headcountRatio' ? '%' : '');
   const xAxis = axisBottom(x).tickSize(0).tickSizeOuter(0).tickPadding(6);
-  //  .tickFormat((d: any) => (d % 5 !== 0 ? '' : `${d}`));
+
   useEffect(() => {
     const svg = select(`#${id}`);
-    svg.select('.yAxis').call(yAxis as any);
     svg.select('.xAxis').call(xAxis as any);
     svg.selectAll('.domain').remove();
-    svg
-      .selectAll('.yAxis text')
-      .attr('dy', '-4px')
-      .attr('x', '-4px')
-      .attr('text-anchor', 'end');
   }, [data, radioOption]);
   return (
     <div>
@@ -64,7 +54,6 @@ export function Graph(props: Props) {
         <svg width={svgWidth} height={svgHeight} id={id}>
           <g transform={`translate(${margin.left},${margin.top})`}>
             <g className='xAxis' transform={`translate(0 ,${graphHeight})`} />
-            <g className='yAxis' transform='translate(0,0)' />
             <g>
               {reversedData.map((d, i) => (
                 <g key={i}>
@@ -76,13 +65,12 @@ export function Graph(props: Props) {
                       graphHeight - y((d as any)[(radioOption as any).value])
                     }
                     fill={UNDPColorModule.categoricalColors.colors[0]}
-                    opacity={0.8}
                   />
                   <text
                     className='barLabel'
                     x={x((d as any).year)}
                     dx={x.bandwidth() / 2}
-                    y={y((d as any)[(radioOption as any).value]) - 5}
+                    y={y((d as any)[(radioOption as any).value]) - 7}
                     opacity={i >= xDomain.length ? 0 : 1}
                   >
                     {' '}

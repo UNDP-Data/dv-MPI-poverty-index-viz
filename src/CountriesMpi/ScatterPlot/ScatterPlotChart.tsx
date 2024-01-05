@@ -4,7 +4,7 @@ import UNDPColorModule from 'undp-viz-colors';
 import { scaleLinear, scaleSqrt } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   HoverSubnatDataType,
   MpiDataType,
@@ -18,23 +18,29 @@ interface Props {
   total?: MpiDataType;
   id: string;
   country: string;
-  divWidth: number;
-  divHeight: number;
 }
 export function ScatterPlotChart(props: Props) {
-  const { rural, urban, total, id, country, divWidth, divHeight } = props;
+  const { rural, urban, total, id, country } = props;
   const margin = { top: 20, right: 30, bottom: 70, left: 80 };
-  const graphWidth = divWidth - margin.left - margin.right;
-  const graphHeight = divHeight - margin.top - margin.bottom;
+  const visContainer = useRef(null);
+  let width = 400;
+  const [graphWidth, setWidth] = useState<number>(0);
+  const graphHeight = 310;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
   const [hoverValue, setHoverValue] = useState<string>('');
-  const xPos = scaleLinear().domain([0, 100]).range([0, graphWidth]);
-  const yPos = scaleLinear().domain([80, 0]).range([0, graphHeight]);
+  const xPos = scaleLinear()
+    .domain([0, 100])
+    .range([0, graphWidth - margin.left - margin.right]);
+  const yPos = scaleLinear()
+    .domain([80, 0])
+    .range([0, graphHeight - margin.top - margin.bottom]);
   const mpiScale = scaleSqrt().domain([0, 1]).range([3, 40]);
-  console.log('in scatterPlotChart', divWidth, divHeight);
-  const yAxis = axisLeft(yPos as any).tickFormat((d: any) => `${d}%`);
+  const yAxis = axisLeft(yPos as any)
+    .tickFormat((d: any) => `${d}%`)
+    .tickSize(-graphWidth + margin.left + margin.right)
+    .ticks(5);
   const xAxis = axisBottom(xPos)
     .tickSize(0)
     .tickSizeOuter(0)
@@ -43,7 +49,18 @@ export function ScatterPlotChart(props: Props) {
     .ticks(5);
 
   useEffect(() => {
-    yAxis.tickSize(-divWidth + margin.top + margin.bottom);
+    const handleResize = () => {
+      if (visContainer.current) {
+        width = (visContainer.current as any).offsetWidth;
+      }
+      setWidth(width);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  }, [visContainer.current]);
+
+  useEffect(() => {
+    yAxis.tickSize(-graphWidth + margin.top + margin.bottom);
     const svg = select(`#${id}`);
     svg.select('.yAxis').call(yAxis as any);
     svg.select('.xAxis').call(xAxis as any);
@@ -53,18 +70,22 @@ export function ScatterPlotChart(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, [country, divHeight, divWidth]);
-
+  }, [country, graphWidth]);
   return (
-    <>
+    <div ref={visContainer}>
       <svg
         width='100%'
         height='100%'
-        viewBox={`0 0 ${divWidth} ${divHeight}`}
+        viewBox={`0 0 ${graphWidth} ${graphHeight}`}
         id={id}
       >
         <g transform={`translate(${margin.left},${margin.top})`}>
-          <g className='xAxis' transform={`translate(0 ,${graphHeight})`} />
+          <g
+            className='xAxis'
+            transform={`translate(0 ,${
+              graphHeight - margin.top - margin.bottom
+            })`}
+          />
           <g className='yAxis' transform='translate(0,0)' />
           <g
             transform={`translate(
@@ -147,10 +168,10 @@ export function ScatterPlotChart(props: Props) {
               stroke={hoverValue === 'total' ? '#232E3D' : '#fff'}
             />
           </g>
-          <text x={graphWidth / 2} y={graphHeight + 50} textAnchor='middle'>
-            Headcount Ratio
-          </text>
         </g>
+        <text x={graphWidth / 2} y={graphHeight - 20} textAnchor='middle'>
+          Headcount Ratio
+        </text>
         <text
           x={-graphHeight / 2}
           y='20'
@@ -161,6 +182,6 @@ export function ScatterPlotChart(props: Props) {
         </text>
       </svg>
       {hoverData ? <TooltipSubnational data={hoverData} /> : null}
-    </>
+    </div>
   );
 }

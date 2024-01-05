@@ -73,8 +73,8 @@ export function DumbellChart(props: Props) {
 
   useEffect(() => {
     const handleResize = () => {
-      // eslint-disable-next-line @typescript-eslint/dot-notation
-      if (visContainer.current) width = visContainer.current['offsetWidth'];
+      if (visContainer.current)
+        width = (visContainer.current as any).offsetWidth;
       setWidth(width);
       setLeftPadding(width > 960 ? width / 4 : width / 3);
       setTextSize(width > 960 ? 1 : 0.8);

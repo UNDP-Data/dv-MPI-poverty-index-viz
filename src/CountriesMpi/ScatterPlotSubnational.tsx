@@ -3,19 +3,21 @@ import { scaleLinear, scaleThreshold } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
 import UNDPColorModule from 'undp-viz-colors';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HoverSubnatDataType, MpiDataTypeSubnational } from '../Types';
 import { TooltipSubnational } from '../Components/TooltipSubnational';
 
 interface Props {
   data: MpiDataTypeSubnational[];
   id: string;
-  svgWidth: number;
-  svgHeight: number;
 }
 export function ScatterPlotSubnational(props: Props) {
-  const { data, id, svgWidth, svgHeight } = props;
+  const { data, id } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
+  const visContainer = useRef(null);
+  let width = 800;
+  const [svgWidth, setWidth] = useState<number>(0);
+  const svgHeight = 500;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
   );
@@ -40,6 +42,18 @@ export function ScatterPlotSubnational(props: Props) {
   const colorScaleMPI = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (visContainer.current) {
+        width = (visContainer.current as any).offsetWidth;
+      }
+      setWidth(width);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  }, [visContainer.current]);
+
   useEffect(() => {
     const svg = select(`#${id}`);
     svg.select('.yAxis').call(yAxis as any);
@@ -50,10 +64,10 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, [id, svgWidth, svgHeight]);
+  }, [id, svgWidth]);
 
   return (
-    <div className='margin-top-06'>
+    <div ref={visContainer}>
       <svg
         width='100%'
         height='100%'
