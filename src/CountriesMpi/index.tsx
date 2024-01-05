@@ -127,11 +127,6 @@ export function CountriesMpi(props: Props) {
       if (containerRef.current.clientWidth > 1800) setSubnatWidth(1200);
       else if (containerRef.current.clientWidth > 1200) setSubnatWidth(760);
       else setSubnatWidth(containerRef.current.clientWidth);
-      console.log(
-        'containerRef',
-        containerRef.current?.clientWidth,
-        containerRef.current?.clientHeight,
-      );
     }
   }, [containerRef.current]);
   return (
@@ -166,7 +161,7 @@ export function CountriesMpi(props: Props) {
             <div className='chart-explanation'>
               <div>
                 <i>
-                  Temporary text: This map is showing the change in MPI through
+                  Temporary text: This map shows the change in MPI through
                   years, a negative value means that there has been poverty
                   reduction (the darker the blue, the better). We have
                   considered that in most cases the methodology for calculating
@@ -360,7 +355,7 @@ export function CountriesMpi(props: Props) {
                     d => d.adminLevel === selectedAdminLevel,
                   )}
                   id='subnatScatterPlot'
-                  country={selectedCountry}
+                  activeViz={activeViz}
                 />
               </div>
               <div className={`${activeViz === 'list' ? '' : 'hide'}`}>

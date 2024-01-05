@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { scaleLinear, scaleThreshold } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
@@ -10,10 +11,10 @@ import { TooltipSubnational } from '../Components/TooltipSubnational';
 interface Props {
   data: MpiDataTypeSubnational[];
   id: string;
-  country: string;
+  activeViz: string;
 }
 export function ScatterPlotSubnational(props: Props) {
-  const { data, id, country } = props;
+  const { data, id, activeViz } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const visContainer = useRef(null);
   let width = 800;
@@ -51,11 +52,12 @@ export function ScatterPlotSubnational(props: Props) {
       }
       setWidth(width);
     };
-    handleResize();
+    if (activeViz === 'scatterplot') handleResize();
     window.addEventListener('resize', handleResize);
-  }, [visContainer.current]);
+  }, [visContainer.current, activeViz]);
 
   useEffect(() => {
+    yAxis.tickSize(-svgWidth + margin.left + margin.right);
     const svg = select(`#${id}`);
     svg.select('.yAxis').call(yAxis as any);
     svg.select('.xAxis').call(xAxis as any);
@@ -65,10 +67,10 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, [country, svgWidth]);
+  }, [svgWidth]);
 
   return (
-    <div ref={visContainer}>
+    <div ref={visContainer} style={{ minWidth: '600px' }}>
       <svg
         width='100%'
         height='100%'
