@@ -337,7 +337,7 @@ export function CountriesMpi(props: Props) {
                     nationalYears?.filter(k => k.country === selectedCountry)[0]
                   }
                   selectedAdminLevel={selectedAdminLevel}
-                  mapWidth={subnatWidth}
+                  mapWidth={subnatWidth - 64}
                   mapHeight={500}
                 />
               </div>

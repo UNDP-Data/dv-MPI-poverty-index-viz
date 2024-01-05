@@ -64,7 +64,7 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, [id, svgWidth]);
+  }, [data, svgWidth]);
 
   return (
     <div ref={visContainer}>
