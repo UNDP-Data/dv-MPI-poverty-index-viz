@@ -111,7 +111,7 @@ export function CountriesMpi(props: Props) {
         ...new Set(
           subNatValues.map((d: MpiDataTypeSubnational) => d.adminLevel),
         ),
-      ].length === 1
+      ].length > 0
     ) {
       setSelectedAdminLevel(
         [

@@ -12,10 +12,13 @@ export function GlobalMpi(props: Props) {
   const { mpiData, diffData } = props;
   return (
     <div>
-      <h3 className='undp-typography margin-bottom-08'>
-        Global Multidimensional Poverty Index (MPI)
-      </h3>
-
+      <div
+        style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
+      >
+        <h3 className='undp-typography margin-bottom-08'>
+          Global Multidimensional Poverty Index (MPI)
+        </h3>
+      </div>
       {mpiData ? (
         <div className='flex-div flex-wrap gap-04'>
           <div className='chart-left-div'>
