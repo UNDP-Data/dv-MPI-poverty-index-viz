@@ -31,6 +31,8 @@ export interface MpiDataTypeNationalYears {
   region: string;
   bbox: BboxDataType;
   percentChange: number;
+  annualizedChangeMPI: number;
+  annualizedChangeHeadcount: number;
   countryData: MpiDataTypeNational[];
   indicatorChange: string;
 }

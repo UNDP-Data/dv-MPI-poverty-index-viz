@@ -94,6 +94,11 @@
   margin: 0;
 }
 /* tooltip styles */
+.tooltipTitle{
+  font-size:.9rem;
+  color: var(--gray-800);
+  font-size: 500;
+}
 .tooltipLabel{
   font-size:.9rem;
   color: var(--gray-600);

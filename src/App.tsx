@@ -212,6 +212,16 @@ function App() {
                 indicatorChange
               ]) *
             100;
+          const annualizedChangeMPI =
+            (countryDataValues[countryDataValues.length - 1].mpi -
+              countryDataValues[0].mpi) /
+            (countryDataValues[countryDataValues.length - 1].firstYear -
+              countryDataValues[0].firstYear);
+          const annualizedChangeHeadcount =
+            (countryDataValues[countryDataValues.length - 1].headcountRatio -
+              countryDataValues[0].headcountRatio) /
+            (countryDataValues[countryDataValues.length - 1].firstYear -
+              countryDataValues[0].firstYear);
           // sort data by year
           nationalYearsAll.push({
             iso_a3: country,
@@ -228,6 +238,8 @@ function App() {
               ].region,
             country: countryDataValues[0].country,
             percentChange: povertyChange,
+            annualizedChangeMPI,
+            annualizedChangeHeadcount,
             countryData: countryDataValues,
             indicatorChange,
           });

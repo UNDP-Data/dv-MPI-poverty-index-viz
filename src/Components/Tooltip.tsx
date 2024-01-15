@@ -21,6 +21,7 @@ const TooltipEl = styled.div<TooltipElProps>`
   padding-bottom: 10px;
   background-color: var(--gray-100);
   border: 1px solid var(--gray-300);
+  line-height: 1.1;
   word-wrap: break-word;
   top: ${props =>
     props.verticalAlignment === 'bottom' ? props.y - 40 : props.y + 40}px;
@@ -36,10 +37,11 @@ const TooltipEl = styled.div<TooltipElProps>`
 
 export function Tooltip(props: Props) {
   const { data, prop } = props;
-  const label =
+  /* const label =
     (data.countryValues as any).indicatorChange === 'headcountRatio'
       ? 'Headcount Ratio'
       : 'MPI';
+  */
   return (
     <TooltipEl
       x={data.xPosition}
@@ -111,45 +113,102 @@ export function Tooltip(props: Props) {
           </>
         ) : (data.countryValues as any).countryData.length > 1 ? (
           <>
+            <div className='tooltipTitle'>Absolute annualized change in:</div>
             <div>
-              <span className='tooltipLabel'>Change in {label}: </span>
+              <span className='tooltipLabel'>Headcount ratio: </span>
               <span className='tooltipValue'>
-                {Number((data.countryValues as any).percentChange).toFixed(2)}%
+                {Number(
+                  (data.countryValues as any).annualizedChangeHeadcount,
+                ).toFixed(3)}{' '}
+                {Number((data.countryValues as any).annualizedChangeHeadcount) <
+                0
+                  ? '(decrease)'
+                  : '(increase)'}
               </span>
             </div>
             <div>
-              <span className='tooltipLabel'>
-                {label} in{' '}
-                {
-                  (data.countryValues as any).countryData[
-                    (data.countryValues as any).countryData.length - 1
-                  ].year
-                }
-                :{' '}
-              </span>
-              <span className='tooltipValue'>
-                {Number(
-                  (data.countryValues as any).countryData[
-                    (data.countryValues as any).countryData.length - 1
-                  ][(data.countryValues as any).indicatorChange],
-                ).toFixed(3)}
-              </span>
+              <span className='tooltipLabel'>MPI: </span>
+              {(data.countryValues as any).indicatorChange ===
+              'headcountRatio' ? (
+                <span className='tooltipValue'>N/A</span>
+              ) : (
+                <span className='tooltipValue'>
+                  {Number(
+                    (data.countryValues as any).annualizedChangeMPI,
+                  ).toFixed(3)}{' '}
+                  {Number((data.countryValues as any).annualizedChangeMPI) < 0
+                    ? '(decrease)'
+                    : '(increase)'}
+                </span>
+              )}
             </div>
-            <div>
-              <span className='tooltipLabel'>
-                {label} in {(data.countryValues as any).countryData[0].year}:{' '}
-              </span>
-              <span className='tooltipValue'>
-                {Number(
-                  (data.countryValues as any).countryData[0][
-                    (data.countryValues as any).indicatorChange
-                  ],
+            <hr className='undp-style margin-top-03 margin-bottom-03' />
+            <div className='flex-div'>
+              <div style={{ width: '50%' }}>
+                <div className='tooltipTitle'>MPI</div>
+                {(data.countryValues as any).indicatorChange ===
+                'headcountRatio' ? (
+                  <span className='tooltipValue'>N/A</span>
+                ) : (
+                  (data.countryValues as any).countryData.map(
+                    (d: any, i: number) => (
+                      <div key={i}>
+                        <span className='tooltipLabel'>{d.year}: </span>
+                        <span className='tooltipValue'>
+                          {Number(d.mpi).toFixed(3)}
+                        </span>
+                      </div>
+                    ),
+                  )
                 )}
-              </span>
+              </div>
+              <div style={{ width: '50%' }}>
+                <div className='tooltipTitle'>Headcount ratio</div>
+                {(data.countryValues as any).countryData.map(
+                  (d: any, i: number) => (
+                    <div key={i}>
+                      <span className='tooltipLabel'>{d.year}: </span>
+                      <span className='tooltipValue'>{d.headcountRatio}%</span>
+                    </div>
+                  ),
+                )}
+              </div>
             </div>
           </>
         ) : (
-          <div>Data available only for 1 year</div>
+          <div>
+            <div className='tooltipTitle'>Data available for only 1 year</div>
+            <hr className='undp-style margin-top-04 margin-bottom-03' />
+            <div className='flex-div'>
+              <div style={{ width: '50%' }}>
+                <div className='tooltipTitle'>MPI</div>
+                <div>
+                  <span className='tooltipLabel'>
+                    {(data.countryValues as any).countryData[0].year}:{' '}
+                  </span>
+                  <span className='tooltipValue'>
+                    {Number(
+                      (data.countryValues as any).countryData[0].mpi,
+                    ).toFixed(3)}
+                  </span>
+                </div>
+              </div>
+              <div style={{ width: '50%' }}>
+                <div className='tooltipTitle'>Headcount ratio</div>
+                <div>
+                  <span className='tooltipLabel'>
+                    {(data.countryValues as any).countryData[0].year}:{' '}
+                  </span>
+                  <span className='tooltipValue'>
+                    {Number(
+                      (data.countryValues as any).countryData[0].headcountRatio,
+                    ).toFixed(2)}
+                    %
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </TooltipEl>

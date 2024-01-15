@@ -74,6 +74,16 @@ export function CountriesMpi(props: Props) {
   const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>(
     adminLevels[0],
   );
+  /* const rangeAnnuMPI = extent(nationalYears, d => d.annualizedChangeMPI);
+  const rangeAnnuHeadcount = extent(
+    nationalYears,
+    d => d.annualizedChangeHeadcount,
+  ); */
+  const valueArrayAnnu = [-6, -3, 0, 3];
+  // [-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]
+  // const valueArrayAnnu = [-0.03, -0.02, -0.01, 0, 0.01];
+  // const valueArrayAnnu = [-0.025, -0.01, 0, 0.01];
+  const colorsAnnu = [...UNDPColorModule.divergentColors.colorsx06];
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -149,24 +159,27 @@ export function CountriesMpi(props: Props) {
       {nationalYears ? (
         <>
           <h6 className='margin-top-10 undp-typography'>
-            Change in National MPI
+            Absolute Annualized change in Multidimensional Poverty Headcount
+            Ratio (Incidence)
           </h6>
           <div className='flex-div flex-wrap gap-07'>
             <Map
               data={nationalYears}
-              prop='percentChange'
-              valueArray={[-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]}
-              colors={UNDPColorModule.divergentColors.colorsx10}
+              prop='annualizedChangeHeadcount'
+              valueArray={valueArrayAnnu}
+              colors={colorsAnnu}
             />
             <div className='chart-explanation'>
               <div>
-                <i>
-                  Temporary text: This map shows the change in MPI through
-                  years, a negative value means that there has been poverty
-                  reduction (the darker the blue, the better). We have
-                  considered that in most cases the methodology for calculating
-                  remained the same through the years.
-                </i>
+                <p className='undp-typography'>
+                  Absolute annualized change in Multidimensional Poverty
+                  Headcount is the difference in headcount ratio between two
+                  years divided by the number of years between surveys. The
+                  values in this map have been calculated using the first and
+                  latest measurement.
+                  <br />A negative value means that there has been poverty
+                  reduction (the darker the blue, the better).
+                </p>
               </div>
             </div>
           </div>
@@ -195,6 +208,91 @@ export function CountriesMpi(props: Props) {
         </div>
       ) : null}
       <div className='flex-div flex-wrap'>
+        <div className='chart-explanation flex-div flex-wrap'>
+          <div
+            className='stat-card'
+            style={{ minWidth: '300px', maxHeight: '250px' }}
+          >
+            <h3>{Number(total?.mpi).toFixed(3)}</h3>
+            <h4>
+              National MPI {selectedCountry} ({total?.year})
+            </h4>
+            <p className='margin-bottom-01'>
+              Headcount Ratio: {total?.headcountRatio}%
+            </p>
+            <p>Intensity: {total?.intensity}%</p>
+          </div>
+          {urban || rural ? (
+            <div
+              className='chart-container flex-chart'
+              style={{ maxHeight: '478px' }}
+            >
+              <div className='flex-div flex-space-between'>
+                <div className='chart-top'>
+                  <h6 className='undp-typography margin-bottom-01'>
+                    Rural and Urban MPI
+                  </h6>
+                  <p className='undp-typography small-font'>Year: {year}</p>
+                </div>
+                <div>
+                  <div className='legend-container'>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor:
+                            UNDPColorModule.categoricalColors.locationColors
+                              .urban,
+                        }}
+                      />
+                      <div className='small-font'>Urban</div>
+                    </div>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor:
+                            UNDPColorModule.categoricalColors.locationColors
+                              .rural,
+                        }}
+                      />
+                      <div className='small-font'>Rural</div>
+                    </div>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor: '#55606E',
+                        }}
+                      />
+                      <div className='small-font'>Country Total</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ScatterPlot
+                urban={urban}
+                rural={rural}
+                total={total}
+                id='locationScatterPlot'
+                country={selectedCountry}
+              />
+              <div>
+                <p className='source margin-top-00'>
+                  Source:{' '}
+                  <a
+                    className='undp-style small-font'
+                    href={countryData?.reportUrl}
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    {countryData?.reportName}
+                  </a>
+                </p>
+              </div>
+            </div>
+          ) : null}
+        </div>
         {countrySubnational && countrySubnational.length > 0 ? (
           <div
             className='chart-container'
@@ -203,7 +301,7 @@ export function CountriesMpi(props: Props) {
             <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
               <div>
                 <h6 className='undp-typography margin-bottom-01'>
-                  Subnational MPI Data
+                  Subnational Multidimensional Poverty
                 </h6>
                 <p className='undp-typography small-font'>
                   Year: {countrySubnational[0].year}
@@ -380,91 +478,6 @@ export function CountriesMpi(props: Props) {
             </p>
           </div>
         ) : null}
-        <div className='chart-explanation flex-div flex-wrap'>
-          <div
-            className='stat-card'
-            style={{ minWidth: '400px', maxHeight: '250px' }}
-          >
-            <h3>{total?.mpi}</h3>
-            <h4>
-              National MPI {selectedCountry} ({total?.year})
-            </h4>
-            <p className='margin-bottom-01'>
-              Headcount Ratio: {total?.headcountRatio}%
-            </p>
-            <p>Intensity: {total?.intensity}%</p>
-          </div>
-          {urban || rural ? (
-            <div
-              className='chart-container flex-chart'
-              style={{ maxHeight: '478px' }}
-            >
-              <div className='flex-div flex-space-between'>
-                <div className='chart-top'>
-                  <h6 className='undp-typography margin-bottom-01'>
-                    Rural and Urban MPI
-                  </h6>
-                  <p className='undp-typography small-font'>Year: {year}</p>
-                </div>
-                <div>
-                  <div className='legend-container'>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor:
-                            UNDPColorModule.categoricalColors.locationColors
-                              .urban,
-                        }}
-                      />
-                      <div className='small-font'>Urban</div>
-                    </div>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor:
-                            UNDPColorModule.categoricalColors.locationColors
-                              .rural,
-                        }}
-                      />
-                      <div className='small-font'>Rural</div>
-                    </div>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor: '#55606E',
-                        }}
-                      />
-                      <div className='small-font'>Country Total</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ScatterPlot
-                urban={urban}
-                rural={rural}
-                total={total}
-                id='locationScatterPlot'
-                country={selectedCountry}
-              />
-              <div>
-                <p className='source margin-top-00'>
-                  Source:{' '}
-                  <a
-                    className='undp-style small-font'
-                    href={countryData?.reportUrl}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    {countryData?.reportName}
-                  </a>
-                </p>
-              </div>
-            </div>
-          ) : null}
-        </div>
       </div>
       {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
         .length > 1 ? (

@@ -88,7 +88,9 @@ export function Map(props: Props) {
                   value.length > 0
                     ? prop === 'mpi'
                       ? colorScale(Number((value as any)[0][prop]))
-                      : Number((value as any)[0][prop]) === 0
+                      : Number((value as any)[0][prop]) === 0 ||
+                        // eslint-disable-next-line no-restricted-globals
+                        isNaN(Number((value as any)[0][prop]))
                       ? 'var(--gray-500)'
                       : colorScale(Number((value as any)[0][prop]))
                     : 'var(--gray-300)';
@@ -102,7 +104,7 @@ export function Map(props: Props) {
                     key={i}
                     onMouseEnter={event => {
                       setSelectedCountry(d.properties.ISO3);
-                      if (value.length > 0) {
+                      if (value[0] !== undefined) {
                         setHoverData({
                           country: (value[0] as any).country,
                           continent: (value[0] as any).region,
@@ -204,7 +206,7 @@ export function Map(props: Props) {
           <h6 className='undp-typography margin-left-03 margin-bottom-00'>
             LEGEND
           </h6>
-          <svg viewBox='0 0 340 70'>
+          <svg viewBox='0 0 380 70'>
             <g transform='translate(10,20)'>
               <text
                 x={320}
@@ -219,14 +221,14 @@ export function Map(props: Props) {
                 <g key={i}>
                   <rect
                     onMouseOver={() =>
-                      setSelectedColor(colorScale(valueArray[i] - 0.05))
+                      setSelectedColor(colorScale(valueArray[i] - 0.00001))
                     }
                     onMouseLeave={() => setSelectedColor(undefined)}
                     x={(i * 320) / valueArray.length}
                     y={1}
                     width={320 / valueArray.length}
                     height={8}
-                    fill={colorScale(valueArray[i] - 0.05)}
+                    fill={colorScale(valueArray[i] - 0.00001)}
                     stroke='#fff'
                   />
                   <text
@@ -247,7 +249,7 @@ export function Map(props: Props) {
                 fill='#212121'
                 textAnchor='middle'
               >
-                {prop === 'mpi' ? '0' : '-50'}
+                {prop === 'mpi' ? '0' : ''}
               </text>
               {prop !== 'mpi' ? (
                 <>
@@ -257,7 +259,7 @@ export function Map(props: Props) {
                     fontSize={12}
                     fill='#212121'
                   >
-                    Countries with MPI value for only one year
+                    Countries with measurements for only one year
                   </text>
                   <rect
                     x={0}

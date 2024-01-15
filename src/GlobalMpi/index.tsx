@@ -23,17 +23,20 @@ export function GlobalMpi(props: Props) {
         <div className='flex-div flex-wrap gap-04'>
           <div className='chart-left-div'>
             <p className='undp-typography margin-bottom-07'>
-              The global Multidimensional Poverty Index (MPI) is an inclusive
-              measure that complements monetary poverty assessments by capturing
-              deprivations in health, education, and living standards. It
-              identifies individuals as poor if poor if they are deprived in
-              one-third or more of the ten weighted indicators, measuring the
-              intensity of their poverty based on the percentage of
+              The global Multidimensional Poverty Index (MPI) measures
+              multidimensional poverty in over 100 developing countries, using
+              internationally comparable datasets and is updated annually. The
+              measure captures the severe deprivations that each person faces at
+              the same time using information from 10 indicators, which are
+              grouped into three equally weighted dimensions: health, education,
+              and living standards. It identifies individuals as poor if they
+              are deprived in one-third or more of these indicators, measuring
+              the intensity of their poverty based on the percentage of
               deprivations. The MPI provides insights into who is poor and how
-              they experience poverty, offering a comprehensive understanding of
-              poverty dynamics. It allows for comparisons across various
-              administrative levels and reveals how different groups and
-              countries experience experience poverty through the composition of
+              how they experience poverty, offering a comprehensive
+              understanding of poverty dynamics. It allows for comparisons
+              across various administrative levels and reveals how different
+              groups and countries experience poverty through the composition of
               indicators.
             </p>
           </div>
