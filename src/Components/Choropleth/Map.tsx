@@ -122,6 +122,10 @@ export function Map(props: Props) {
                         });
                       }
                     }}
+                    onMouseLeave={() => {
+                      setSelectedCountry(undefined);
+                      setHoverData(undefined);
+                    }}
                   >
                     {d.geometry.type === 'MultiPolygon'
                       ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
