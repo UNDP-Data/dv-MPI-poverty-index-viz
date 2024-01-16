@@ -10,7 +10,6 @@ import {
   MpiDataTypeSubnational,
   MpiDataTypeLocation,
   MpiDataTypeNational,
-  BboxDataType,
   MpiDataTypeNationalYears,
 } from './Types';
 import './styles.css';
@@ -52,9 +51,7 @@ function App() {
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location_multiple_years.csv`),
       csv(`${dataurl}MPI_national_multiple_years.csv`),
-      json(
-        'https://gist.githubusercontent.com/cplpearce/3bc5f1e9b1187df51d2085ffca795bee/raw/b36904c0c8ea72fdb82f68eb33f29891095deab3/country_codes',
-      ),
+      json(`${dataurl}country_territory_groups_WBregionBBox.json`),
     ]).then(
       ([
         data,
@@ -65,21 +62,8 @@ function App() {
         subnational,
         location,
         nationalYears,
-        countries,
+        countriesArray,
       ]) => {
-        const countriesKeys = Object.keys(countries as object);
-        const countriesArray: {
-          region: string;
-          iso_a3: string;
-          boundingBox: BboxDataType;
-        }[] = [];
-        countriesKeys.forEach((key: string) => {
-          countriesArray.push({
-            iso_a3: (countries as any)[key]['alpha-3'],
-            boundingBox: (countries as any)[key].boundingBox,
-            region: (countries as any)[key].region,
-          });
-        });
         const dataFetched = data.map((d: any) => ({
           country: d.Country,
           iso_a3: d['country code'],
@@ -225,17 +209,16 @@ function App() {
           // sort data by year
           nationalYearsAll.push({
             iso_a3: country,
-            bbox: countriesArray[
-              (countriesArray as object[]).findIndex(
-                (k: any) => k.iso_a3 === country,
+            bbox: (countriesArray as any)[
+              (countriesArray as any).findIndex(
+                (k: any) => k['Alpha-3 code'] === country,
               )
             ].boundingBox,
-            region:
-              countriesArray[
-                (countriesArray as object[]).findIndex(
-                  (k: any) => k.iso_a3 === country,
-                )
-              ].region,
+            region: (countriesArray as any)[
+              (countriesArray as any).findIndex(
+                (k: any) => k['Alpha-3 code'] === country,
+              )
+            ].WB_Region,
             country: countryDataValues[0].country,
             percentChange: povertyChange,
             annualizedChangeMPI,
