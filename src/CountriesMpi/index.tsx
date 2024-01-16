@@ -481,8 +481,8 @@ export function CountriesMpi(props: Props) {
       </div>
       {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
         .length > 1 ? (
-        <div style={{ maxWidth: '1024px', margin: '0 auto 5rem auto' }}>
-          <h4 className='undp-typography margin-top-09'>
+        <div style={{ maxWidth: '1024px', margin: '1.5rem auto' }}>
+          <h4 className='undp-typography margin-top-10'>
             Evolution of MPI through the years in {countryData?.country}
           </h4>
           <div
