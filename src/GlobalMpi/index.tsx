@@ -57,6 +57,17 @@ export function GlobalMpi(props: Props) {
         </h3>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
+      <p className='source'>
+        Sources:{' '}
+        <a
+          target='_blank'
+          rel='noreferrer'
+          className='undp-style small-font'
+          href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
+        >
+          Global MPI data tables
+        </a>
+      </p>
     </div>
   );
 }
