@@ -41,7 +41,7 @@ const LegendElVertical = styled.div`
   padding: 0.5rem 0.5rem 0 0.5rem;
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: var(--shadow);
-  width: 390px;
+  width: auto;
   margin-left: 1rem;
   margin-top: -1rem;
   z-index: 5;
@@ -339,7 +339,7 @@ export function IconsMap(props: Props) {
                   <g>
                     {valueArray.map((d, i) => (
                       <g key={i} transform={`translate(0, ${i * 20})`}>
-                        <rect width='45' height='7' fill={colorScale(d)} />
+                        <rect width='45' height='10' fill={colorScale(d)} />
                         <text x='50' y='10' className='label'>
                           {d}
                         </text>
