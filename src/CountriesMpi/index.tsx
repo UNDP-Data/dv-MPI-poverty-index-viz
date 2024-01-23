@@ -11,7 +11,7 @@ import {
   MpiDataTypeLocation,
   MpiDataTypeNationalYears,
 } from '../Types';
-import { Map } from '../Components/Choropleth/Map';
+import { IconsMap } from '../Components/IconsMap';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
@@ -79,11 +79,20 @@ export function CountriesMpi(props: Props) {
     nationalYears,
     d => d.annualizedChangeHeadcount,
   ); */
-  const valueArrayAnnu = [-6, -3, 0, 3];
+  // const valueArrayAnnu = [-6, -3, 0, 3];
   // [-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]
   // const valueArrayAnnu = [-0.03, -0.02, -0.01, 0, 0.01];
   // const valueArrayAnnu = [-0.025, -0.01, 0, 0.01];
-  const colorsAnnu = [...UNDPColorModule.divergentColors.colorsx06];
+  // const colorsAnnu = [...UNDPColorModule.divergentColors.colorsx06];
+  const regionColors = [
+    '#006eb5',
+    '#5DD4F0',
+    '#02A38A',
+    '#E78625',
+    '#E0529E',
+    '#757AF0',
+  ];
+  const regionsOptions = [...new Set(nationalYears.map(d => d.region))];
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -163,22 +172,22 @@ export function CountriesMpi(props: Props) {
             Ratio (Incidence)
           </h6>
           <div className='flex-div flex-wrap gap-07'>
-            <Map
+            <IconsMap
               data={nationalYears}
-              prop='annualizedChangeHeadcount'
-              valueArray={valueArrayAnnu}
-              colors={colorsAnnu}
+              prop='region'
+              valueArray={regionsOptions}
+              colors={regionColors}
             />
             <div className='chart-explanation'>
               <div>
                 <p className='undp-typography'>
                   Absolute annualized change in Multidimensional Poverty
-                  Headcount is the difference in headcount ratio between two
-                  years divided by the number of years between surveys. The
+                  Headcount Ratio is the difference in headcount ratio between
+                  two years divided by the number of years between surveys. The
                   values in this map have been calculated using the first and
                   latest measurement.
                   <br />A negative value means that there has been poverty
-                  reduction (the darker the blue, the better).
+                  reduction (the larger the spike, the better).
                 </p>
               </div>
             </div>

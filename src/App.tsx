@@ -183,6 +183,11 @@ function App() {
           countryDataValues.sort((a, b) =>
             descending(a.firstYear, b.firstYear),
           );
+          const countryDetails = (countriesArray as any)[
+            (countriesArray as any).findIndex(
+              (k: any) => k['Alpha-3 code'] === country,
+            )
+          ];
           // poverty change: if negative it means there's a decrease in poverty
           // as the latest value is smaller than the first one
           const indicatorChange =
@@ -209,16 +214,12 @@ function App() {
           // sort data by year
           nationalYearsAll.push({
             iso_a3: country,
-            bbox: (countriesArray as any)[
-              (countriesArray as any).findIndex(
-                (k: any) => k['Alpha-3 code'] === country,
-              )
-            ].boundingBox,
-            region: (countriesArray as any)[
-              (countriesArray as any).findIndex(
-                (k: any) => k['Alpha-3 code'] === country,
-              )
-            ].WB_Region,
+            bbox: countryDetails.boundingBox,
+            region: countryDetails.WB_Region,
+            coordinates: [
+              countryDetails['Longitude (average)'],
+              countryDetails['Latitude (average)'],
+            ],
             country: countryDataValues[0].country,
             percentChange: povertyChange,
             annualizedChangeMPI,

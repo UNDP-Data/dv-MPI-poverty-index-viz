@@ -177,14 +177,30 @@
   shape-rendering: geometricPrecision;
 }
 
-@-webkit-keyframes highlight-opacity {
+@-webkit-keyframes highlight-opacity-grey {
   0%   {opacity: 1;}
   50%  {opacity:.8;fill:#55606E}
 }
 
-@keyframes highlight-opacity {
+@keyframes highlight-opacity-grey {
   0%   {opacity: 1;}
   50%  {opacity:.8;fill:#55606E}
+}
+.high-opa-grey{
+  -webkit-animation-name: highlight-opacity-grey;
+  -webkit-animation-duration: 2s;
+  animation-name: highlight-opacity-grey;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+@-webkit-keyframes highlight-opacity {
+  0%   {opacity: 0.7;}
+  50%  {opacity: 1;}
+}
+
+@keyframes highlight-opacity {
+  0%   {opacity: 0.7;}
+  50%  {opacity: 1;}
 }
 .high-opa{
   -webkit-animation-name: highlight-opacity;
