@@ -39,6 +39,16 @@ export function GlobalMpi(props: Props) {
               groups and countries experience poverty through the composition of
               indicators.
             </p>
+            <p className='undp-typography'>
+              According to the latest global MPI data, 1.1 billion people (out
+              of 6.1 billion across 110 countries) are still living in acute
+              multidimensional poverty. Almost two-third of the MPI poor (730
+              million) live in middle-income countries (MICs). However, poverty
+              disproportionately affect people in low-income countries (LICs),
+              which make up only 10 percent of the population covered by the
+              global MPI, but are home to 34.7 percent (387 million) of the
+              poor.
+            </p>
           </div>
           <Map
             data={mpiData}
@@ -48,13 +58,29 @@ export function GlobalMpi(props: Props) {
           />
         </div>
       ) : null}
-      <div>
-        <ScatterPlotGlobal data={mpiData} />
+      <div className='flex-div gap-06'>
+        <div className='chart-global-scatter'>
+          <ScatterPlotGlobal data={mpiData} />
+        </div>
+        <div className='margin-top-06 description-scatter'>
+          <p className='undp-typography'>
+            Global MPI data shows that worrisomely, the higher the incidence of
+            poverty, the higher the intensity of poverty that poor people tend
+            to experience. In Chad, Niger, South Sudan, the incidence of poverty
+            exceeds 80% while on average, the poor are deprived in more than 60%
+            of the weighted MPI indicators.
+          </p>
+        </div>
       </div>
       <div className='margin-top-09'>
         <h3>
           Comparisons: Urban vs Rural and Female vs Male headed households
         </h3>
+        <p className='undp-typography'>
+          Globally 84% of all MPI poor people living in rural areas. Overall,{' '}
+          multidimensional poverty tend to be both more prevalent and more
+          intense in rural areas compared to urban areas.
+        </p>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
       <p className='source'>
