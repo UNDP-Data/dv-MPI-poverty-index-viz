@@ -50,12 +50,14 @@ export function GlobalMpi(props: Props) {
               poor.
             </p>
           </div>
-          <Map
-            data={mpiData}
-            prop='mpi'
-            valueArray={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
-            colors={UNDPColorModule.sequentialColors.negativeColorsx07}
-          />
+          <div className='chart-global-container'>
+            <Map
+              data={mpiData}
+              prop='mpi'
+              valueArray={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
+              colors={UNDPColorModule.sequentialColors.negativeColorsx07}
+            />
+          </div>
         </div>
       ) : null}
       <div className='flex-div gap-06'>

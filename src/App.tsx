@@ -224,6 +224,8 @@ function App() {
             percentChange: povertyChange,
             annualizedChangeMPI,
             annualizedChangeHeadcount,
+            firstYearMeasured:
+              countryDataValues[0].firstYear < 2020 ? 'pre-COVID' : 'from 2020',
             countryData: countryDataValues,
             indicatorChange,
           });

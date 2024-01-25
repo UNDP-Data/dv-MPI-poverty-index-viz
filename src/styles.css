@@ -9,6 +9,11 @@
   flex-shrink: 1; 
   flex-basis: 70%;
 }
+.chart-national-container{
+  flex-grow: 1;
+  flex-shrink: 1; 
+  flex-basis: 50%;
+}
 .chart-left-div{
   flex-grow: 1;
   flex-shrink: 1; 

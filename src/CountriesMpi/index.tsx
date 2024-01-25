@@ -11,13 +11,14 @@ import {
   MpiDataTypeLocation,
   MpiDataTypeNationalYears,
 } from '../Types';
-import { IconsMap } from '../Components/IconsMap';
+import { Map } from '../Components/Choropleth/Map';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
 import { LollipopChartViz } from './LollipopChartViz';
 import { ListView } from './ListView';
 import { BarChart } from './BarChart';
+import { HorizontalBarChart } from './HorizontalBarChart';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -84,7 +85,7 @@ export function CountriesMpi(props: Props) {
   // const valueArrayAnnu = [-0.03, -0.02, -0.01, 0, 0.01];
   // const valueArrayAnnu = [-0.025, -0.01, 0, 0.01];
   // const colorsAnnu = [...UNDPColorModule.divergentColors.colorsx06];
-  const regionColors = [
+  /* const regionColors = [
     '#006eb5',
     '#5DD4F0',
     '#02A38A',
@@ -93,6 +94,9 @@ export function CountriesMpi(props: Props) {
     '#757AF0',
   ];
   const regionsOptions = [...new Set(nationalYears.map(d => d.region))];
+  */
+  const periodOptions = ['pre-COVID', 'from 2020'];
+  const periodColors = ['#006eb5', '#5DD4F0'];
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -166,33 +170,65 @@ export function CountriesMpi(props: Props) {
         </p>
       </div>
       {nationalYears ? (
-        <>
-          <h6 className='margin-top-10 undp-typography'>
-            Absolute Annualized change in Multidimensional Poverty Headcount
-            Ratio (Incidence)
+        <div
+          className='flex-div flex-wrap gap-04'
+          style={{
+            maxWidth: '1024px',
+            margin: '0 auto',
+            padding: '0 1.5rem',
+          }}
+        >
+          <h6 className='margin-top-05 undp-typography'>
+            Country coverage National Multidimensional Poverty Index
           </h6>
-          <div className='flex-div flex-wrap gap-07'>
-            <IconsMap
+          <div className='chart-national-container'>
+            <Map
               data={nationalYears}
-              prop='region'
-              valueArray={regionsOptions}
-              colors={regionColors}
+              prop='firstYearMeasured'
+              valueArray={periodOptions}
+              colors={periodColors}
             />
-            <div className='chart-explanation'>
-              <div>
-                <p className='undp-typography'>
-                  Absolute annualized change in Multidimensional Poverty
-                  Headcount Ratio is the difference in headcount ratio between
-                  two years divided by the number of years between surveys. The
-                  values in this map have been calculated using the first and
-                  latest measurement.
-                  <br />A negative value means that there has been poverty
-                  reduction (the larger the spike, the better).
-                </p>
-              </div>
+          </div>
+          <div className='chart-explanation'>
+            <div>
+              <i>NOTE: need to check data!</i>
+            </div>
+            <div>
+              <p className='undp-typography'>
+                Over the past 15 years, more than 35 countries around the world
+                have developed national MPIs (N-MPIs). This reflects an
+                increased recognition of the importance of complementing
+                monetary measures with estimates of other dimensions of poverty
+                for more effective policy-making. Over the past four years
+                alone, in the wake of COVID-19 pandemic, 16 more countries have
+                adopted national MPIs.
+              </p>
             </div>
           </div>
-        </>
+          <h6 className='undp-typography'>
+            Absolute annualized change in Multidimensional Poverty Ratio
+          </h6>
+          <div className='flex-div gap-06'>
+            <div>
+              <HorizontalBarChart
+                data={nationalYears.filter(d =>
+                  Number(d.annualizedChangeHeadcount),
+                )}
+              />
+            </div>
+            <div>
+              <p className='undp-typography'>
+                Absolute annualized change in Multidimensional Poverty Ratio is
+                the difference in headcount ratio between two years divided by
+                the number of years between surveys. A negative value means a
+                reduction in headcount ratio.
+                <br />
+                The values in this chart have been calculated using the first
+                and latest measurement.
+              </p>
+            </div>
+          </div>
+        </div>
       ) : null}
       {countryData?.note !== '' ? (
         <p>
@@ -200,8 +236,30 @@ export function CountriesMpi(props: Props) {
         </p>
       ) : null}
       <hr className='undp-style light margin-bottom-06' />
+      <div
+        style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
+        className='margin-bottom-07'
+      >
+        <h3 className='undp-typography'>Leaving No One Behind</h3>
+        <p className='undp-typography'>
+          In line with the central promise of the 2030 Agenda to leave no one
+          behind, efforts have been made to spotlight disparities in the way
+          people experience multidimensional poverty by disaggregating MPI data
+          by age, gender, rural/urban areas, subnational regions and other
+          parameters. In India for instance, the N-MPI provided estimates for
+          the 36 states and Union Territories, along with 707 administrative
+          districts, allowing outreach to those left behind, through targeted
+          multisectoral interventions. In Belize, the MPI unveiled how rural
+          communities, children, male-headed households, households with a head
+          who was under- or unemployed, or certain ethnic groups were more
+          likely to be multidimensionally poor.
+        </p>
+      </div>
       {!queryCountry ? (
-        <div className='margin-bottom-08'>
+        <div
+          className='margin-bottom-08'
+          style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
+        >
           <p className='undp-typography label'>Select a country</p>
           <Select
             options={countryList.map(country => ({

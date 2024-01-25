@@ -34,6 +34,7 @@ export interface MpiDataTypeNationalYears {
   percentChange: number;
   annualizedChangeMPI: number;
   annualizedChangeHeadcount: number;
+  firstYearMeasured: string;
   countryData: MpiDataTypeNational[];
   indicatorChange: string;
 }

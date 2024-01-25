@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { scaleThreshold } from 'd3-scale';
+import { scaleThreshold, scaleOrdinal } from 'd3-scale';
 import { select } from 'd3-selection';
 import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
@@ -14,7 +14,7 @@ import { HoverDataType } from '../../Types';
 interface Props {
   data: object[];
   prop: string;
-  valueArray: number[];
+  valueArray: any[];
   colors: string[];
 }
 
@@ -57,6 +57,10 @@ export function Map(props: Props) {
   const colorScale = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(colors);
+  const colorScalePeriod = scaleOrdinal<number, string>()
+    .domain(valueArray)
+    .range(colors);
+  console.log('data', data);
   useEffect(() => {
     const mapGSelect = select(mapG.current);
     const mapSvgSelect = select(mapSvg.current);
@@ -74,7 +78,7 @@ export function Map(props: Props) {
     mapSvgSelect.call(zoomBehaviour as any);
   }, []);
   return (
-    <div className='chart-global-container'>
+    <>
       <div className='map-container'>
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} ref={mapSvg}>
           <g ref={mapG}>
@@ -86,8 +90,8 @@ export function Map(props: Props) {
                 });
                 const color =
                   value.length > 0
-                    ? prop === 'mpi'
-                      ? colorScale(Number((value as any)[0][prop]))
+                    ? prop === 'firstYearMeasured'
+                      ? colorScalePeriod(Number((value as any)[0][prop]))
                       : Number((value as any)[0][prop]) === 0 ||
                         // eslint-disable-next-line no-restricted-globals
                         isNaN(Number((value as any)[0][prop]))
@@ -215,7 +219,7 @@ export function Map(props: Props) {
                 fill='#212121'
                 textAnchor='end'
               >
-                {prop === 'mpi' ? 'Higher poverty' : 'Increase in poverty'}
+                {prop === 'mpi' ? 'Higher poverty' : ''}
               </text>
               {valueArray.map((d, i) => (
                 <g key={i}>
@@ -228,11 +232,19 @@ export function Map(props: Props) {
                     y={1}
                     width={320 / valueArray.length}
                     height={8}
-                    fill={colorScale(valueArray[i] - 0.00001)}
+                    fill={
+                      prop === 'mpi'
+                        ? colorScale(valueArray[i] - 0.00001)
+                        : colorScalePeriod(valueArray[i])
+                    }
                     stroke='#fff'
                   />
                   <text
-                    x={(320 * (i + 1)) / valueArray.length}
+                    x={
+                      prop === 'mpi'
+                        ? (320 * (i + 1)) / valueArray.length
+                        : (320 * (i + 1)) / valueArray.length - 80
+                    }
                     y={25}
                     fontSize={12}
                     fill='#212121'
@@ -251,31 +263,11 @@ export function Map(props: Props) {
               >
                 {prop === 'mpi' ? '0' : ''}
               </text>
-              {prop !== 'mpi' ? (
-                <>
-                  <text
-                    y={42}
-                    x={320 / valueArray.length + 10}
-                    fontSize={12}
-                    fill='#212121'
-                  >
-                    Countries with measurements for only one year
-                  </text>
-                  <rect
-                    x={0}
-                    y={35}
-                    width={320 / valueArray.length}
-                    height={8}
-                    fill='var(--gray-500)'
-                    stroke='#fff'
-                  />
-                </>
-              ) : null}
             </g>
           </svg>
         </LegendEl>
       </div>
       {hoverData ? <Tooltip data={hoverData} prop={prop} /> : null}
-    </div>
+    </>
   );
 }
