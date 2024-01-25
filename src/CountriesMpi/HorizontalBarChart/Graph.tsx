@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
 import { scaleBand, scaleLinear } from 'd3-scale';
-import { extent, descending } from 'd3-array';
+import { extent, ascending } from 'd3-array';
 import { axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
 import UNDPColorModule from 'undp-viz-colors';
@@ -21,7 +21,7 @@ export function Graph(props: Props) {
   const graphWidth = svgWidth - margin.left - margin.right;
   const graphHeight = svgHeight - margin.top - margin.bottom;
   data.sort((a, b) =>
-    descending(a.annualizedChangeHeadcount, b.annualizedChangeHeadcount),
+    ascending(a.annualizedChangeHeadcount, b.annualizedChangeHeadcount),
   );
   const xDomain = extent(
     data,

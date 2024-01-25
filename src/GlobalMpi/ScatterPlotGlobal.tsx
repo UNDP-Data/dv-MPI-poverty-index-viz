@@ -71,7 +71,6 @@ export function ScatterPlotGlobal(props: Props) {
 
   return (
     <div className='chart-container margin-top-06'>
-      <h6 className='undp-typography'>Headcount ratio vs Intensity</h6>
       <div className='margin-left-08 margin-bottom-03'>
         <Radio.Group
           defaultValue='All'

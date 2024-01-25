@@ -60,7 +60,6 @@ export function Map(props: Props) {
   const colorScalePeriod = scaleOrdinal<number, string>()
     .domain(valueArray)
     .range(colors);
-  console.log('data', data);
   useEffect(() => {
     const mapGSelect = select(mapG.current);
     const mapSvgSelect = select(mapSvg.current);

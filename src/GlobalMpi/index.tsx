@@ -60,6 +60,32 @@ export function GlobalMpi(props: Props) {
           </div>
         </div>
       ) : null}
+      <hr className='undp-style light margin-bottom-06' />
+      <div
+        className='flex-div flex-wrap gap-04 margin-bottom-08'
+        style={{
+          maxWidth: '1024px',
+          margin: '0 auto',
+          padding: '0 1.5rem',
+        }}
+      >
+        <h4 className='undp-typography'>
+          Multidimensional Poverty vs Income Poverty
+        </h4>
+        <p className='undp-typography'>
+          Poverty measures that only consider income can underestimate poverty.
+          In many countries (42 out of the 61 analyzed in the Global MPI report
+          2023), the incidence of multidimensional poverty is higher than the
+          incidence of monetary policy (according to the World Bank measure at
+          $2.15 per day). In Chad, Guinea and Mali, it is 50 percentage points
+          higher.
+        </p>
+        <strong>
+          <i>chart comparing MPI vs Income poverty to be added</i>
+        </strong>
+      </div>
+      <hr className='undp-style light margin-bottom-06' />
+      <h4 className='undp-typography'>Headcount Ratio vs Intensity</h4>
       <div className='flex-div gap-06'>
         <div className='chart-global-scatter'>
           <ScatterPlotGlobal data={mpiData} />
@@ -75,9 +101,9 @@ export function GlobalMpi(props: Props) {
         </div>
       </div>
       <div className='margin-top-09'>
-        <h3>
-          Comparisons: Urban vs Rural and Female vs Male headed households
-        </h3>
+        <h4 className='undp-typography'>
+          Comparing Urban vs Rural and Female vs Male headed households
+        </h4>
         <p className='undp-typography'>
           Globally 84% of all MPI poor people living in rural areas. Overall,{' '}
           multidimensional poverty tend to be both more prevalent and more

@@ -44,8 +44,7 @@ function App() {
   useEffect(() => {
     Promise.all([
       csv(`${dataurl}Global-MPI_national.csv`),
-      csv(`${dataurl}Global-MPI_rural.csv`),
-      csv(`${dataurl}Global-MPI_urban.csv`),
+      csv(`${dataurl}Global-MPI_area.csv`),
       csv(`${dataurl}Global-MPI_female.csv`),
       csv(`${dataurl}Global-MPI_male.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
@@ -55,8 +54,7 @@ function App() {
     ]).then(
       ([
         data,
-        rural,
-        urban,
+        urbanRural,
         female,
         male,
         subnational,
@@ -75,11 +73,11 @@ function App() {
         }));
         const diffFetched: MpiDataTypeDiff[] = [];
         data.forEach((d: any) => {
-          const rData = rural.filter(
-            k => k['country code'] === d['country code'],
+          const rData = urbanRural.filter(
+            k => k['country code'] === d['country code'] && k.Area === 'Rural',
           )[0];
-          const uData = urban.filter(
-            k => k['country code'] === d['country code'],
+          const uData = urbanRural.filter(
+            k => k['country code'] === d['country code'] && k.Area === 'Urban',
           )[0];
           const fData = female.filter(
             k => k['country code'] === d['country code'],
@@ -134,6 +132,10 @@ function App() {
           region: d['World region'],
           mpi: d.MPI,
           year: d.Year,
+          lastYear:
+            d.Year.split('-').length > 1
+              ? Number(d.Year.split('-')[1])
+              : Number(d.Year.split('-')[0]),
           subregion: d['Admin name Region'],
           adminLevel: d['admin level'],
           headcountRatio: d['Headcount Ratio (H, %)'],
