@@ -132,10 +132,10 @@ function App() {
           region: d['World region'],
           mpi: d.MPI,
           year: d.Year,
-          lastYear:
+          /* lastYear:
             d.Year.split('-').length > 1
               ? Number(d.Year.split('-')[1])
-              : Number(d.Year.split('-')[0]),
+              : Number(d.Year.split('-')[0]), */
           subregion: d['Admin name Region'],
           adminLevel: d['admin level'],
           headcountRatio: d['Headcount Ratio (H, %)'],
