@@ -45,8 +45,7 @@ function App() {
     Promise.all([
       csv(`${dataurl}Global-MPI_national.csv`),
       csv(`${dataurl}Global-MPI_area.csv`),
-      csv(`${dataurl}Global-MPI_female.csv`),
-      csv(`${dataurl}Global-MPI_male.csv`),
+      csv(`${dataurl}Global-MPI_headship.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location_multiple_years.csv`),
       csv(`${dataurl}MPI_national_multiple_years.csv`),
@@ -55,8 +54,7 @@ function App() {
       ([
         data,
         urbanRural,
-        female,
-        male,
+        headship,
         subnational,
         location,
         nationalYears,
@@ -79,11 +77,15 @@ function App() {
           const uData = urbanRural.filter(
             k => k['country code'] === d['country code'] && k.Area === 'Urban',
           )[0];
-          const fData = female.filter(
-            k => k['country code'] === d['country code'],
+          const fData = headship.filter(
+            k =>
+              k['country code'] === d['country code'] &&
+              k.Headship === 'female-headed',
           )[0];
-          const mData = male.filter(
-            k => k['country code'] === d['country code'],
+          const mData = headship.filter(
+            k =>
+              k['country code'] === d['country code'] &&
+              k.Headship === 'male-headed',
           )[0];
           if (rData && uData && fData && mData) {
             diffFetched.push({
