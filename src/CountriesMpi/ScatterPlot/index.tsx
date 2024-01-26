@@ -1,10 +1,10 @@
-import { MpiDataType, MpiDataTypeLocation } from '../../Types';
+import { MpiDataTypeNational, MpiDataTypeLocation } from '../../Types';
 import { ScatterPlotChart } from './ScatterPlotChart';
 
 interface Props {
   rural?: MpiDataTypeLocation;
   urban?: MpiDataTypeLocation;
-  total?: MpiDataType;
+  total?: MpiDataTypeNational;
   id: string;
   country: string;
 }

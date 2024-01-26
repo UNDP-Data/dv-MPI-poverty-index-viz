@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import { useRef, useState } from 'react';
 import { Radio, RadioChangeEvent } from 'antd';
-import { MpiDataType } from '../../Types';
+import { MpiDataTypeNational } from '../../Types';
 import { Graph } from './Graph';
 
 interface Props {
-  data: MpiDataType[];
+  data: MpiDataTypeNational[];
   indicator: string;
 }
 

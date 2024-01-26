@@ -7,7 +7,7 @@ import { select } from 'd3-selection';
 import { useEffect, useRef, useState } from 'react';
 import {
   HoverSubnatDataType,
-  MpiDataType,
+  MpiDataTypeNational,
   MpiDataTypeLocation,
 } from '../../Types';
 import { TooltipSubnational } from '../../Components/TooltipSubnational';
@@ -15,7 +15,7 @@ import { TooltipSubnational } from '../../Components/TooltipSubnational';
 interface Props {
   rural?: MpiDataTypeLocation;
   urban?: MpiDataTypeLocation;
-  total?: MpiDataType;
+  total?: MpiDataTypeNational;
   id: string;
   country: string;
 }

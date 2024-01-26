@@ -6,10 +6,10 @@ import { max } from 'd3-array';
 import { axisBottom } from 'd3-axis';
 import { select } from 'd3-selection';
 import UNDPColorModule from 'undp-viz-colors';
-import { MpiDataType } from '../../Types';
+import { MpiDataTypeNational } from '../../Types';
 
 interface Props {
-  data: MpiDataType[];
+  data: MpiDataTypeNational[];
   radioOption: object;
   svgWidth: number;
   svgHeight: number;
