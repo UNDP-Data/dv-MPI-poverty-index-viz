@@ -18,7 +18,6 @@ import { ScatterPlotSubnational } from './ScatterPlotSubnational';
 import { LollipopChartViz } from './LollipopChartViz';
 import { ListView } from './ListView';
 import { BarChart } from './BarChart';
-import { HorizontalBarChart } from './HorizontalBarChart';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -202,29 +201,6 @@ export function CountriesMpi(props: Props) {
                 for more effective policy-making. Over the past four years
                 alone, in the wake of COVID-19 pandemic, 16 more countries have
                 adopted national MPIs.
-              </p>
-            </div>
-          </div>
-          <h6 className='undp-typography'>
-            Absolute annualized change in Multidimensional Poverty Ratio
-          </h6>
-          <div className='flex-div gap-06'>
-            <div>
-              <HorizontalBarChart
-                data={nationalYears.filter(d =>
-                  Number(d.annualizedChangeHeadcount),
-                )}
-              />
-            </div>
-            <div>
-              <p className='undp-typography'>
-                Absolute annualized change in Multidimensional Poverty Ratio is
-                the difference in headcount ratio between two years divided by
-                the number of years between surveys. A negative value means a
-                reduction in headcount ratio.
-                <br />
-                The values in this chart have been calculated using the first
-                and latest measurement.
               </p>
             </div>
           </div>

@@ -7,7 +7,7 @@ export interface BboxDataType {
   sw: BboxCoords;
   ne: BboxCoords;
 }
-export interface MpiDataType {
+export interface MpiDataTypeBase {
   country: string;
   iso_a3: string;
   region: string;
@@ -16,7 +16,10 @@ export interface MpiDataType {
   headcountRatio: number;
   intensity: number;
 }
-export interface MpiDataTypeNational extends MpiDataType {
+export interface MpiDataType extends MpiDataTypeBase {
+  povertyWB: number;
+}
+export interface MpiDataTypeNational extends MpiDataTypeBase {
   indicatorFiles?: string[];
   displayMap: boolean;
   note: string;
@@ -38,11 +41,11 @@ export interface MpiDataTypeNationalYears {
   countryData: MpiDataTypeNational[];
   indicatorChange: string;
 }
-export interface MpiDataTypeSubnational extends MpiDataType {
+export interface MpiDataTypeSubnational extends MpiDataTypeBase {
   subregion: string;
   adminLevel: string;
 }
-export interface MpiDataTypeLocation extends MpiDataType {
+export interface MpiDataTypeLocation extends MpiDataTypeBase {
   location: string;
 }
 export interface MpiComponentsType {

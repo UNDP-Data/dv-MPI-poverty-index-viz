@@ -1,6 +1,7 @@
 import UNDPColorModule from 'undp-viz-colors';
 import { Map } from '../Components/Choropleth/Map';
 import { DumbellChartViz } from './DumbellChartViz';
+import { DumbellChartHorizontal } from './DumbellChartHorizontal';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
 import { ScatterPlotGlobal } from './ScatterPlotGlobal';
 
@@ -62,7 +63,7 @@ export function GlobalMpi(props: Props) {
       ) : null}
       <hr className='undp-style light margin-bottom-06' />
       <div
-        className='flex-div flex-wrap gap-04 margin-bottom-08'
+        className='margin-bottom-08'
         style={{
           maxWidth: '1024px',
           margin: '0 auto',
@@ -80,12 +81,11 @@ export function GlobalMpi(props: Props) {
           $2.15 per day). In Chad, Guinea and Mali, it is 50 percentage points
           higher.
         </p>
-        <strong>
-          <i>chart comparing MPI vs Income poverty to be added</i>
-        </strong>
       </div>
-      <hr className='undp-style light margin-bottom-06' />
-      <h4 className='undp-typography'>Headcount Ratio vs Intensity</h4>
+      <DumbellChartHorizontal data={mpiData} />
+      <h4 className='undp-typography margin-top-10'>
+        Headcount Ratio vs Intensity
+      </h4>
       <div className='flex-div gap-06'>
         <div className='chart-global-scatter'>
           <ScatterPlotGlobal data={mpiData} />

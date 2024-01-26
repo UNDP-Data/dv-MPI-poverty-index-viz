@@ -112,15 +112,18 @@
 .tooltipTitle{
   font-size:.9rem !important;
   color: var(--gray-800);
+  fill: var(--gray-800);
   font-size: 500;
 }
 .tooltipLabel{
   font-size:.9rem !important;
   color: var(--gray-600);
+  fill: var(--gray-600);
 }
 .tooltipValue{
   font-size:.9rem !important;
   color: var(--black-600);
+  fill: var(--black-600);
   font-weight: 700;
 }
 .ant-select-item-option-content{

@@ -68,6 +68,7 @@ function App() {
           headcountRatio: d[headcountR],
           year: d.Year,
           intensity: d[intensity],
+          povertyWB: d['PPP $2.15 a day 2011-2021'],
         }));
         const diffFetched: MpiDataTypeDiff[] = [];
         data.forEach((d: any) => {
