@@ -18,15 +18,17 @@ export function Chart(props: Props) {
     undefined,
   );
   let width = 1280;
-  const margin = { top: 60, right: 20, bottom: 30, left: 50 };
+  const margin = { top: 40, right: 30, bottom: 80, left: 40 };
   const graphHeight = 400;
-
+  const minBarWidth = 13;
+  const graphPadding = 10;
   const visContainer = useRef(null);
   const [graphWidth, setWidth] = useState<number>(0);
+  const [containerWidth, setContainerWidth] = useState<number>(0);
   const [barWidth, setBarWidth] = useState<number>(16);
   const indicators = [
-    { ind: 'povertyWB', label: 'PPP $2.15 a day 2011-2021' },
     { ind: 'headcountRatio', label: 'MPI Headcount Ratio' },
+    { ind: 'povertyWB', label: 'PPP $2.15 a day 2011-2021' },
   ];
 
   const y = scaleLinear()
@@ -59,14 +61,26 @@ export function Chart(props: Props) {
     const handleResize = () => {
       if (visContainer.current)
         width = (visContainer.current as any).offsetWidth;
-      setWidth(width);
-      setBarWidth((width - margin.left - margin.right) / dataDiff.length);
+      const barSize =
+        (width - margin.left - margin.right - 2 * graphPadding) /
+        dataDiff.length;
+      console.log('width', width, 'barSize', barSize);
+      setBarWidth(barSize > minBarWidth ? barSize : minBarWidth);
+      setContainerWidth(width);
+      setWidth(
+        barSize > minBarWidth
+          ? width
+          : dataDiff.length * minBarWidth +
+              margin.left +
+              margin.right +
+              2 * graphPadding,
+      );
     };
     handleResize();
     window.addEventListener('resize', handleResize);
   }, []);
   return (
-    <div className='dumbellChart' ref={visContainer}>
+    <div ref={visContainer}>
       <div className='legend-container'>
         {indicators.map((k, j) => (
           <div key={j} className='legend-item'>
@@ -86,111 +100,86 @@ export function Chart(props: Props) {
           {dataDiff
             .filter(d => Number(d.povertyWB))
             .map((d, i) => (
-              <g key={i} transform={`translate(${i * barWidth}, 0)`}>
+              <g
+                key={i}
+                transform={`translate(${i * barWidth + graphPadding}, 0)`}
+              >
+                <line
+                  x1={barWidth / 2}
+                  x2={barWidth / 2}
+                  y2={graphHeight - margin.top - margin.bottom + 15}
+                  y1={y(d.headcountRatio)}
+                  stroke='#A9B1B7'
+                  strokeWidth={1}
+                  opacity={hoveredCountry === (d as any).country ? 1 : 0}
+                />
                 <line
                   x1={barWidth / 2}
                   x2={barWidth / 2}
                   y1={y(d.povertyWB)}
                   y2={y(d.headcountRatio)}
-                  stroke='#000'
-                  strokeWidth={1}
+                  stroke={
+                    hoveredCountry === (d as any).country ? '#000' : '#55606E'
+                  }
+                  strokeWidth='1'
                 />
                 <circle
                   cx={barWidth / 2}
                   cy={y(d.povertyWB)}
-                  r={
-                    hoveredCountry === (d as any).country
-                      ? barWidth / 2 + 1
-                      : barWidth / 2 - 3
-                  }
+                  r={hoveredCountry === (d as any).country ? 10 : 6}
                   fill={UNDPColorModule.categoricalColors.colors[0]}
                 />
                 <circle
                   cx={barWidth / 2}
                   cy={y(d.headcountRatio)}
-                  r={
-                    hoveredCountry === (d as any).country
-                      ? barWidth / 2
-                      : barWidth / 2 - 3
-                  }
+                  r={hoveredCountry === (d as any).country ? 9 : 6}
                   fill={UNDPColorModule.categoricalColors.colors[1]}
                 />
-                <g
-                  className='focus'
-                  style={{ display: 'block' }}
-                  key={i}
-                  transform={`translate(${barWidth},0)`}
-                >
-                  {hoveredCountry === (d as any).country ? (
+                <g className='focus' style={{ display: 'block' }} key={i}>
+                  <g
+                    transform={`translate(${
+                      i * barWidth < containerWidth - 200 ? 0 : -200
+                    },${graphHeight - margin.top})`}
+                    opacity={hoveredCountry === (d as any).country ? 1 : 0}
+                  >
                     <text y='-50' x={-barWidth} className='tooltipValue'>
                       {d.country}, (difference: {d.diff.toFixed(2)}%)
                     </text>
-                  ) : null}
-                  {indicators.map((k, j) => (
-                    <g
-                      key={j}
-                      style={{
-                        display: (d as any)[k.ind] !== '' ? 'block' : 'none',
-                      }}
-                    >
+                    {indicators.map((k, j) => (
                       <g
-                        transform={`translate(${-barWidth / 2},${
-                          -32 + j * 18
-                        })`}
+                        key={j}
+                        style={{
+                          display: (d as any)[k.ind] !== '' ? 'block' : 'none',
+                        }}
                       >
-                        <circle
-                          r={5}
-                          fill={UNDPColorModule.categoricalColors.colors[j]}
-                          opacity={
-                            hoveredCountry === (d as any).country ? 1 : 0
-                          }
-                        />
-                        <text
-                          className='tooltipLabel'
-                          x={i > dataDiff.length - 3 ? -60 : 10}
-                          y={5}
-                          opacity={
-                            hoveredCountry === (d as any).country ? 1 : 0
-                          }
+                        <g
+                          transform={`translate(${-barWidth / 2},${
+                            -32 + j * 18
+                          })`}
                         >
-                          {(d as any)[k.ind]
-                            ? `${k.label}: ${(d as any)[k.ind]}%`
-                            : '-'}
-                        </text>
+                          <circle
+                            r={5}
+                            fill={UNDPColorModule.categoricalColors.colors[j]}
+                          />
+                          <text className='tooltipLabel' x={10} y={5}>
+                            {(d as any)[k.ind]
+                              ? `${k.label}: ${(d as any)[k.ind]}%`
+                              : '-'}
+                          </text>
+                        </g>
                       </g>
-                      <line
-                        x1={-barWidth / 2}
-                        x2={-barWidth / 2}
-                        y1={0}
-                        y2={y(d.headcountRatio)}
-                        stroke='#000'
-                        strokeWidth={1}
-                        opacity={
-                          hoveredCountry === (d as any).country ? 0.7 : 0
-                        }
-                      />
-                      <rect
-                        x={0}
-                        y={graphHeight}
-                        width={barWidth}
-                        height={20}
-                        fill='#F8F8F8'
-                        opacity={
-                          hoveredCountry === (d as any).country ? 0.7 : 0
-                        }
-                      />
-                    </g>
-                  ))}
+                    ))}
+                  </g>
                   <rect
                     onMouseEnter={() => {
                       setHoveredCountry((d as any).country);
                     }}
                     onMouseLeave={() => {
-                      setHoveredCountry(undefined);
+                      setHoveredCountry('Mali');
                     }}
-                    x='-15px'
+                    x={0}
                     y={0}
-                    width='30px'
+                    width={barWidth}
                     height={graphHeight}
                     opacity={0}
                   />

@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import styled from 'styled-components';
 import { MpiDataType } from '../../Types';
 import { Chart } from './Chart';
 
@@ -7,21 +6,24 @@ interface Props {
   data: MpiDataType[];
 }
 
-const DumbellChartEl = styled.div`
-  background-color: var(--black-100);
-  box-shadow: var(--shadow);
-  padding: 1rem;
-  border-radius: 2px;
-  overflow: auto;
-`;
 export function DumbellChartHorizontal(props: Props) {
   const { data } = props;
 
   return (
-    <div className='dumbell-container'>
-      <DumbellChartEl className='undp-scrollbar'>
-        <Chart data={data} />
-      </DumbellChartEl>
+    <div
+      className='chart-container undp-scrollbar'
+      style={{ overflow: 'auto' }}
+    >
+      <Chart data={data} />
+      <p className='source'>
+        Source:{' '}
+        <a
+          className='undp-style'
+          href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
+        >
+          Global Multidimensional Poverty index 2023 MPI Tables 1 and 2
+        </a>
+      </p>
     </div>
   );
 }
