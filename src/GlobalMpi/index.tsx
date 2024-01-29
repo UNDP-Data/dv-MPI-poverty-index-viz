@@ -83,6 +83,154 @@ export function GlobalMpi(props: Props) {
         </p>
       </div>
       <DumbellChartHorizontal data={mpiData} />
+      <div
+        className='margin-bottom-08'
+        style={{
+          maxWidth: '1024px',
+          margin: '0 auto',
+          padding: '0 1.5rem',
+        }}
+      >
+        <h4 className='undp-typography margin-top-10 margin-bottom-08'>
+          The dimensions, indicators, deprivation cutoffs, and weights of the
+          global Multidimensional Poverty Index
+        </h4>
+        <div>
+          <div className='flex-div undp-table-head' style={{ padding: '10px' }}>
+            <div style={{ width: '15%', textAlign: 'center' }}>
+              Dimensions of Poverty
+            </div>
+            <div style={{ width: '20%', textAlign: 'center' }}>Indicator</div>
+            <div style={{ width: '50%', textAlign: 'center' }}>
+              Deprived if living in the household where…
+            </div>
+            <div style={{ width: '10%', textAlign: 'center' }}>Weight</div>
+          </div>
+          <div className='flex-div color-1'>
+            <div className='column-1'>Health</div>
+            <div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Nutrition</div>
+                <div className='column-3'>
+                  Any adult under 70 years of age or any child for whom there is
+                  nutritional information is undernourished.
+                </div>
+                <div className='column-4'>1/6</div>
+              </div>
+              <div className='flex-div'>
+                <div className='column-2'>Child mortality</div>
+                <div className='column-3'>
+                  Any child under the age of 18 years has died in the family in
+                  the five-year period preceding the survey.
+                </div>
+                <div className='column-4'>1/6</div>
+              </div>
+            </div>
+          </div>
+          <div className='flex-div color-2'>
+            <div className='column-1'>Education</div>
+            <div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Years of schooling</div>
+                <div className='column-3'>
+                  No household member aged ‘school entrance age + six years or
+                  older has completed at least six years of schooling.
+                </div>
+                <div className='column-4'>1/6</div>
+              </div>
+              <div className='flex-div'>
+                <div className='column-2'>School attendance</div>
+                <div className='column-3'>
+                  Any school-aged child is not attending school up to the age at
+                  which he/she would complete class eight.
+                </div>
+                <div className='column-4'>1/6</div>
+              </div>
+            </div>
+          </div>
+          <div className='flex-div color-3'>
+            <div className='column-1'>Standard of living</div>
+            <div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Cooking Fuel</div>
+                <div className='column-3'>
+                  The household cooks with dung, wood, charcoal or coal.
+                </div>
+                <div className='column-4'>1/18</div>
+              </div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Sanitation</div>
+                <div className='column-3'>
+                  The household’s sanitation facility is not improved (according
+                  to SDG guidelines) or it is improved but shared with other
+                  households.
+                </div>
+                <div className='column-4'>1/18</div>
+              </div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Drinking Water</div>
+                <div className='column-3'>
+                  The household does not have access to improved drinking water
+                  (according to SDG guidelines) or improved drinking water is at
+                  least a 30-minute walk from home, round trip.
+                </div>
+                <div className='column-4'>1/18</div>
+              </div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Electricity</div>
+                <div className='column-3'>
+                  The household has no electricity.
+                </div>
+                <div className='column-4'>1/18</div>
+              </div>
+              <div
+                className='flex-div'
+                style={{ borderBottom: '2px solid #FFF' }}
+              >
+                <div className='column-2'>Housing</div>
+                <div className='column-3'>
+                  At least one of the three housing materials for roof, walls
+                  and floor are inadequate: the floor is of natural materials
+                  roof and/or walls are of natural or rudimentary materials.
+                </div>
+                <div className='column-4'>1/18</div>
+              </div>
+              <div className='flex-div'>
+                <div className='column-2'>Assets</div>
+                <div className='column-3'>
+                  The household does not own more than one of these assets:
+                  radio, television, telephone, computer, animal cart, bicycle,
+                  or refrigerator, and does not own a car or truck.
+                </div>
+                <div className='column-4'>1/18</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4>
+        <i>
+          To be added here: chart showing indicators values for all countries
+        </i>
+      </h4>
       <h4 className='undp-typography margin-top-10'>
         Headcount Ratio vs Intensity
       </h4>

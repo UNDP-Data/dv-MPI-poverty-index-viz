@@ -259,8 +259,13 @@ function App() {
               className='undp-tabs narrow-tabs'
               items={[
                 {
-                  label: 'National MPI',
+                  label: 'Global MPI',
                   key: '1',
+                  children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
+                },
+                {
+                  label: 'National MPI',
+                  key: '2',
                   children: (
                     <CountriesMpi
                       national={nationalData}
@@ -270,20 +275,10 @@ function App() {
                     />
                   ),
                 },
-                {
-                  label: 'Global MPI',
-                  key: '',
-                  children: <GlobalMpi mpiData={mpiData} diffData={diffData} />,
-                },
               ]}
             />
           ) : (
-            <CountriesMpi
-              national={nationalData}
-              nationalYears={nationalYearsData}
-              subnational={subnationalData}
-              location={locationData}
-            />
+            <GlobalMpi mpiData={mpiData} diffData={diffData} />
           )}
           <div>{}</div>
         </>

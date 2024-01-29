@@ -32,9 +32,13 @@ export function Chart(props: Props) {
     .domain([100, 0])
     .range([0, graphHeight - margin.top - margin.bottom])
     .nice();
+
   const colorScale = scaleOrdinal<string>()
     .domain(indicators.map(d => d.ind))
-    .range(UNDPColorModule.categoricalColors.colors);
+    .range([
+      UNDPColorModule.categoricalColors.colors[5],
+      UNDPColorModule.categoricalColors.colors[6],
+    ]);
 
   const yAxis = axisLeft(y as any)
     .tickSize(-graphWidth + margin.left + margin.right)
