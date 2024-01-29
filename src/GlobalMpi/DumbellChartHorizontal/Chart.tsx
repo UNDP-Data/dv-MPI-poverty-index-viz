@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import UNDPColorModule from 'undp-viz-colors';
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { descending } from 'd3-array';
 import { axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
@@ -14,9 +14,6 @@ interface Props {
 }
 export function Chart(props: Props) {
   const { data } = props;
-  const [hoveredCountry, setHoveredCountry] = useState<undefined | string>(
-    undefined,
-  );
   let width = 1280;
   const margin = { top: 40, right: 30, bottom: 80, left: 40 };
   const graphHeight = 400;
@@ -35,6 +32,9 @@ export function Chart(props: Props) {
     .domain([100, 0])
     .range([0, graphHeight - margin.top - margin.bottom])
     .nice();
+  const colorScale = scaleOrdinal<string>()
+    .domain(indicators.map(d => d.ind))
+    .range(UNDPColorModule.categoricalColors.colors);
 
   const yAxis = axisLeft(y as any)
     .tickSize(-graphWidth + margin.left + margin.right)
@@ -48,6 +48,9 @@ export function Chart(props: Props) {
     }));
   dataDiff.sort((a, b) => descending(Number(a.diff), Number(b.diff)));
 
+  const [hoveredCountry, setHoveredCountry] = useState<undefined | string>(
+    dataDiff[0].country,
+  );
   const svg = select('#povertyWB');
   svg.select('.yAxis').call(yAxis as any);
   svg.selectAll('.domain').remove();
@@ -64,7 +67,6 @@ export function Chart(props: Props) {
       const barSize =
         (width - margin.left - margin.right - 2 * graphPadding) /
         dataDiff.length;
-      console.log('width', width, 'barSize', barSize);
       setBarWidth(barSize > minBarWidth ? barSize : minBarWidth);
       setContainerWidth(width);
       setWidth(
@@ -87,7 +89,7 @@ export function Chart(props: Props) {
             <div
               className='legend-circle-medium'
               style={{
-                backgroundColor: UNDPColorModule.categoricalColors.colors[j],
+                backgroundColor: colorScale(k.ind),
               }}
             />
             <div className='small-font'>{k.label}</div>
@@ -126,14 +128,14 @@ export function Chart(props: Props) {
                 <circle
                   cx={barWidth / 2}
                   cy={y(d.povertyWB)}
-                  r={hoveredCountry === (d as any).country ? 10 : 6}
-                  fill={UNDPColorModule.categoricalColors.colors[0]}
+                  r={hoveredCountry === (d as any).country ? 9 : 5}
+                  fill={colorScale('povertyWB')}
                 />
                 <circle
                   cx={barWidth / 2}
                   cy={y(d.headcountRatio)}
-                  r={hoveredCountry === (d as any).country ? 9 : 6}
-                  fill={UNDPColorModule.categoricalColors.colors[1]}
+                  r={hoveredCountry === (d as any).country ? 8 : 5}
+                  fill={colorScale('headcountRatio')}
                 />
                 <g className='focus' style={{ display: 'block' }} key={i}>
                   <g
@@ -157,10 +159,7 @@ export function Chart(props: Props) {
                             -32 + j * 18
                           })`}
                         >
-                          <circle
-                            r={5}
-                            fill={UNDPColorModule.categoricalColors.colors[j]}
-                          />
+                          <circle r={5} fill={colorScale(k.ind)} />
                           <text className='tooltipLabel' x={10} y={5}>
                             {(d as any)[k.ind]
                               ? `${k.label}: ${(d as any)[k.ind]}%`
