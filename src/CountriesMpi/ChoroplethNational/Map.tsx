@@ -8,7 +8,7 @@ import { select } from 'd3-selection';
 import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
 import world from '../../Data/worldMap.json';
-import { Tooltip } from '../../Components/Tooltip';
+import { Tooltip } from '../Tooltip';
 import { HoverDataType } from '../../Types';
 
 interface Props {
