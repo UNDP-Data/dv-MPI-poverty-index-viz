@@ -154,6 +154,18 @@
   flex-shrink: 1; 
   flex-basis: 100px;
 }
+.chart-stats-national{
+    flex-direction: column;
+}
+@media (max-width: 1200px) {
+  .chart-stats-national{
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1; 
+    flex-basis: 40%;
+    max-width: 100%;
+  }
+}
 .chart-top{
   flex-grow: 1;
   flex-basis: 60%;

@@ -14,7 +14,7 @@ import {
 } from './Types';
 import './styles.css';
 import { GlobalMpi } from './GlobalMpi';
-import { CountriesMpi } from './CountriesMpi';
+import { NationalMpi } from './NationalMpi';
 
 function App() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -264,7 +264,7 @@ function App() {
                   label: 'National MPI',
                   key: '2',
                   children: (
-                    <CountriesMpi
+                    <NationalMpi
                       national={nationalData}
                       nationalYears={nationalYearsData}
                       subnational={subnationalData}

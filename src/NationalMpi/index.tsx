@@ -26,7 +26,7 @@ interface Props {
   location: MpiDataTypeLocation[];
 }
 
-export function CountriesMpi(props: Props) {
+export function NationalMpi(props: Props) {
   const { national, nationalYears, subnational, location } = props;
   const [rural, setRural] = useState<MpiDataTypeLocation | undefined>(
     undefined,
@@ -144,13 +144,14 @@ export function CountriesMpi(props: Props) {
   }, [selectedCountry]);
   useEffect(() => {
     if (containerRef.current) {
+      console.log(containerRef.current.clientWidth);
       if (containerRef.current.clientWidth > 1800) setSubnatWidth(1200);
       else if (containerRef.current.clientWidth > 1200) setSubnatWidth(760);
       else setSubnatWidth(containerRef.current.clientWidth);
     }
   }, [containerRef.current]);
   return (
-    <div ref={containerRef}>
+    <div>
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
@@ -237,8 +238,8 @@ export function CountriesMpi(props: Props) {
           />
         </div>
       ) : null}
-      <div className='flex-div flex-wrap'>
-        <div className='chart-explanation flex-div flex-wrap'>
+      <div className='flex-div flex-wrap' ref={containerRef}>
+        <div className='chart-stats-national flex-div flex-wrap gap-05'>
           <div
             className='stat-card'
             style={{ minWidth: '300px', maxHeight: '250px' }}
