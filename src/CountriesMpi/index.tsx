@@ -11,13 +11,13 @@ import {
   MpiDataTypeLocation,
   MpiDataTypeNationalYears,
 } from '../Types';
-import { Map } from '../Components/Choropleth/Map';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
 import { LollipopChartViz } from './LollipopChartViz';
 import { ListView } from './ListView';
 import { BarChart } from './BarChart';
+import { ChoroplethNational } from './ChoroplethNational';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -94,8 +94,6 @@ export function CountriesMpi(props: Props) {
   ];
   const regionsOptions = [...new Set(nationalYears.map(d => d.region))];
   */
-  const periodOptions = ['pre-COVID', 'from 2020'];
-  const periodColors = ['#006eb5', '#5DD4F0'];
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -177,23 +175,12 @@ export function CountriesMpi(props: Props) {
             padding: '0 1.5rem',
           }}
         >
-          <h6 className='margin-top-05 undp-typography'>
-            Country coverage National Multidimensional Poverty Index
-          </h6>
           <div className='chart-national-container'>
-            <Map
-              data={nationalYears}
-              prop='firstYearMeasured'
-              valueArray={periodOptions}
-              colors={periodColors}
-            />
+            <ChoroplethNational data={nationalYears} />
           </div>
-          <div className='chart-explanation'>
+          <div className='chart-explanation-national'>
             <div>
-              <i>NOTE: need to check data!</i>
-            </div>
-            <div>
-              <p className='undp-typography'>
+              <p className='undp-typography margin-top-10'>
                 Over the past 15 years, more than 35 countries around the world
                 have developed national MPIs (N-MPIs). This reflects an
                 increased recognition of the importance of complementing
@@ -321,7 +308,7 @@ export function CountriesMpi(props: Props) {
                 country={selectedCountry}
               />
               <div>
-                <p className='source margin-top-00'>
+                <p className='source margin-top-00 undp-typography'>
                   Source:{' '}
                   <a
                     className='undp-style small-font'
@@ -508,7 +495,7 @@ export function CountriesMpi(props: Props) {
                 />
               </div>
             </div>
-            <p className='source margin-top-04'>
+            <p className='source margin-top-04 undp-typography'>
               Source:{' '}
               <a
                 className='undp-style small-font'

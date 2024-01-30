@@ -49,6 +49,7 @@ function App() {
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location_multiple_years.csv`),
       csv(`${dataurl}MPI_national_multiple_years.csv`),
+      csv(`${dataurl}MPI_year_implementation.csv`),
       json(`${dataurl}country_territory_groups_WBregionBBox.json`),
     ]).then(
       ([
@@ -58,8 +59,10 @@ function App() {
         subnational,
         location,
         nationalYears,
+        yearImplementation,
         countriesArray,
       ]) => {
+        console.log('yearImplementation', yearImplementation);
         const dataFetched = data.map((d: any) => ({
           country: d.Country,
           iso_a3: d['country code'],
@@ -197,15 +200,6 @@ function App() {
           // as the latest value is smaller than the first one
           const indicatorChange =
             countryDataValues[0].mpi === '' ? 'headcountRatio' : 'mpi';
-          const povertyChange =
-            ((countryDataValues[0][indicatorChange] -
-              countryDataValues[countryDataValues.length - 1][
-                indicatorChange
-              ]) /
-              countryDataValues[countryDataValues.length - 1][
-                indicatorChange
-              ]) *
-            100;
           const annualizedChangeMPI =
             (countryDataValues[countryDataValues.length - 1].mpi -
               countryDataValues[0].mpi) /
@@ -217,6 +211,9 @@ function App() {
             (countryDataValues[countryDataValues.length - 1].firstYear -
               countryDataValues[0].firstYear);
           // sort data by year
+          const yearImpl = yearImplementation.filter(
+            k => k['country code'] === country,
+          )[0];
           nationalYearsAll.push({
             iso_a3: country,
             bbox: countryDetails.boundingBox,
@@ -226,11 +223,11 @@ function App() {
               countryDetails['Latitude (average)'],
             ],
             country: countryDataValues[0].country,
-            percentChange: povertyChange,
+            yearImplementation:
+              yearImpl !== undefined ? Number(yearImpl.year) : 2020,
+            measurements: countryDataValues.length,
             annualizedChangeMPI,
             annualizedChangeHeadcount,
-            firstYearMeasured:
-              countryDataValues[0].firstYear < 2020 ? 'pre-COVID' : 'from 2020',
             countryData: countryDataValues,
             indicatorChange,
           });

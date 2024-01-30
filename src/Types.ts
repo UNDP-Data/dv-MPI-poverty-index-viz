@@ -32,12 +32,12 @@ export interface MpiDataTypeNationalYears {
   iso_a3: string;
   country: string;
   region: string;
+  yearImplementation: undefined | number;
+  measurements: number;
   bbox: BboxDataType;
   coordinates: [number, number];
-  percentChange: number;
   annualizedChangeMPI: number;
   annualizedChangeHeadcount: number;
-  firstYearMeasured: string;
   countryData: MpiDataTypeNational[];
   indicatorChange: string;
 }

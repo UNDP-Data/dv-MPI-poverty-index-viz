@@ -149,6 +149,11 @@
   flex-shrink: 1; 
   flex-basis: 300px;
 }
+.chart-explanation-national{
+  flex-grow: 1;
+  flex-shrink: 1; 
+  flex-basis: 100px;
+}
 .chart-top{
   flex-grow: 1;
   flex-basis: 60%;
@@ -256,6 +261,7 @@
   background-color: white;
   border-color: var(--gray-300);
 }
+/* indicators table */
 
 .column-1{
   flex-grow: 0;
