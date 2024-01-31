@@ -58,6 +58,20 @@ export function GlobalMpi(props: Props) {
               valueArray={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
               colors={UNDPColorModule.sequentialColors.negativeColorsx07}
             />
+            <p className='source'>
+              Source:{' '}
+              <a
+                target='_blank'
+                rel='noreferrer'
+                className='undp-style small-font'
+                href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
+              >
+                Global Multidimensional Poverty index 2023 MPI Tables 1 and 2
+              </a>
+              <br />
+              Note: The annualized change is calculated using the measurements
+              of the first and last year.
+            </p>
           </div>
         </div>
       ) : null}

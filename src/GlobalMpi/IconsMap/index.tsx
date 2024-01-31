@@ -226,20 +226,45 @@ export function IconsMap(props: Props) {
                         setHoverData(undefined);
                       }}
                     >
-                      <polygon
-                        points={`${-5 / zoomLevel}, 0, 0, ${
-                          valueScale(d.annualizedChangeHeadcount) / zoomLevel
-                        }, ${5 / zoomLevel}, 0`}
-                        fill={selectedCountry === d.iso_a3 ? '#000' : '#FFF'}
-                        strokeWidth={1 / zoomLevel}
-                        stroke='#000'
-                      />
-                      <line
-                        x1={-7 / zoomLevel}
-                        x2={7 / zoomLevel}
-                        strokeWidth={1 / zoomLevel}
-                        stroke='#000'
-                      />
+                      <g
+                        transform={`translate(0,${
+                          -valueScale(d.annualizedChangeHeadcount) /
+                          2 /
+                          zoomLevel
+                        })`}
+                      >
+                        <polygon
+                          transform={`rotate(${
+                            d.annualizedChangeHeadcount > 0 ? 180 : 0
+                          })`}
+                          points={`${-3 / zoomLevel}, 0, ${-3 / zoomLevel}, ${
+                            valueScale(-Math.abs(d.annualizedChangeHeadcount)) /
+                            zoomLevel
+                          }, ${-6 / zoomLevel}, ${
+                            valueScale(-Math.abs(d.annualizedChangeHeadcount)) /
+                            zoomLevel
+                          }, 0, ${
+                            (valueScale(
+                              -Math.abs(d.annualizedChangeHeadcount),
+                            ) +
+                              7) /
+                            zoomLevel
+                          }, ${6 / zoomLevel}, ${
+                            valueScale(-Math.abs(d.annualizedChangeHeadcount)) /
+                            zoomLevel
+                          }, ${3 / zoomLevel}, ${
+                            valueScale(-Math.abs(d.annualizedChangeHeadcount)) /
+                            zoomLevel
+                          }, ${3 / zoomLevel}, 0`}
+                          fill={
+                            selectedCountry === d.iso_a3 ? '#000' : '#f5f5f5'
+                          }
+                          strokeWidth={1 / zoomLevel}
+                          stroke={
+                            selectedCountry === d.iso_a3 ? '#f5f5f5' : '#000'
+                          }
+                        />
+                      </g>
                     </g>
                   );
                 return null;
@@ -325,32 +350,38 @@ export function IconsMap(props: Props) {
             </p>
             <svg viewBox='0 0 380 70'>
               <g transform='translate(0,0)'>
-                <g transform='translate(10,5)'>
+                <g transform='translate(10,20)'>
                   <polygon
-                    points={`-5, 0, 0, ${valueScale(extentValue[1])}, 5, 0`}
-                    fill='#fff'
-                    stroke='#55606E'
+                    transform='rotate(180)'
+                    points={`-3, 0, -3, 
+                    ${valueScale(-extentValue[1])}, -6, 
+                    ${valueScale(-extentValue[1])}, 0,
+                    ${valueScale(-extentValue[1]) + 7}, 6, ${valueScale(
+                      -extentValue[1],
+                    )}, 3, ${valueScale(-extentValue[1])}, 3, 0`}
+                    fill='#f5f5f5'
+                    strokeWidth='1'
+                    stroke='#000'
                   />
-                  <line x1={-7} x2={7} strokeWidth={1} stroke='#55606E' />
                   <text x='20' y='5' className='label'>
                     {extentValue[1].toFixed(2)}
                   </text>
                 </g>
-                <g transform='translate(100,5)'>
+                <g transform='translate(100,20)'>
                   <polygon
-                    points={`-5, 0, 0, ${valueScale(extentValue[0])}, 5, 0`}
-                    fill='#fff'
+                    transform='translate(0,-20)'
+                    points={`-3, 0, -3, 
+                    ${valueScale(extentValue[0])}, -6, 
+                    ${valueScale(extentValue[0])}, 0,
+                    ${valueScale(extentValue[0]) + 7}, 6, ${valueScale(
+                      extentValue[0],
+                    )}, 3, ${valueScale(extentValue[0])}, 3, 0`}
+                    fill='#f5f5f5'
+                    strokeWidth='1'
                     stroke='#000'
                   />
-                  <line x1={-7} x2={7} strokeWidth={1} stroke='#55606E' />
                   <text x='20' y='5' className='label'>
                     {extentValue[0].toFixed(2)}
-                  </text>
-                </g>
-                <g transform='translate(190,5)'>
-                  <line x1={-7} x2={7} strokeWidth={1} stroke='#55606E' />
-                  <text x='20' y='5' className='label'>
-                    no data
                   </text>
                 </g>
               </g>
