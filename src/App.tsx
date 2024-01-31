@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { csv, json } from 'd3-fetch';
-import { descending } from 'd3-array';
+import { descending, ascending } from 'd3-array';
 import { useEffect, useState } from 'react';
 import { Tabs } from 'antd';
 import {
@@ -19,7 +19,7 @@ import { NationalMpi } from './NationalMpi';
 function App() {
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');
-  const [mpiData, setMpiData] = useState<MpiDataType[] | undefined>(undefined);
+  const [mpiData, setMpiData] = useState<MpiDataType[]>([]);
   const [diffData, setDiffData] = useState<MpiDataTypeDiff[] | undefined>(
     undefined,
   );
@@ -39,6 +39,21 @@ function App() {
   const mpi = 'Multidimensional Poverty Index';
   const headcountR = 'Headcount ratio: Population in multidimensional poverty';
   const intensity = 'Intensity of deprivation among the poor';
+
+  const annualizedChangeGlobal = (countryData: object[]) => {
+    if (countryData.length > 1) {
+      countryData.sort((a, b) =>
+        ascending((a as any).lastYear, (b as any).lastYear),
+      );
+      return (
+        (Number((countryData[countryData.length - 1] as any)[headcountR]) -
+          Number((countryData[0] as any)[headcountR])) /
+        ((countryData[countryData.length - 1] as any).lastYear -
+          (countryData[0] as any).lastYear)
+      );
+    }
+    return undefined;
+  };
   const dataurl =
     'https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/';
   useEffect(() => {
@@ -46,6 +61,7 @@ function App() {
       csv(`${dataurl}Global-MPI_national.csv`),
       csv(`${dataurl}Global-MPI_area.csv`),
       csv(`${dataurl}Global-MPI_headship.csv`),
+      csv(`${dataurl}Global-MPI_national_multiple_years.csv`),
       csv(`${dataurl}MPI_subnational.csv`),
       csv(`${dataurl}MPI_location_multiple_years.csv`),
       csv(`${dataurl}MPI_national_multiple_years.csv`),
@@ -56,23 +72,48 @@ function App() {
         data,
         urbanRural,
         headship,
+        dataYears,
         subnational,
         location,
         nationalYears,
         yearImplementation,
         countriesArray,
       ]) => {
-        console.log('yearImplementation', yearImplementation);
-        const dataFetched = data.map((d: any) => ({
-          country: d.Country,
-          iso_a3: d['country code'],
-          region: d['World region'],
-          mpi: d[mpi],
-          headcountRatio: d[headcountR],
-          year: d.Year,
-          intensity: d[intensity],
-          povertyWB: d['PPP $2.15 a day 2011-2021'],
+        const glbDataYears = dataYears.map((d: any) => ({
+          ...d,
+          lastYear:
+            (d as any).Year.split('/').length === 2
+              ? Number((d as any).Year.split('/')[1])
+              : Number((d as any).Year),
         }));
+        const dataFetched: MpiDataType[] = [];
+        data.forEach((d: any) => {
+          const countryDataYears = glbDataYears.filter(
+            k => k['country code'] === d['country code'],
+          );
+          const countryDetails = (countriesArray as any)[
+            (countriesArray as any).findIndex(
+              (k: any) => k['Alpha-3 code'] === d['country code'],
+            )
+          ];
+          dataFetched.push({
+            country: d.Country,
+            iso_a3: d['country code'],
+            region: d['World region'],
+            mpi: d[mpi],
+            headcountRatio: d[headcountR],
+            year: d.Year,
+            intensity: d[intensity],
+            povertyWB: Number(d['PPP $2.15 a day 2011-2021']),
+            displayDifference: Boolean(d['display difference']),
+            coordinates: [
+              countryDetails['Longitude (average)'],
+              countryDetails['Latitude (average)'],
+            ],
+            countryData: countryDataYears,
+            annualizedChangeHeadcount: annualizedChangeGlobal(countryDataYears),
+          });
+        });
         const diffFetched: MpiDataTypeDiff[] = [];
         data.forEach((d: any) => {
           const rData = urbanRural.filter(
@@ -219,8 +260,8 @@ function App() {
             bbox: countryDetails.boundingBox,
             region: countryDetails.WB_Region,
             coordinates: [
-              countryDetails['Longitude (average)'],
-              countryDetails['Latitude (average)'],
+              Number(countryDetails['Longitude (average)']),
+              Number(countryDetails['Latitude (average)']),
             ],
             country: countryDataValues[0].country,
             yearImplementation:

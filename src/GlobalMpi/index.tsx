@@ -1,9 +1,9 @@
 import UNDPColorModule from 'undp-viz-colors';
-import { Map } from '../Components/Choropleth/Map';
 import { DumbellChartViz } from './DumbellChartViz';
 import { DumbellChartHorizontal } from './DumbellChartHorizontal';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
 import { ScatterPlotGlobal } from './ScatterPlotGlobal';
+import { IconsMap } from './IconsMap';
 
 interface Props {
   mpiData: MpiDataType[];
@@ -52,7 +52,7 @@ export function GlobalMpi(props: Props) {
             </p>
           </div>
           <div className='chart-global-container'>
-            <Map
+            <IconsMap
               data={mpiData}
               prop='mpi'
               valueArray={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
@@ -82,7 +82,9 @@ export function GlobalMpi(props: Props) {
           higher.
         </p>
       </div>
-      <DumbellChartHorizontal data={mpiData} />
+      <DumbellChartHorizontal
+        data={mpiData.filter(d => d.displayDifference === true)}
+      />
       <div
         className='margin-bottom-08'
         style={{

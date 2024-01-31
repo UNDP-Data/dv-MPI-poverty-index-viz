@@ -45,7 +45,7 @@ export function Chart(props: Props) {
     .tickFormat((d: any) => `${d}%`);
 
   const dataDiff: any[] = data
-    .filter(d => Number(d.povertyWB))
+    .filter(d => d.povertyWB >= 0)
     .map((d: any) => ({
       ...d,
       diff: Number(d.headcountRatio) - Number(d.povertyWB),
@@ -103,92 +103,88 @@ export function Chart(props: Props) {
       <svg width={graphWidth} height={graphHeight} id='povertyWB'>
         <g transform={`translate(${margin.left},${margin.top})`}>
           <g className='yAxis' transform='translate(0,0)' />
-          {dataDiff
-            .filter(d => Number(d.povertyWB))
-            .map((d, i) => (
-              <g
-                key={i}
-                transform={`translate(${i * barWidth + graphPadding}, 0)`}
-              >
-                <line
-                  x1={barWidth / 2}
-                  x2={barWidth / 2}
-                  y2={graphHeight - margin.top - margin.bottom + 15}
-                  y1={y(d.headcountRatio)}
-                  stroke='#A9B1B7'
-                  strokeWidth={1}
+          {dataDiff.map((d, i) => (
+            <g
+              key={i}
+              transform={`translate(${i * barWidth + graphPadding}, 0)`}
+            >
+              <line
+                x1={barWidth / 2}
+                x2={barWidth / 2}
+                y2={graphHeight - margin.top - margin.bottom + 15}
+                y1={y(d.headcountRatio)}
+                stroke='#A9B1B7'
+                strokeWidth={1}
+                opacity={hoveredCountry === (d as any).country ? 1 : 0}
+              />
+              <line
+                x1={barWidth / 2}
+                x2={barWidth / 2}
+                y1={y(d.povertyWB)}
+                y2={y(d.headcountRatio)}
+                stroke={
+                  hoveredCountry === (d as any).country ? '#000' : '#55606E'
+                }
+                strokeWidth='1'
+              />
+              <circle
+                cx={barWidth / 2}
+                cy={y(d.povertyWB)}
+                r={hoveredCountry === (d as any).country ? 9 : 5}
+                fill={colorScale('povertyWB')}
+              />
+              <circle
+                cx={barWidth / 2}
+                cy={y(d.headcountRatio)}
+                r={hoveredCountry === (d as any).country ? 8 : 5}
+                fill={colorScale('headcountRatio')}
+              />
+              <g className='focus' style={{ display: 'block' }} key={i}>
+                <g
+                  transform={`translate(${
+                    i * barWidth < containerWidth - 200 ? 0 : -200
+                  },${graphHeight - margin.top})`}
                   opacity={hoveredCountry === (d as any).country ? 1 : 0}
-                />
-                <line
-                  x1={barWidth / 2}
-                  x2={barWidth / 2}
-                  y1={y(d.povertyWB)}
-                  y2={y(d.headcountRatio)}
-                  stroke={
-                    hoveredCountry === (d as any).country ? '#000' : '#55606E'
-                  }
-                  strokeWidth='1'
-                />
-                <circle
-                  cx={barWidth / 2}
-                  cy={y(d.povertyWB)}
-                  r={hoveredCountry === (d as any).country ? 9 : 5}
-                  fill={colorScale('povertyWB')}
-                />
-                <circle
-                  cx={barWidth / 2}
-                  cy={y(d.headcountRatio)}
-                  r={hoveredCountry === (d as any).country ? 8 : 5}
-                  fill={colorScale('headcountRatio')}
-                />
-                <g className='focus' style={{ display: 'block' }} key={i}>
-                  <g
-                    transform={`translate(${
-                      i * barWidth < containerWidth - 200 ? 0 : -200
-                    },${graphHeight - margin.top})`}
-                    opacity={hoveredCountry === (d as any).country ? 1 : 0}
-                  >
-                    <text y='-50' x={-barWidth} className='tooltipValue'>
-                      {d.country}, (difference: {d.diff.toFixed(2)}%)
-                    </text>
-                    {indicators.map((k, j) => (
+                >
+                  <text y='-50' x={-barWidth} className='tooltipValue'>
+                    {d.country}, (difference: {d.diff.toFixed(2)}%)
+                  </text>
+                  {indicators.map((k, j) => (
+                    <g
+                      key={j}
+                      style={{
+                        display: (d as any)[k.ind] !== '' ? 'block' : 'none',
+                      }}
+                    >
                       <g
-                        key={j}
-                        style={{
-                          display: (d as any)[k.ind] !== '' ? 'block' : 'none',
-                        }}
+                        transform={`translate(${-barWidth / 2},${
+                          -32 + j * 18
+                        })`}
                       >
-                        <g
-                          transform={`translate(${-barWidth / 2},${
-                            -32 + j * 18
-                          })`}
-                        >
-                          <circle r={5} fill={colorScale(k.ind)} />
-                          <text className='tooltipLabel' x={10} y={5}>
-                            {(d as any)[k.ind]
-                              ? `${k.label}: ${(d as any)[k.ind]}%`
-                              : '-'}
-                          </text>
-                        </g>
+                        <circle r={5} fill={colorScale(k.ind)} />
+                        <text className='tooltipLabel' x={10} y={5}>
+                          {`${k.label}: ${(d as any)[k.ind]}%`}
+                        </text>
                       </g>
-                    ))}
-                  </g>
-                  <rect
-                    onMouseEnter={() => {
-                      setHoveredCountry((d as any).country);
-                    }}
-                    onMouseLeave={() => {
-                      setHoveredCountry('Mali');
-                    }}
-                    x={0}
-                    y={0}
-                    width={barWidth}
-                    height={graphHeight}
-                    opacity={0}
-                  />
+                    </g>
+                  ))}
                 </g>
+                <rect
+                  onMouseEnter={() => {
+                    setHoveredCountry((d as any).country);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredCountry('Mali');
+                  }}
+                  x={0}
+                  y={0}
+                  width={barWidth}
+                  height={graphHeight}
+                  opacity={0}
+                />
               </g>
-            ))}
+            </g>
+          ))}
         </g>
       </svg>
     </div>

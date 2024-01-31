@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface BboxCoords {
   lat: number;
   lon: number;
@@ -18,6 +19,10 @@ export interface MpiDataTypeBase {
 }
 export interface MpiDataType extends MpiDataTypeBase {
   povertyWB: number;
+  coordinates: [number, number];
+  annualizedChangeHeadcount: number | undefined;
+  countryData: any[];
+  displayDifference: boolean;
 }
 export interface MpiDataTypeNational extends MpiDataTypeBase {
   indicatorFiles?: string[];

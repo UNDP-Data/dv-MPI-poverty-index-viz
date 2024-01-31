@@ -8,7 +8,6 @@ interface Props {
 
 export function DumbellChartHorizontal(props: Props) {
   const { data } = props;
-
   return (
     <div
       className='chart-container undp-scrollbar'

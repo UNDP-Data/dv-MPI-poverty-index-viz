@@ -144,7 +144,7 @@ export function NationalMpi(props: Props) {
   }, [selectedCountry]);
   useEffect(() => {
     if (containerRef.current) {
-      console.log(containerRef.current.clientWidth);
+      // console.log(containerRef.current.clientWidth);
       if (containerRef.current.clientWidth > 1800) setSubnatWidth(1200);
       else if (containerRef.current.clientWidth > 1200) setSubnatWidth(760);
       else setSubnatWidth(containerRef.current.clientWidth);
@@ -238,7 +238,11 @@ export function NationalMpi(props: Props) {
           />
         </div>
       ) : null}
-      <div className='flex-div flex-wrap' ref={containerRef}>
+      <div
+        className='flex-div flex-wrap'
+        ref={containerRef}
+        style={{ margin: '0 auto' }}
+      >
         <div className='chart-stats-national flex-div flex-wrap gap-05'>
           <div
             className='stat-card'
