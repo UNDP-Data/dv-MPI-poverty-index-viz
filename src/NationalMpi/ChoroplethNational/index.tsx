@@ -21,7 +21,7 @@ export function ChoroplethNational(props: Props) {
       <div className='flex-div flex-space-between flex-wrap'>
         <div>
           <h6 className='undp-typography margin-bottom-01 margin-top-03'>
-            Implementation of Global Multidimensional Poverty index
+            Implementation of National Multidimensional Poverty index
           </h6>
         </div>
         <div>
