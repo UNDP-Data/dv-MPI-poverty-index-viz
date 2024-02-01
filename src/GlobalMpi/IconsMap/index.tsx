@@ -53,8 +53,8 @@ export function IconsMap(props: Props) {
   const [zoomLevel, setZoomLevel] = useState(1);
   const projection = geoEqualEarth()
     .rotate([0, 0])
-    .scale(300)
-    .translate([svgWidth / 2 - 50, svgHeight / 2]);
+    .scale(290)
+    .translate([svgWidth / 2 - 50, svgHeight / 2 + 10]);
   const colorScale = scaleThreshold<number, string>()
     .domain(valueArray)
     .range(colors);
@@ -205,7 +205,6 @@ export function IconsMap(props: Props) {
                 const { properties } = world.features.filter(
                   k => k.properties.ISO3 === d.iso_a3,
                 )[0];
-                // console.log('properties', properties);
                 const point = projection([properties.LON, properties.LAT] as [
                   number,
                   number,

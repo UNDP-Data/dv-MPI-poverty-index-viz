@@ -207,7 +207,7 @@ export function Chart(props: Props) {
             y={-15}
             textAnchor='end'
             className='label'
-            style={{ fill: 'var(--gray-600)' }}
+            style={{ fill: 'var(--gray-700)' }}
           >
             countries with MPI incidence greater than WB monetary policy
             incidence

@@ -77,7 +77,7 @@ export function Tooltip(props: Props) {
       <hr className='undp-style margin-top-00 margin-bottom-00' />
       <div
         style={{
-          padding: 'var(--spacing-05)',
+          padding: '0 var(--spacing-05) var(--spacing-03) var(--spacing-05)',
         }}
       >
         {Object.keys(data.countryValues).length === 0 &&
@@ -85,7 +85,7 @@ export function Tooltip(props: Props) {
           'no data available for this country'
         ) : (
           <>
-            <div className='margin-top-00'>
+            <div className='margin-top-02'>
               <span className='tooltipLabel'>Year of implementation: </span>
               <span className='tooltipValue'>
                 {(data.countryValues as any).yearImplementation}
@@ -99,6 +99,7 @@ export function Tooltip(props: Props) {
             </div>
             {(data.countryValues as any).countryData.length > 1 ? (
               <>
+                <hr className='undp-style margin-top-03 margin-bottom-03' />
                 <div className='tooltipTitle'>
                   Absolute annualized change in:
                 </div>
