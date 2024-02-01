@@ -89,11 +89,11 @@ export function GlobalMpi(props: Props) {
         </h4>
         <p className='undp-typography'>
           Poverty measures that only consider income can underestimate poverty.
-          In many countries (42 out of the 61 analyzed in the Global MPI report
-          2023), the incidence of multidimensional poverty is higher than the
-          incidence of monetary policy (according to the World Bank measure at
-          $2.15 per day). In Chad, Guinea and Mali, it is 50 percentage points
-          higher.
+          In many countries (<strong>42</strong> out of the <strong>61</strong>{' '}
+          analyzed in the Global MPI report 2023), the incidence of
+          multidimensional poverty is higher than the incidence of monetary
+          policy (according to the World Bank measure at $2.15 per day). In
+          Chad, Guinea and Mali, it is 50 percentage points higher.
         </p>
       </div>
       <DumbellChartHorizontal

@@ -185,9 +185,6 @@
   stroke-dasharray: 4;
   stroke: var(--gray-500);
 }
-/*.chart-container circle{
-  opacity: 0.8
-}*/
 .source{
   font-size: 0.875rem !important;
   color: var(--gray-600);

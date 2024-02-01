@@ -51,7 +51,8 @@ export function Chart(props: Props) {
       diff: Number(d.headcountRatio) - Number(d.povertyWB),
     }));
   dataDiff.sort((a, b) => descending(Number(a.diff), Number(b.diff)));
-
+  // find position of first negative diff value in the array
+  const xDivider = dataDiff.filter(d => d.diff > 0).length;
   const [hoveredCountry, setHoveredCountry] = useState<undefined | string>(
     dataDiff[0].country,
   );
@@ -102,6 +103,14 @@ export function Chart(props: Props) {
       </div>
       <svg width={graphWidth} height={graphHeight} id='povertyWB'>
         <g transform={`translate(${margin.left},${margin.top})`}>
+          <rect
+            x='0'
+            y='0'
+            width={xDivider * barWidth + barWidth / 2}
+            height={graphHeight - margin.bottom - margin.top}
+            fill='#fff'
+            strokeWidth={0}
+          />
           <g className='yAxis' transform='translate(0,0)' />
           {dataDiff.map((d, i) => (
             <g
@@ -185,6 +194,24 @@ export function Chart(props: Props) {
               </g>
             </g>
           ))}
+          <line
+            x1={xDivider * barWidth + barWidth / 2}
+            x2={xDivider * barWidth + barWidth / 2}
+            y1='-35'
+            y2={graphHeight - margin.bottom - margin.top}
+            strokeWidth={1}
+            style={{ stroke: 'var(--gray-500)', strokeDasharray: '1' }}
+          />
+          <text
+            x={xDivider * barWidth}
+            y={-15}
+            textAnchor='end'
+            className='label'
+            style={{ fill: 'var(--gray-600)' }}
+          >
+            countries with MPI incidence greater than WB monetary policy
+            incidence
+          </text>
         </g>
       </svg>
     </div>

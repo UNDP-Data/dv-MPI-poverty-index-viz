@@ -202,10 +202,14 @@ export function IconsMap(props: Props) {
             }
             <g>
               {data.map((d: any, i: number) => {
-                const point = projection([
-                  d.coordinates[0],
-                  d.coordinates[1],
-                ] as [number, number]);
+                const { properties } = world.features.filter(
+                  k => k.properties.ISO3 === d.iso_a3,
+                )[0];
+                // console.log('properties', properties);
+                const point = projection([properties.LON, properties.LAT] as [
+                  number,
+                  number,
+                ]);
                 if (point !== null)
                   return (
                     <g
@@ -345,12 +349,15 @@ export function IconsMap(props: Props) {
             </g>
           </svg>
           <div>
-            <p className='undp-typography small-font'>
+            <p className='undp-typography small-font margin-bottom-02'>
               Annualized Change Headcount Ratio
             </p>
             <svg viewBox='0 0 380 70'>
               <g transform='translate(0,0)'>
-                <g transform='translate(10,20)'>
+                <g transform='translate(10,40)'>
+                  <text className='label' y='-25' x='-10'>
+                    Increase
+                  </text>
                   <polygon
                     transform='rotate(180)'
                     points={`-3, 0, -3, 
@@ -363,13 +370,16 @@ export function IconsMap(props: Props) {
                     strokeWidth='1'
                     stroke='#000'
                   />
-                  <text x='20' y='5' className='label'>
+                  <text x='20' y='0' className='label'>
                     {extentValue[1].toFixed(2)}
                   </text>
                 </g>
-                <g transform='translate(100,20)'>
+                <g transform='translate(100,40)'>
+                  <text className='label' y='-25' x='-10'>
+                    Decrease
+                  </text>
                   <polygon
-                    transform='translate(0,-20)'
+                    transform='translate(0,-10)'
                     points={`-3, 0, -3, 
                     ${valueScale(extentValue[0])}, -6, 
                     ${valueScale(extentValue[0])}, 0,
@@ -380,7 +390,7 @@ export function IconsMap(props: Props) {
                     strokeWidth='1'
                     stroke='#000'
                   />
-                  <text x='20' y='5' className='label'>
+                  <text x='20' y='0' className='label'>
                     {extentValue[0].toFixed(2)}
                   </text>
                 </g>
