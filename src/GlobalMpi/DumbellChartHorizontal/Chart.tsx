@@ -25,7 +25,7 @@ export function Chart(props: Props) {
   const [barWidth, setBarWidth] = useState<number>(16);
   const indicators = [
     { ind: 'headcountRatio', label: 'MPI' },
-    { ind: 'povertyWB', label: 'Extreme Monetary Poverty' },
+    { ind: 'povertyWB', label: 'Extreme monetary poverty' },
   ];
 
   const y = scaleLinear()
@@ -209,8 +209,8 @@ export function Chart(props: Props) {
             className='label'
             style={{ fill: 'var(--gray-700)' }}
           >
-            Countries with MPI incidence greater than WB monetary policy
-            incidence
+            Countries with MPI headcount ratio greater than extreme poverty
+            headcount ratio
           </text>
         </g>
       </svg>

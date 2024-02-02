@@ -14,7 +14,7 @@ export function DumbellChartHorizontal(props: Props) {
       style={{ overflow: 'auto' }}
     >
       <h6 className='undp-typography margin-bottom-00'>
-        Global MPI headcount ratio vs Extreme Monetary Poverty headcount ratio
+        Headcount ratio according to Global MPI and extreme monetary poverty
       </h6>
       <Chart data={data} />
       <p className='source'>
@@ -28,8 +28,8 @@ export function DumbellChartHorizontal(props: Props) {
           Global Multidimensional Poverty index 2023 MPI Tables 1 and 2
         </a>
         <br />
-        Note: Extreme poverty refers to the World Bank indicator Monetary
-        Poverty Headcount Ratio at PPP $2.15 a day
+        Note: Extreme monetary poverty refers to the World Bank indicator
+        monetary poverty headcount ratio at PPP $2.15 a day
       </p>
     </div>
   );
