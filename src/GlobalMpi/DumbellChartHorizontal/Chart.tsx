@@ -24,8 +24,8 @@ export function Chart(props: Props) {
   const [containerWidth, setContainerWidth] = useState<number>(0);
   const [barWidth, setBarWidth] = useState<number>(16);
   const indicators = [
-    { ind: 'headcountRatio', label: 'MPI Headcount Ratio' },
-    { ind: 'povertyWB', label: 'PPP $2.15 a day 2011-2021' },
+    { ind: 'headcountRatio', label: 'MPI' },
+    { ind: 'povertyWB', label: 'Extreme Monetary Poverty' },
   ];
 
   const y = scaleLinear()
@@ -151,7 +151,7 @@ export function Chart(props: Props) {
               <g className='focus' style={{ display: 'block' }} key={i}>
                 <g
                   transform={`translate(${
-                    i * barWidth < containerWidth - 200 ? 0 : -200
+                    i * barWidth < containerWidth - 350 ? 0 : -200
                   },${graphHeight - margin.top})`}
                   opacity={hoveredCountry === (d as any).country ? 1 : 0}
                 >
