@@ -170,7 +170,7 @@ export function GlobalMpi(props: Props) {
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
-        <h4 className='undp-typography margin-top-10'>
+        <h4 className='undp-typography margin-top-10 margin-bottom-08'>
           Global MPI around the world
         </h4>
       </div>
@@ -223,7 +223,7 @@ export function GlobalMpi(props: Props) {
           padding: '0 1.5rem',
         }}
       >
-        <h4 className='undp-typography'>
+        <h4 className='undp-typography margin-top-08'>
           Multidimensional Poverty vs Income Poverty
         </h4>
         <p className='undp-typography'>
