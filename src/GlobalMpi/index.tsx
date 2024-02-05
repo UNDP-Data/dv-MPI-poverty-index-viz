@@ -276,7 +276,8 @@ export function GlobalMpi(props: Props) {
           className='undp-style small-font'
           href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
         >
-          Global MPI data tables
+          Global MPI data tables 2023, Table 4: Area results and Table 7:
+          Headship results
         </a>
       </p>
     </div>

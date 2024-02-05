@@ -108,11 +108,11 @@ export function DumbellChartViz(props: Props) {
             <Radio className='undp-radio' value='mpi'>
               MPI
             </Radio>
-            <Radio className='undp-radio' value='intensity'>
-              Intensity (%)
-            </Radio>
             <Radio className='undp-radio' value='headcountR'>
               Incidence (%)
+            </Radio>
+            <Radio className='undp-radio' value='intensity'>
+              Intensity (%)
             </Radio>
           </Radio.Group>
         </div>

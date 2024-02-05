@@ -152,6 +152,17 @@ export function ScatterPlotGlobal(props: Props) {
           Intensity
         </text>
       </svg>
+      <p className='source'>
+        Source:{' '}
+        <a
+          target='_blank'
+          rel='noreferrer'
+          className='undp-style small-font'
+          href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
+        >
+          Global MPI data tables 2023, Table 1: National Results
+        </a>
+      </p>
       {hoverData ? <Tooltip data={hoverData} prop='mpi' /> : null}
     </div>
   );

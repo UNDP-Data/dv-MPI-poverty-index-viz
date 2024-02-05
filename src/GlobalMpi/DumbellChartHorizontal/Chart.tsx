@@ -15,7 +15,7 @@ interface Props {
 export function Chart(props: Props) {
   const { data } = props;
   let width = 1280;
-  const margin = { top: 40, right: 30, bottom: 80, left: 40 };
+  const margin = { top: 40, right: 20, bottom: 80, left: 40 };
   const graphHeight = 400;
   const minBarWidth = 13;
   const graphPadding = 10;
@@ -151,7 +151,7 @@ export function Chart(props: Props) {
               <g className='focus' style={{ display: 'block' }} key={i}>
                 <g
                   transform={`translate(${
-                    i * barWidth < containerWidth - 350 ? 0 : -200
+                    i * barWidth < containerWidth - 350 ? 0 : -230
                   },${graphHeight - margin.top})`}
                   opacity={hoveredCountry === (d as any).country ? 1 : 0}
                 >

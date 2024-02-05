@@ -238,282 +238,324 @@ export function NationalMpi(props: Props) {
           />
         </div>
       ) : null}
-      <div
-        className='flex-div flex-wrap'
-        ref={containerRef}
-        style={{ margin: '0 auto' }}
-      >
-        <div className='chart-stats-national flex-div flex-wrap gap-05'>
+      {urban ||
+      rural ||
+      (countrySubnational && countrySubnational.length > 0) ? (
+        <div
+          className='flex-div flex-wrap'
+          ref={containerRef}
+          style={{ margin: '0 auto' }}
+        >
+          <div className='national-stats-area flex-div flex-wrap gap-05'>
+            <div
+              className='stat-card'
+              style={{ minWidth: '300px', maxHeight: '250px' }}
+            >
+              <h3>
+                {Number(total?.mpi) ? Number(total?.mpi).toFixed(3) : 'N/A'}
+              </h3>
+              <h4>
+                National MPI {selectedCountry} ({total?.year})
+              </h4>
+              <p className='margin-bottom-01'>
+                Incidence: {total?.headcountRatio}%
+              </p>
+              <p>
+                Intensity:{' '}
+                {Number(total?.intensity)
+                  ? `${Number(total?.intensity)}%`
+                  : 'N/A'}
+              </p>
+            </div>
+            {urban || rural ? (
+              <div
+                className='chart-container flex-chart'
+                style={{ maxHeight: '478px' }}
+              >
+                <div className='flex-div flex-space-between'>
+                  <div className='chart-top'>
+                    <h6 className='undp-typography margin-bottom-01'>
+                      Rural and Urban MPI
+                    </h6>
+                    <p className='undp-typography small-font'>Year: {year}</p>
+                  </div>
+                  <div>
+                    <div className='legend-container'>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor:
+                              UNDPColorModule.categoricalColors.locationColors
+                                .urban,
+                          }}
+                        />
+                        <div className='small-font'>Urban</div>
+                      </div>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor:
+                              UNDPColorModule.categoricalColors.locationColors
+                                .rural,
+                          }}
+                        />
+                        <div className='small-font'>Rural</div>
+                      </div>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor: '#55606E',
+                          }}
+                        />
+                        <div className='small-font'>Country Total</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <ScatterPlot
+                  urban={urban}
+                  rural={rural}
+                  total={total}
+                  id='locationScatterPlot'
+                  country={selectedCountry}
+                />
+                <div>
+                  <p className='source margin-top-00 undp-typography'>
+                    Source:{' '}
+                    <a
+                      className='undp-style small-font'
+                      href={countryData?.reportUrl}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      {countryData?.reportName}
+                    </a>
+                  </p>
+                </div>
+              </div>
+            ) : null}
+          </div>
+          {countrySubnational && countrySubnational.length > 0 ? (
+            <div
+              className='chart-container'
+              style={{ maxHeight: '750px', width: `${subnatWidth}px` }}
+            >
+              <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
+                <div>
+                  <h6 className='undp-typography margin-bottom-01'>
+                    Subnational Multidimensional Poverty
+                  </h6>
+                  <p className='undp-typography small-font'>
+                    Year: {countrySubnational[0].year}
+                  </p>
+                </div>
+                <div>
+                  <Segmented
+                    style={{ backgroundColor: '#FFF', padding: '1px' }}
+                    className='undp-segmented'
+                    value={activeViz}
+                    options={[
+                      {
+                        label: 'Map',
+                        value: 'map',
+                        disabled: !countryData?.displayMap,
+                      },
+                      {
+                        label: 'Intensity vs Incidence',
+                        value: 'scatterplot',
+                      },
+                      { label: 'MPI list', value: 'list' },
+                    ]}
+                    onResize={undefined}
+                    onResizeCapture={undefined}
+                    onChange={d => setActiveViz(d as string)}
+                  />
+                </div>
+              </div>
+              <div className='legend-interactionBar'>
+                {activeViz !== 'list' ? (
+                  <div className='countrymap-legend'>
+                    <svg width='300px' height='45px'>
+                      <g transform='translate(10,20)'>
+                        <text
+                          x={280}
+                          y={-10}
+                          fontSize='0.8rem'
+                          fill='#212121'
+                          textAnchor='end'
+                        >
+                          Higher Poverty
+                        </text>
+                        {valueArray.map((d, i) => (
+                          <g key={i}>
+                            <rect
+                              x={(i * 280) / valueArray.length}
+                              y={1}
+                              width={280 / valueArray.length}
+                              height={8}
+                              fill={colorScaleMPI(valueArray[i] - 0.05)}
+                              stroke='#fff'
+                            />
+                            <text
+                              x={(280 * (i + 1)) / valueArray.length}
+                              y={25}
+                              fontSize={12}
+                              fill='#212121'
+                              textAnchor='middle'
+                            >
+                              {d}
+                            </text>
+                          </g>
+                        ))}
+                        <text
+                          y={25}
+                          x={0}
+                          fontSize={12}
+                          fill='#212121'
+                          textAnchor='middle'
+                        >
+                          0
+                        </text>
+                      </g>
+                    </svg>
+                  </div>
+                ) : (
+                  <div className='flex-div' style={{ alignItems: 'center' }}>
+                    <div style={{ flexBasis: '80px' }}>
+                      <p className='undp-typography small-font'>Sort by:</p>
+                    </div>
+                    <div>
+                      <Radio.Group
+                        defaultValue='mpi'
+                        onChange={(el: RadioChangeEvent) =>
+                          setSortedBy(el.target.value)
+                        }
+                        className='margin-bottom-05'
+                      >
+                        <Radio className='undp-radio' value='mpi'>
+                          MPI
+                        </Radio>
+                        <Radio className='undp-radio' value='intensity'>
+                          Intensity
+                        </Radio>
+                        <Radio className='undp-radio' value='headcountRatio'>
+                          Incidence
+                        </Radio>
+                        <Radio className='undp-radio' value='subregion'>
+                          Subregion name
+                        </Radio>
+                      </Radio.Group>
+                    </div>
+                  </div>
+                )}
+                {adminLevels && adminLevels.length > 1 ? (
+                  <div
+                    className='flex-div'
+                    style={{
+                      alignItems: 'center',
+                      flexBasis: '190px',
+                      minWidth: '190px',
+                    }}
+                  >
+                    <div>
+                      <p className='undp-typography small-font'>Admin level:</p>
+                    </div>
+                    <div>
+                      <Radio.Group
+                        value={selectedAdminLevel}
+                        onChange={(el: RadioChangeEvent) => {
+                          setSelectedAdminLevel(el.target.value);
+                        }}
+                        className='margin-bottom-05'
+                      >
+                        {adminLevels.map((d, i) => (
+                          <Radio key={i} className='undp-radio' value={d}>
+                            {d}
+                          </Radio>
+                        ))}
+                      </Radio.Group>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+              <div ref={containerSubnat}>
+                <div className={activeViz === 'map' ? '' : 'hide'}>
+                  <CountryMap
+                    countryData={
+                      nationalYears?.filter(
+                        k => k.country === selectedCountry,
+                      )[0]
+                    }
+                    selectedAdminLevel={selectedAdminLevel}
+                    mapWidth={subnatWidth - 64}
+                    mapHeight={500}
+                  />
+                </div>
+                <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
+                  <ScatterPlotSubnational
+                    data={countrySubnational.filter(
+                      d => d.adminLevel === selectedAdminLevel,
+                    )}
+                    id='subnatScatterPlot'
+                    activeViz={activeViz}
+                  />
+                </div>
+                <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
+                  <LollipopChartViz
+                    data={countrySubnational.filter(
+                      d => d.adminLevel === selectedAdminLevel,
+                    )}
+                    sortedBy={sortedBy}
+                  />
+                </div>
+              </div>
+              <p className='source margin-top-04 undp-typography'>
+                Source:{' '}
+                <a
+                  className='undp-style small-font'
+                  href={countryData?.reportUrl}
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  {countryData?.reportName}
+                </a>
+              </p>
+            </div>
+          ) : null}
+        </div>
+      ) : (
+        <div
+          style={{
+            maxWidth: '1024px',
+            margin: '0 auto',
+            padding: '0 1.5rem',
+          }}
+        >
           <div
             className='stat-card'
             style={{ minWidth: '300px', maxHeight: '250px' }}
           >
-            <h3>{Number(total?.mpi).toFixed(3)}</h3>
+            <h3>
+              {Number(total?.mpi) ? Number(total?.mpi).toFixed(3) : 'N/A'}
+            </h3>
             <h4>
               National MPI {selectedCountry} ({total?.year})
             </h4>
             <p className='margin-bottom-01'>
               Incidence: {total?.headcountRatio}%
             </p>
-            <p>Intensity: {total?.intensity}%</p>
-          </div>
-          {urban || rural ? (
-            <div
-              className='chart-container flex-chart'
-              style={{ maxHeight: '478px' }}
-            >
-              <div className='flex-div flex-space-between'>
-                <div className='chart-top'>
-                  <h6 className='undp-typography margin-bottom-01'>
-                    Rural and Urban MPI
-                  </h6>
-                  <p className='undp-typography small-font'>Year: {year}</p>
-                </div>
-                <div>
-                  <div className='legend-container'>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor:
-                            UNDPColorModule.categoricalColors.locationColors
-                              .urban,
-                        }}
-                      />
-                      <div className='small-font'>Urban</div>
-                    </div>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor:
-                            UNDPColorModule.categoricalColors.locationColors
-                              .rural,
-                        }}
-                      />
-                      <div className='small-font'>Rural</div>
-                    </div>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor: '#55606E',
-                        }}
-                      />
-                      <div className='small-font'>Country Total</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ScatterPlot
-                urban={urban}
-                rural={rural}
-                total={total}
-                id='locationScatterPlot'
-                country={selectedCountry}
-              />
-              <div>
-                <p className='source margin-top-00 undp-typography'>
-                  Source:{' '}
-                  <a
-                    className='undp-style small-font'
-                    href={countryData?.reportUrl}
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    {countryData?.reportName}
-                  </a>
-                </p>
-              </div>
-            </div>
-          ) : null}
-        </div>
-        {countrySubnational && countrySubnational.length > 0 ? (
-          <div
-            className='chart-container'
-            style={{ maxHeight: '750px', width: `${subnatWidth}px` }}
-          >
-            <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
-              <div>
-                <h6 className='undp-typography margin-bottom-01'>
-                  Subnational Multidimensional Poverty
-                </h6>
-                <p className='undp-typography small-font'>
-                  Year: {countrySubnational[0].year}
-                </p>
-              </div>
-              <div>
-                <Segmented
-                  style={{ backgroundColor: '#FFF', padding: '1px' }}
-                  className='undp-segmented'
-                  value={activeViz}
-                  options={[
-                    {
-                      label: 'Map',
-                      value: 'map',
-                      disabled: !countryData?.displayMap,
-                    },
-                    {
-                      label: 'Intensity vs Incidence',
-                      value: 'scatterplot',
-                    },
-                    { label: 'MPI list', value: 'list' },
-                  ]}
-                  onResize={undefined}
-                  onResizeCapture={undefined}
-                  onChange={d => setActiveViz(d as string)}
-                />
-              </div>
-            </div>
-            <div className='legend-interactionBar'>
-              {activeViz !== 'list' ? (
-                <div className='countrymap-legend'>
-                  <svg width='300px' height='45px'>
-                    <g transform='translate(10,20)'>
-                      <text
-                        x={280}
-                        y={-10}
-                        fontSize='0.8rem'
-                        fill='#212121'
-                        textAnchor='end'
-                      >
-                        Higher Poverty
-                      </text>
-                      {valueArray.map((d, i) => (
-                        <g key={i}>
-                          <rect
-                            x={(i * 280) / valueArray.length}
-                            y={1}
-                            width={280 / valueArray.length}
-                            height={8}
-                            fill={colorScaleMPI(valueArray[i] - 0.05)}
-                            stroke='#fff'
-                          />
-                          <text
-                            x={(280 * (i + 1)) / valueArray.length}
-                            y={25}
-                            fontSize={12}
-                            fill='#212121'
-                            textAnchor='middle'
-                          >
-                            {d}
-                          </text>
-                        </g>
-                      ))}
-                      <text
-                        y={25}
-                        x={0}
-                        fontSize={12}
-                        fill='#212121'
-                        textAnchor='middle'
-                      >
-                        0
-                      </text>
-                    </g>
-                  </svg>
-                </div>
-              ) : (
-                <div className='flex-div' style={{ alignItems: 'center' }}>
-                  <div style={{ flexBasis: '80px' }}>
-                    <p className='undp-typography small-font'>Sort by:</p>
-                  </div>
-                  <div>
-                    <Radio.Group
-                      defaultValue='mpi'
-                      onChange={(el: RadioChangeEvent) =>
-                        setSortedBy(el.target.value)
-                      }
-                      className='margin-bottom-05'
-                    >
-                      <Radio className='undp-radio' value='mpi'>
-                        MPI
-                      </Radio>
-                      <Radio className='undp-radio' value='intensity'>
-                        Intensity
-                      </Radio>
-                      <Radio className='undp-radio' value='headcountRatio'>
-                        Incidence
-                      </Radio>
-                      <Radio className='undp-radio' value='subregion'>
-                        Subregion name
-                      </Radio>
-                    </Radio.Group>
-                  </div>
-                </div>
-              )}
-              {adminLevels && adminLevels.length > 1 ? (
-                <div
-                  className='flex-div'
-                  style={{
-                    alignItems: 'center',
-                    flexBasis: '190px',
-                    minWidth: '190px',
-                  }}
-                >
-                  <div>
-                    <p className='undp-typography small-font'>Admin level:</p>
-                  </div>
-                  <div>
-                    <Radio.Group
-                      value={selectedAdminLevel}
-                      onChange={(el: RadioChangeEvent) => {
-                        setSelectedAdminLevel(el.target.value);
-                      }}
-                      className='margin-bottom-05'
-                    >
-                      {adminLevels.map((d, i) => (
-                        <Radio key={i} className='undp-radio' value={d}>
-                          {d}
-                        </Radio>
-                      ))}
-                    </Radio.Group>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-            <div ref={containerSubnat}>
-              <div className={activeViz === 'map' ? '' : 'hide'}>
-                <CountryMap
-                  countryData={
-                    nationalYears?.filter(k => k.country === selectedCountry)[0]
-                  }
-                  selectedAdminLevel={selectedAdminLevel}
-                  mapWidth={subnatWidth - 64}
-                  mapHeight={500}
-                />
-              </div>
-              <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
-                <ScatterPlotSubnational
-                  data={countrySubnational.filter(
-                    d => d.adminLevel === selectedAdminLevel,
-                  )}
-                  id='subnatScatterPlot'
-                  activeViz={activeViz}
-                />
-              </div>
-              <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
-                <LollipopChartViz
-                  data={countrySubnational.filter(
-                    d => d.adminLevel === selectedAdminLevel,
-                  )}
-                  sortedBy={sortedBy}
-                />
-              </div>
-            </div>
-            <p className='source margin-top-04 undp-typography'>
-              Source:{' '}
-              <a
-                className='undp-style small-font'
-                href={countryData?.reportUrl}
-                target='_blank'
-                rel='noreferrer'
-              >
-                {countryData?.reportName}
-              </a>
+            <p>
+              Intensity:{' '}
+              {Number(total?.intensity)
+                ? `${Number(total?.intensity)}%`
+                : 'N/A'}
             </p>
           </div>
-        ) : null}
-      </div>
+        </div>
+      )}
       {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
         .length > 1 ? (
         <div style={{ maxWidth: '1024px', margin: '1.5rem auto' }}>
