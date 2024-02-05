@@ -108,6 +108,10 @@
   border-radius: 11px;
   margin: 0;
 }
+.legend-title{
+  font-weight: 700;
+  font-size: 0.9rem;
+}
 /* tooltip styles */
 .tooltipTitle{
   font-size:.9rem !important;

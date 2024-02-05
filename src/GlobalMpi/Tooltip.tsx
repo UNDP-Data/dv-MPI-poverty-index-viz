@@ -81,7 +81,7 @@ export function Tooltip(props: Props) {
         ) : (data.countryValues as any).countryData.length > 0 ? (
           <>
             <div className='tooltipTitle'>
-              Absolute annualized change in headcount ratio:
+              Absolute annualized change in Incidence:
             </div>
             <div>
               <span className='tooltipValue'>
@@ -110,7 +110,7 @@ export function Tooltip(props: Props) {
                 )}
               </div>
               <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>Headcount ratio</div>
+                <div className='tooltipTitle'>Incidence</div>
                 {(data.countryValues as any).countryData.map(
                   (d: any, i: number) => (
                     <div key={i}>
@@ -144,7 +144,7 @@ export function Tooltip(props: Props) {
                 </div>
               </div>
               <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>Headcount ratio</div>
+                <div className='tooltipTitle'>Incidence</div>
                 <div>
                   <span className='tooltipLabel'>
                     {(data.countryValues as any).year}:{' '}

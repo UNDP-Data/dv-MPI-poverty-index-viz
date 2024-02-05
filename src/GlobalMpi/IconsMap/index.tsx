@@ -23,7 +23,7 @@ const LegendEl = styled.div`
   position: relative;
   right: 10px;
   padding: 0.5rem 0.5rem 0 0.5rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.8);
   box-shadow: var(--shadow);
   width: 360px;
   margin-left: 1rem;
@@ -277,7 +277,7 @@ export function IconsMap(props: Props) {
         </svg>
         <LegendEl>
           <h6 className='undp-typography'>LEGEND</h6>
-          <p className='undp-typography small-font margin-bottom-00'>
+          <p className='legend-title margin-bottom-00'>
             Multidimensional poverty index
           </p>
           <svg viewBox='0 0 380 60'>
@@ -348,8 +348,8 @@ export function IconsMap(props: Props) {
             </g>
           </svg>
           <div>
-            <p className='undp-typography small-font margin-bottom-02'>
-              Annualized Change Headcount Ratio
+            <p className='legend-title margin-bottom-02'>
+              Annualized Change Incidence
             </p>
             <svg viewBox='0 0 380 70'>
               <g transform='translate(0,0)'>

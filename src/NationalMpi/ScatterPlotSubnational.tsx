@@ -122,7 +122,7 @@ export function ScatterPlotSubnational(props: Props) {
           ))}
         </g>
         <text x={svgWidth / 2} y={svgHeight - 3} textAnchor='middle'>
-          Headcount Ratio
+          Incidence
         </text>
         <text
           x={-svgHeight / 2}

@@ -14,7 +14,7 @@ export function DumbellChartHorizontal(props: Props) {
       style={{ overflow: 'auto' }}
     >
       <h6 className='undp-typography margin-bottom-00'>
-        Headcount ratio according to Global MPI and extreme monetary poverty
+        Multidimensional poverty vs extreme poverty incidence
       </h6>
       <Chart data={data} />
       <p className='source'>

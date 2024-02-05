@@ -37,11 +37,6 @@ const TooltipEl = styled.div<TooltipElProps>`
 
 export function Tooltip(props: Props) {
   const { data, prop } = props;
-  /* const label =
-    (data.countryValues as any).indicatorChange === 'headcountRatio'
-      ? 'Headcount Ratio'
-      : 'MPI';
-  */
   return (
     <TooltipEl
       x={data.xPosition}
@@ -93,7 +88,7 @@ export function Tooltip(props: Props) {
               </span>
             </div>
             <div>
-              <span className='tooltipLabel'>Headcount Ratio: </span>
+              <span className='tooltipLabel'>Incidence: </span>
               <span className='tooltipValue'>
                 {Number((data.countryValues as any).headcountRatio).toFixed(2)}%
               </span>
@@ -115,7 +110,7 @@ export function Tooltip(props: Props) {
           <>
             <div className='tooltipTitle'>Absolute annualized change in:</div>
             <div>
-              <span className='tooltipLabel'>Headcount ratio: </span>
+              <span className='tooltipLabel'>Incidence: </span>
               <span className='tooltipValue'>
                 {Number(
                   (data.countryValues as any).annualizedChangeHeadcount,
@@ -163,7 +158,7 @@ export function Tooltip(props: Props) {
                 )}
               </div>
               <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>Headcount ratio</div>
+                <div className='tooltipTitle'>Incidence</div>
                 {(data.countryValues as any).countryData.map(
                   (d: any, i: number) => (
                     <div key={i}>
@@ -194,7 +189,7 @@ export function Tooltip(props: Props) {
                 </div>
               </div>
               <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>Headcount ratio</div>
+                <div className='tooltipTitle'>Incidence</div>
                 <div>
                   <span className='tooltipLabel'>
                     {(data.countryValues as any).countryData[0].year}:{' '}

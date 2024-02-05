@@ -49,7 +49,7 @@ export function LollipopChartViz(props: Props) {
                 border: '3px solid #FBC412',
               }}
             />
-            <div>Headcount ratio</div>
+            <div>Incidence</div>
           </div>
         </div>
       </div>

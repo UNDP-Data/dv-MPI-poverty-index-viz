@@ -181,7 +181,7 @@ export function NationalMpi(props: Props) {
           </div>
           <div className='chart-explanation-national'>
             <div>
-              <p className='undp-typography margin-top-10'>
+              <p className='undp-typography margin-top-04'>
                 Over the past 15 years, more than 35 countries around the world
                 have developed national MPIs (N-MPIs). This reflects an
                 increased recognition of the importance of complementing
@@ -253,7 +253,7 @@ export function NationalMpi(props: Props) {
               National MPI {selectedCountry} ({total?.year})
             </h4>
             <p className='margin-bottom-01'>
-              Headcount Ratio: {total?.headcountRatio}%
+              Incidence: {total?.headcountRatio}%
             </p>
             <p>Intensity: {total?.intensity}%</p>
           </div>
@@ -354,7 +354,7 @@ export function NationalMpi(props: Props) {
                       disabled: !countryData?.displayMap,
                     },
                     {
-                      label: 'Intensity vs Headcount ratio',
+                      label: 'Intensity vs Incidence',
                       value: 'scatterplot',
                     },
                     { label: 'MPI list', value: 'list' },
@@ -432,7 +432,7 @@ export function NationalMpi(props: Props) {
                         Intensity
                       </Radio>
                       <Radio className='undp-radio' value='headcountRatio'>
-                        Headcount Ratio
+                        Incidence
                       </Radio>
                       <Radio className='undp-radio' value='subregion'>
                         Subregion name

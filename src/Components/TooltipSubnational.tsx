@@ -82,7 +82,7 @@ export function TooltipSubnational(props: Props) {
               <span className='tooltipValue'>{data.value.toFixed(3)}</span>
             </div>
             <div>
-              <span className='tooltipLabel'>Headcount Ratio: </span>
+              <span className='tooltipLabel'>Incidence: </span>
               <span className='tooltipValue'>
                 {data.headcountRatio?.toFixed(2)}%
               </span>

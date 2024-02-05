@@ -141,7 +141,7 @@ export function ScatterPlotGlobal(props: Props) {
           ))}
         </g>
         <text x={graphWidth / 2} y={graphHeight - 3} textAnchor='middle'>
-          Headcount Ratio
+          Incidence
         </text>
         <text
           x={-graphHeight / 2}

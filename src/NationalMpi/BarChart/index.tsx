@@ -13,7 +13,7 @@ export function BarChart(props: Props) {
   const { data, indicator } = props;
   const options = [
     { value: 'mpi', name: 'MPI' },
-    { value: 'headcountRatio', name: 'Headcount Ratio' },
+    { value: 'headcountRatio', name: 'Incidence' },
   ];
   const [radioSelection, setRadioSelection] = useState(options[0]);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -46,7 +46,7 @@ export function BarChart(props: Props) {
           </div>
         ) : (
           <div>
-            <h6>Headcount ratio</h6>
+            <h6>Incidence</h6>
           </div>
         )}
       </div>

@@ -112,7 +112,7 @@ export function DumbellChartViz(props: Props) {
               Intensity (%)
             </Radio>
             <Radio className='undp-radio' value='headcountR'>
-              Headcount Ratio (%)
+              Incidence (%)
             </Radio>
           </Radio.Group>
         </div>

@@ -50,17 +50,8 @@ export function Map(props: Props) {
   );
   const [zoomLevel, setZoomLevel] = useState(1);
 
-  //  const valueArray = [...new Set(data.map((d: any) => Number(d[prop])))].sort();
+  const dataDomain = [2009, 2011, 2013, 2015, 2017, 2019, 2021, 2023];
 
-  const dataDomain =
-    prop === 'yearImplementation'
-      ? [2009, 2011, 2013, 2015, 2017, 2019, 2021, 2023]
-      : [1, 2, 3, 4, 5, 6, 7];
-
-  /* const numberValues =
-    valueArray.length < 10
-      ? `0${valueArray.length.toString()}`
-      : `0${(valueArray.length / 2).toString()}`; */
   const numberValues = `0${dataDomain.length.toString()}`;
 
   const colorSelection = (colors as any)[`neutralColorsx${numberValues}`];
@@ -215,21 +206,10 @@ export function Map(props: Props) {
         </svg>
         <LegendEl>
           <h6 className='undp-typography margin-left-03 margin-bottom-00'>
-            LEGEND
+            Period of adoption
           </h6>
-          <svg viewBox='0 0 380 70'>
-            <g transform='translate(10,20)'>
-              <text
-                x={320}
-                y={-10}
-                fontSize='0.8rem'
-                fill='#212121'
-                textAnchor='end'
-              >
-                {prop === 'yearImplementation'
-                  ? 'Year of implementation'
-                  : 'Number of measurements'}
-              </text>
+          <svg viewBox='0 0 380 40'>
+            <g transform='translate(10,10)'>
               {dataDomain.map((d, i) => (
                 <g key={i}>
                   <rect
