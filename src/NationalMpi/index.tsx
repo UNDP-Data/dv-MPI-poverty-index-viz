@@ -55,7 +55,7 @@ export function NationalMpi(props: Props) {
   const [sortedBy, setSortedBy] = useState('mpi');
   const containerSubnat = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [subnatWidth, setSubnatWidth] = useState<number | 1000>(1000);
+  const [subnatWidth, setSubnatWidth] = useState<number>(0);
   national.sort((a, b) => ascending(a.country, b.country));
   const queryParams = new URLSearchParams(window.location.search);
   const queryCountry = queryParams.get('country');
@@ -143,13 +143,13 @@ export function NationalMpi(props: Props) {
     }
   }, [selectedCountry]);
   useEffect(() => {
-    if (containerRef.current) {
-      // console.log(containerRef.current.clientWidth);
-      if (containerRef.current.clientWidth > 1800) setSubnatWidth(1200);
-      else if (containerRef.current.clientWidth > 1200) setSubnatWidth(760);
-      else setSubnatWidth(containerRef.current.clientWidth);
-    }
-  }, [containerRef.current]);
+    const resizeObserver = new ResizeObserver(entries => {
+      setSubnatWidth(entries[0].target.clientWidth);
+    });
+    if (containerSubnat.current)
+      resizeObserver.observe(containerSubnat.current);
+    return () => resizeObserver.disconnect();
+  }, [containerSubnat.current]);
   return (
     <div>
       <div
@@ -244,7 +244,7 @@ export function NationalMpi(props: Props) {
         <div
           className='flex-div flex-wrap'
           ref={containerRef}
-          style={{ margin: '0 auto' }}
+          style={{ margin: '0 auto', maxWidth: '1440px' }}
         >
           <div className='national-stats-area flex-div flex-wrap gap-05'>
             <div
@@ -270,7 +270,7 @@ export function NationalMpi(props: Props) {
             {urban || rural ? (
               <div
                 className='chart-container flex-chart'
-                style={{ maxHeight: '478px' }}
+                style={{ maxHeight: '478px', flexGrow: '1' }}
               >
                 <div className='flex-div flex-space-between'>
                   <div className='chart-top'>
@@ -341,7 +341,7 @@ export function NationalMpi(props: Props) {
           {countrySubnational && countrySubnational.length > 0 ? (
             <div
               className='chart-container'
-              style={{ maxHeight: '750px', width: `${subnatWidth}px` }}
+              style={{ maxHeight: '750px', flexGrow: '1' }}
             >
               <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
                 <div>
@@ -378,7 +378,7 @@ export function NationalMpi(props: Props) {
               <div className='legend-interactionBar'>
                 {activeViz !== 'list' ? (
                   <div className='countrymap-legend'>
-                    <svg width='300px' height='45px'>
+                    <svg width='300px' height='50px'>
                       <g transform='translate(10,20)'>
                         <text
                           x={280}

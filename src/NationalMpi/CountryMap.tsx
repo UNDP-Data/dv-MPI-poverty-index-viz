@@ -11,11 +11,12 @@ import { TooltipSubnational } from '../Components/TooltipSubnational';
 interface Props {
   countryData?: MpiDataTypeNationalYears;
   selectedAdminLevel: string;
-  mapWidth: number;
   mapHeight: number;
+  mapWidth: number;
 }
 export function CountryMap(props: Props) {
   const { countryData, selectedAdminLevel, mapHeight, mapWidth } = props;
+  const containerRef = useRef<HTMLDivElement>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
   const protocol = new pmtiles.Protocol();
@@ -253,9 +254,9 @@ export function CountryMap(props: Props) {
         (map as any).current.setFilter('overlay', filters);
       }
     }
-  }, [selectedAdminLevel, mapWidth, mapHeight]);
+  }, [selectedAdminLevel]);
   return (
-    <div>
+    <div ref={containerRef}>
       <div
         ref={mapContainer}
         className='map'

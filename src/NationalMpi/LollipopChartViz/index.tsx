@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import { useRef, useEffect, useState } from 'react';
 import { MpiDataTypeSubnational } from '../../Types';
 import { LollipopChart } from './LollipopChart';
 
@@ -19,14 +19,16 @@ const LollipopChartEl = styled.div`
 export function LollipopChartViz(props: Props) {
   const { data, sortedBy } = props;
   const containerRef = useRef<HTMLDivElement>(null);
-  const [svgWidth, setSvgWidth] = useState<number | 800>(800);
+  const [svgWidth, setSvgWidth] = useState<number | 400>(400);
   useEffect(() => {
-    if (containerRef.current) {
-      setSvgWidth(containerRef.current.clientWidth);
-    }
-  }, [data]);
+    const resizeObserver = new ResizeObserver(entries => {
+      setSvgWidth(entries[0].target.clientWidth);
+    });
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
   return (
-    <div className='lollipop-container' ref={containerRef}>
+    <div ref={containerRef} className='lollipop-container'>
       <div className='flex-div flex-wrap margin-top-00 lollipop-header'>
         <div style={{ width: '25%', fontWeight: '600' }}>Regions</div>
         <div style={{ width: '20%', fontWeight: '600' }}>MPI value</div>

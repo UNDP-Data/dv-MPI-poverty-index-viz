@@ -239,8 +239,9 @@ function App() {
           ];
           // poverty change: if negative it means there's a decrease in poverty
           // as the latest value is smaller than the first one
-          const indicatorChange =
-            countryDataValues[0].mpi === '' ? 'headcountRatio' : 'mpi';
+          const indicatorChange = !Number(countryDataValues[0].mpi)
+            ? 'headcountRatio'
+            : 'mpi';
           const annualizedChangeMPI =
             (countryDataValues[countryDataValues.length - 1].mpi -
               countryDataValues[0].mpi) /

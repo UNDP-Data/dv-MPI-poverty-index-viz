@@ -16,9 +16,8 @@ interface Props {
 export function ScatterPlotSubnational(props: Props) {
   const { data, id, activeViz } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
-  const visContainer = useRef(null);
-  let width = 800;
-  const [svgWidth, setWidth] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [svgWidth, setSvgWidth] = useState<number>(0);
   const svgHeight = 500;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
@@ -45,7 +44,7 @@ export function ScatterPlotSubnational(props: Props) {
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const handleResize = () => {
       if (visContainer.current) {
         width = (visContainer.current as any).offsetWidth;
@@ -54,7 +53,14 @@ export function ScatterPlotSubnational(props: Props) {
     };
     if (activeViz === 'scatterplot') handleResize();
     window.addEventListener('resize', handleResize);
-  }, [visContainer.current, activeViz]);
+  }, [visContainer.current, activeViz]); */
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(entries => {
+      setSvgWidth(entries[0].target.clientWidth);
+    });
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
 
   useEffect(() => {
     yAxis.tickSize(-svgWidth + margin.left + margin.right);
@@ -67,10 +73,10 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
-  }, [svgWidth]);
+  }, [svgWidth, activeViz]);
 
   return (
-    <div ref={visContainer} style={{ minWidth: '600px' }}>
+    <div style={{ minWidth: '600px' }} ref={containerRef}>
       <svg
         width='100%'
         height='100%'
