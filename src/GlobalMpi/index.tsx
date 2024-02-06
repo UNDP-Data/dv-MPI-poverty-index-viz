@@ -16,9 +16,9 @@ export function GlobalMpi(props: Props) {
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
-        <h3 className='undp-typography margin-bottom-08'>
+        <h2 className='undp-typography margin-bottom-08'>
           Global Multidimensional Poverty Index (MPI)
-        </h3>
+        </h2>
         <p className='undp-typography margin-bottom-07'>
           The global Multidimensional Poverty Index (MPI) measures
           multidimensional poverty in over 100 developing countries, using
@@ -35,10 +35,10 @@ export function GlobalMpi(props: Props) {
           reveals how different groups and countries experience poverty through
           the composition of indicators.
         </p>
+        <h3 className='undp-typography margin-top-08 margin-bottom-08'>
+          Dimensions, indicators, deprivation cutoffs, and weights
+        </h3>
         <div>
-          <h4 className='undp-typography margin-top-08 margin-bottom-08'>
-            Dimensions, indicators, deprivation cutoffs, and weights
-          </h4>
           <div className='flex-div undp-table-head' style={{ padding: '10px' }}>
             <div style={{ width: '20%' }}>Dimensions of Poverty</div>
             <div style={{ width: '20%' }}>Indicator</div>
@@ -170,9 +170,9 @@ export function GlobalMpi(props: Props) {
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
-        <h4 className='undp-typography margin-top-10 margin-bottom-08'>
+        <h3 className='undp-typography margin-top-10 margin-bottom-08'>
           Global MPI around the world
-        </h4>
+        </h3>
       </div>
       {mpiData ? (
         <div className='flex-div flex-wrap gap-04'>
@@ -223,9 +223,9 @@ export function GlobalMpi(props: Props) {
           padding: '0 1.5rem',
         }}
       >
-        <h4 className='undp-typography margin-top-08'>
+        <h3 className='undp-typography margin-top-08 margin-bottom-08'>
           Multidimensional Poverty vs Income Poverty
-        </h4>
+        </h3>
         <p className='undp-typography'>
           Poverty measures that only consider income can underestimate poverty.
           In many countries (more than 40 out of the 61 analyzed in the Global
@@ -238,8 +238,8 @@ export function GlobalMpi(props: Props) {
       <DumbellChartHorizontal
         data={mpiData.filter(d => d.displayDifference === true)}
       />
-      <h4 className='undp-typography margin-top-10'>Incidence vs Intensity</h4>
-      <div className='flex-div gap-06'>
+      <h3 className='undp-typography margin-top-10'>Incidence vs Intensity</h3>
+      <div className='flex-div flex-wrap gap-06 global-scatter-container'>
         <div className='chart-global-scatter'>
           <ScatterPlotGlobal data={mpiData} />
         </div>
@@ -256,9 +256,9 @@ export function GlobalMpi(props: Props) {
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
-        <h4 className='undp-typography margin-top-10'>
+        <h3 className='undp-typography margin-top-10 margin-bottom-08'>
           Comparing Urban vs Rural and Female vs Male headed households
-        </h4>
+        </h3>
         <p className='undp-typography'>
           Globally 84% of all MPI poor people living in rural areas. Overall,{' '}
           multidimensional poverty tend to be both more prevalent and more

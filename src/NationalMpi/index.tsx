@@ -155,9 +155,9 @@ export function NationalMpi(props: Props) {
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >
-        <h3 className='undp-typography margin-bottom-07'>
+        <h2 className='undp-typography margin-bottom-08'>
           National Multidimensional Poverty Index (MPI) {queryCountry || ''}
-        </h3>
+        </h2>
         <p className='undp-typography'>
           A national Multidimensional Poverty Index (MPI) is a poverty measure
           tailored to specific countries, considering their unique
@@ -204,7 +204,9 @@ export function NationalMpi(props: Props) {
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
         className='margin-bottom-07'
       >
-        <h3 className='undp-typography'>Leaving No One Behind</h3>
+        <h3 className='undp-typography margin-bottom-08 margin-top-08'>
+          Leaving No One Behind
+        </h3>
         <p className='undp-typography'>
           In line with the central promise of the 2030 Agenda to leave no one
           behind, efforts have been made to spotlight disparities in the way
@@ -559,9 +561,9 @@ export function NationalMpi(props: Props) {
       {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
         .length > 1 ? (
         <div style={{ maxWidth: '1024px', margin: '1.5rem auto' }}>
-          <h4 className='undp-typography margin-top-10'>
+          <h3 className='undp-typography margin-top-10'>
             Evolution of MPI through the years in {countryData?.country}
-          </h4>
+          </h3>
           <div
             className='flex-div flex-wrap gap-07 margin-top-07'
             style={{ height: '500px' }}
@@ -610,9 +612,9 @@ export function NationalMpi(props: Props) {
               padding: '0 1.5rem',
             }}
           >
-            <h4 className='undp-typography margin-top-09'>
+            <h3 className='undp-typography margin-top-09 margin-bottom-08'>
               Multidimensional poverty indicators for {countryData?.country}
-            </h4>
+            </h3>
             <p className='undp-typography margin-top-06'>
               The indicators used to measure multidimensional poverty can differ
               based on the particular context and goals of the assessment.

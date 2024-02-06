@@ -3,8 +3,7 @@ import { Radio, RadioChangeEvent } from 'antd';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
-// import UNDPColorModule from 'undp-viz-colors';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HoverDataType, MpiDataType } from '../Types';
 import { Tooltip } from '../Components/Tooltip';
 
@@ -27,13 +26,12 @@ const regionColors = [
   '#E0529E',
   '#757AF0',
 ];
-// const regionColors = UNDPColorModule.categoricalColors.colors;
 const regionScale = scaleOrdinal<string>()
   .domain(regionsOptions)
   .range(regionColors);
 export function ScatterPlotGlobal(props: Props) {
   const { data } = props;
-  const graphWidth = 1280;
+  // const graphWidth = 1280;
   const graphHeight = 550;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const [hoverData, setHoverData] = useState<HoverDataType | undefined>(
@@ -41,6 +39,8 @@ export function ScatterPlotGlobal(props: Props) {
   );
   const [selectedRegion, setSelectedRegion] = useState<string>('All');
   const [hoverValue, setHoverValue] = useState<string>('');
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [graphWidth, setGraphWidth] = useState<number>(0);
   const xPos = scaleLinear()
     .domain([0, 100])
     .range([0, graphWidth - margin.left - margin.right])
@@ -56,8 +56,8 @@ export function ScatterPlotGlobal(props: Props) {
     .tickSizeOuter(0)
     .tickPadding(6)
     .tickFormat((d: any) => `${d}%`);
-  // eslint-disable-next-line no-console
   useEffect(() => {
+    yAxis.tickSize(-graphWidth + margin.top + margin.bottom);
     const svg = select('#scatterGlobal');
     svg.select('.yAxis').call(yAxis as any);
     svg.select('.xAxis').call(xAxis as any);
@@ -67,11 +67,20 @@ export function ScatterPlotGlobal(props: Props) {
       .attr('dy', '-4px')
       .attr('x', '-4px')
       .attr('text-anchor', 'end');
+  }, [graphWidth]);
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(entries => {
+      setGraphWidth(entries[0].target.clientWidth);
+    });
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
   }, []);
-
   return (
-    <div className='chart-container margin-top-06'>
-      <div className='margin-left-08 margin-bottom-03'>
+    <div
+      className='chart-container global-scatter margin-top-06'
+      ref={containerRef}
+    >
+      <div className='margin-bottom-03'>
         <Radio.Group
           defaultValue='All'
           onChange={(el: RadioChangeEvent) =>

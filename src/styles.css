@@ -18,7 +18,7 @@
   flex-grow: 1;
   flex-shrink: 1; 
   flex-basis: 500px;
-  max-width: 960px;
+  max-width: 1024px;
   margin: 0 auto;
 }
 .chart-global-scatter{
@@ -29,15 +29,27 @@
 .description-scatter{
   flex-grow: 1;
   flex-shrink: 1; 
-  flex-basis: 20%;
+  flex-basis: 28%;
+}
+.global-scatter-container{
+  flex-direction: row;
+}
+@media (max-width: 1230px) {
+  .global-scatter-container{
+    flex-direction: column-reverse;
+    gap: 0 !important;
+  }
 }
 .stat-card{
   max-height: 250px;
 }
 /* tabs */
-.undp-tabs.narrow-tabs .ant-tabs-nav{
-  margin: 0 auto;
-  width: 1024px;
+
+@media (min-width: 1024px) {
+  .undp-tabs.narrow-tabs .ant-tabs-nav{
+    margin: 0 auto;
+    width: 1024px;
+  }
 }
 /* dumbell styles */
 .dumbell-container{
@@ -222,12 +234,12 @@
 
 @-webkit-keyframes highlight-opacity-grey {
   0%   {opacity: 1;}
-  50%  {opacity:.8;fill:#55606E}
+  50%  {opacity:1;fill:#55606E}
 }
 
 @keyframes highlight-opacity-grey {
   0%   {opacity: 1;}
-  50%  {opacity:.8;fill:#55606E}
+  50%  {opacity:1;fill:#55606E}
 }
 .high-opa-grey{
   -webkit-animation-name: highlight-opacity-grey;
@@ -237,19 +249,19 @@
   animation-iteration-count: 1;
 }
 @-webkit-keyframes highlight-opacity {
-  0%   {opacity: 0.7;}
+  0%   {opacity: 0.5;}
   50%  {opacity: 1;}
 }
 
 @keyframes highlight-opacity {
-  0%   {opacity: 0.7;}
+  0%   {opacity: 0.5;}
   50%  {opacity: 1;}
 }
 .high-opa{
   -webkit-animation-name: highlight-opacity;
   -webkit-animation-duration: 1s;
   animation-name: highlight-opacity;
-  animation-duration: 1s;
+  animation-duration: 3s;
   animation-iteration-count: 1;
 }
 /* definitions flex divs */
@@ -281,6 +293,9 @@
   background-color: white;
   border-color: var(--gray-300);
 }
+.ant-radio-button-wrapper:not(:first-child)::before{
+  display: none;
+}
 /* indicators table */
 
 .column-1{
@@ -295,14 +310,14 @@
 }
 .column-2{
   flex-grow: 0;
-  flex-shrink: 0; 
+  flex-shrink: 1; 
   flex-basis: 20%;
   width:20%;
   padding:10px;
 }
 .column-3{
   flex-grow: 0;
-  flex-shrink: 0; 
+  flex-shrink: 1; 
   flex-basis: 60%;
   width:60%;
   padding:10px;
@@ -310,10 +325,15 @@
 }
 .column-4{
   flex-grow: 0;
-  flex-shrink: 0; 
+  flex-shrink: 1; 
   flex-basis: 10%;
   width:10%;
   padding:10px;
+}
+@media (max-width: 700px) {
+  .column-1, .column-2{
+    font-size: 0.85rem;
+  }
 }
 /*.color-1{
   background-color: rgb(224, 82, 158, 0.4);
