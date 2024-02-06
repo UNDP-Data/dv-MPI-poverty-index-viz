@@ -148,7 +148,9 @@ export function IconsMap(props: Props) {
                             <path
                               className={
                                 selectedCountry === d.properties.ISO3
-                                  ? 'high-opa'
+                                  ? value.length > 0
+                                    ? 'high-opa'
+                                    : 'high-opa-grey'
                                   : ''
                               }
                               key={j}
@@ -159,7 +161,7 @@ export function IconsMap(props: Props) {
                               opacity={
                                 !selectedColor || selectedColor === color
                                   ? 1
-                                  : 0.7
+                                  : 0.3
                               }
                             />
                           );
@@ -180,7 +182,9 @@ export function IconsMap(props: Props) {
                             <path
                               className={
                                 selectedCountry === d.properties.ISO3
-                                  ? 'high-opa'
+                                  ? value.length > 0
+                                    ? 'high-opa'
+                                    : 'high-opa-grey'
                                   : ''
                               }
                               key={j}
@@ -191,7 +195,7 @@ export function IconsMap(props: Props) {
                               opacity={
                                 !selectedColor || selectedColor === color
                                   ? 1
-                                  : 0.7
+                                  : 0.3
                               }
                             />
                           );

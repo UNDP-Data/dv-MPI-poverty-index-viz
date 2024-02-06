@@ -169,7 +169,6 @@ export function NationalMpi(props: Props) {
       </div>
       {nationalYears ? (
         <div
-          className='flex-div flex-wrap gap-04'
           style={{
             maxWidth: '1024px',
             margin: '0 auto',
@@ -181,7 +180,7 @@ export function NationalMpi(props: Props) {
           </div>
           <div className='chart-explanation-national'>
             <div>
-              <p className='undp-typography margin-top-04'>
+              <p className='undp-typography margin-top-06 margin-bottom-09'>
                 Over the past 15 years, more than 35 countries around the world
                 have developed national MPIs (N-MPIs). This reflects an
                 increased recognition of the importance of complementing

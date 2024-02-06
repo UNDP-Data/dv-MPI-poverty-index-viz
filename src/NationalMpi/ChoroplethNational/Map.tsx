@@ -150,7 +150,9 @@ export function Map(props: Props) {
                             <path
                               className={
                                 selectedCountry === d.properties.ISO3
-                                  ? 'high-opa'
+                                  ? value.length > 0
+                                    ? 'high-opa'
+                                    : 'high-opa-grey'
                                   : ''
                               }
                               key={j}
@@ -182,7 +184,9 @@ export function Map(props: Props) {
                             <path
                               className={
                                 selectedCountry === d.properties.ISO3
-                                  ? 'high-opa'
+                                  ? value.length > 0
+                                    ? 'high-opa'
+                                    : 'high-opa-grey'
                                   : ''
                               }
                               key={j}
