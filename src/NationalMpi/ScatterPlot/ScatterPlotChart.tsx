@@ -22,9 +22,8 @@ interface Props {
 export function ScatterPlotChart(props: Props) {
   const { rural, urban, total, id, country } = props;
   const margin = { top: 20, right: 30, bottom: 70, left: 80 };
-  const visContainer = useRef(null);
-  let width = 400;
-  const [graphWidth, setWidth] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [graphWidth, setGraphWidth] = useState<number>(0);
   const graphHeight = 310;
   const [hoverData, setHoverData] = useState<HoverSubnatDataType | undefined>(
     undefined,
@@ -49,15 +48,12 @@ export function ScatterPlotChart(props: Props) {
     .ticks(5);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (visContainer.current) {
-        width = (visContainer.current as any).offsetWidth;
-      }
-      setWidth(width);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-  }, [visContainer.current]);
+    const resizeObserver = new ResizeObserver(entries => {
+      setGraphWidth(entries[0].target.clientWidth);
+    });
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
 
   useEffect(() => {
     yAxis.tickSize(-graphWidth + margin.top + margin.bottom);
@@ -72,7 +68,7 @@ export function ScatterPlotChart(props: Props) {
       .attr('text-anchor', 'end');
   }, [country, graphWidth]);
   return (
-    <div ref={visContainer}>
+    <div ref={containerRef}>
       <svg
         width='100%'
         height='100%'

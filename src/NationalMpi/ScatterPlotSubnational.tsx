@@ -44,16 +44,6 @@ export function ScatterPlotSubnational(props: Props) {
     .domain(valueArray)
     .range(UNDPColorModule.sequentialColors.negativeColorsx07);
 
-  /* useEffect(() => {
-    const handleResize = () => {
-      if (visContainer.current) {
-        width = (visContainer.current as any).offsetWidth;
-      }
-      setWidth(width);
-    };
-    if (activeViz === 'scatterplot') handleResize();
-    window.addEventListener('resize', handleResize);
-  }, [visContainer.current, activeViz]); */
   useEffect(() => {
     const resizeObserver = new ResizeObserver(entries => {
       setSvgWidth(entries[0].target.clientWidth);

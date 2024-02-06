@@ -250,7 +250,7 @@ export function NationalMpi(props: Props) {
           <div className='national-stats-area flex-div flex-wrap gap-05'>
             <div
               className='stat-card'
-              style={{ minWidth: '300px', maxHeight: '250px' }}
+              style={{ minWidth: '400px', maxHeight: '250px' }}
             >
               <h3>
                 {Number(total?.mpi) ? Number(total?.mpi).toFixed(3) : 'N/A'}
