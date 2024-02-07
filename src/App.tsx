@@ -179,10 +179,6 @@ function App() {
           region: d['World region'],
           mpi: d.MPI,
           year: d.Year,
-          /* lastYear:
-            d.Year.split('-').length > 1
-              ? Number(d.Year.split('-')[1])
-              : Number(d.Year.split('-')[0]), */
           subregion: d['Admin name Region'],
           adminLevel: d['admin level'],
           headcountRatio: d['Headcount Ratio (H, %)'],
@@ -193,13 +189,16 @@ function App() {
           iso_a3: d.ISOcountry,
           region: d['World region'],
           year: d.Year,
-          firstYear: Number(d.Year.split('-')[0]),
+          lastYear:
+            (d as any).Year.split('-').length === 2
+              ? Number((d as any).Year.split('-')[1])
+              : Number((d as any).Year),
           location: d.location,
           mpi: d.MPI,
           headcountRatio: d['Headcount Ratio (H, %)'],
           intensity: +d['Intensity (A, %)'],
         }));
-        locationFetched.sort((a, b) => descending(a.firstYear, b.firstYear));
+        locationFetched.sort((a, b) => descending(a.lastYear, b.lastYear));
         const nationalFetched = nationalYears.map((d: any) => ({
           country: d.country,
           iso_a3: d['country code'],
@@ -217,7 +216,10 @@ function App() {
           indicatorFiles: d['indicators files']
             .split(',')
             .filter((k: any) => k !== ''),
-          firstYear: Number(d.Year.split('-')[0]),
+          lastYear:
+            (d as any).Year.split('-').length === 2
+              ? Number((d as any).Year.split('-')[1])
+              : Number((d as any).Year),
         }));
         // create an array with all countries with no repetition
         // create an array with country/change and all the data of the country in an array
@@ -229,29 +231,25 @@ function App() {
           const countryDataValues = nationalFetched.filter(
             k => k.iso_a3 === country,
           );
-          countryDataValues.sort((a, b) =>
-            descending(a.firstYear, b.firstYear),
-          );
+          countryDataValues.sort((a, b) => descending(a.lastYear, b.lastYear));
           const countryDetails = (countriesArray as any)[
             (countriesArray as any).findIndex(
               (k: any) => k['Alpha-3 code'] === country,
             )
           ];
-          // poverty change: if negative it means there's a decrease in poverty
-          // as the latest value is smaller than the first one
           const indicatorChange = !Number(countryDataValues[0].mpi)
             ? 'headcountRatio'
             : 'mpi';
           const annualizedChangeMPI =
             (countryDataValues[countryDataValues.length - 1].mpi -
               countryDataValues[0].mpi) /
-            (countryDataValues[countryDataValues.length - 1].firstYear -
-              countryDataValues[0].firstYear);
+            (countryDataValues[countryDataValues.length - 1].lastYear -
+              countryDataValues[0].lastYear);
           const annualizedChangeHeadcount =
             (countryDataValues[countryDataValues.length - 1].headcountRatio -
               countryDataValues[0].headcountRatio) /
-            (countryDataValues[countryDataValues.length - 1].firstYear -
-              countryDataValues[0].firstYear);
+            (countryDataValues[countryDataValues.length - 1].lastYear -
+              countryDataValues[0].lastYear);
           // sort data by year
           const yearImpl = yearImplementation.filter(
             k => k['country code'] === country,

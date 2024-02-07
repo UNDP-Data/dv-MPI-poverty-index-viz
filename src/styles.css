@@ -166,17 +166,18 @@
   flex-shrink: 1; 
   flex-basis: 300px;
 }
-/* .chart-explanation-national{
-  flex-grow: 1;
-  flex-shrink: 1; 
-  flex-basis: 100px;
-} */
+.chart-container-subnational{
+  background-color: var(--gray-200);
+  padding: 24px 32px;
+  position:relative;
+  flex-basis: 60%;
+  flex-grow: 0;
+}
 .national-stats-area{
-  flex-direction: column;
   flex-grow:1;
-  flex-basis: 500px;
-  flex-shrink: 1;
-  max-width: 30%;
+  flex-basis: 30%;
+  flex-shrink: 0;
+  flex-direction: column;
 }
 @media (max-width: 1250px) {
   .national-stats-area{
@@ -185,6 +186,9 @@
     flex-shrink: 1; 
     flex-basis: 40%;
     max-width: 100%;
+  }
+  .chart-container-subnational{
+    flex-grow: 1;
   }
 }
 .national-stats-area .stat-card{

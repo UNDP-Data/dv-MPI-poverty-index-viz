@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import styled from 'styled-components';
-import { HoverDataType } from '../Types';
+import { HoverDataType } from '../../Types';
 
 interface Props {
   data: HoverDataType;
@@ -111,7 +111,7 @@ export function Tooltip(props: Props) {
                 </span>
               )}
             </div>
-            <hr className='undp-style margin-top-03 margin-bottom-03' />
+            <hr className='undp-style margin-top-03' />
             <div className='flex-div'>
               <div style={{ width: '50%' }}>
                 <div className='tooltipTitle'>MPI</div>
@@ -145,8 +145,7 @@ export function Tooltip(props: Props) {
             </div>
           </>
         ) : (
-          <div>
-            <hr className='undp-style margin-top-04 margin-bottom-03' />
+          <div className='margin-top-03'>
             <div className='flex-div'>
               <div style={{ width: '50%' }}>
                 <div className='tooltipTitle'>MPI</div>

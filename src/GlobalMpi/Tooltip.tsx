@@ -5,6 +5,7 @@ import { HoverDataType } from '../Types';
 
 interface Props {
   data: HoverDataType;
+  prop: string;
 }
 
 interface TooltipElProps {
@@ -35,7 +36,7 @@ const TooltipEl = styled.div<TooltipElProps>`
 `;
 
 export function Tooltip(props: Props) {
-  const { data } = props;
+  const { data, prop } = props;
   return (
     <TooltipEl
       x={data.xPosition}
@@ -72,18 +73,44 @@ export function Tooltip(props: Props) {
       <hr className='undp-style margin-top-00 margin-bottom-00' />
       <div
         style={{
-          padding: 'var(--spacing-05)',
+          padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
         }}
       >
         {Object.keys(data.countryValues).length === 0 &&
         data.countryValues.constructor === Object ? (
           'no data available for this country'
-        ) : (data.countryValues as any).countryData.length > 0 ? (
+        ) : prop === 'mpi' ? (
           <>
-            <div className='tooltipTitle'>
-              Absolute annualized change in Incidence:
+            <div>
+              <span className='tooltipLabel'>MPI: </span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any)[prop]).toFixed(3)}
+              </span>
             </div>
             <div>
+              <span className='tooltipLabel'>Incidence: </span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any).headcountRatio).toFixed(2)}%
+              </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>Intensity: </span>
+              <span className='tooltipValue'>
+                {Number((data.countryValues as any).intensity).toFixed(2)}%
+              </span>
+            </div>
+            <div>
+              <span className='tooltipLabel'>Survey year: </span>
+              <span className='tooltipValue'>
+                {(data.countryValues as any).year}
+              </span>
+            </div>
+          </>
+        ) : (data.countryValues as any).countryData.length > 1 ? (
+          <>
+            <div className='tooltipTitle'>Absolute annualized change in:</div>
+            <div>
+              <span className='tooltipLabel'>Incidence: </span>
               <span className='tooltipValue'>
                 {Number(
                   (data.countryValues as any).annualizedChangeHeadcount,
@@ -94,19 +121,40 @@ export function Tooltip(props: Props) {
                   : '(increase)'}
               </span>
             </div>
+            <div>
+              <span className='tooltipLabel'>MPI: </span>
+              {(data.countryValues as any).indicatorChange ===
+              'headcountRatio' ? (
+                <span className='tooltipValue'>N/A</span>
+              ) : (
+                <span className='tooltipValue'>
+                  {Number(
+                    (data.countryValues as any).annualizedChangeMPI,
+                  ).toFixed(3)}{' '}
+                  {Number((data.countryValues as any).annualizedChangeMPI) < 0
+                    ? '(decrease)'
+                    : '(increase)'}
+                </span>
+              )}
+            </div>
             <hr className='undp-style margin-top-03 margin-bottom-03' />
             <div className='flex-div'>
               <div style={{ width: '50%' }}>
                 <div className='tooltipTitle'>MPI</div>
-                {(data.countryValues as any).countryData.map(
-                  (d: any, i: number) => (
-                    <div key={i}>
-                      <span className='tooltipLabel'>{d.Year}: </span>
-                      <span className='tooltipValue'>
-                        {Number(d['Multidimensional Poverty Index']).toFixed(3)}
-                      </span>
-                    </div>
-                  ),
+                {(data.countryValues as any).indicatorChange ===
+                'headcountRatio' ? (
+                  <span className='tooltipValue'>N/A</span>
+                ) : (
+                  (data.countryValues as any).countryData.map(
+                    (d: any, i: number) => (
+                      <div key={i}>
+                        <span className='tooltipLabel'>{d.year}: </span>
+                        <span className='tooltipValue'>
+                          {Number(d.mpi).toFixed(3)}
+                        </span>
+                      </div>
+                    ),
+                  )
                 )}
               </div>
               <div style={{ width: '50%' }}>
@@ -114,15 +162,8 @@ export function Tooltip(props: Props) {
                 {(data.countryValues as any).countryData.map(
                   (d: any, i: number) => (
                     <div key={i}>
-                      <span className='tooltipLabel'>{d.Year}: </span>
-                      <span className='tooltipValue'>
-                        {Number(
-                          d[
-                            'Headcount ratio: Population in multidimensional poverty'
-                          ],
-                        ).toFixed(1)}
-                        %
-                      </span>
+                      <span className='tooltipLabel'>{d.year}: </span>
+                      <span className='tooltipValue'>{d.headcountRatio}%</span>
                     </div>
                   ),
                 )}
@@ -131,15 +172,19 @@ export function Tooltip(props: Props) {
           </>
         ) : (
           <div>
+            <div className='tooltipTitle'>Data available for only 1 year</div>
+            <hr className='undp-style margin-top-04 margin-bottom-03' />
             <div className='flex-div'>
               <div style={{ width: '50%' }}>
                 <div className='tooltipTitle'>MPI</div>
                 <div>
                   <span className='tooltipLabel'>
-                    {(data.countryValues as any).year}:{' '}
+                    {(data.countryValues as any).countryData[0].year}:{' '}
                   </span>
                   <span className='tooltipValue'>
-                    {Number((data.countryValues as any).mpi).toFixed(3)}
+                    {Number(
+                      (data.countryValues as any).countryData[0].mpi,
+                    ).toFixed(3)}
                   </span>
                 </div>
               </div>
@@ -147,12 +192,12 @@ export function Tooltip(props: Props) {
                 <div className='tooltipTitle'>Incidence</div>
                 <div>
                   <span className='tooltipLabel'>
-                    {(data.countryValues as any).year}:{' '}
+                    {(data.countryValues as any).countryData[0].year}:{' '}
                   </span>
                   <span className='tooltipValue'>
-                    {Number((data.countryValues as any).headcountRatio).toFixed(
-                      2,
-                    )}
+                    {Number(
+                      (data.countryValues as any).countryData[0].headcountRatio,
+                    ).toFixed(2)}
                     %
                   </span>
                 </div>

@@ -10,7 +10,7 @@ import {
   MpiDataTypeNational,
   MpiDataTypeLocation,
 } from '../../Types';
-import { TooltipSubnational } from '../../Components/TooltipSubnational';
+import { TooltipSubnational } from '../TooltipSubnational';
 
 interface Props {
   rural?: MpiDataTypeLocation;

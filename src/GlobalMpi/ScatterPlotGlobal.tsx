@@ -5,7 +5,7 @@ import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
 import { useEffect, useRef, useState } from 'react';
 import { HoverDataType, MpiDataType } from '../Types';
-import { Tooltip } from '../Components/Tooltip';
+import { Tooltip } from './Tooltip';
 
 interface Props {
   data: MpiDataType[];

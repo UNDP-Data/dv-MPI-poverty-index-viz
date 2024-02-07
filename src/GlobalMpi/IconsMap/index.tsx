@@ -9,7 +9,7 @@ import { min, extent } from 'd3-array';
 import { geoEqualEarth } from 'd3-geo';
 import { zoom } from 'd3-zoom';
 import world from '../../Data/worldMap.json';
-import { Tooltip } from '../Tooltip';
+import { Tooltip } from './Tooltip';
 import { HoverDataType } from '../../Types';
 
 interface Props {
@@ -60,8 +60,6 @@ export function IconsMap(props: Props) {
     .range(colors);
   const minValue = min(data, (d: any) => d.annualizedChangeHeadcount);
   const extentValue = extent(data, (d: any) => d.annualizedChangeHeadcount);
-  // const regionColors = UNDPColorModule.categoricalColors.colors;
-  // const colorScale = scaleOrdinal<string>().domain(valueArray).range(colors);
   const valueScale = scaleLinear<number>().domain([minValue, 0]).range([30, 0]);
   useEffect(() => {
     const mapGSelect = select(mapG.current);

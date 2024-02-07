@@ -72,19 +72,15 @@ export function DumbellChart(props: Props) {
     .nice();
 
   useEffect(() => {
-    const handleResize = () => {
-      if (visContainer.current)
-        width = (visContainer.current as any).offsetWidth;
+    const resizeObserver = new ResizeObserver(entries => {
+      width = entries[0].target.clientWidth;
       setWidth(width);
       setLeftPadding(width > 960 ? width / 4 : width / 3);
       setTextSize(width > 960 ? 1 : 0.8);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    });
+    if (visContainer.current) resizeObserver.observe(visContainer.current);
+    return () => resizeObserver.disconnect();
   }, []);
-  /* useEffect(() => {
-
-  }, [indicatorOption]); */
   return (
     <div className='dumbellChart' ref={visContainer}>
       <svg

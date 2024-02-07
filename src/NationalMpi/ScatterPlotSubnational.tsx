@@ -6,7 +6,7 @@ import { select } from 'd3-selection';
 import UNDPColorModule from 'undp-viz-colors';
 import { useEffect, useRef, useState } from 'react';
 import { HoverSubnatDataType, MpiDataTypeSubnational } from '../Types';
-import { TooltipSubnational } from '../Components/TooltipSubnational';
+import { TooltipSubnational } from './TooltipSubnational';
 
 interface Props {
   data: MpiDataTypeSubnational[];

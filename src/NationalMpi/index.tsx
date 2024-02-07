@@ -74,26 +74,6 @@ export function NationalMpi(props: Props) {
   const [selectedAdminLevel, setSelectedAdminLevel] = useState<string>(
     adminLevels[0],
   );
-  /* const rangeAnnuMPI = extent(nationalYears, d => d.annualizedChangeMPI);
-  const rangeAnnuHeadcount = extent(
-    nationalYears,
-    d => d.annualizedChangeHeadcount,
-  ); */
-  // const valueArrayAnnu = [-6, -3, 0, 3];
-  // [-40, -30, -20, -10, 0, 10, 20, 30, 40, 50]
-  // const valueArrayAnnu = [-0.03, -0.02, -0.01, 0, 0.01];
-  // const valueArrayAnnu = [-0.025, -0.01, 0, 0.01];
-  // const colorsAnnu = [...UNDPColorModule.divergentColors.colorsx06];
-  /* const regionColors = [
-    '#006eb5',
-    '#5DD4F0',
-    '#02A38A',
-    '#E78625',
-    '#E0529E',
-    '#757AF0',
-  ];
-  const regionsOptions = [...new Set(nationalYears.map(d => d.region))];
-  */
   useEffect(() => {
     const ruralValues = location?.filter(
       k => k.country === selectedCountry && k.location === 'rural',
@@ -245,13 +225,10 @@ export function NationalMpi(props: Props) {
         <div
           className='flex-div flex-wrap'
           ref={containerRef}
-          style={{ margin: '0 auto', maxWidth: '1440px' }}
+          style={{ margin: '0 auto', maxWidth: '1600px' }}
         >
           <div className='national-stats-area flex-div flex-wrap gap-05'>
-            <div
-              className='stat-card'
-              style={{ minWidth: '400px', maxHeight: '250px' }}
-            >
+            <div className='stat-card'>
               <h3>
                 {Number(total?.mpi) ? Number(total?.mpi).toFixed(3) : 'N/A'}
               </h3>
@@ -341,8 +318,8 @@ export function NationalMpi(props: Props) {
           </div>
           {countrySubnational && countrySubnational.length > 0 ? (
             <div
-              className='chart-container'
-              style={{ maxHeight: '750px', flexGrow: '1' }}
+              className='chart-container-subnational'
+              style={{ maxHeight: '750px' }}
             >
               <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
                 <div>

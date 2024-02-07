@@ -6,7 +6,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import * as pmtiles from 'pmtiles';
 import UNDPColorModule from 'undp-viz-colors';
 import { HoverSubnatDataType, MpiDataTypeNationalYears } from '../Types';
-import { TooltipSubnational } from '../Components/TooltipSubnational';
+import { TooltipSubnational } from './TooltipSubnational';
 
 interface Props {
   countryData?: MpiDataTypeNationalYears;
