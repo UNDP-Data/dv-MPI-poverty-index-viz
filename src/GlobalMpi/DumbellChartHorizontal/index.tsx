@@ -23,9 +23,9 @@ export function DumbellChartHorizontal(props: Props) {
           target='_blank'
           rel='noreferrer'
           className='undp-style small-font'
-          href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
+          href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
         >
-          Global Multidimensional Poverty index 2023 MPI Tables 1 and 2
+          Global MPI data tables 2023, Table 1: National Results
         </a>
         <br />
         Note: Extreme monetary poverty refers to the World Bank indicator
