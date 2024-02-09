@@ -280,7 +280,7 @@ export function IconsMap(props: Props) {
         <LegendEl>
           <h6 className='undp-typography'>LEGEND</h6>
           <p className='legend-title margin-bottom-00'>
-            Multidimensional poverty index
+            Multidimensional poverty index (latest value)
           </p>
           <svg viewBox='0 0 380 60'>
             <g transform='translate(10,20)'>

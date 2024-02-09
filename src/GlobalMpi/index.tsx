@@ -166,6 +166,19 @@ export function GlobalMpi(props: Props) {
             </div>
           </div>
         </div>
+        <p className='source margin-top-06'>
+          Source:{' '}
+          <a
+            target='_blank'
+            rel='noreferrer'
+            className='undp-style small-font'
+            href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
+          >
+            2023 Global Multidimensional Poverty Index (MPI), Annex: The
+            dimensions, indicators, deprivation cutoffs, and weights of the
+            global Multidimensional Poverty Index,
+          </a>{' '}
+        </p>
       </div>
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
@@ -175,7 +188,7 @@ export function GlobalMpi(props: Props) {
         </h3>
       </div>
       {mpiData ? (
-        <div className='flex-div flex-wrap gap-04'>
+        <div>
           <div className='chart-left-div'>
             <p className='undp-typography'>
               According to the latest global MPI data, 1.1 billion people (out
@@ -203,13 +216,26 @@ export function GlobalMpi(props: Props) {
                 className='undp-style small-font'
                 href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
               >
-                Global Multidimensional Poverty index 2023 MPI Tables 1 and 2
+                UNDP (United Nations Development Programme). 2023.
+                <br />
+                2023 Global Multidimensional Poverty Index (MPI): Unstacking
+                global poverty: Data for high impact action. New York.
+              </a>
+              <br />
+              <a
+                target='_blank'
+                rel='noreferrer'
+                className='undp-style small-font'
+                href='https://hdr.undp.org/sites/default/files/publications/additional-files/2023-07/2023_GlobalMPI_Table_1_and_2_10July%202023.xlsx'
+              >
+                2023 MPI Tables 1 and 2 (XLS)
               </a>
               <br />
               Note: The absolute annualized change is the difference in a
               poverty measure between two years, divided by the number of years
-              between surveys. It is calculated using the measurements of the
-              first and last year.
+              between surveys. The values presented in the map have been
+              calculated using measurements of the first and last available
+              year.
             </p>
           </div>
         </div>
@@ -268,7 +294,7 @@ export function GlobalMpi(props: Props) {
       <div className='margin-top-09'>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
-      <p className='source'>
+      <p className='source margin-top-05'>
         Sources:{' '}
         <a
           target='_blank'
@@ -276,9 +302,26 @@ export function GlobalMpi(props: Props) {
           className='undp-style small-font'
           href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
         >
-          Global MPI data tables 2023, Table 4: Area results and Table 7:
-          Headship results
+          OPHI Global MPI data tables 2023,
+        </a>{' '}
+        <a
+          target='_blank'
+          rel='noreferrer'
+          className='undp-style small-font'
+          href='https://ophi.org.uk/wp-content/uploads/Table-4-Area-Results-MPI-2023.xlsx'
+        >
+          Table 4: Area results
         </a>
+        ,{' '}
+        <a
+          target='_blank'
+          rel='noreferrer'
+          className='undp-style small-font'
+          href='https://ophi.org.uk/wp-content/uploads/Table-7-Headship-Results-MPI-2023.xlsx'
+        >
+          Table 7: Headship results
+        </a>
+        .
       </p>
     </div>
   );
