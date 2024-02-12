@@ -25,15 +25,16 @@ export function GlobalMpi(props: Props) {
           internationally comparable datasets and is updated annually. The
           measure captures the severe deprivations that each person faces at the
           same time using information from 10 indicators, which are grouped into
-          three equally weighted dimensions: health, education, and living
-          standards. It identifies individuals as poor if they are deprived in
-          one-third or more of these indicators, measuring the intensity of
-          their poverty based on the percentage of deprivations. The MPI
-          provides insights into who is poor and how how they experience
+          three equally weighted dimensions: <strong>health</strong>,{' '}
+          <strong>education</strong>, and <strong>living standards</strong>. It
+          identifies individuals as poor if they are deprived in one-third or
+          more of these indicators and measures the intensity of their poverty
+          based on the percentage of the indicators in which they are deprived.
+          The MPI provides insights into who is poor and how they experience
           poverty, offering a comprehensive understanding of poverty dynamics.
           It allows for comparisons across various administrative levels and
           reveals how different groups and countries experience poverty through
-          the composition of indicators.
+          the range of indicators.
         </p>
         <h3 className='undp-typography margin-top-08 margin-bottom-08'>
           Dimensions, indicators, deprivation cutoffs, and weights
@@ -193,12 +194,23 @@ export function GlobalMpi(props: Props) {
             <p className='undp-typography'>
               According to the latest global MPI data, 1.1 billion people (out
               of 6.1 billion across 110 countries) are still living in acute
-              multidimensional poverty. Almost two-third of the MPI poor (730
-              million) live in middle-income countries (MICs). However, poverty
-              disproportionately affect people in low-income countries (LICs),
-              which make up only 10 percent of the population covered by the
-              global MPI, but are home to 34.7 percent (387 million) of the
-              poor.
+              multidimensional poverty. Almost two-thirds of the
+              multidimensionally poor (730 million) people live in middle-income
+              countries (MICs). However, poverty disproportionately affects
+              people in low-income countries
+            </p>
+            <p className='undp-typography'>
+              (LICs), which make up only 10 percent of the population covered by
+              the global MPI, but are home to 34.7 percent (387 million) of the
+              multidimensionally poor. Moreover, five out of six poor people
+              live in Sub-Saharan Africa (47.8 percent) or South Asia (34.9
+              percent).
+            </p>
+            <p className='undp-typography'>
+              However, the latest MPI data shows that poverty reduction is
+              possible, as in the last 15 years, twenty-five countries halved
+              their Global MPI value. In 79 of the 81 countries with trend data,
+              MPI had decreased between countries’ first and last measurements.
             </p>
           </div>
           <div className='chart-global-container'>
@@ -273,8 +285,12 @@ export function GlobalMpi(props: Props) {
           <p className='undp-typography'>
             Global MPI data shows that worrisomely, the higher the incidence of
             poverty, the higher the intensity of poverty that poor people tend
-            to experience. In Chad, Niger the incidence of poverty exceeds 80%
-            while on average, the poor are deprived in more than 60% of the
+            to experience. Multidimensional poverty in Sub-Saharan Africa is
+            particularly high. Overall, in 19 of the 40 of the countries with
+            data, the reported incidence exceeds 50 percent; moreover, in 18
+            countries the poor are deprived in at least half of the MPI
+            indicators. In Chad, Niger the incidence of poverty exceeds 80%
+            where, on average, the poor are deprived in more than 60% of the
             weighted MPI indicators.
           </p>
         </div>
