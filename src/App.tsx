@@ -105,6 +105,7 @@ function App() {
             year: d.Year,
             intensity: d[intensity],
             povertyWB: Number(d['PPP $2.15 a day 2011-2021']),
+            headcountThousands: Number(d['Headcount 2021 thousands']),
             displayDifference: Boolean(d['display difference']),
             coordinates: [
               countryDetails['Longitude (average)'],

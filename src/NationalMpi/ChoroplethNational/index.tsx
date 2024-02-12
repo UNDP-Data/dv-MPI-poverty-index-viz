@@ -13,14 +13,14 @@ export function ChoroplethNational(props: Props) {
     <div className='map-container'>
       <Map data={data} prop='yearImplementation' colors={periodColors} />
       <p className='source undp-typography'>
-        Sources: Year of adoption:{' '}
+        Source:{' '}
         <a
           className='undp-style small-font'
           href='https://www.mppn.org/applications/national-measures/'
           target='_blank'
           rel='noreferrer'
         >
-          Some national measures (MPPN)
+          MPPN, Multidimensional Poverty Peer Network - Some national measures
         </a>
       </p>
     </div>

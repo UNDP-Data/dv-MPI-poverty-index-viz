@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import styled from 'styled-components';
+import { format } from 'd3-format';
 import { HoverDataType } from '../Types';
 
 interface Props {
@@ -103,6 +104,15 @@ export function Tooltip(props: Props) {
               <span className='tooltipLabel'>Survey year: </span>
               <span className='tooltipValue'>
                 {(data.countryValues as any).year}
+              </span>
+            </div>
+            <hr className='undp-style margin-top-03 margin-bottom-03' />
+            <div className='margin-bottom-03'>
+              <span className='tooltipValue'>
+                {format(',')(
+                  (data.countryValues as any).headcountThousands * 1000,
+                ).replaceAll(',', ' ')}{' '}
+                multidimensional poor people (2021)
               </span>
             </div>
           </>

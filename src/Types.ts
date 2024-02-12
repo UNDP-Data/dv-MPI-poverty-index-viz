@@ -19,6 +19,7 @@ export interface MpiDataTypeBase {
 }
 export interface MpiDataType extends MpiDataTypeBase {
   povertyWB: number;
+  headcountThousands: number;
   coordinates: [number, number];
   annualizedChangeHeadcount: number | undefined;
   countryData: any[];
