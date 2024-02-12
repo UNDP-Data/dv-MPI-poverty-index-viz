@@ -290,6 +290,29 @@ export function GlobalMpi(props: Props) {
           multidimensional poverty tend to be both more prevalent and more
           intense in rural areas compared to urban areas.
         </p>
+        <p>
+          In a number of countries, people living in female-headed households
+          are significantly poorer than those living male-headed households.
+          This is so for instance in Malawi, Liberia, Namibia, where the gender
+          gap in the incidence of poverty exceeds 8 percentage points. But the
+          opposite is also true for other countries such as the Gambia, Senegal,
+          Nigeria, where male-headed households are poorer. However, measuring
+          poverty at household level alone does not allow to capture the extent
+          to which women, men, boys and girls experience poverty differently
+          within the same household. As a way forward, one can index eligible
+          persons within each household to analyze ‘individual indicators’ (e.g.
+          years of schooling, nutrition, school attendance) by gender, as was
+          done in the Global MPI report 2021{' '}
+          <a
+            target='_blank'
+            rel='noreferrer'
+            className='undp-style'
+            href='https://hdr.undp.org/content/2021-global-multidimensional-poverty-index-mpi'
+          >
+            (2021 Global Multidimensional Poverty Index (MPI): Unmasking
+            disparities by ethnicity, caste and gender.)
+          </a>
+        </p>
       </div>
       <div className='margin-top-09'>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
