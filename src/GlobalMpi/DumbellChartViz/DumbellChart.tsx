@@ -82,7 +82,7 @@ export function DumbellChart(props: Props) {
     return () => resizeObserver.disconnect();
   }, []);
   return (
-    <div className='dumbellChart' ref={visContainer}>
+    <div className='dumbellChart' ref={visContainer} id='comparisonPoverty'>
       <svg
         width={graphWidth}
         height={

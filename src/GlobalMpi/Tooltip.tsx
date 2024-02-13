@@ -74,14 +74,23 @@ export function Tooltip(props: Props) {
       <hr className='undp-style margin-top-00 margin-bottom-00' />
       <div
         style={{
-          padding: 'var(--spacing-05) var(--spacing-05) 0 var(--spacing-05)',
+          padding: 'var(--spacing-05)',
         }}
       >
         {Object.keys(data.countryValues).length === 0 &&
         data.countryValues.constructor === Object ? (
           'no data available for this country'
-        ) : prop === 'mpi' ? (
+        ) : (
           <>
+            <div className='margin-bottom-03 margin-top-00'>
+              <span className='tooltipValue'>
+                {format(',')(
+                  (data.countryValues as any).headcountThousands * 1000,
+                ).replaceAll(',', ' ')}{' '}
+                multidimensional poor people (2021)
+              </span>
+            </div>
+            <hr className='undp-style margin-top-05 margin-bottom-03' />
             <div>
               <span className='tooltipLabel'>MPI: </span>
               <span className='tooltipValue'>
@@ -106,114 +115,7 @@ export function Tooltip(props: Props) {
                 {(data.countryValues as any).year}
               </span>
             </div>
-            <hr className='undp-style margin-top-03 margin-bottom-03' />
-            <div className='margin-bottom-03'>
-              <span className='tooltipValue'>
-                {format(',')(
-                  (data.countryValues as any).headcountThousands * 1000,
-                ).replaceAll(',', ' ')}{' '}
-                multidimensional poor people (2021)
-              </span>
-            </div>
           </>
-        ) : (data.countryValues as any).countryData.length > 1 ? (
-          <>
-            <div className='tooltipTitle'>Absolute annualized change in:</div>
-            <div>
-              <span className='tooltipLabel'>Incidence: </span>
-              <span className='tooltipValue'>
-                {Number(
-                  (data.countryValues as any).annualizedChangeHeadcount,
-                ).toFixed(3)}{' '}
-                {Number((data.countryValues as any).annualizedChangeHeadcount) <
-                0
-                  ? '(decrease)'
-                  : '(increase)'}
-              </span>
-            </div>
-            <div>
-              <span className='tooltipLabel'>MPI: </span>
-              {(data.countryValues as any).indicatorChange ===
-              'headcountRatio' ? (
-                <span className='tooltipValue'>N/A</span>
-              ) : (
-                <span className='tooltipValue'>
-                  {Number(
-                    (data.countryValues as any).annualizedChangeMPI,
-                  ).toFixed(3)}{' '}
-                  {Number((data.countryValues as any).annualizedChangeMPI) < 0
-                    ? '(decrease)'
-                    : '(increase)'}
-                </span>
-              )}
-            </div>
-            <hr className='undp-style margin-top-03 margin-bottom-03' />
-            <div className='flex-div'>
-              <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>MPI</div>
-                {(data.countryValues as any).indicatorChange ===
-                'headcountRatio' ? (
-                  <span className='tooltipValue'>N/A</span>
-                ) : (
-                  (data.countryValues as any).countryData.map(
-                    (d: any, i: number) => (
-                      <div key={i}>
-                        <span className='tooltipLabel'>{d.year}: </span>
-                        <span className='tooltipValue'>
-                          {Number(d.mpi).toFixed(3)}
-                        </span>
-                      </div>
-                    ),
-                  )
-                )}
-              </div>
-              <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>Incidence</div>
-                {(data.countryValues as any).countryData.map(
-                  (d: any, i: number) => (
-                    <div key={i}>
-                      <span className='tooltipLabel'>{d.year}: </span>
-                      <span className='tooltipValue'>{d.headcountRatio}%</span>
-                    </div>
-                  ),
-                )}
-              </div>
-            </div>
-          </>
-        ) : (
-          <div>
-            <div className='tooltipTitle'>Data available for only 1 year</div>
-            <hr className='undp-style margin-top-04 margin-bottom-03' />
-            <div className='flex-div'>
-              <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>MPI</div>
-                <div>
-                  <span className='tooltipLabel'>
-                    {(data.countryValues as any).countryData[0].year}:{' '}
-                  </span>
-                  <span className='tooltipValue'>
-                    {Number(
-                      (data.countryValues as any).countryData[0].mpi,
-                    ).toFixed(3)}
-                  </span>
-                </div>
-              </div>
-              <div style={{ width: '50%' }}>
-                <div className='tooltipTitle'>Incidence</div>
-                <div>
-                  <span className='tooltipLabel'>
-                    {(data.countryValues as any).countryData[0].year}:{' '}
-                  </span>
-                  <span className='tooltipValue'>
-                    {Number(
-                      (data.countryValues as any).countryData[0].headcountRatio,
-                    ).toFixed(2)}
-                    %
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
         )}
       </div>
     </TooltipEl>

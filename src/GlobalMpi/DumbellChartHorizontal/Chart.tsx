@@ -87,7 +87,7 @@ export function Chart(props: Props) {
     window.addEventListener('resize', handleResize);
   }, []);
   return (
-    <div ref={visContainer}>
+    <div ref={visContainer} id='multidimensionalVsExtreme'>
       <div className='legend-container'>
         {indicators.map((k, j) => (
           <div key={j} className='legend-item'>

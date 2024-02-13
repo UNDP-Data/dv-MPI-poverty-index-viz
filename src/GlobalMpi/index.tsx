@@ -4,6 +4,7 @@ import { DumbellChartHorizontal } from './DumbellChartHorizontal';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
 import { ScatterPlotGlobal } from './ScatterPlotGlobal';
 import { IconsMap } from './IconsMap';
+import ImageDownloadButton from '../Components/ImageDownloadButton';
 
 interface Props {
   mpiData: MpiDataType[];
@@ -213,42 +214,56 @@ export function GlobalMpi(props: Props) {
               MPI had decreased between countries’ first and last measurements.
             </p>
           </div>
-          <div className='chart-global-container'>
+          <div>
             <IconsMap
               data={mpiData}
               prop='mpi'
               valueArray={[0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
               colors={UNDPColorModule.sequentialColors.negativeColorsx07}
             />
-            <p className='source'>
-              Source:{' '}
-              <a
-                target='_blank'
-                rel='noreferrer'
-                className='undp-style small-font'
-                href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
-              >
-                UNDP (United Nations Development Programme). 2023.
-                <br />
-                2023 Global Multidimensional Poverty Index (MPI): Unstacking
-                global poverty: Data for high impact action. New York.
-              </a>
-              <br />
-              <a
-                target='_blank'
-                rel='noreferrer'
-                className='undp-style small-font'
-                href='https://hdr.undp.org/sites/default/files/publications/additional-files/2023-07/2023_GlobalMPI_Table_1_and_2_10July%202023.xlsx'
-              >
-                2023 MPI Tables 1 and 2 (XLS)
-              </a>
-              <br />
-              Note: The absolute annualized change is the difference in a
-              poverty measure between two years, divided by the number of years
-              between surveys. The values presented in the map have been
-              calculated using measurements of the first and last available
-              year.
-            </p>
+            <div className='flex-div flex-space-between flex-wrap'>
+              <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                <p className='source'>
+                  Source:{' '}
+                  <a
+                    target='_blank'
+                    rel='noreferrer'
+                    className='undp-style small-font'
+                    href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
+                  >
+                    UNDP (United Nations Development Programme). 2023.
+                    <br />
+                    2023 Global Multidimensional Poverty Index (MPI): Unstacking
+                    global poverty: Data for high impact action. New York.
+                  </a>
+                  <br />
+                  <a
+                    target='_blank'
+                    rel='noreferrer'
+                    className='undp-style small-font'
+                    href='https://hdr.undp.org/sites/default/files/publications/additional-files/2023-07/2023_GlobalMPI_Table_1_and_2_10July%202023.xlsx'
+                  >
+                    2023 MPI Tables 1 and 2 (XLS)
+                  </a>
+                  <br />
+                  Note: The absolute annualized change is the difference in a
+                  poverty measure between two years, divided by the number of
+                  years between surveys. The values presented in the map have
+                  calculated using measurements of the first and last available
+                  year.
+                </p>
+              </div>
+              <div>
+                <ImageDownloadButton
+                  node={
+                    document.getElementById('povertyChangeMap') as HTMLElement
+                  }
+                  buttonText='Download map'
+                  filename='multidimensionalPovertyChange'
+                  buttonType='secondary'
+                />
+              </div>
+            </div>
           </div>
         </div>
       ) : null}
@@ -333,35 +348,6 @@ export function GlobalMpi(props: Props) {
       <div className='margin-top-09'>
         {diffData ? <DumbellChartViz data={diffData} /> : null}
       </div>
-      <p className='source margin-top-05'>
-        Sources:{' '}
-        <a
-          target='_blank'
-          rel='noreferrer'
-          className='undp-style small-font'
-          href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
-        >
-          OPHI Global MPI data tables 2023,
-        </a>{' '}
-        <a
-          target='_blank'
-          rel='noreferrer'
-          className='undp-style small-font'
-          href='https://ophi.org.uk/wp-content/uploads/Table-4-Area-Results-MPI-2023.xlsx'
-        >
-          Table 4: Area results
-        </a>
-        ,{' '}
-        <a
-          target='_blank'
-          rel='noreferrer'
-          className='undp-style small-font'
-          href='https://ophi.org.uk/wp-content/uploads/Table-7-Headship-Results-MPI-2023.xlsx'
-        >
-          Table 7: Headship results
-        </a>
-        .
-      </p>
     </div>
   );
 }

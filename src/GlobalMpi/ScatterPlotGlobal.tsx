@@ -6,6 +6,7 @@ import { select } from 'd3-selection';
 import { useEffect, useRef, useState } from 'react';
 import { HoverDataType, MpiDataType } from '../Types';
 import { Tooltip } from './Tooltip';
+import ImageDownloadButton from '../Components/ImageDownloadButton';
 
 interface Props {
   data: MpiDataType[];
@@ -79,6 +80,7 @@ export function ScatterPlotGlobal(props: Props) {
     <div
       className='chart-container global-scatter margin-top-06'
       ref={containerRef}
+      id='IncidenceVsIntensity'
     >
       <div className='margin-bottom-03'>
         <Radio.Group
@@ -161,29 +163,43 @@ export function ScatterPlotGlobal(props: Props) {
           Intensity
         </text>
       </svg>
-      <p className='source'>
-        Source:{' '}
-        <a
-          target='_blank'
-          rel='noreferrer'
-          className='undp-style small-font'
-          href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
-        >
-          UNDP (United Nations Development Programme). 2023.
-          <br />
-          2023 Global Multidimensional Poverty Index (MPI): Unstacking global
-          poverty: Data for high impact action. New York.
-        </a>
-        <br />
-        <a
-          target='_blank'
-          rel='noreferrer'
-          className='undp-style small-font'
-          href='https://hdr.undp.org/sites/default/files/publications/additional-files/2023-07/2023_GlobalMPI_Table_1_and_2_10July%202023.xlsx'
-        >
-          2023 MPI Tables 1 and 2 (XLS)
-        </a>
-      </p>
+      <div className='flex-div flex-space-between flex-wrap gap-06'>
+        <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+          <p className='source'>
+            Source:{' '}
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='undp-style small-font'
+              href='https://hdr.undp.org/content/2023-global-multidimensional-poverty-index-mpi#/indicies/MPI'
+            >
+              UNDP (United Nations Development Programme). 2023.
+              <br />
+              2023 Global Multidimensional Poverty Index (MPI): Unstacking
+              global poverty: Data for high impact action. New York.
+            </a>
+            <br />
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='undp-style small-font'
+              href='https://hdr.undp.org/sites/default/files/publications/additional-files/2023-07/2023_GlobalMPI_Table_1_and_2_10July%202023.xlsx'
+            >
+              2023 MPI Tables 1 and 2 (XLS)
+            </a>
+          </p>
+        </div>
+        <div className='margin-top-04'>
+          <ImageDownloadButton
+            node={
+              document.getElementById('IncidenceVsIntensity') as HTMLElement
+            }
+            buttonText='Download graph'
+            filename='IncidenceVsIntensity'
+            buttonType='secondary'
+          />
+        </div>
+      </div>
       {hoverData ? <Tooltip data={hoverData} prop='mpi' /> : null}
     </div>
   );

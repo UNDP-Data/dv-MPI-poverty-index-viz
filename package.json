@@ -21,6 +21,7 @@
     "d3-scale": "^4.0.2",
     "d3-selection": "^3.0.0",
     "d3-zoom": "^3.0.0",
+    "dom-to-image": "^2.6.0",
     "lodash": "^4.17.21",
     "lodash.maxby": "^4.6.0",
     "lodash.sortby": "^4.7.0",

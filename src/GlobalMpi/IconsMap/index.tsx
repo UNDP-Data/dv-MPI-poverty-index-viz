@@ -79,7 +79,7 @@ export function IconsMap(props: Props) {
   }, []);
   return (
     <div className='chart-global-container'>
-      <div className='map-container'>
+      <div className='map-container' id='povertyChangeMap'>
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} ref={mapSvg}>
           <g ref={mapG}>
             {

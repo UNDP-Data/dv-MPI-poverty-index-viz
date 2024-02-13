@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import UNDPColorModule from 'undp-viz-colors';
 import { MpiDataTypeDiff } from '../../Types';
 import { DumbellChart } from './DumbellChart';
+import ImageDownloadButton from '../../Components/ImageDownloadButton';
 
 interface Props {
   data: MpiDataTypeDiff[];
@@ -201,6 +202,47 @@ export function DumbellChartViz(props: Props) {
           indicatorOption={indicatorOption}
         />
       </DumbellChartEl>
+      <div className='flex-div flex-space-between flex-wrap gap-06'>
+        <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+          <p className='source margin-top-05'>
+            Sources:{' '}
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='undp-style small-font'
+              href='https://ophi.org.uk/multidimensional-poverty-index/data-tables-do-files/'
+            >
+              OPHI Global MPI data tables 2023,
+            </a>{' '}
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='undp-style small-font'
+              href='https://ophi.org.uk/wp-content/uploads/Table-4-Area-Results-MPI-2023.xlsx'
+            >
+              Table 4: Area results
+            </a>
+            ,{' '}
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='undp-style small-font'
+              href='https://ophi.org.uk/wp-content/uploads/Table-7-Headship-Results-MPI-2023.xlsx'
+            >
+              Table 7: Headship results
+            </a>
+            .
+          </p>
+        </div>
+        <div className='margin-top-04'>
+          <ImageDownloadButton
+            node={document.getElementById('comparisonPoverty') as HTMLElement}
+            buttonText='Download graph'
+            filename='comparisonPoverty'
+            buttonType='secondary'
+          />
+        </div>
+      </div>
     </div>
   );
 }
