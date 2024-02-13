@@ -246,8 +246,7 @@ export function NationalMpi(props: Props) {
             </div>
             {urban || rural ? (
               <div
-                className='chart-container flex-chart'
-                style={{ maxHeight: '478px', flexGrow: '1' }}
+                className='flex-div chart-container flex-chart flex-column'
                 id='urbanRuralNational'
               >
                 <div className='flex-div flex-space-between'>
@@ -257,39 +256,37 @@ export function NationalMpi(props: Props) {
                     </h6>
                     <p className='undp-typography small-font'>Year: {year}</p>
                   </div>
-                  <div>
-                    <div className='legend-container'>
-                      <div className='legend-item'>
-                        <div
-                          className='legend-circle-medium'
-                          style={{
-                            backgroundColor:
-                              UNDPColorModule.categoricalColors.locationColors
-                                .urban,
-                          }}
-                        />
-                        <div className='small-font'>Urban</div>
-                      </div>
-                      <div className='legend-item'>
-                        <div
-                          className='legend-circle-medium'
-                          style={{
-                            backgroundColor:
-                              UNDPColorModule.categoricalColors.locationColors
-                                .rural,
-                          }}
-                        />
-                        <div className='small-font'>Rural</div>
-                      </div>
-                      <div className='legend-item'>
-                        <div
-                          className='legend-circle-medium'
-                          style={{
-                            backgroundColor: '#55606E',
-                          }}
-                        />
-                        <div className='small-font'>Country Total</div>
-                      </div>
+                  <div className='legend-container'>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor:
+                            UNDPColorModule.categoricalColors.locationColors
+                              .urban,
+                        }}
+                      />
+                      <div className='small-font'>Urban</div>
+                    </div>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor:
+                            UNDPColorModule.categoricalColors.locationColors
+                              .rural,
+                        }}
+                      />
+                      <div className='small-font'>Rural</div>
+                    </div>
+                    <div className='legend-item'>
+                      <div
+                        className='legend-circle-medium'
+                        style={{
+                          backgroundColor: '#55606E',
+                        }}
+                      />
+                      <div className='small-font'>Country Total</div>
                     </div>
                   </div>
                 </div>
@@ -301,7 +298,7 @@ export function NationalMpi(props: Props) {
                   country={selectedCountry}
                 />
                 <div className='flex-div flex-space-between flex-wrap margin-top-02'>
-                  <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                  <div style={{ flexBasis: '50%', flexGrow: '1' }}>
                     <p className='source margin-top-00 undp-typography'>
                       Source:{' '}
                       <a
@@ -317,9 +314,8 @@ export function NationalMpi(props: Props) {
                   <div className='margin-top-00'>
                     <ImageDownloadButton
                       node={
-                        document.getElementById(
-                          'urbanRuralNational',
-                        ) as HTMLElement
+                        // eslint-disable-next-line prettier/prettier
+                        document.getElementById('urbanRuralNational') as HTMLElement
                       }
                       buttonText='Download graph'
                       filename='urbanRuralNational'

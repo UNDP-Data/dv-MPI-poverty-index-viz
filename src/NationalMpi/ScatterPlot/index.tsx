@@ -11,14 +11,12 @@ interface Props {
 export function ScatterPlot(props: Props) {
   const { rural, urban, total, id, country } = props;
   return (
-    <div>
-      <ScatterPlotChart
-        urban={urban}
-        rural={rural}
-        total={total}
-        id={id}
-        country={country}
-      />
-    </div>
+    <ScatterPlotChart
+      urban={urban}
+      rural={rural}
+      total={total}
+      id={id}
+      country={country}
+    />
   );
 }

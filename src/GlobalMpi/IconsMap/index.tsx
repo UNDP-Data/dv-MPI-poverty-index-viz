@@ -78,8 +78,8 @@ export function IconsMap(props: Props) {
     mapSvgSelect.call(zoomBehaviour as any);
   }, []);
   return (
-    <div className='chart-global-container'>
-      <div className='map-container' id='povertyChangeMap'>
+    <div className='chart-global-container' id='povertyChangeMap'>
+      <div className='map-container'>
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} ref={mapSvg}>
           <g ref={mapG}>
             {

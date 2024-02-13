@@ -54,9 +54,8 @@ export function DumbellChartHorizontal(props: Props) {
         <div className='margin-top-04'>
           <ImageDownloadButton
             node={
-              document.getElementById(
-                'multidimensionalVsExtreme',
-              ) as HTMLElement
+              // eslint-disable-next-line prettier/prettier
+              document.getElementById('multidimensionalVsExtreme') as HTMLElement
             }
             buttonText='Download graph'
             filename='multidimensionalVsExtreme'

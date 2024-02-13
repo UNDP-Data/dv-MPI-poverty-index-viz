@@ -259,7 +259,7 @@ export function GlobalMpi(props: Props) {
                     document.getElementById('povertyChangeMap') as HTMLElement
                   }
                   buttonText='Download map'
-                  filename='multidimensionalPovertyChange'
+                  filename='povertyChangeMap'
                   buttonType='secondary'
                 />
               </div>
