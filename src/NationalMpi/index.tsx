@@ -18,6 +18,7 @@ import { LollipopChartViz } from './LollipopChartViz';
 import { ListView } from './ListView';
 import { BarChart } from './BarChart';
 import { ChoroplethNational } from './ChoroplethNational';
+import ImageDownloadButton from '../Components/ImageDownloadButton';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -64,7 +65,7 @@ export function NationalMpi(props: Props) {
       nationalYears.map((d: MpiDataTypeNationalYears) => d.country.trim()),
     ),
   ].sort();
-  const defaultCountry = queryCountry || countryList[0];
+  const defaultCountry = queryCountry || 'India';
   const [selectedCountry, setSelectedCountry] =
     useState<string>(defaultCountry);
   const subNat = subnational?.filter(k => k.country.trim() === selectedCountry);
@@ -194,10 +195,7 @@ export function NationalMpi(props: Props) {
           parameters. In India for instance, the N-MPI provided estimates for
           the 36 states and Union Territories, along with 707 administrative
           districts, allowing outreach to those left behind, through targeted
-          multisectoral interventions. In Belize, the MPI unveiled how rural
-          communities, children, male-headed households, households with a head
-          who was under- or unemployed, or certain ethnic groups were more
-          likely to be multidimensionally poor.
+          multisectoral interventions.
         </p>
       </div>
       {!queryCountry ? (
@@ -226,6 +224,7 @@ export function NationalMpi(props: Props) {
           className='flex-div flex-wrap'
           ref={containerRef}
           style={{ margin: '0 auto', maxWidth: '1600px' }}
+          id='ruralUrbanNational'
         >
           <div className='national-stats-area flex-div flex-wrap gap-05'>
             <div className='stat-card'>
@@ -249,6 +248,7 @@ export function NationalMpi(props: Props) {
               <div
                 className='chart-container flex-chart'
                 style={{ maxHeight: '478px', flexGrow: '1' }}
+                id='urbanRuralNational'
               >
                 <div className='flex-div flex-space-between'>
                   <div className='chart-top'>
@@ -300,18 +300,32 @@ export function NationalMpi(props: Props) {
                   id='locationScatterPlot'
                   country={selectedCountry}
                 />
-                <div>
-                  <p className='source margin-top-00 undp-typography'>
-                    Source:{' '}
-                    <a
-                      className='undp-style small-font'
-                      href={countryData?.reportUrl}
-                      target='_blank'
-                      rel='noreferrer'
-                    >
-                      {countryData?.reportName}
-                    </a>
-                  </p>
+                <div className='flex-div flex-space-between flex-wrap margin-top-02'>
+                  <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                    <p className='source margin-top-00 undp-typography'>
+                      Source:{' '}
+                      <a
+                        className='undp-style small-font'
+                        href={countryData?.reportUrl}
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        {countryData?.reportName}
+                      </a>
+                    </p>
+                  </div>
+                  <div className='margin-top-00'>
+                    <ImageDownloadButton
+                      node={
+                        document.getElementById(
+                          'urbanRuralNational',
+                        ) as HTMLElement
+                      }
+                      buttonText='Download graph'
+                      filename='urbanRuralNational'
+                      buttonType='secondary'
+                    />
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -459,7 +473,7 @@ export function NationalMpi(props: Props) {
                   </div>
                 ) : null}
               </div>
-              <div ref={containerSubnat}>
+              <div ref={containerSubnat} id='subnationalGraph'>
                 <div className={activeViz === 'map' ? '' : 'hide'}>
                   <CountryMap
                     countryData={
@@ -490,17 +504,31 @@ export function NationalMpi(props: Props) {
                   />
                 </div>
               </div>
-              <p className='source margin-top-04 undp-typography'>
-                Source:{' '}
-                <a
-                  className='undp-style small-font'
-                  href={countryData?.reportUrl}
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  {countryData?.reportName}
-                </a>
-              </p>
+              <div className='flex-div flex-space-between flex-wrap margin-top-04'>
+                <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                  <p className='source margin-top-04 undp-typography'>
+                    Source:{' '}
+                    <a
+                      className='undp-style small-font'
+                      href={countryData?.reportUrl}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      {countryData?.reportName}
+                    </a>
+                  </p>
+                </div>
+                <div className='margin-top-04'>
+                  <ImageDownloadButton
+                    node={
+                      document.getElementById('subnationalGraph') as HTMLElement
+                    }
+                    buttonText='Download graph'
+                    filename='subnationalGraph'
+                    buttonType='secondary'
+                  />
+                </div>
+              </div>
             </div>
           ) : null}
         </div>
@@ -540,14 +568,8 @@ export function NationalMpi(props: Props) {
           <h3 className='undp-typography margin-top-10'>
             Evolution of MPI through the years in {countryData?.country}
           </h3>
-          <div
-            className='flex-div flex-wrap gap-07 margin-top-07'
-            style={{ height: '500px' }}
-          >
+          <div className='flex-div flex-wrap gap-07 margin-top-07'>
             <div className='chart-container'>
-              <h6 className='undp-typography margin-bottom-01'>
-                Change in time
-              </h6>
               <BarChart
                 data={
                   nationalYears?.filter(k => k.country === selectedCountry)[0]

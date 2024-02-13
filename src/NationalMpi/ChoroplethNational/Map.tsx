@@ -78,134 +78,128 @@ export function Map(props: Props) {
         setZoomLevel(transform.k);
         mapGSelect.attr('transform', transform);
       });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mapSvgSelect.call(zoomBehaviour as any);
   }, []);
   return (
     <>
-      <div className='map-container'>
+      <div className='map-container' id='nationalMpiMap'>
         <svg viewBox={`0 0 ${svgWidth} ${svgHeight}`} ref={mapSvg}>
           <g ref={mapG}>
-            {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-              world.features.map((d: any, i: number) => {
-                const value = data.filter(k => {
-                  return (k as any).iso_a3 === d.properties.ISO3;
-                });
-                const color =
-                  value.length > 0
-                    ? colorScale(Number((value as any)[0][prop]) - 0.00001)
-                    : 'var(--gray-300)';
-                if (
-                  d.properties.NAME === '' ||
-                  d.properties.NAME === 'Antarctica'
-                )
-                  return null;
-                return (
-                  <g
-                    key={i}
-                    onMouseEnter={event => {
-                      setSelectedCountry(d.properties.ISO3);
-                      if (value[0] !== undefined) {
-                        setHoverData({
-                          country: (value[0] as any).country,
-                          continent: (value[0] as any).region,
-                          countryValues: value[0],
-                          xPosition: event.clientX,
-                          yPosition: event.clientY,
-                        });
-                      } else {
-                        setHoverData({
-                          country: d.properties.NAME,
-                          continent: d.properties.REGION,
-                          countryValues: {},
-                          xPosition: event.clientX,
-                          yPosition: event.clientY,
-                        });
-                      }
-                    }}
-                    onMouseLeave={() => {
-                      setSelectedCountry(undefined);
-                      setHoverData(undefined);
-                    }}
-                  >
-                    {d.geometry.type === 'MultiPolygon'
-                      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        d.geometry.coordinates.map((el: any, j: any) => {
-                          let masterPath = '';
-                          el.forEach((geo: number[][]) => {
-                            let path = ' M';
-                            geo.forEach((c: number[], k: number) => {
-                              const point = projection([c[0], c[1]]) as [
-                                number,
-                                number,
-                              ];
-                              if (k !== geo.length - 1)
-                                path = `${path}${point[0]} ${point[1]}L`;
-                              else path = `${path}${point[0]} ${point[1]}`;
-                            });
-                            masterPath += path;
-                          });
-                          return (
-                            <path
-                              className={
-                                selectedCountry === d.properties.ISO3
-                                  ? value.length > 0
-                                    ? 'high-opa'
-                                    : 'high-opa-grey'
-                                  : ''
-                              }
-                              key={j}
-                              d={masterPath}
-                              stroke='#ccc'
-                              strokeWidth={1 / zoomLevel}
-                              fill={color}
-                              opacity={
-                                !selectedColor || selectedColor === color
-                                  ? 1
-                                  : 0.3
-                              }
-                            />
-                          );
-                        })
-                      : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                        d.geometry.coordinates.map((el: any, j: number) => {
-                          let path = 'M';
-                          el.forEach((c: number[], k: number) => {
+            {world.features.map((d: any, i: number) => {
+              const value = data.filter(k => {
+                return (k as any).iso_a3 === d.properties.ISO3;
+              });
+              const color =
+                value.length > 0
+                  ? colorScale(Number((value as any)[0][prop]) - 0.00001)
+                  : 'var(--gray-300)';
+              if (
+                d.properties.NAME === '' ||
+                d.properties.NAME === 'Antarctica'
+              )
+                return null;
+              return (
+                <g
+                  key={i}
+                  onMouseEnter={event => {
+                    setSelectedCountry(d.properties.ISO3);
+                    if (value[0] !== undefined) {
+                      setHoverData({
+                        country: (value[0] as any).country,
+                        continent: (value[0] as any).region,
+                        countryValues: value[0],
+                        xPosition: event.clientX,
+                        yPosition: event.clientY,
+                      });
+                    } else {
+                      setHoverData({
+                        country: d.properties.NAME,
+                        continent: d.properties.REGION,
+                        countryValues: {},
+                        xPosition: event.clientX,
+                        yPosition: event.clientY,
+                      });
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    setSelectedCountry(undefined);
+                    setHoverData(undefined);
+                  }}
+                >
+                  {d.geometry.type === 'MultiPolygon'
+                    ? d.geometry.coordinates.map((el: any, j: any) => {
+                        let masterPath = '';
+                        el.forEach((geo: number[][]) => {
+                          let path = ' M';
+                          geo.forEach((c: number[], k: number) => {
                             const point = projection([c[0], c[1]]) as [
                               number,
                               number,
                             ];
-                            if (k !== el.length - 1)
+                            if (k !== geo.length - 1)
                               path = `${path}${point[0]} ${point[1]}L`;
                             else path = `${path}${point[0]} ${point[1]}`;
                           });
-                          return (
-                            <path
-                              className={
-                                selectedCountry === d.properties.ISO3
-                                  ? value.length > 0
-                                    ? 'high-opa'
-                                    : 'high-opa-grey'
-                                  : ''
-                              }
-                              key={j}
-                              d={path}
-                              stroke='#ccc'
-                              strokeWidth={1 / zoomLevel}
-                              fill={color}
-                              opacity={
-                                !selectedColor || selectedColor === color
-                                  ? 1
-                                  : 0.3
-                              }
-                            />
-                          );
-                        })}
-                  </g>
-                );
-              })
-            }
+                          masterPath += path;
+                        });
+                        return (
+                          <path
+                            className={
+                              selectedCountry === d.properties.ISO3
+                                ? value.length > 0
+                                  ? 'high-opa'
+                                  : 'high-opa-grey'
+                                : ''
+                            }
+                            key={j}
+                            d={masterPath}
+                            stroke='#ccc'
+                            strokeWidth={1 / zoomLevel}
+                            fill={color}
+                            opacity={
+                              !selectedColor || selectedColor === color
+                                ? 1
+                                : 0.3
+                            }
+                          />
+                        );
+                      })
+                    : d.geometry.coordinates.map((el: any, j: number) => {
+                        let path = 'M';
+                        el.forEach((c: number[], k: number) => {
+                          const point = projection([c[0], c[1]]) as [
+                            number,
+                            number,
+                          ];
+                          if (k !== el.length - 1)
+                            path = `${path}${point[0]} ${point[1]}L`;
+                          else path = `${path}${point[0]} ${point[1]}`;
+                        });
+                        return (
+                          <path
+                            className={
+                              selectedCountry === d.properties.ISO3
+                                ? value.length > 0
+                                  ? 'high-opa'
+                                  : 'high-opa-grey'
+                                : ''
+                            }
+                            key={j}
+                            d={path}
+                            stroke='#ccc'
+                            strokeWidth={1 / zoomLevel}
+                            fill={color}
+                            opacity={
+                              !selectedColor || selectedColor === color
+                                ? 1
+                                : 0.3
+                            }
+                          />
+                        );
+                      })}
+                </g>
+              );
+            })}
           </g>
         </svg>
         <LegendEl>

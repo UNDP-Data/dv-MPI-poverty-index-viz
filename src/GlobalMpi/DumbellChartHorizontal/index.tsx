@@ -14,13 +14,14 @@ export function DumbellChartHorizontal(props: Props) {
       <div
         className='chart-container undp-scrollbar'
         style={{ overflow: 'auto' }}
+        id='multidimensionalVsExtreme'
       >
         <h6 className='undp-typography margin-bottom-00'>
           Multidimensional poverty vs extreme poverty incidence
         </h6>
         <Chart data={data} />
       </div>
-      <div className='flex-div flex-space-between flex-wrap'>
+      <div className='flex-div flex-space-between flex-wrap margin-top-04'>
         <div style={{ flexBasis: '60%', flexGrow: '1' }}>
           <p className='source'>
             Source:{' '}

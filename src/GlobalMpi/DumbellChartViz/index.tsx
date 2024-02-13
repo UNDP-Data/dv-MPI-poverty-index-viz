@@ -202,7 +202,10 @@ export function DumbellChartViz(props: Props) {
           indicatorOption={indicatorOption}
         />
       </DumbellChartEl>
-      <div className='flex-div flex-space-between flex-wrap gap-06'>
+      <div
+        className='flex-div flex-space-between flex-wrap gap-06 margin-top-00'
+        style={{ backgroundColor: '#FFF' }}
+      >
         <div style={{ flexBasis: '60%', flexGrow: '1' }}>
           <p className='source margin-top-05'>
             Sources:{' '}

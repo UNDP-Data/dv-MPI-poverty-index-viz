@@ -291,7 +291,7 @@ export function GlobalMpi(props: Props) {
       <DumbellChartHorizontal
         data={mpiData.filter(d => d.displayDifference === true)}
       />
-      <h3 className='undp-typography margin-top-10'>Incidence vs Intensity</h3>
+      <h3 className='undp-typography margin-top-08'>Incidence vs Intensity</h3>
       <div className='flex-div flex-wrap gap-06 global-scatter-container'>
         <div className='chart-global-scatter'>
           <ScatterPlotGlobal data={mpiData} />

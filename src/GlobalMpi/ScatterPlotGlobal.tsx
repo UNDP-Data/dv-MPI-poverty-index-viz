@@ -77,93 +77,95 @@ export function ScatterPlotGlobal(props: Props) {
     return () => resizeObserver.disconnect();
   }, []);
   return (
-    <div
-      className='chart-container global-scatter margin-top-06'
-      ref={containerRef}
-      id='IncidenceVsIntensity'
-    >
-      <div className='margin-bottom-03'>
-        <Radio.Group
-          defaultValue='All'
-          onChange={(el: RadioChangeEvent) =>
-            setSelectedRegion(el.target.value)
-          }
-          className='margin-bottom-05'
-        >
-          <Radio.Button className='radio-button' value='All'>
-            All
-          </Radio.Button>
-          {regionsOptions.map((d, i) => (
-            <Radio.Button
-              key={i}
-              className='radio-button'
-              value={d}
-              style={{
-                borderBottom: `4px solid ${regionScale(d)}`,
-              }}
-            >
-              {d}
+    <>
+      <div
+        className='chart-container global-scatter margin-top-06'
+        ref={containerRef}
+        id='IncidenceVsIntensity'
+      >
+        <div className='margin-bottom-03'>
+          <Radio.Group
+            defaultValue='All'
+            onChange={(el: RadioChangeEvent) =>
+              setSelectedRegion(el.target.value)
+            }
+            className='margin-bottom-05'
+          >
+            <Radio.Button className='radio-button' value='All'>
+              All
             </Radio.Button>
-          ))}
-        </Radio.Group>
-      </div>
-      <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id='scatterGlobal'>
-        <g transform={`translate(${margin.left},${margin.top})`}>
-          <g
-            className='xAxis'
-            transform={`translate(0 ,${
-              graphHeight - margin.bottom - margin.top
-            })`}
-          />
-          <g className='yAxis' transform='translate(0,0)' />
-          {data.map((d: any, i: number) => (
+            {regionsOptions.map((d, i) => (
+              <Radio.Button
+                key={i}
+                className='radio-button'
+                value={d}
+                style={{
+                  borderBottom: `4px solid ${regionScale(d)}`,
+                }}
+              >
+                {d}
+              </Radio.Button>
+            ))}
+          </Radio.Group>
+        </div>
+        <svg viewBox={`0 0 ${graphWidth} ${graphHeight}`} id='scatterGlobal'>
+          <g transform={`translate(${margin.left},${margin.top})`}>
             <g
-              key={i}
-              onMouseEnter={event => {
-                setHoverValue(d.country);
-                setHoverData({
-                  country: d.country,
-                  continent: d.region,
-                  countryValues: d,
-                  xPosition: event.clientX,
-                  yPosition: event.clientY,
-                });
-              }}
-              onMouseLeave={() => {
-                setHoverData(undefined);
-                setHoverValue('');
-              }}
-              transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
-                Number(d.intensity),
-              )})`}
-            >
-              <circle
-                r={6}
-                fill={regionScale(d.region)}
-                stroke={hoverValue === d.country ? 'var(--gray-700)' : '#FFF'}
-                strokeWidth={1}
-                visibility={
-                  selectedRegion === d.region || selectedRegion === 'All'
-                    ? 'visible'
-                    : 'hidden'
-                }
-              />
-            </g>
-          ))}
-        </g>
-        <text x={graphWidth / 2} y={graphHeight - 3} textAnchor='middle'>
-          Incidence
-        </text>
-        <text
-          x={-graphHeight / 2}
-          y='20'
-          transform='rotate(-90)'
-          textAnchor='middle'
-        >
-          Intensity
-        </text>
-      </svg>
-      <div className='flex-div flex-space-between flex-wrap gap-06'>
+              className='xAxis'
+              transform={`translate(0 ,${
+                graphHeight - margin.bottom - margin.top
+              })`}
+            />
+            <g className='yAxis' transform='translate(0,0)' />
+            {data.map((d: any, i: number) => (
+              <g
+                key={i}
+                onMouseEnter={event => {
+                  setHoverValue(d.country);
+                  setHoverData({
+                    country: d.country,
+                    continent: d.region,
+                    countryValues: d,
+                    xPosition: event.clientX,
+                    yPosition: event.clientY,
+                  });
+                }}
+                onMouseLeave={() => {
+                  setHoverData(undefined);
+                  setHoverValue('');
+                }}
+                transform={`translate(${xPos(Number(d.headcountRatio))}, ${yPos(
+                  Number(d.intensity),
+                )})`}
+              >
+                <circle
+                  r={6}
+                  fill={regionScale(d.region)}
+                  stroke={hoverValue === d.country ? 'var(--gray-700)' : '#FFF'}
+                  strokeWidth={1}
+                  visibility={
+                    selectedRegion === d.region || selectedRegion === 'All'
+                      ? 'visible'
+                      : 'hidden'
+                  }
+                />
+              </g>
+            ))}
+          </g>
+          <text x={graphWidth / 2} y={graphHeight - 3} textAnchor='middle'>
+            Incidence
+          </text>
+          <text
+            x={-graphHeight / 2}
+            y='20'
+            transform='rotate(-90)'
+            textAnchor='middle'
+          >
+            Intensity
+          </text>
+        </svg>
+      </div>
+      <div className='flex-div flex-space-between flex-wrap gap-06 margin-top-04'>
         <div style={{ flexBasis: '60%', flexGrow: '1' }}>
           <p className='source'>
             Source:{' '}
@@ -201,6 +203,6 @@ export function ScatterPlotGlobal(props: Props) {
         </div>
       </div>
       {hoverData ? <Tooltip data={hoverData} prop='mpi' /> : null}
-    </div>
+    </>
   );
 }

@@ -339,18 +339,6 @@
     font-size: 0.85rem;
   }
 }
-/*.color-1{
-  background-color: rgb(224, 82, 158, 0.4);
-  margin-top:4px;
-}
-.color-2{
-  background-color: rgb(160, 194, 54, 0.5);
-  margin-top:4px;
-}
-.color-3{
-  background-color: rgb(251, 196, 18, 0.5);
-  margin-top:4px;
-}*/
 .color-1{
   background-color: #c8e7a8;
   margin-top:4px;
@@ -362,4 +350,11 @@
 .color-3{
   background-color: #bae7F6;
   margin-top:4px;
+}
+/* backgrounds for downloadable images */
+#povertyChangeMap, #nationalMpiMap{
+  background-color: #FFF;
+}
+#comparisonPoverty{
+  background-color: #FAFAFA;
 }
