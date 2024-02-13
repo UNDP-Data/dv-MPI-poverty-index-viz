@@ -246,7 +246,7 @@ export function NationalMpi(props: Props) {
             </div>
             {urban || rural ? (
               <div
-                className='flex-div chart-container flex-chart flex-column'
+                className='chart-container flex-chart flex-column'
                 id='urbanRuralNational'
               >
                 <div className='flex-div flex-space-between'>

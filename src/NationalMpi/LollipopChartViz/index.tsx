@@ -19,14 +19,10 @@ const LollipopChartEl = styled.div`
 export function LollipopChartViz(props: Props) {
   const { data, sortedBy } = props;
   const containerRef = useRef<HTMLDivElement>(null);
-  const [svgWidth, setSvgWidth] = useState<number | 400>(400);
+  const [svgWidth, setSvgWidth] = useState<number>(0);
   useEffect(() => {
-    const resizeObserver = new ResizeObserver(entries => {
-      setSvgWidth(entries[0].target.clientWidth);
-    });
-    if (containerRef.current) resizeObserver.observe(containerRef.current);
-    return () => resizeObserver.disconnect();
-  }, []);
+    if (containerRef.current) setSvgWidth(containerRef.current.clientWidth);
+  }, [containerRef.current]);
   return (
     <div ref={containerRef} className='lollipop-container'>
       <div className='flex-div flex-wrap margin-top-00 lollipop-header'>
