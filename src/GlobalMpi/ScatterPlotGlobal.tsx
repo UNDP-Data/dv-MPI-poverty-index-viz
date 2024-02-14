@@ -193,9 +193,7 @@ export function ScatterPlotGlobal(props: Props) {
         </div>
         <div className='margin-top-04'>
           <ImageDownloadButton
-            node={
-              document.getElementById('IncidenceVsIntensity') as HTMLElement
-            }
+            nodeID='IncidenceVsIntensity'
             buttonText='Download graph'
             filename='IncidenceVsIntensity'
             buttonType='secondary'

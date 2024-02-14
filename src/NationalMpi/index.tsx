@@ -245,58 +245,57 @@ export function NationalMpi(props: Props) {
               </p>
             </div>
             {urban || rural ? (
-              <div
-                className='chart-container flex-chart flex-column flex-div flex-space-between'
-                id='urbanRuralNational'
-              >
-                <div className='flex-div flex-space-between'>
-                  <div className='chart-top'>
-                    <h6 className='undp-typography margin-bottom-01'>
-                      Rural and Urban MPI
-                    </h6>
-                    <p className='undp-typography small-font'>Year: {year}</p>
+              <div className='chart-container flex-chart flex-column flex-div flex-space-between'>
+                <div id='urbanRuralNational'>
+                  <div className='flex-div flex-space-between'>
+                    <div className='chart-top'>
+                      <h6 className='undp-typography margin-bottom-01'>
+                        Rural and Urban MPI
+                      </h6>
+                      <p className='undp-typography small-font'>Year: {year}</p>
+                    </div>
+                    <div className='legend-container'>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor:
+                              UNDPColorModule.categoricalColors.locationColors
+                                .urban,
+                          }}
+                        />
+                        <div className='small-font'>Urban</div>
+                      </div>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor:
+                              UNDPColorModule.categoricalColors.locationColors
+                                .rural,
+                          }}
+                        />
+                        <div className='small-font'>Rural</div>
+                      </div>
+                      <div className='legend-item'>
+                        <div
+                          className='legend-circle-medium'
+                          style={{
+                            backgroundColor: '#55606E',
+                          }}
+                        />
+                        <div className='small-font'>Country Total</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className='legend-container'>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor:
-                            UNDPColorModule.categoricalColors.locationColors
-                              .urban,
-                        }}
-                      />
-                      <div className='small-font'>Urban</div>
-                    </div>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor:
-                            UNDPColorModule.categoricalColors.locationColors
-                              .rural,
-                        }}
-                      />
-                      <div className='small-font'>Rural</div>
-                    </div>
-                    <div className='legend-item'>
-                      <div
-                        className='legend-circle-medium'
-                        style={{
-                          backgroundColor: '#55606E',
-                        }}
-                      />
-                      <div className='small-font'>Country Total</div>
-                    </div>
-                  </div>
+                  <ScatterPlot
+                    urban={urban}
+                    rural={rural}
+                    total={total}
+                    id='locationScatterPlot'
+                    country={selectedCountry}
+                  />
                 </div>
-                <ScatterPlot
-                  urban={urban}
-                  rural={rural}
-                  total={total}
-                  id='locationScatterPlot'
-                  country={selectedCountry}
-                />
                 <div className='flex-div flex-space-between flex-wrap margin-top-02'>
                   <div style={{ flexBasis: '50%', flexGrow: '1' }}>
                     <p className='source margin-top-00 undp-typography'>
@@ -313,10 +312,7 @@ export function NationalMpi(props: Props) {
                   </div>
                   <div className='margin-top-00'>
                     <ImageDownloadButton
-                      node={
-                        // eslint-disable-next-line prettier/prettier
-                        document.getElementById('urbanRuralNational') as HTMLElement
-                      }
+                      nodeID='urbanRuralNational'
                       buttonText='Download graph'
                       filename='urbanRuralNational'
                       buttonType='secondary'
@@ -494,10 +490,7 @@ export function NationalMpi(props: Props) {
                     </div>
                     <div className='margin-top-04'>
                       <ImageDownloadButton
-                        node={
-                          // eslint-disable-next-line prettier/prettier
-                          document.getElementById('mapSubnational') as HTMLElement
-                        }
+                        nodeID='mapSubnational'
                         buttonText='Download map'
                         filename='mapSubnational'
                         buttonType='secondary'
@@ -529,10 +522,7 @@ export function NationalMpi(props: Props) {
                     </div>
                     <div className='margin-top-04'>
                       <ImageDownloadButton
-                        node={
-                          // eslint-disable-next-line prettier/prettier
-                          document.getElementById('scatterplotSubnational') as HTMLElement
-                        }
+                        nodeID='scatterplotSubnational'
                         buttonText='Download graph'
                         filename='scatterplotSubnational'
                         buttonType='secondary'
@@ -563,12 +553,9 @@ export function NationalMpi(props: Props) {
                     </div>
                     <div className='margin-top-04'>
                       <ImageDownloadButton
-                        node={
-                          // eslint-disable-next-line prettier/prettier
-                          document.getElementById('listSubnational') as HTMLElement
-                        }
+                        nodeID='listSubnational'
                         buttonText='Download graph'
-                        filename='subnationalGraph'
+                        filename='listSubnational'
                         buttonType='secondary'
                       />
                     </div>

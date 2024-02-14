@@ -239,7 +239,7 @@ export function DumbellChartViz(props: Props) {
         </div>
         <div className='margin-top-04'>
           <ImageDownloadButton
-            node={document.getElementById('comparisonPoverty') as HTMLElement}
+            nodeID='comparisonPoverty'
             buttonText='Download graph'
             filename='comparisonPoverty'
             buttonType='secondary'

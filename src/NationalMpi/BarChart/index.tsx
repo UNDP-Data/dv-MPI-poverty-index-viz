@@ -66,7 +66,7 @@ export function BarChart(props: Props) {
       </div>
       <div className='margin-top-00'>
         <ImageDownloadButton
-          node={document.getElementById('changeInTime') as HTMLElement}
+          nodeID='changeInTime'
           buttonText='Download graph'
           filename='changeInTime'
           buttonType='secondary'

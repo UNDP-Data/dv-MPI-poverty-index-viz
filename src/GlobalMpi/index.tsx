@@ -256,9 +256,7 @@ export function GlobalMpi(props: Props) {
               </div>
               <div>
                 <ImageDownloadButton
-                  node={
-                    document.getElementById('povertyChangeMap') as HTMLElement
-                  }
+                  nodeID='povertyChangeMap'
                   buttonText='Download map'
                   filename='povertyChangeMap'
                   buttonType='secondary'

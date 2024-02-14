@@ -30,7 +30,7 @@ export function ChoroplethNational(props: Props) {
         </div>
         <div>
           <ImageDownloadButton
-            node={document.getElementById('nationalMpiMap') as HTMLElement}
+            nodeID='nationalMpiMap'
             buttonText='Download map'
             filename='nationalMpiMap'
             buttonType='secondary'
