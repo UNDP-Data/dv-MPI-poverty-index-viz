@@ -357,9 +357,12 @@
   margin-top:4px;
 }
 /* backgrounds for downloadable images */
-#povertyChangeMap, #{
+#povertyChangeMap, #nationalMpiMap{
   background-color: #FFF;
 }
-#comparisonPoverty{
+#comparisonPoverty {
   background-color: #FAFAFA;
+}
+#listSubnational, #scatterplotSubnational, #urbanRuralNational{
+  background-color: #f7f7f7;
 }

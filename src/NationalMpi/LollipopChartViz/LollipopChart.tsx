@@ -13,7 +13,7 @@ interface Props {
 }
 export function LollipopChart(props: Props) {
   const { data, sortedByKey, svgWidth } = props;
-  const leftPadding = 200;
+  const leftPadding = 270;
   const rightPadding = 10;
   const rowHeight = 38;
   const marginTop = 10;
@@ -44,7 +44,7 @@ export function LollipopChart(props: Props) {
                 x={leftPadding - 20}
                 y={rowHeight / 2}
                 dy='3px'
-                fontSize='1rem'
+                fontSize='0.9rem'
                 color='var(--black-500)'
                 textAnchor='end'
               >

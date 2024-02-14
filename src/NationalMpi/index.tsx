@@ -462,7 +462,7 @@ export function NationalMpi(props: Props) {
                   </div>
                 ) : null}
               </div>
-              <div ref={containerSubnat} id='subnationalGraph'>
+              <div ref={containerSubnat}>
                 <div className={activeViz === 'map' ? '' : 'hide'}>
                   <CountryMap
                     countryData={
