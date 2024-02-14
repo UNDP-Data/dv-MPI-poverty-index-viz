@@ -327,10 +327,7 @@ export function NationalMpi(props: Props) {
             ) : null}
           </div>
           {countrySubnational && countrySubnational.length > 0 ? (
-            <div
-              className='chart-container-subnational'
-              style={{ maxHeight: '750px' }}
-            >
+            <div className='chart-container-subnational'>
               <div className='flex-div flex-space-between flex-wrap margin-bottom-03'>
                 <div>
                   <h6 className='undp-typography margin-bottom-01'>
