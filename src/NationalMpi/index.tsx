@@ -11,6 +11,7 @@ import {
   MpiDataTypeLocation,
   MpiDataTypeNationalYears,
 } from '../Types';
+import ImageDownloadButton from '../Components/ImageDownloadButton';
 import { ScatterPlot } from './ScatterPlot';
 import { CountryMap } from './CountryMap';
 import { ScatterPlotSubnational } from './ScatterPlotSubnational';
@@ -18,7 +19,6 @@ import { LollipopChartViz } from './LollipopChartViz';
 import { ListView } from './ListView';
 import { BarChart } from './BarChart';
 import { ChoroplethNational } from './ChoroplethNational';
-import ImageDownloadButton from '../Components/ImageDownloadButton';
 
 interface Props {
   national: MpiDataTypeNational[];
@@ -246,7 +246,7 @@ export function NationalMpi(props: Props) {
             </div>
             {urban || rural ? (
               <div
-                className='chart-container flex-chart flex-column'
+                className='chart-container flex-chart flex-column flex-div flex-space-between'
                 id='urbanRuralNational'
               >
                 <div className='flex-div flex-space-between'>
@@ -481,6 +481,32 @@ export function NationalMpi(props: Props) {
                     mapWidth={subnatWidth - 64}
                     mapHeight={500}
                   />
+                  <div className='flex-div flex-space-between flex-wrap margin-top-04'>
+                    <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                      <p className='source margin-top-04 undp-typography'>
+                        Source:{' '}
+                        <a
+                          className='undp-style small-font'
+                          href={countryData?.reportUrl}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          {countryData?.reportName}
+                        </a>
+                      </p>
+                    </div>
+                    <div className='margin-top-04'>
+                      <ImageDownloadButton
+                        node={
+                          // eslint-disable-next-line prettier/prettier
+                          document.getElementById('mapSubnational') as HTMLElement
+                        }
+                        buttonText='Download map'
+                        filename='mapSubnational'
+                        buttonType='secondary'
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className={`${activeViz === 'scatterplot' ? '' : 'hide'}`}>
                   <ScatterPlotSubnational
@@ -490,6 +516,32 @@ export function NationalMpi(props: Props) {
                     id='subnatScatterPlot'
                     activeViz={activeViz}
                   />
+                  <div className='flex-div flex-space-between flex-wrap margin-top-04'>
+                    <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                      <p className='source margin-top-04 undp-typography'>
+                        Source:{' '}
+                        <a
+                          className='undp-style small-font'
+                          href={countryData?.reportUrl}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          {countryData?.reportName}
+                        </a>
+                      </p>
+                    </div>
+                    <div className='margin-top-04'>
+                      <ImageDownloadButton
+                        node={
+                          // eslint-disable-next-line prettier/prettier
+                          document.getElementById('scatterplotSubnational') as HTMLElement
+                        }
+                        buttonText='Download graph'
+                        filename='scatterplotSubnational'
+                        buttonType='secondary'
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className={`${activeViz === 'list' ? '' : 'hide'}`}>
                   <LollipopChartViz
@@ -498,31 +550,32 @@ export function NationalMpi(props: Props) {
                     )}
                     sortedBy={sortedBy}
                   />
-                </div>
-              </div>
-              <div className='flex-div flex-space-between flex-wrap margin-top-04'>
-                <div style={{ flexBasis: '60%', flexGrow: '1' }}>
-                  <p className='source margin-top-04 undp-typography'>
-                    Source:{' '}
-                    <a
-                      className='undp-style small-font'
-                      href={countryData?.reportUrl}
-                      target='_blank'
-                      rel='noreferrer'
-                    >
-                      {countryData?.reportName}
-                    </a>
-                  </p>
-                </div>
-                <div className='margin-top-04'>
-                  <ImageDownloadButton
-                    node={
-                      document.getElementById('subnationalGraph') as HTMLElement
-                    }
-                    buttonText='Download graph'
-                    filename='subnationalGraph'
-                    buttonType='secondary'
-                  />
+                  <div className='flex-div flex-space-between flex-wrap margin-top-04'>
+                    <div style={{ flexBasis: '60%', flexGrow: '1' }}>
+                      <p className='source margin-top-04 undp-typography'>
+                        Source:{' '}
+                        <a
+                          className='undp-style small-font'
+                          href={countryData?.reportUrl}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          {countryData?.reportName}
+                        </a>
+                      </p>
+                    </div>
+                    <div className='margin-top-04'>
+                      <ImageDownloadButton
+                        node={
+                          // eslint-disable-next-line prettier/prettier
+                          document.getElementById('listSubnational') as HTMLElement
+                        }
+                        buttonText='Download graph'
+                        filename='subnationalGraph'
+                        buttonType='secondary'
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -66,7 +66,11 @@ export function ScatterPlotSubnational(props: Props) {
   }, [svgWidth, activeViz]);
 
   return (
-    <div style={{ minWidth: '600px' }} ref={containerRef}>
+    <div
+      style={{ minWidth: '600px' }}
+      ref={containerRef}
+      id='scatterplotSubnational'
+    >
       <svg
         width='100%'
         height='100%'

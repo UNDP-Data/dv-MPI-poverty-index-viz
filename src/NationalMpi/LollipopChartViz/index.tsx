@@ -13,7 +13,7 @@ const LollipopChartEl = styled.div`
   background-color: var(--black-100);
   box-shadow: var(--shadow);
   border-radius: 2px;
-  overflow: auto;
+  overflow-x: hidden;
   padding-top: 10px;
 `;
 export function LollipopChartViz(props: Props) {

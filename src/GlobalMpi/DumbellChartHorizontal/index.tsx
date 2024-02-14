@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { MpiDataType } from '../../Types';
-import { Chart } from './Chart';
 import ImageDownloadButton from '../../Components/ImageDownloadButton';
+import { Chart } from './Chart';
 
 interface Props {
   data: MpiDataType[];

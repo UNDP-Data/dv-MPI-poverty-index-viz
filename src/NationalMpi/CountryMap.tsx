@@ -256,7 +256,7 @@ export function CountryMap(props: Props) {
     }
   }, [selectedAdminLevel]);
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} id='mapSubnational'>
       <div
         ref={mapContainer}
         className='map'

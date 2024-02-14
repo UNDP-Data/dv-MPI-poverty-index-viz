@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import UNDPColorModule from 'undp-viz-colors';
+import ImageDownloadButton from '../Components/ImageDownloadButton';
 import { DumbellChartViz } from './DumbellChartViz';
 import { DumbellChartHorizontal } from './DumbellChartHorizontal';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
 import { ScatterPlotGlobal } from './ScatterPlotGlobal';
 import { IconsMap } from './IconsMap';
-import ImageDownloadButton from '../Components/ImageDownloadButton';
 
 interface Props {
   mpiData: MpiDataType[];
