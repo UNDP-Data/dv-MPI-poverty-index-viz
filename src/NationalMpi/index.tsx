@@ -488,7 +488,7 @@ export function NationalMpi(props: Props) {
                         </a>
                       </p>
                     </div>
-                    <div className='margin-top-04'>
+                    <div className='margin-top-04' style={{ display: 'none' }}>
                       <ImageDownloadButton
                         nodeID='mapSubnational'
                         buttonText='Download map'
