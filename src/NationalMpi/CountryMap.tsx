@@ -3,6 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import maplibreGl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import {
+  MaplibreExportControl,
+  Size,
+  PageOrientation,
+  Format,
+  DPI,
+} from '@watergis/maplibre-gl-export';
+import '@watergis/maplibre-gl-export/dist/maplibre-gl-export.css';
 import * as pmtiles from 'pmtiles';
 import UNDPColorModule from 'undp-viz-colors';
 import { HoverSubnatDataType, MpiDataTypeNationalYears } from '../Types';
@@ -200,7 +208,21 @@ export function CountryMap(props: Props) {
         [countryData?.bbox.ne.lon, countryData?.bbox.ne.lat],
       ]);
     });
+    // (map as any).current.addControl(new maplibreGl.NavigationControl());
+
+    (map as any).current.addControl(
+      new MaplibreExportControl({
+        PageSize: Size.A4,
+        PageOrientation: PageOrientation.Portrait,
+        Format: Format.PNG,
+        DPI: DPI[96],
+        // Crosshair: true,
+        // PrintableArea: true,
+      }),
+      'top-right',
+    );
   }, []);
+
   // when changing country
   useEffect(() => {
     if (
@@ -220,6 +242,8 @@ export function CountryMap(props: Props) {
         (map as any).current.getLayer('choropleth') &&
         (map as any).current.getLayer('overlay')
       ) {
+        // (map as any).current.addControl(new maplibreGl.NavigationControl());
+
         const filters = [
           'all',
           ['==', 'ISO', countryData?.iso_a3],
