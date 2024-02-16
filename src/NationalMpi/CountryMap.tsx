@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import { useEffect, useRef, useState } from 'react';
@@ -54,7 +55,8 @@ export function CountryMap(props: Props) {
           },
           admin2: {
             type: 'vector',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
+            // url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select.pmtiles',
           },
         },
         layers: [
@@ -85,8 +87,8 @@ export function CountryMap(props: Props) {
             id: `choropleth`,
             type: 'fill',
             source: 'admin2',
-            'source-layer': 'adm_Export_jso_FeaturesToJSO',
-            filter: ['==', 'admin level', selectedAdminLevel],
+            'source-layer': 'mpi_select',
+            filter: ['==', 'admin_level', Number(selectedAdminLevel)],
             paint: {
               'fill-color': [
                 'interpolate',
@@ -128,8 +130,8 @@ export function CountryMap(props: Props) {
             id: 'overlay',
             type: 'fill',
             source: 'admin2',
-            'source-layer': 'adm_Export_jso_FeaturesToJSO',
-            filter: ['==', 'admin level', selectedAdminLevel],
+            'source-layer': 'mpi_select',
+            filter: ['==', 'admin_level', Number(selectedAdminLevel)],
             paint: {
               'fill-color': '#000',
               'fill-opacity': [
@@ -148,8 +150,8 @@ export function CountryMap(props: Props) {
     (map as any).current.on('load', () => {
       const filters = [
         'all',
-        ['==', 'ISO', countryData?.iso_a3],
-        ['==', 'admin level', selectedAdminLevel],
+        ['==', 'ISOcountry_code', countryData?.iso_a3],
+        ['==', 'admin_level', Number(selectedAdminLevel)],
       ];
       (map as any).current.setFilter('choropleth', filters);
       (map as any).current.setFilter('overlay', filters);
@@ -163,18 +165,22 @@ export function CountryMap(props: Props) {
               {
                 source: 'admin2',
                 id: districtHoveredStateId,
-                sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+                sourceLayer: 'mpi_select',
               },
               { hover: false },
             );
           }
           districtHoveredStateId = e.features[0].id;
+          // console.log('e.features[0] ---------> ', e.features[0]);
           setHoverData({
-            subregion: e.features[0].properties.region,
+            subregion: e.features[0].properties['Admin_name_Region'],
             country: e.features[0].properties.country,
             value: e.features[0].properties.MPI,
-            intensity: e.features[0].properties['Intensity (A, %)'],
-            headcountRatio: e.features[0].properties['Headcount Ratio (H, %)'],
+            intensity:
+              (e.features[0].properties.MPI /
+                e.features[0].properties['Headcount_Ratio__H____']) *
+              10000,
+            headcountRatio: e.features[0].properties['Headcount_Ratio__H____'],
             xPosition: e.originalEvent.clientX,
             yPosition: e.originalEvent.clientY,
           });
@@ -182,7 +188,7 @@ export function CountryMap(props: Props) {
             {
               source: 'admin2',
               id: districtHoveredStateId,
-              sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+              sourceLayer: 'mpi_select',
             },
             { hover: true },
           );
@@ -195,7 +201,7 @@ export function CountryMap(props: Props) {
             {
               source: 'admin2',
               id: districtHoveredStateId,
-              sourceLayer: 'adm_Export_jso_FeaturesToJSO',
+              sourceLayer: 'mpi_select',
             },
             { hover: false },
           );
@@ -208,18 +214,16 @@ export function CountryMap(props: Props) {
         [countryData?.bbox.ne.lon, countryData?.bbox.ne.lat],
       ]);
     });
-    // (map as any).current.addControl(new maplibreGl.NavigationControl());
-
     (map as any).current.addControl(
       new MaplibreExportControl({
         PageSize: Size.A4,
         PageOrientation: PageOrientation.Portrait,
         Format: Format.PNG,
         DPI: DPI[96],
-        // Crosshair: true,
+        Crosshair: true,
         // PrintableArea: true,
       }),
-      'top-right',
+      'bottom-right',
     );
   }, []);
 
@@ -242,12 +246,10 @@ export function CountryMap(props: Props) {
         (map as any).current.getLayer('choropleth') &&
         (map as any).current.getLayer('overlay')
       ) {
-        // (map as any).current.addControl(new maplibreGl.NavigationControl());
-
         const filters = [
           'all',
-          ['==', 'ISO', countryData?.iso_a3],
-          ['==', 'admin level', selectedAdminLevel],
+          ['==', 'ISOcountry_code', countryData?.iso_a3],
+          ['==', 'admin_level', Number(selectedAdminLevel)],
         ];
         (map as any).current.setFilter('choropleth', filters);
         (map as any).current.setFilter('overlay', filters);
@@ -271,8 +273,8 @@ export function CountryMap(props: Props) {
       ) {
         const filters = [
           'all',
-          ['==', 'ISO', countryData?.iso_a3],
-          ['==', 'admin level', selectedAdminLevel],
+          ['==', 'ISOcountry_code', countryData?.iso_a3],
+          ['==', 'admin_level', Number(selectedAdminLevel)],
         ];
         (map as any).current.setFilter('choropleth', filters);
         (map as any).current.setFilter('overlay', filters);
@@ -280,7 +282,7 @@ export function CountryMap(props: Props) {
     }
   }, [selectedAdminLevel]);
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className='maplibre-show-control'>
       <div
         id='mapSubnational'
         ref={mapContainer}
