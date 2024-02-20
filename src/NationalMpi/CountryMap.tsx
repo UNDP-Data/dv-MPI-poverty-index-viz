@@ -56,7 +56,7 @@ export function CountryMap(props: Props) {
           admin2: {
             type: 'vector',
             // url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select_1.pmtiles',
           },
         },
         layers: [

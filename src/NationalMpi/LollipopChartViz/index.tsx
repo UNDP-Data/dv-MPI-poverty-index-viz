@@ -21,8 +21,12 @@ export function LollipopChartViz(props: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [svgWidth, setSvgWidth] = useState<number>(0);
   useEffect(() => {
-    if (containerRef.current) setSvgWidth(containerRef.current.clientWidth);
-  }, [containerRef.current]);
+    const resizeObserver = new ResizeObserver(entries => {
+      setSvgWidth(entries[0].target.clientWidth);
+    });
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
   return (
     <div ref={containerRef} className='lollipop-container'>
       <div className='flex-div flex-wrap margin-top-00 lollipop-header'>
