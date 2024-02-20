@@ -23,7 +23,10 @@ export function LollipopChart(props: Props) {
     );
   } else {
     data.sort((x: MpiDataTypeSubnational, y: MpiDataTypeSubnational) =>
-      descending((x as any)[sortedByKey], (y as any)[sortedByKey]),
+      descending(
+        Number((x as any)[sortedByKey]),
+        Number((y as any)[sortedByKey]),
+      ),
     );
   }
 
