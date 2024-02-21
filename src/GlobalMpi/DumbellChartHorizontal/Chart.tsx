@@ -156,7 +156,7 @@ export function Chart(props: Props) {
                   opacity={hoveredCountry === (d as any).country ? 1 : 0}
                 >
                   <text y='-50' x={-barWidth} className='tooltipValue'>
-                    {d.country}, (difference: {d.diff.toFixed(2)}%)
+                    {d.country} (difference: {d.diff.toFixed(2)}pp)
                   </text>
                   {indicators.map((k, j) => (
                     <g

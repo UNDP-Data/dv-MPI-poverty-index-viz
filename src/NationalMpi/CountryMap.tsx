@@ -14,6 +14,7 @@ import {
 import '@watergis/maplibre-gl-export/dist/maplibre-gl-export.css';
 import * as pmtiles from 'pmtiles';
 import UNDPColorModule from 'undp-viz-colors';
+import { scaleQuantize } from 'd3-scale';
 import { HoverSubnatDataType, MpiDataTypeNationalYears } from '../Types';
 import { TooltipSubnational } from './TooltipSubnational';
 
@@ -22,12 +23,24 @@ interface Props {
   selectedAdminLevel: string;
   mapHeight: number;
   mapWidth: number;
+  subnationalMPIextent: [number, number];
 }
 export function CountryMap(props: Props) {
-  const { countryData, selectedAdminLevel, mapHeight, mapWidth } = props;
+  const {
+    countryData,
+    selectedAdminLevel,
+    mapHeight,
+    mapWidth,
+    subnationalMPIextent,
+  } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
+  // const maxValue = extent(subnationalData, d => d.mpi);
+  const colorScale = scaleQuantize<string, number>()
+    .domain(subnationalMPIextent as [number, number])
+    .range(UNDPColorModule.sequentialColors.negativeColorsx05);
+
   const protocol = new pmtiles.Protocol();
   let lat = 0;
   let lon = 0;
@@ -43,6 +56,8 @@ export function CountryMap(props: Props) {
     }
     maplibreGl.addProtocol('pmtiles', protocol.tile);
     if (map.current) return;
+    colorScale.domain(subnationalMPIextent as [number, number]);
+
     // initiate map and add base layer
     (map as any).current = new maplibreGl.Map({
       container: mapContainer.current as any,
@@ -95,33 +110,43 @@ export function CountryMap(props: Props) {
                 ['linear'],
                 ['get', 'MPI'],
                 0,
-                UNDPColorModule.sequentialColors.negativeColorsx07[0],
-                0.0999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[0],
-                0.1,
-                UNDPColorModule.sequentialColors.negativeColorsx07[1],
-                0.1999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[1],
-                0.2,
-                UNDPColorModule.sequentialColors.negativeColorsx07[2],
-                0.2999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[2],
-                0.3,
-                UNDPColorModule.sequentialColors.negativeColorsx07[3],
-                0.3999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[3],
-                0.4,
-                UNDPColorModule.sequentialColors.negativeColorsx07[4],
-                0.4999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[4],
-                0.5,
-                UNDPColorModule.sequentialColors.negativeColorsx07[5],
-                0.5999,
-                UNDPColorModule.sequentialColors.negativeColorsx07[5],
-                0.6,
-                UNDPColorModule.sequentialColors.negativeColorsx07[6],
-                1,
-                UNDPColorModule.sequentialColors.negativeColorsx07[6],
+                UNDPColorModule.sequentialColors.negativeColorsx05[0],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[0],
+                )[1] - 0.0001,
+                UNDPColorModule.sequentialColors.negativeColorsx05[0],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[0],
+                )[1],
+                UNDPColorModule.sequentialColors.negativeColorsx05[1],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[1],
+                )[1] - 0.0001,
+                UNDPColorModule.sequentialColors.negativeColorsx05[1],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[1],
+                )[1],
+                UNDPColorModule.sequentialColors.negativeColorsx05[2],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[2],
+                )[1] - 0.0001,
+                UNDPColorModule.sequentialColors.negativeColorsx05[2],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[2],
+                )[1],
+                UNDPColorModule.sequentialColors.negativeColorsx05[3],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[3],
+                )[1] - 0.0001,
+                UNDPColorModule.sequentialColors.negativeColorsx05[3],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[3],
+                )[1],
+                UNDPColorModule.sequentialColors.negativeColorsx05[4],
+                colorScale.invertExtent(
+                  UNDPColorModule.sequentialColors.negativeColorsx05[4],
+                )[1] - 0.0001,
+                UNDPColorModule.sequentialColors.negativeColorsx05[4],
               ],
               'fill-outline-color': '#fff',
             },
@@ -229,6 +254,8 @@ export function CountryMap(props: Props) {
 
   // when changing country
   useEffect(() => {
+    colorScale.domain(subnationalMPIextent as [number, number]);
+
     if (
       countryData !== undefined &&
       countryData.bbox.ne !== undefined &&
@@ -261,9 +288,57 @@ export function CountryMap(props: Props) {
           [countryData?.bbox.sw.lon, countryData?.bbox.sw.lat],
           [countryData?.bbox.ne.lon, countryData?.bbox.ne.lat],
         ]);
+        (map as any).current.setPaintProperty('choropleth', 'fill-color', [
+          'interpolate',
+          ['linear'],
+          ['get', 'MPI'],
+          0,
+          UNDPColorModule.sequentialColors.negativeColorsx05[0],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[0],
+          )[1] - 0.0001,
+          UNDPColorModule.sequentialColors.negativeColorsx05[0],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[0],
+          )[1],
+          UNDPColorModule.sequentialColors.negativeColorsx05[1],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[1],
+          )[1] - 0.0001,
+          UNDPColorModule.sequentialColors.negativeColorsx05[1],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[1],
+          )[1],
+          UNDPColorModule.sequentialColors.negativeColorsx05[2],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[2],
+          )[1] - 0.0001,
+          UNDPColorModule.sequentialColors.negativeColorsx05[2],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[2],
+          )[1],
+          UNDPColorModule.sequentialColors.negativeColorsx05[3],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[3],
+          )[1] - 0.0001,
+          UNDPColorModule.sequentialColors.negativeColorsx05[3],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[3],
+          )[1],
+          UNDPColorModule.sequentialColors.negativeColorsx05[4],
+          colorScale.invertExtent(
+            UNDPColorModule.sequentialColors.negativeColorsx05[4],
+          )[1] - 0.0001,
+          UNDPColorModule.sequentialColors.negativeColorsx05[4],
+        ]);
+        (map as any).current.setPaintProperty(
+          'choropleth',
+          'fill-outline-color',
+          '#fff',
+        );
       }
     }
-  }, [countryData?.iso_a3]);
+  }, [countryData?.iso_a3, subnationalMPIextent]);
   // when changing selectedAdminLevel
   useEffect(() => {
     if (map.current) {

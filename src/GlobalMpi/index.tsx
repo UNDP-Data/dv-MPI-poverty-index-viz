@@ -199,19 +199,16 @@ export function GlobalMpi(props: Props) {
               multidimensional poverty. Almost two-thirds of the
               multidimensionally poor (730 million) people live in middle-income
               countries (MICs). However, poverty disproportionately affects
-              people in low-income countries
-            </p>
-            <p className='undp-typography'>
-              (LICs), which make up only 10 percent of the population covered by
-              the global MPI, but are home to 34.7 percent (387 million) of the
-              multidimensionally poor. Moreover, five out of six poor people
-              live in Sub-Saharan Africa (47.8 percent) or South Asia (34.9
-              percent).
+              people in low-income countries (LICs), which make up only 10
+              percent of the population covered by the global MPI, but are home
+              to 34.7 percent (387 million) of the multidimensionally poor.
+              Moreover, five out of six poor people live in Sub-Saharan Africa
+              (47.8 percent) or South Asia (34.9 percent).
             </p>
             <p className='undp-typography'>
               However, the latest MPI data shows that poverty reduction is
-              possible, as in the last 15 years, twenty-five countries halved
-              their Global MPI value. In 79 of the 81 countries with trend data,
+              possible, as 25 countries successfully halved their global MPI
+              values within 15 years. In 79 of the 81 countries with trend data,
               MPI had decreased between countries’ first and last measurements.
             </p>
           </div>
@@ -250,8 +247,7 @@ export function GlobalMpi(props: Props) {
                   Note: The absolute annualized change is the difference in a
                   poverty measure between two years, divided by the number of
                   years between surveys. The values presented in the map have
-                  calculated using measurements of the first and last available
-                  year.
+                  been calculated using measurements of the first and last year.
                 </p>
               </div>
               <div>
@@ -321,18 +317,19 @@ export function GlobalMpi(props: Props) {
           intense in rural areas compared to urban areas.
         </p>
         <p>
-          In a number of countries, people living in female-headed households
-          are significantly poorer than those living male-headed households.
-          This is so for instance in Malawi, Liberia, Namibia, where the gender
-          gap in the incidence of poverty exceeds 8 percentage points. But the
-          opposite is also true for other countries such as the Gambia, Senegal,
-          Nigeria, where male-headed households are poorer. However, measuring
-          poverty at household level alone does not allow to capture the extent
-          to which women, men, boys and girls experience poverty differently
-          within the same household. As a way forward, one can index eligible
-          persons within each household to analyze ‘individual indicators’ (e.g.
-          years of schooling, nutrition, school attendance) by gender, as was
-          done in the Global MPI report 2021{' '}
+          The experience of multidimensional poverty varies significantly across
+          countries. For instance, in Malawi, Liberia, Namibia, female-headed
+          households are significantly poorer than those living male-headed
+          households with the gender gap in the incidence of poverty exceeding 8
+          percentage points. But the opposite is also true for other countries
+          such as the Gambia, Senegal, Nigeria, where male-headed households are
+          poorer. However, measuring poverty at household level alone does not
+          allow to capture the extent to which women, men, boys and girls
+          experience poverty differently within the same household. As a way
+          forward, one can index eligible persons within each household to
+          analyze ‘individual indicators’ (e.g. years of schooling, nutrition,
+          school attendance) by gender, as was done in the Global MPI report
+          2021{' '}
           <a
             target='_blank'
             rel='noreferrer'

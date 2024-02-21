@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { scaleLinear, scaleThreshold } from 'd3-scale';
+import { scaleLinear, scaleQuantize } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
 import UNDPColorModule from 'undp-viz-colors';
@@ -12,9 +12,10 @@ interface Props {
   data: MpiDataTypeSubnational[];
   id: string;
   activeViz: string;
+  subnationalMPIextent: [number, number];
 }
 export function ScatterPlotSubnational(props: Props) {
-  const { data, id, activeViz } = props;
+  const { data, id, activeViz, subnationalMPIextent } = props;
   const margin = { top: 20, right: 30, bottom: 50, left: 80 };
   const containerRef = useRef<HTMLDivElement>(null);
   const [svgWidth, setSvgWidth] = useState<number>(0);
@@ -39,10 +40,10 @@ export function ScatterPlotSubnational(props: Props) {
     .tickPadding(6)
     .tickFormat((d: any) => `${d}%`)
     .ticks(10);
-  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
-  const colorScaleMPI = scaleThreshold<number, string>()
-    .domain(valueArray)
-    .range(UNDPColorModule.sequentialColors.negativeColorsx07);
+
+  const colorScaleMPI = scaleQuantize<string, number>()
+    .domain(subnationalMPIextent as [number, number])
+    .range(UNDPColorModule.sequentialColors.negativeColorsx05);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(entries => {
@@ -65,6 +66,9 @@ export function ScatterPlotSubnational(props: Props) {
       .attr('text-anchor', 'end');
   }, [svgWidth, activeViz]);
 
+  useEffect(() => {
+    colorScaleMPI.domain(subnationalMPIextent as [number, number]);
+  }, [subnationalMPIextent]);
   return (
     <div
       style={{ minWidth: '600px' }}

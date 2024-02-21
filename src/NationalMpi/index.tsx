@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Segmented, Select, Radio, RadioChangeEvent } from 'antd';
 import { Key, useEffect, useState, useRef } from 'react';
-import { ascending } from 'd3-array';
-import { scaleThreshold } from 'd3-scale';
+import { ascending, extent } from 'd3-array';
+import { scaleQuantize } from 'd3-scale';
 import UNDPColorModule from 'undp-viz-colors';
 import {
   MpiDataTypeNational,
@@ -48,11 +48,12 @@ export function NationalMpi(props: Props) {
   const [indicatorFiles, setIndicatorFiles] = useState<string[] | undefined>(
     undefined,
   );
+  const [subnatExtent, setSubnatExtent] = useState<[number, number]>([0, 1]);
   const [activeViz, setActiveViz] = useState<string>('map');
-  const valueArray = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7];
-  const colorScaleMPI = scaleThreshold<number, string>()
-    .domain(valueArray)
-    .range(UNDPColorModule.sequentialColors.negativeColorsx07);
+  const [boundValues, setBoundValues] = useState<number[]>([]);
+  const colorScaleMPI = scaleQuantize<string, number>()
+    // .domain(valueArray)
+    .range(UNDPColorModule.sequentialColors.negativeColorsx05);
   const [sortedBy, setSortedBy] = useState('mpi');
   const containerSubnat = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -122,6 +123,13 @@ export function NationalMpi(props: Props) {
         ][0],
       );
     }
+    const extentArray = extent(
+      subNatValues as MpiDataTypeSubnational[],
+      (d: any) => Number(d.mpi),
+    );
+    setSubnatExtent(
+      subNatValues.length > 0 ? (extentArray as [number, number]) : [0, 1],
+    );
   }, [selectedCountry]);
   useEffect(() => {
     const resizeObserver = new ResizeObserver(entries => {
@@ -131,6 +139,14 @@ export function NationalMpi(props: Props) {
       resizeObserver.observe(containerSubnat.current);
     return () => resizeObserver.disconnect();
   }, [containerSubnat.current]);
+  useEffect(() => {
+    colorScaleMPI.domain(subnatExtent as [number, number]);
+    const bounds: number[] = [];
+    UNDPColorModule.sequentialColors.negativeColorsx05.forEach(color => {
+      bounds.push(colorScaleMPI.invertExtent(color)[1]);
+    });
+    setBoundValues(bounds);
+  }, [subnatExtent]);
   return (
     <div>
       <div
@@ -359,7 +375,7 @@ export function NationalMpi(props: Props) {
               <div className='legend-interactionBar'>
                 {activeViz !== 'list' ? (
                   <div className='countrymap-legend'>
-                    <svg width='300px' height='50px'>
+                    <svg width='310px' height='50px'>
                       <g transform='translate(10,20)'>
                         <text
                           x={280}
@@ -370,27 +386,29 @@ export function NationalMpi(props: Props) {
                         >
                           Higher Poverty
                         </text>
-                        {valueArray.map((d, i) => (
-                          <g key={i}>
-                            <rect
-                              x={(i * 280) / valueArray.length}
-                              y={1}
-                              width={280 / valueArray.length}
-                              height={8}
-                              fill={colorScaleMPI(valueArray[i] - 0.05)}
-                              stroke='#fff'
-                            />
-                            <text
-                              x={(280 * (i + 1)) / valueArray.length}
-                              y={25}
-                              fontSize={12}
-                              fill='#212121'
-                              textAnchor='middle'
-                            >
-                              {d}
-                            </text>
-                          </g>
-                        ))}
+                        {UNDPColorModule.sequentialColors.negativeColorsx05.map(
+                          (d, i) => (
+                            <g key={i}>
+                              <rect
+                                x={(i * 280) / 5}
+                                y={1}
+                                width={280 / 5}
+                                height={8}
+                                fill={d}
+                                stroke='#fff'
+                              />
+                              <text
+                                x={(280 * (i + 1)) / 5}
+                                y={25}
+                                fontSize={12}
+                                fill='#212121'
+                                textAnchor='middle'
+                              >
+                                {boundValues[i].toFixed(2)}
+                              </text>
+                            </g>
+                          ),
+                        )}
                         <text
                           y={25}
                           x={0}
@@ -470,6 +488,7 @@ export function NationalMpi(props: Props) {
                         k => k.country === selectedCountry,
                       )[0]
                     }
+                    subnationalMPIextent={subnatExtent}
                     selectedAdminLevel={selectedAdminLevel}
                     mapWidth={subnatWidth - 64}
                     mapHeight={500}
@@ -505,6 +524,7 @@ export function NationalMpi(props: Props) {
                     )}
                     id='subnatScatterPlot'
                     activeViz={activeViz}
+                    subnationalMPIextent={subnatExtent}
                   />
                   <div className='flex-div flex-space-between flex-wrap margin-top-04'>
                     <div style={{ flexBasis: '60%', flexGrow: '1' }}>
