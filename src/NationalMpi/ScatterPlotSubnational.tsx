@@ -41,7 +41,7 @@ export function ScatterPlotSubnational(props: Props) {
     .tickFormat((d: any) => `${d}%`)
     .ticks(10);
 
-  const colorScaleMPI = scaleQuantize<string, number>()
+  const colorScaleMPI = scaleQuantize<string>()
     .domain(subnationalMPIextent as [number, number])
     .range(UNDPColorModule.sequentialColors.negativeColorsx05);
 
