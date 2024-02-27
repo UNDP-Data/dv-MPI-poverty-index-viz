@@ -190,11 +190,6 @@ export function NationalMpi(props: Props) {
           </div>
         </div>
       ) : null}
-      {countryData?.note !== '' ? (
-        <p>
-          Note: <strong>{countryData?.note}</strong>
-        </p>
-      ) : null}
       <hr className='undp-style light margin-bottom-06' />
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
@@ -231,6 +226,16 @@ export function NationalMpi(props: Props) {
             style={{ width: '400px' }}
             onChange={d => setSelectedCountry(d.trim())}
           />
+        </div>
+      ) : null}
+      {countryData?.note !== '' ? (
+        <div
+          className='margin-bottom-08'
+          style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
+        >
+          <p className='undp-typography'>
+            Note: <strong>{countryData?.note}</strong>
+          </p>
         </div>
       ) : null}
       {urban ||
@@ -617,7 +622,13 @@ export function NationalMpi(props: Props) {
       )}
       {nationalYears?.filter(k => k.country === selectedCountry)[0].countryData
         .length > 1 ? (
-        <div style={{ maxWidth: '1024px', margin: '1.5rem auto' }}>
+        <div
+          style={{
+            maxWidth: '1024px',
+            margin: '1.5rem auto',
+            padding: '0 1.5rem',
+          }}
+        >
           <h3 className='undp-typography margin-top-10'>
             Evolution of MPI through the years in {countryData?.country}
           </h3>

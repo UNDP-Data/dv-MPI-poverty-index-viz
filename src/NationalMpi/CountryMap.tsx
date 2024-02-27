@@ -36,7 +36,6 @@ export function CountryMap(props: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<HTMLDivElement>(null);
-  // const maxValue = extent(subnationalData, d => d.mpi);
   const colorScale = scaleQuantize<string, number>()
     .domain(subnationalMPIextent as [number, number])
     .range(UNDPColorModule.sequentialColors.negativeColorsx05);
@@ -71,7 +70,7 @@ export function CountryMap(props: Props) {
           admin2: {
             type: 'vector',
             // url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select_1.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select_v2.pmtiles',
           },
         },
         layers: [
@@ -102,7 +101,7 @@ export function CountryMap(props: Props) {
             id: `choropleth`,
             type: 'fill',
             source: 'admin2',
-            'source-layer': 'mpi_select',
+            'source-layer': 'mpi_select_v2',
             filter: ['==', 'admin_level', Number(selectedAdminLevel)],
             paint: {
               'fill-color': [
@@ -155,7 +154,7 @@ export function CountryMap(props: Props) {
             id: 'overlay',
             type: 'fill',
             source: 'admin2',
-            'source-layer': 'mpi_select',
+            'source-layer': 'mpi_select_v2',
             filter: ['==', 'admin_level', Number(selectedAdminLevel)],
             paint: {
               'fill-color': '#000',
@@ -190,7 +189,7 @@ export function CountryMap(props: Props) {
               {
                 source: 'admin2',
                 id: districtHoveredStateId,
-                sourceLayer: 'mpi_select',
+                sourceLayer: 'mpi_select_v2',
               },
               { hover: false },
             );
@@ -201,10 +200,7 @@ export function CountryMap(props: Props) {
             subregion: e.features[0].properties['Admin_name_Region'],
             country: e.features[0].properties.country,
             value: e.features[0].properties.MPI,
-            intensity:
-              (e.features[0].properties.MPI /
-                e.features[0].properties['Headcount_Ratio__H____']) *
-              10000,
+            intensity: e.features[0].properties['Intensity__A____'],
             headcountRatio: e.features[0].properties['Headcount_Ratio__H____'],
             xPosition: e.originalEvent.clientX,
             yPosition: e.originalEvent.clientY,
@@ -213,7 +209,7 @@ export function CountryMap(props: Props) {
             {
               source: 'admin2',
               id: districtHoveredStateId,
-              sourceLayer: 'mpi_select',
+              sourceLayer: 'mpi_select_v2',
             },
             { hover: true },
           );
@@ -226,7 +222,7 @@ export function CountryMap(props: Props) {
             {
               source: 'admin2',
               id: districtHoveredStateId,
-              sourceLayer: 'mpi_select',
+              sourceLayer: 'mpi_select_v2',
             },
             { hover: false },
           );
