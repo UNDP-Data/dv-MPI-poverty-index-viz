@@ -442,11 +442,11 @@ export function NationalMpi(props: Props) {
                         <Radio className='undp-radio' value='mpi'>
                           MPI
                         </Radio>
-                        <Radio className='undp-radio' value='intensity'>
-                          Intensity
-                        </Radio>
                         <Radio className='undp-radio' value='headcountRatio'>
                           Incidence
+                        </Radio>
+                        <Radio className='undp-radio' value='intensity'>
+                          Intensity
                         </Radio>
                         <Radio className='undp-radio' value='subregion'>
                           Subregion name

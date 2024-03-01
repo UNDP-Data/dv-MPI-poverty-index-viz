@@ -1,18 +1,19 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-extraneous-dependencies */
 import { scaleLinear } from 'd3-scale';
 import { descending, ascending } from 'd3-array';
 import { Tooltip } from 'antd';
+import { useEffect, useRef, useState } from 'react';
 import { MpiDataTypeSubnational } from '../../Types';
 
 interface Props {
   data: MpiDataTypeSubnational[];
   sortedByKey: string;
-  svgWidth: number;
 }
 export function LollipopChart(props: Props) {
-  const { data, sortedByKey, svgWidth } = props;
+  const { data, sortedByKey } = props;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [svgWidth, setSvgWidth] = useState<number>(0);
   const leftPadding = 270;
   const rightPadding = 10;
   const rowHeight = 38;
@@ -37,8 +38,15 @@ export function LollipopChart(props: Props) {
     .range([0, svgWidth - leftPadding - rightPadding])
     .nice();
 
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(entries => {
+      setSvgWidth(entries[0].target.clientWidth);
+    });
+    if (containerRef.current) resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
   return (
-    <div id='listSubnational'>
+    <div id='listSubnational' ref={containerRef}>
       <svg width={svgWidth} height={data.length * rowHeight + marginTop}>
         {data.map((d, i) =>
           d ? (
