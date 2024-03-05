@@ -66,7 +66,7 @@ export function NationalMpi(props: Props) {
       nationalYears.map((d: MpiDataTypeNationalYears) => d.country.trim()),
     ),
   ].sort();
-  const defaultCountry = queryCountry || 'India';
+  const defaultCountry = queryCountry || 'Afghanistan';
   const [selectedCountry, setSelectedCountry] =
     useState<string>(defaultCountry);
   const subNat = subnational?.filter(k => k.country.trim() === selectedCountry);
@@ -203,10 +203,7 @@ export function NationalMpi(props: Props) {
           behind, efforts have been made to spotlight disparities in the way
           people experience multidimensional poverty by disaggregating MPI data
           by age, gender, rural/urban areas, subnational regions and other
-          parameters. In India for instance, the N-MPI provided estimates for
-          the 36 states and Union Territories, along with 707 administrative
-          districts, allowing outreach to those left behind, through targeted
-          multisectoral interventions.
+          parameters.
         </p>
       </div>
       {!queryCountry ? (

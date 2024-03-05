@@ -4,7 +4,6 @@ import ImageDownloadButton from '../Components/ImageDownloadButton';
 import { DumbellChartViz } from './DumbellChartViz';
 import { DumbellChartHorizontal } from './DumbellChartHorizontal';
 import { MpiDataType, MpiDataTypeDiff } from '../Types';
-import { ScatterPlotGlobal } from './ScatterPlotGlobal';
 import { IconsMap } from './IconsMap';
 
 interface Props {
@@ -286,25 +285,6 @@ export function GlobalMpi(props: Props) {
       <DumbellChartHorizontal
         data={mpiData.filter(d => d.displayDifference === true)}
       />
-      <h3 className='undp-typography margin-top-08'>Incidence vs Intensity</h3>
-      <div className='flex-div flex-wrap gap-06 global-scatter-container'>
-        <div className='chart-global-scatter'>
-          <ScatterPlotGlobal data={mpiData} />
-        </div>
-        <div className='margin-top-06 description-scatter'>
-          <p className='undp-typography'>
-            Global MPI data shows that worrisomely, the higher the incidence of
-            poverty, the higher the intensity of poverty that poor people tend
-            to experience. Multidimensional poverty in Sub-Saharan Africa is
-            particularly high. Overall, in 19 of the 40 of the countries with
-            data, the reported incidence exceeds 50 percent; moreover, in 18
-            countries the poor are deprived in at least half of the MPI
-            indicators. In Chad, Niger the incidence of poverty exceeds 80%
-            where, on average, the poor are deprived in more than 60% of the
-            weighted MPI indicators.
-          </p>
-        </div>
-      </div>
       <div
         style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 1.5rem' }}
       >

@@ -17,7 +17,7 @@ export function DumbellChartHorizontal(props: Props) {
         id='multidimensionalVsExtreme'
       >
         <h6 className='undp-typography margin-bottom-00'>
-          Multidimensional poverty vs extreme poverty incidence
+          Multidimensional poverty vs extreme monetary poverty incidence
         </h6>
         <Chart data={data} />
       </div>
@@ -46,8 +46,12 @@ export function DumbellChartHorizontal(props: Props) {
               2023 MPI Tables 1 and 2 (XLS)
             </a>
             <br />
-            Note: Extreme monetary poverty refers to the World Bank indicator
-            monetary poverty headcount ratio at PPP $2.15 a day
+            Notes: Extreme monetary poverty refers to the World Bank indicator
+            monetary poverty headcount ratio at PPP $2.15 a day.
+            <br />
+            For countries displayed in this chart, the difference between the
+            MPI survey year(s) and monetary poverty survey year does not exceed
+            3 years.
             <br />
           </p>
         </div>
