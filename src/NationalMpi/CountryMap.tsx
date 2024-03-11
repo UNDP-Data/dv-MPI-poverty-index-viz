@@ -70,7 +70,7 @@ export function CountryMap(props: Props) {
           admin2: {
             type: 'vector',
             // url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/Access-All-Data-Viz/production/public/data/PMTiles/adm_Export_jso_FeaturesToJSO.pmtiles',
-            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select_v2.pmtiles',
+            url: 'pmtiles://https://raw.githubusercontent.com/UNDP-Data/dv-MPI-poverty-index-data-repo/main/mpi_select_v3.pmtiles',
           },
         },
         layers: [
@@ -101,7 +101,7 @@ export function CountryMap(props: Props) {
             id: `choropleth`,
             type: 'fill',
             source: 'admin2',
-            'source-layer': 'mpi_select_v2',
+            'source-layer': 'mpi_select_v3',
             filter: ['==', 'admin_level', Number(selectedAdminLevel)],
             paint: {
               'fill-color': [
@@ -154,7 +154,7 @@ export function CountryMap(props: Props) {
             id: 'overlay',
             type: 'fill',
             source: 'admin2',
-            'source-layer': 'mpi_select_v2',
+            'source-layer': 'mpi_select_v3',
             filter: ['==', 'admin_level', Number(selectedAdminLevel)],
             paint: {
               'fill-color': '#000',
@@ -189,7 +189,7 @@ export function CountryMap(props: Props) {
               {
                 source: 'admin2',
                 id: districtHoveredStateId,
-                sourceLayer: 'mpi_select_v2',
+                sourceLayer: 'mpi_select_v3',
               },
               { hover: false },
             );
@@ -209,7 +209,7 @@ export function CountryMap(props: Props) {
             {
               source: 'admin2',
               id: districtHoveredStateId,
-              sourceLayer: 'mpi_select_v2',
+              sourceLayer: 'mpi_select_v3',
             },
             { hover: true },
           );
@@ -222,7 +222,7 @@ export function CountryMap(props: Props) {
             {
               source: 'admin2',
               id: districtHoveredStateId,
-              sourceLayer: 'mpi_select_v2',
+              sourceLayer: 'mpi_select_v3',
             },
             { hover: false },
           );
