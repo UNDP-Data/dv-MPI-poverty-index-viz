@@ -1,5 +1,5 @@
-# Project Title
-#### Project description [Click here to see the interface]({{link to the site here}}).
+# Multi-Dimensional Poverty Visualization
+#### Multi-Dimensional Poverty Visualization [Click here to see the interface](https://lively-mushroom-004198d10.4.azurestaticapps.net).
 
 ## Table of Contents
 * [Link for the visualization](#section-01)
@@ -16,7 +16,7 @@
 * [Contact](#section-11)
 
 ## Link for the visualization<a name="section-01"></a>
-[{{link to the site here}}]({{link to the site here}})
+[https://lively-mushroom-004198d10.4.azurestaticapps.net](https://lively-mushroom-004198d10.4.azurestaticapps.net)
 
 ## Deployment<a name="deployment"></a>
 The Production site deployed using Azure Static Web App and work flow can be found [here]({{link to the site here}})
@@ -26,7 +26,7 @@ __All the different view of the visualization and steps to interegrate/embed it_
 
 Apart from the mentioned `div` above the following `script` and `link` needs to be added to the `head` or in the embed code
 ```
-<script defer src="<Link to the Visualization Mentioned Above>/static/js/main.js"></script>
+<script defer src="https://lively-mushroom-004198d10.4.azurestaticapps.net/index.js"></script>
 <link rel="stylesheet" href="https://undp-data.github.io/stylesheets-for-viz/style/mainStyleSheet.css" />
 <link rel="stylesheet" href="https://undp-data.github.io/stylesheets-for-viz/style/StyleForGraphingInterface.css" />
 <link rel="stylesheet" href="https://undp-data.github.io/stylesheets-for-viz/style/StyleForGraph.css" />
@@ -59,8 +59,8 @@ This project is bootstrapped with [`Vite`](https://vitejs.dev/) and was created 
 Run the terminal or command prompt and then run the following
 
 ```
-git clone https://github.com/UNDP-Data/{{projectName}}.git
-cd {{projectName}}
+git clone https://github.com/UNDP-Data/dv-MPI-poverty-index-viz.git
+cd dv-MPI-poverty-index-viz
 npm install
 ```
 
