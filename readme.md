@@ -1,5 +1,9 @@
 # Multi-Dimensional Poverty Visualization
-#### Multi-Dimensional Poverty Visualization [Click here to see the interface](https://lively-mushroom-004198d10.4.azurestaticapps.net).
+#### This project consists of two parts (tabs):
+* Global MPI: multiple visualizations explained, showing data globally 
+* National MPI: includes a dropdown to select countries and displays country-related visualizations for national MPI
+
+[Click here to see the interface](https://lively-mushroom-004198d10.4.azurestaticapps.net).
 
 ## Table of Contents
 * [Link for the visualization](#section-01)
@@ -13,7 +17,6 @@
 * [Local Deployment](#section-08)
 * [Available Scripts](#section-09)
 * [Tooling Setup](#section-10)
-* [Contact](#section-11)
 
 ## Link for the visualization<a name="section-01"></a>
 [https://lively-mushroom-004198d10.4.azurestaticapps.net](https://lively-mushroom-004198d10.4.azurestaticapps.net)
@@ -84,5 +87,3 @@ This project uses ESLint integrated with prettier, which verifies and formats yo
 
 This project is build in Visual Studio Code, therefore the project is already set up to work with. Install it from [here](https://code.visualstudio.com/) and then install this [eslint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and you should be good to go.
 
-## Contact<a name="section-11"></a>
-Roxana Torre (roxana.torre@undp.org)
