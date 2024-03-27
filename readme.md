@@ -19,7 +19,7 @@
 [https://lively-mushroom-004198d10.4.azurestaticapps.net](https://lively-mushroom-004198d10.4.azurestaticapps.net)
 
 ## Deployment<a name="deployment"></a>
-The Production site deployed using Azure Static Web App and work flow can be found [here]({{link to the site here}})
+The Production site deployed using Azure Static Web App and work flow can be found [here]({{https://github.com/UNDP-Data/dv-MPI-poverty-index-viz}})
 
 ## Steps to Integrating the Visualization in the Data Future Platform or Any Other Page<a name="section-02"></a>
 __All the different view of the visualization and steps to interegrate/embed it__
@@ -33,10 +33,10 @@ Apart from the mentioned `div` above the following `script` and `link` needs to 
 ```
 
 ## Pages on DFP Where the Visualization is Used<a name="section-03"></a>
-_All the pages on the DFP or other places like viva topics etc. where this visualization is embeded or used._
+[__https://data.undp.org/insights/multidimensional-poverty-index__](https://data.undp.org/insights/multidimensional-poverty-index)
 
 ## Related Repos<a name="section-04"></a>
-_List of all the repo that are used in this project as dataset, meta data, css etc._
+* [__dv-MPI-poverty-index-data-repo__](https://github.com/UNDP-Data/dv-MPI-poverty-index-data-repo): These are the data sheets for the visualization
 
 ## Global CSS for UI and Graphs<a name="section-05"></a>
 __Git Repo__: https://github.com/UNDP-Data/stylesheets-for-viz
@@ -47,7 +47,11 @@ __Link for stylesheets__
 * https://undp-data.github.io/stylesheets-for-viz/style/StyleForGraph.css
 
 ## Build with<a name="section-06"></a>
-_All the main library/frameworks used in the project_
+* __React__: Used as MVC framework.
+* __styled-components__: Utilizes tagged template literals and the power of CSS, allows to write actual CSS code to style the components in JS/TS.
+* __Various D3 Libraries__: Used for visualizations, adding interaction and reading the csv data file.
+* __AntD__: For UI elements like dropdown, buttons, checkbox, and slider.
+* __lodash__: Used for manipulating and iterating arrays and objects.
 
 ## Installation<a name="section-07"></a>
 This project uses `npm`. For installation you will need to install `node` and `npm`, if you don't already have it. `node` and `npm` can be installed from [here](https://nodejs.org/en/download/).
@@ -81,4 +85,4 @@ This project uses ESLint integrated with prettier, which verifies and formats yo
 This project is build in Visual Studio Code, therefore the project is already set up to work with. Install it from [here](https://code.visualstudio.com/) and then install this [eslint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and you should be good to go.
 
 ## Contact<a name="section-11"></a>
-_name and email id of the author_
+Roxana Torre (roxana.torre@undp.org)
