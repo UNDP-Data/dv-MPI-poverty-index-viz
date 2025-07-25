@@ -507,6 +507,15 @@ export function NationalMpi(props: Props) {
                         >
                           {countryData?.reportName}
                         </a>
+                        <br />
+                        <br />
+                        Note: The designations employed and the presentation of
+                        material on this map do not imply the expression of any
+                        opinion whatsoever on the part of the Secretariat of the
+                        United Nations or UNDP concerning the legal status of
+                        any country, territory, city or area or its authorities,
+                        or concerning the delimitation of its frontiers or
+                        boundaries.
                       </p>
                     </div>
                     <div className='margin-top-04' style={{ display: 'none' }}>
